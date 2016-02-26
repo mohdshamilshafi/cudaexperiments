@@ -6,21 +6,27 @@ using namespace std;
 
 __global__ void degreeCalc (int *vertexArray, int *neighbourArray, int *degreeCount, int n, int m){
 	int i= blockDim.x * blockIdx.x + threadIdx.x;
+	int start = -1, stop = -1;
+	int diff=0;
 	
-	if (i<n){
-		a[i]=threadIdx.x*2;
-		b[i]=threadIdx.x;
+	start = vertexArray[i];
+	
+	if (i==n){	
+		stop = m;
 	}
 	
-}
+	else{
+		stop = vertexArray[i+1];
+	}
 
-__global__ void vectorAddition (float *a, float *b, float *c, int n){
-	int i= blockDim.x * blockIdx.x + threadIdx.x;
+	diff = stop-start;
+		
+	atomicAdd(&degreeCount[i], diff);
 	
-	if (i<n){
-		c[i] = a[i]+b[i];
+	for (int j=start; j<stop; j++){
+		atomicAdd(&degreeCount[neighbourArray[j]], 1);
 	}
-	
+
 }
 
 void edgesPrint (int vertexArray[], int neighbourArray[], int n, int m){ 
@@ -63,6 +69,7 @@ int main(int argc, char const *argv[])
     	
     	int *d_degreeCount = NULL;
     	cudaMalloc((void **)&d_degreeCount, (n+1)*sizeof(int));
+    	cudaMemset((void *)d_degreeCount, 0, (n+1)*sizeof(int));
     	
 	for (int i = 0; i < n; ++i)
 	{
@@ -128,7 +135,11 @@ int main(int argc, char const *argv[])
 	
 	cudaMemcpy(h_degreeCount, d_degreeCount, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
 
-	edgesPrint(h_vertexArray, h_neighbourArray, n, m);
+	for (int i=0; i<n+1; i++){
+		cout<<h_degreeCount[i]<<endl;
+	}
+
+	// edgesPrint(h_vertexArray, h_neighbourArray, n, m);
 
 	delete[] h_vertexArray;
 	delete[] h_neighbourArray;
