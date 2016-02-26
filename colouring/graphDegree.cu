@@ -5,13 +5,21 @@
 using namespace std;
 
 __global__ void degreeCalc (int *vertexArray, int *neighbourArray, int *degreeCount, int n, int m){
+	
+
 	int i= blockDim.x * blockIdx.x + threadIdx.x;
+	
+	if (i>=n){
+		return;
+	}
+	
+	
 	int start = -1, stop = -1;
 	int diff=0;
 	
 	start = vertexArray[i];
 	
-	if (i==n){	
+	if (i==n-1){	
 		stop = m;
 	}
 	
@@ -130,6 +138,8 @@ int main(int argc, char const *argv[])
 	
 	int threadsPerBlock = 512;
 	int blocksPerGrid = (n + threadsPerBlock -1)/threadsPerBlock;
+	
+	//cout<<threadsPerBlock<<" "<<blocksPerGrid<<endl;
 
 	degreeCalc<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m);
 	
@@ -139,11 +149,11 @@ int main(int argc, char const *argv[])
 		cout<<h_degreeCount[i]<<endl;
 	}
 
-	// edgesPrint(h_vertexArray, h_neighbourArray, n, m);
+	//edgesPrint(h_vertexArray, h_neighbourArray, n, m);
 
-	delete[] h_vertexArray;
-	delete[] h_neighbourArray;
-	delete[] h_degreeCount;
+	//delete[] h_vertexArray;
+	//delete[] h_neighbourArray;
+	//delete[] h_degreeCount;
 	
 	cudaFree(d_neighbourArray);
 	cudaFree(d_vertexArray);
