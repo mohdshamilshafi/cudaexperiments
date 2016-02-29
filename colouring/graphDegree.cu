@@ -2,10 +2,15 @@
 #include <cstdlib>
 #include <cstdio>
 
+#include <thrust/reduce.h>
+#include <thrust/functional.h>
+#include <thrust/execution_policy.h>
+#include <thrust/extrema.h>
+#include <thrust/device_ptr.h>
+
 using namespace std;
 
 __global__ void degreeCalc (int *vertexArray, int *neighbourArray, int *degreeCount, int n, int m){
-	
 
 	int i= blockDim.x * blockIdx.x + threadIdx.x;
 	
@@ -32,7 +37,7 @@ __global__ void degreeCalc (int *vertexArray, int *neighbourArray, int *degreeCo
 	atomicAdd(&degreeCount[i], diff);
 	
 	for (int j=start; j<stop; j++){
-		atomicAdd(&degreeCount[neighbourArray[j]], 1);
+		atomicAdd(&degreeCount[neighbourArray[j]-1], 1);
 	}
 
 }
@@ -67,7 +72,7 @@ int main(int argc, char const *argv[])
 
 	int h_vertexArray[n];
 	int h_neighbourArray[m];
-	int h_degreeCount[n+1];
+	int h_degreeCount[n];
 	
 	int *d_vertexArray = NULL;
     	cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
@@ -76,8 +81,8 @@ int main(int argc, char const *argv[])
     	cudaMalloc((void **)&d_neighbourArray, m*sizeof(int));
     	
     	int *d_degreeCount = NULL;
-    	cudaMalloc((void **)&d_degreeCount, (n+1)*sizeof(int));
-    	cudaMemset((void *)d_degreeCount, 0, (n+1)*sizeof(int));
+    	cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
+    	cudaMemset((void *)d_degreeCount, 0, (n)*sizeof(int));
     	
 	for (int i = 0; i < n; ++i)
 	{
@@ -143,11 +148,22 @@ int main(int argc, char const *argv[])
 
 	degreeCalc<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m);
 	
-	cudaMemcpy(h_degreeCount, d_degreeCount, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
-	for (int i=0; i<n+1; i++){
+	for (int i=0; i<n; i++){
 		cout<<h_degreeCount[i]<<endl;
 	}
+	
+	thrust::device_ptr<int> d_ptr = thrust::device_pointer_cast(d_degreeCount);
+  	int max = *(thrust::max_element(d_ptr, d_ptr + n));
+	
+//	int result = thrust::reduce(h_degreeCount, h_degreeCount + n,
+//                           -1,
+//                            thrust::maximum<int>());
+                            
+//        cout<<"Result: "<<result<<endl<<max;
+
+	cout<<max;
 
 	//edgesPrint(h_vertexArray, h_neighbourArray, n, m);
 
