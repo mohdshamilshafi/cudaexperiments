@@ -185,19 +185,19 @@ int main(int argc, char const *argv[])
 	for (int i = 0; i < m; ++i)
 	{
 		/* code */
-		char c;
+//		char c;
 		int start;
 		int end;
 
-		cin>>c>>start>>end;
+//		cin>>c>>start>>end;
 
 		
 		
 //		Uncomment for SNAP graph datasets with nodes indexed from 0 to n-1
 		
-//		cin>>start>>end;
-//		start++;
-//		end++;
+		cin>>start>>end;
+		start++;
+		end++;
 
 		if (start!=mark){ 
 
@@ -287,7 +287,6 @@ int main(int argc, char const *argv[])
 	
 	int countnew=0;
 	
-	bool flag = true;
 	
 	for (int i=0; i<n-1; i++){
 		
@@ -325,7 +324,7 @@ int main(int argc, char const *argv[])
 //			cout<<h_degreeCount[h_neighbourArray[j]-1]<<" ";
 			usedColours[h_degreeCount[h_neighbourArray[j]-1]-1] = true;
 		}
-		cout<<endl;
+//		cout<<endl;
 		
 		for (int j=0; j<n; j++){
 			if (usedColours[j]==false){
