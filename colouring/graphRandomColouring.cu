@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cstdio>
 
+
 #include <curand_kernel.h>
 
 #include <thrust/reduce.h>
@@ -57,14 +58,31 @@ __global__ void conflictDetection (int *vertexArray, int *neighbourArray, int *d
 	
 	for (int j=start; j<stop; j++){
 		if (degreeCount[neighbourArray[j]-1] == myColour){
-			if (i < neighbourArray[j]-1){
-				if (detectConflict[i]!=1){
-					detectConflict[i]=1;
-				}
-			}
-			else if (detectConflict[neighbourArray[j]-1]!=1){
-				detectConflict[neighbourArray[j]-1]=1;
-			}
+
+			detectConflict[i]=1;
+			break;
+
+//			if (i < neighbourArray[j]-1){
+//				if (detectConflict[i]!=1){
+//					detectConflict[i]=1;
+//				}
+//			}
+//			else if (detectConflict[neighbourArray[j]-1]!=1){
+//				detectConflict[neighbourArray[j]-1]=1;
+//			}
+			
+			
+			
+			
+			
+			
+//			if (detectConflict[i]!=1){
+//				detectConflict[i]=1;
+//			}
+//			
+//			if (detectConflict[neighbourArray[j]-1]!=1){
+//				detectConflict[neighbourArray[j]-1]=1;
+//			}
 		}
 	}
 }
@@ -134,6 +152,8 @@ int main(int argc, char const *argv[])
 	int h_degreeCount[n];
 	int h_detectConflict[n];
 	
+	
+	
 	int *d_vertexArray = NULL;
     	cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
     	
@@ -170,6 +190,14 @@ int main(int argc, char const *argv[])
 		int end;
 
 		cin>>c>>start>>end;
+
+		
+		
+//		Uncomment for SNAP graph datasets with nodes indexed from 0 to n-1
+		
+//		cin>>start>>end;
+//		start++;
+//		end++;
 
 		if (start!=mark){ 
 
@@ -230,13 +258,19 @@ int main(int argc, char const *argv[])
                             
 //        cout<<"Result: "<<result<<endl<<max;
 
-//	cout<<"Max = "<<max<<endl;
+	cout<<"Max = "<<max<<endl;
 
 
 	setup_kernel <<<blocksPerGrid, threadsPerBlock>>> ( devStates, time(NULL) );
-	randomColouring<<<blocksPerGrid, threadsPerBlock>>>(devStates, d_degreeCount, n, max+1);
+	
+	// Except for Cliques and Odd Cycles, Brook's theorem states that only Max Degree colours are enough at most
+	randomColouring<<<blocksPerGrid, threadsPerBlock>>>(devStates, d_degreeCount, n, max);
 
-	// cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
+
+//	for (int i=0; i<n; i++){
+//		cout<<h_degreeCount[i]<<endl;
+//	}
 	
 	conflictDetection<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_detectConflict);
 	
@@ -245,11 +279,150 @@ int main(int argc, char const *argv[])
   	
   	cudaMemcpy(h_detectConflict, d_detectConflict, n*sizeof(int), cudaMemcpyDeviceToHost);
 	
-	for (int i=0; i<n; i++){
-		cout<<i+1<<": "<<h_detectConflict[i]<<endl;
-	}
+//	for (int i=0; i<n; i++){
+//		cout<<i+1<<": "<<h_detectConflict[i]<<endl;
+//	}
 	
 	cout<<"Count: "<<count1<<endl;
+	
+	int countnew=0;
+	
+	bool flag = true;
+	
+	for (int i=0; i<n-1; i++){
+		
+		if (h_detectConflict[i]==0){
+			continue;
+		}
+		
+		countnew++;
+		
+		bool usedColours[n];
+		
+		fill(usedColours, usedColours+n, false);
+		
+//		if (flag){
+//			flag = false;
+//			for (int j=0; j<n; j++){
+//				cout<<usedColours[i]<<endl;
+//			}
+//		}
+		
+		int start = -1, stop = -1;
+	
+		start = h_vertexArray[i];
+		
+		stop = h_vertexArray[i+1];
+		
+//		cout<<"My id: "<<i<<endl;
+//		
+//		cout<<"My colour: "<<h_degreeCount[i]<<endl;
+//		
+//		cout<<"Neighbours"<<endl;
+//		
+		for (int j=start; j<stop; j++){
+		
+//			cout<<h_degreeCount[h_neighbourArray[j]-1]<<" ";
+			usedColours[h_degreeCount[h_neighbourArray[j]-1]-1] = true;
+		}
+		cout<<endl;
+		
+		for (int j=0; j<n; j++){
+			if (usedColours[j]==false){
+				h_degreeCount[i]=j+1;
+//				cout<<"My new Colour: "<<j+1<<endl;
+				break;
+			}
+		}
+	}
+	
+	
+	
+	if (h_detectConflict[n-1]!=0){
+
+		bool usedColours[n];
+		
+		countnew++;
+		
+		fill(usedColours, usedColours+n, false);
+		
+		int start = -1, stop = -1;
+	
+		start = h_vertexArray[n-1];
+	
+		stop = m;
+		
+	
+		for (int j=start; j<stop; j++){
+			usedColours[h_degreeCount[h_neighbourArray[j]-1]-1] = true;
+		}
+		
+		for (int j=0; j<n; j++){
+			if (usedColours[j]==false){
+				h_degreeCount[n-1]=j+1;
+				break;
+			}
+		}
+	}
+	
+//	cout<<"SHAMILASADJKAJSDKLJASHDKJASHLDKASJKD";
+//	for (int i=0; i<n; i++){
+//		cout<<h_degreeCount[i]<<endl;
+//	}
+
+//	for (int i=0; i<n-1; i++){
+//		
+//		int start = -1, stop = -1;
+//	
+//		start = h_vertexArray[i];
+//		
+//		stop = h_vertexArray[i+1];
+//		
+//		cout<<"My id: "<<i<<endl;
+//		
+//		cout<<"My colour: "<<h_degreeCount[i]<<endl;
+//		
+//		cout<<"Neighbours"<<endl;
+//		
+//		for (int j=start; j<stop; j++){
+//			cout<<h_degreeCount[h_neighbourArray[j]-1]<<" ";
+//		}
+//	}
+//	
+//	
+//	
+//	if (h_detectConflict[n-1]!=0){
+
+//		int start = -1, stop = -1;
+//	
+//		start = h_vertexArray[n-1];
+//	
+//		stop = m;
+//		
+//		cout<<"My id: "<<n-1<<endl;
+//		
+//		cout<<"My colour: "<<h_degreeCount[n-1]<<endl;
+//		
+//		cout<<"Neighbours"<<endl;
+//		
+//		for (int j=start; j<stop; j++){
+//			cout<<h_degreeCount[h_neighbourArray[j]-1]<<" ";
+//		}
+//	}
+	
+	cudaMemset((void *)d_detectConflict, 0, (n)*sizeof(int));
+	
+	cudaMemcpy(d_degreeCount, h_degreeCount, n*sizeof(int), cudaMemcpyHostToDevice);
+
+
+
+	conflictDetection<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_detectConflict);
+	
+	count1 = thrust::reduce(d_detectConflict_ptr, d_detectConflict_ptr + n);
+  		
+	cout<<"Count: "<<count1<<"    "<<countnew<<endl;
+	
+	
 
 //	for (int i=0; i<n; i++){
 //		if (h_degreeCount[i] == max+1){

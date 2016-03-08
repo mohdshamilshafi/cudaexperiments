@@ -52,7 +52,7 @@ int main(int argc, char const *argv[])
 		int end;
 
 		cin>>c>>start>>end;
-//		
+		
 //		cin>>start>>end;
 //		start++;
 //		end++;
@@ -129,6 +129,40 @@ int main(int argc, char const *argv[])
 //	}
 	
 	cout<<graphDegree[n];
+	
+	int colourArray[n];
+	
+	for (int i=0; i<n; i++){
+		cin>>colourArray[i];
+	}
+	
+	int noOfConflicts = 0;
+	
+	for (int i=0; i<n; i++){
+		int myColour = colourArray[i];
+	
+		int start = -1, stop = -1;
+	
+		start = vertexArray[i];
+	
+		if (i==n-1){	
+			stop = m;
+		}
+	
+		else{
+			stop = vertexArray[i+1];
+		}
+	
+		for (int j=start; j<stop; j++){
+			if (colourArray[neighbourArray[j]-1] == myColour){
+				cout<<i<<endl;
+				noOfConflicts++;
+				break;
+			}
+		}
+	}
+	
+	cout<<"Conflicts: "<<noOfConflicts<<endl;
 	
 	return 0;
 }
