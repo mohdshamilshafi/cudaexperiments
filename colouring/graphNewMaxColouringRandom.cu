@@ -238,6 +238,13 @@ int main(int argc, char const *argv[])
 
 	int colourCount = 1;
 	
+	cudaEvent_t start, stop;
+	float time;
+	cudaEventCreate(&start);
+	cudaEventCreate(&stop);
+	
+	cudaEventRecord(start, 0);
+	
 	while (1){
 		colourMax<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, colourCount);
 	
@@ -251,6 +258,12 @@ int main(int argc, char const *argv[])
 		
 		colourCount++;
 	}
+	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&time, start, stop);
+	cout<<"Time for the kernel: "<<time<<" ms"<<endl;
 
   	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
