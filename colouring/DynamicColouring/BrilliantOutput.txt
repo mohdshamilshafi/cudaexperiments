@@ -1,0 +1,66 @@
+0 2 5 7 10 14 17 19 22 
+4 0 0 0 0 0 0 1 5 7 4 8 0 0 0 0 0 4 8 5 7 0 0 0 
+Random numbers: 
+7
+3
+4
+3
+6
+4
+7
+4
+3
+Worklist: 
+1 2
+2 3
+2 5
+3 6
+5 6
+6 9
+8 9
+H Count = 9at colour: 1
+New added edge: 1 2
+1 and 2 Conflict
+I am 0 and 0 and 0
+0 2clo 4
+clocli 2
+clo 2
+clocli 1
+buvket clo 3 and 2 and 0
+buvket clo 1 and 1 and 0
+3 ashhas 	2 ashhas 	0 	0 	1 	1 	1 	1 	1 	1 	1 	
+1 and 2 Conflict  new colour min 3 
+1 and 2 Conflict  new colour min 2 
+1 2 1 2 1 1 1 2 1 
+New added edge: 2 3
+New added edge: 2 5
+New added edge: 3 6
+3 and 6 Conflict
+I am 0 and 0 and 0
+5 7clo 2
+clocli 2
+clo 6
+clocli 1
+buvket clo 1 and 2 and 0
+buvket clo 5 and 1 and 0
+3 ashhas 	2 ashhas 	0 	0 	1 	1 	1 	1 	1 	1 	1 	
+3 and 6 Conflict  new colour min 3 
+3 and 6 Conflict  new colour min 2 
+1 2 1 2 1 2 1 2 1 
+New added edge: 5 6
+New added edge: 6 9
+New added edge: 8 9
+Max Colour = 2
+Colour numbers: 
+1
+2
+1
+2
+1
+2
+1
+2
+1
+Time for the kernel: 7.39168 ms
+0 2 5 7 10 14 17 19 22 
+4 2 1 3 5 2 6 1 5 7 4 8 2 6 3 5 9 4 8 5 7 9 6 8 
