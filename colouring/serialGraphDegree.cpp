@@ -20,6 +20,22 @@ void edgesPrint (int vertexArray[], int neighbourArray[], int n, int m){
 	}
 }
 
+void edgesPrintNew (int vertexArray[], int neighbourArray[], int n, int m){ 
+
+//	for (int i=0; i<n; i++){
+//		cout<<vertexArray[i]<<" ";
+//	}
+//	
+//	cout<<endl;
+
+
+	for (int i=0; i<m; i++){
+		cout<<neighbourArray[i]<<" ";
+	}
+	
+	cout<<endl;
+}
+
 int main(int argc, char const *argv[])
 {
 	/* code */
@@ -47,11 +63,11 @@ int main(int argc, char const *argv[])
 	for (int i = 0; i < m; ++i)
 	{
 		/* code */
-		char c;
+		
 		int start;
 		int end;
 
-		cin>>c>>start>>end;
+		cin>>start>>end;
 //		
 //		cin>>start>>end;
 //		start++;
@@ -90,7 +106,7 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-	//edgesPrint(vertexArray, neighbourArray, n, m);
+	edgesPrintNew(vertexArray, neighbourArray, n, m);
 
 	
 	int graphDegree[n+1];
