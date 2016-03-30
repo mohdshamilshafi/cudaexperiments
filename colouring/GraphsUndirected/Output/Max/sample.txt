@@ -1,0 +1,17 @@
+Max = 4
+H Count = 3at colour: 1
+H Count = 7at colour: 2
+H Count = 8at colour: 3
+H Count = 9at colour: 4
+Time for the kernel: 0.146112 ms
+Max Colour = 4
+Colour numbers: 
+2
+1
+2
+1
+2
+1
+2
+3
+4

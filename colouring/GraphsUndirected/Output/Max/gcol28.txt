@@ -1,0 +1,472 @@
+Max = 176
+H Count = 2at colour: 1
+H Count = 4at colour: 2
+H Count = 6at colour: 3
+H Count = 8at colour: 4
+H Count = 9at colour: 5
+H Count = 10at colour: 6
+H Count = 14at colour: 7
+H Count = 16at colour: 8
+H Count = 17at colour: 9
+H Count = 20at colour: 10
+H Count = 22at colour: 11
+H Count = 24at colour: 12
+H Count = 25at colour: 13
+H Count = 28at colour: 14
+H Count = 32at colour: 15
+H Count = 34at colour: 16
+H Count = 36at colour: 17
+H Count = 39at colour: 18
+H Count = 40at colour: 19
+H Count = 42at colour: 20
+H Count = 43at colour: 21
+H Count = 45at colour: 22
+H Count = 46at colour: 23
+H Count = 49at colour: 24
+H Count = 50at colour: 25
+H Count = 52at colour: 26
+H Count = 54at colour: 27
+H Count = 55at colour: 28
+H Count = 56at colour: 29
+H Count = 58at colour: 30
+H Count = 61at colour: 31
+H Count = 62at colour: 32
+H Count = 66at colour: 33
+H Count = 68at colour: 34
+H Count = 69at colour: 35
+H Count = 71at colour: 36
+H Count = 73at colour: 37
+H Count = 75at colour: 38
+H Count = 76at colour: 39
+H Count = 78at colour: 40
+H Count = 79at colour: 41
+H Count = 80at colour: 42
+H Count = 81at colour: 43
+H Count = 82at colour: 44
+H Count = 84at colour: 45
+H Count = 85at colour: 46
+H Count = 86at colour: 47
+H Count = 87at colour: 48
+H Count = 89at colour: 49
+H Count = 91at colour: 50
+H Count = 92at colour: 51
+H Count = 94at colour: 52
+H Count = 97at colour: 53
+H Count = 99at colour: 54
+H Count = 101at colour: 55
+H Count = 103at colour: 56
+H Count = 104at colour: 57
+H Count = 106at colour: 58
+H Count = 108at colour: 59
+H Count = 110at colour: 60
+H Count = 113at colour: 61
+H Count = 114at colour: 62
+H Count = 115at colour: 63
+H Count = 116at colour: 64
+H Count = 117at colour: 65
+H Count = 118at colour: 66
+H Count = 119at colour: 67
+H Count = 121at colour: 68
+H Count = 123at colour: 69
+H Count = 124at colour: 70
+H Count = 126at colour: 71
+H Count = 127at colour: 72
+H Count = 129at colour: 73
+H Count = 130at colour: 74
+H Count = 133at colour: 75
+H Count = 135at colour: 76
+H Count = 136at colour: 77
+H Count = 138at colour: 78
+H Count = 141at colour: 79
+H Count = 142at colour: 80
+H Count = 144at colour: 81
+H Count = 146at colour: 82
+H Count = 148at colour: 83
+H Count = 150at colour: 84
+H Count = 152at colour: 85
+H Count = 153at colour: 86
+H Count = 155at colour: 87
+H Count = 158at colour: 88
+H Count = 161at colour: 89
+H Count = 162at colour: 90
+H Count = 163at colour: 91
+H Count = 165at colour: 92
+H Count = 167at colour: 93
+H Count = 169at colour: 94
+H Count = 172at colour: 95
+H Count = 174at colour: 96
+H Count = 176at colour: 97
+H Count = 179at colour: 98
+H Count = 183at colour: 99
+H Count = 186at colour: 100
+H Count = 188at colour: 101
+H Count = 189at colour: 102
+H Count = 191at colour: 103
+H Count = 193at colour: 104
+H Count = 194at colour: 105
+H Count = 195at colour: 106
+H Count = 196at colour: 107
+H Count = 197at colour: 108
+H Count = 198at colour: 109
+H Count = 201at colour: 110
+H Count = 203at colour: 111
+H Count = 204at colour: 112
+H Count = 205at colour: 113
+H Count = 206at colour: 114
+H Count = 207at colour: 115
+H Count = 209at colour: 116
+H Count = 210at colour: 117
+H Count = 212at colour: 118
+H Count = 214at colour: 119
+H Count = 217at colour: 120
+H Count = 219at colour: 121
+H Count = 221at colour: 122
+H Count = 225at colour: 123
+H Count = 226at colour: 124
+H Count = 229at colour: 125
+H Count = 232at colour: 126
+H Count = 234at colour: 127
+H Count = 235at colour: 128
+H Count = 236at colour: 129
+H Count = 237at colour: 130
+H Count = 238at colour: 131
+H Count = 240at colour: 132
+H Count = 241at colour: 133
+H Count = 244at colour: 134
+H Count = 245at colour: 135
+H Count = 247at colour: 136
+H Count = 249at colour: 137
+H Count = 251at colour: 138
+H Count = 253at colour: 139
+H Count = 255at colour: 140
+H Count = 256at colour: 141
+H Count = 257at colour: 142
+H Count = 258at colour: 143
+H Count = 259at colour: 144
+H Count = 261at colour: 145
+H Count = 262at colour: 146
+H Count = 264at colour: 147
+H Count = 265at colour: 148
+H Count = 267at colour: 149
+H Count = 269at colour: 150
+H Count = 271at colour: 151
+H Count = 273at colour: 152
+H Count = 274at colour: 153
+H Count = 276at colour: 154
+H Count = 277at colour: 155
+H Count = 278at colour: 156
+H Count = 279at colour: 157
+H Count = 281at colour: 158
+H Count = 285at colour: 159
+H Count = 287at colour: 160
+H Count = 289at colour: 161
+H Count = 291at colour: 162
+H Count = 292at colour: 163
+H Count = 293at colour: 164
+H Count = 294at colour: 165
+H Count = 296at colour: 166
+H Count = 299at colour: 167
+H Count = 300at colour: 168
+Time for the kernel: 29.5324 ms
+Max Colour = 168
+Colour numbers: 
+54
+16
+2
+100
+123
+74
+145
+126
+150
+86
+120
+112
+83
+31
+97
+53
+162
+45
+137
+127
+126
+14
+72
+82
+62
+49
+150
+60
+15
+102
+11
+110
+33
+98
+84
+98
+20
+8
+33
+69
+7
+132
+27
+138
+85
+125
+93
+43
+103
+113
+44
+45
+73
+56
+12
+163
+166
+106
+22
+165
+123
+37
+114
+57
+25
+138
+8
+115
+92
+14
+149
+24
+160
+158
+133
+122
+157
+167
+58
+29
+99
+83
+99
+53
+36
+4
+120
+79
+110
+154
+40
+75
+81
+30
+71
+134
+18
+61
+37
+18
+88
+16
+152
+162
+78
+54
+31
+76
+23
+140
+36
+93
+41
+116
+97
+144
+55
+17
+46
+49
+104
+146
+130
+155
+156
+96
+125
+2
+116
+142
+80
+139
+34
+111
+161
+99
+94
+59
+89
+26
+136
+140
+168
+89
+27
+104
+75
+117
+68
+12
+34
+31
+52
+90
+59
+82
+91
+39
+73
+107
+19
+50
+1
+159
+10
+161
+126
+143
+95
+95
+101
+121
+118
+124
+67
+118
+38
+52
+64
+7
+88
+4
+47
+111
+134
+76
+92
+56
+14
+7
+94
+75
+20
+35
+9
+99
+5
+167
+127
+110
+154
+125
+84
+24
+151
+18
+61
+119
+28
+17
+128
+58
+164
+105
+123
+137
+167
+85
+32
+159
+78
+21
+147
+15
+68
+108
+147
+96
+119
+109
+38
+40
+135
+101
+55
+145
+81
+120
+79
+134
+160
+166
+30
+79
+60
+53
+15
+10
+148
+158
+100
+122
+15
+61
+159
+22
+11
+141
+139
+3
+77
+1
+132
+70
+71
+87
+100
+6
+33
+95
+7
+153
+63
+89
+152
+42
+151
+51
+149
+69
+121
+50
+3
+123
+65
+24
+13
+66
+87
+129
+26
+136
+88
+10
+98
+159
+48
+131
+33
+103

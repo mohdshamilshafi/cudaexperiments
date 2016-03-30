@@ -1,0 +1,4 @@
+Max = 549
+Count: 3071
+Shamil
+Count: 442    3071

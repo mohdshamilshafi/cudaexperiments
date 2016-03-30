@@ -1,0 +1,161 @@
+Max = 59
+H Count = 4at colour: 1
+H Count = 6at colour: 2
+H Count = 7at colour: 3
+H Count = 8at colour: 4
+H Count = 9at colour: 5
+H Count = 10at colour: 6
+H Count = 12at colour: 7
+H Count = 14at colour: 8
+H Count = 17at colour: 9
+H Count = 19at colour: 10
+H Count = 21at colour: 11
+H Count = 23at colour: 12
+H Count = 24at colour: 13
+H Count = 26at colour: 14
+H Count = 27at colour: 15
+H Count = 29at colour: 16
+H Count = 32at colour: 17
+H Count = 33at colour: 18
+H Count = 35at colour: 19
+H Count = 38at colour: 20
+H Count = 39at colour: 21
+H Count = 40at colour: 22
+H Count = 42at colour: 23
+H Count = 44at colour: 24
+H Count = 46at colour: 25
+H Count = 48at colour: 26
+H Count = 50at colour: 27
+H Count = 52at colour: 28
+H Count = 56at colour: 29
+H Count = 57at colour: 30
+H Count = 58at colour: 31
+H Count = 59at colour: 32
+H Count = 60at colour: 33
+H Count = 61at colour: 34
+H Count = 64at colour: 35
+H Count = 66at colour: 36
+H Count = 69at colour: 37
+H Count = 72at colour: 38
+H Count = 74at colour: 39
+H Count = 76at colour: 40
+H Count = 77at colour: 41
+H Count = 78at colour: 42
+H Count = 79at colour: 43
+H Count = 81at colour: 44
+H Count = 82at colour: 45
+H Count = 84at colour: 46
+H Count = 86at colour: 47
+H Count = 87at colour: 48
+H Count = 88at colour: 49
+H Count = 90at colour: 50
+H Count = 91at colour: 51
+H Count = 92at colour: 52
+H Count = 94at colour: 53
+H Count = 96at colour: 54
+H Count = 98at colour: 55
+H Count = 99at colour: 56
+H Count = 100at colour: 57
+Time for the kernel: 4.60771 ms
+Max Colour = 57
+Colour numbers: 
+19
+8
+20
+33
+35
+20
+27
+3
+28
+46
+34
+1
+39
+4
+24
+7
+1
+25
+47
+54
+40
+29
+10
+12
+39
+21
+5
+26
+11
+17
+14
+47
+27
+42
+19
+2
+54
+16
+29
+18
+28
+37
+35
+22
+46
+50
+45
+24
+49
+7
+29
+23
+8
+15
+50
+17
+44
+41
+25
+10
+38
+13
+9
+52
+37
+12
+11
+36
+51
+43
+23
+29
+31
+9
+14
+38
+35
+2
+26
+48
+55
+30
+55
+20
+37
+6
+53
+9
+32
+36
+17
+1
+16
+38
+53
+40
+56
+57
+1
+44

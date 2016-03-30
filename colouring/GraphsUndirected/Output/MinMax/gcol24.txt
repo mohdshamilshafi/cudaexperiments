@@ -1,0 +1,684 @@
+Max = 172
+Random numbers: 
+46
+93
+79
+134
+78
+171
+144
+45
+86
+36
+31
+41
+62
+41
+127
+115
+85
+69
+108
+12
+51
+17
+29
+32
+28
+19
+51
+111
+50
+39
+83
+156
+75
+155
+26
+87
+107
+68
+75
+49
+122
+44
+150
+131
+77
+41
+39
+144
+121
+118
+164
+32
+97
+30
+115
+159
+127
+128
+100
+147
+79
+21
+162
+35
+35
+108
+132
+17
+76
+42
+90
+20
+5
+67
+52
+8
+65
+12
+14
+133
+54
+65
+13
+149
+117
+18
+153
+72
+127
+150
+155
+109
+48
+1
+164
+81
+160
+138
+41
+157
+17
+150
+101
+171
+38
+10
+102
+92
+43
+60
+22
+49
+118
+40
+84
+155
+73
+78
+166
+92
+58
+25
+80
+129
+172
+31
+104
+29
+19
+23
+77
+40
+133
+131
+115
+64
+42
+75
+145
+73
+129
+86
+53
+153
+89
+114
+143
+73
+168
+35
+77
+96
+77
+140
+13
+66
+137
+42
+99
+143
+89
+54
+6
+28
+100
+166
+52
+156
+130
+60
+13
+90
+76
+37
+88
+57
+53
+42
+131
+98
+65
+21
+36
+122
+139
+112
+69
+162
+147
+80
+153
+2
+109
+125
+6
+124
+163
+156
+172
+5
+84
+17
+140
+14
+111
+8
+144
+9
+7
+115
+35
+137
+2
+24
+157
+94
+78
+10
+140
+139
+116
+93
+152
+163
+41
+56
+122
+103
+8
+97
+16
+26
+94
+3
+168
+76
+51
+113
+82
+30
+30
+113
+46
+116
+51
+56
+101
+100
+123
+2
+118
+171
+74
+56
+29
+70
+75
+80
+48
+81
+139
+58
+108
+142
+125
+88
+39
+146
+144
+64
+101
+48
+20
+19
+99
+33
+128
+61
+71
+68
+94
+101
+119
+46
+165
+80
+42
+172
+119
+87
+125
+21
+155
+167
+48
+30
+40
+79
+146
+42
+H Count = 4at colour: 1
+H Count = 8at colour: 3
+H Count = 13at colour: 5
+H Count = 16at colour: 7
+H Count = 19at colour: 9
+H Count = 23at colour: 11
+H Count = 26at colour: 13
+H Count = 29at colour: 15
+H Count = 33at colour: 17
+H Count = 35at colour: 19
+H Count = 37at colour: 21
+H Count = 41at colour: 23
+H Count = 44at colour: 25
+H Count = 48at colour: 27
+H Count = 51at colour: 29
+H Count = 56at colour: 31
+H Count = 63at colour: 33
+H Count = 65at colour: 35
+H Count = 69at colour: 37
+H Count = 73at colour: 39
+H Count = 76at colour: 41
+H Count = 82at colour: 43
+H Count = 86at colour: 45
+H Count = 91at colour: 47
+H Count = 97at colour: 49
+H Count = 100at colour: 51
+H Count = 103at colour: 53
+H Count = 108at colour: 55
+H Count = 112at colour: 57
+H Count = 116at colour: 59
+H Count = 120at colour: 61
+H Count = 123at colour: 63
+H Count = 126at colour: 65
+H Count = 133at colour: 67
+H Count = 136at colour: 69
+H Count = 139at colour: 71
+H Count = 143at colour: 73
+H Count = 147at colour: 75
+H Count = 151at colour: 77
+H Count = 153at colour: 79
+H Count = 155at colour: 81
+H Count = 158at colour: 83
+H Count = 161at colour: 85
+H Count = 166at colour: 87
+H Count = 172at colour: 89
+H Count = 175at colour: 91
+H Count = 181at colour: 93
+H Count = 183at colour: 95
+H Count = 188at colour: 97
+H Count = 193at colour: 99
+H Count = 196at colour: 101
+H Count = 199at colour: 103
+H Count = 201at colour: 105
+H Count = 205at colour: 107
+H Count = 209at colour: 109
+H Count = 212at colour: 111
+H Count = 216at colour: 113
+H Count = 218at colour: 115
+H Count = 220at colour: 117
+H Count = 224at colour: 119
+H Count = 228at colour: 121
+H Count = 233at colour: 123
+H Count = 237at colour: 125
+H Count = 240at colour: 127
+H Count = 244at colour: 129
+H Count = 248at colour: 131
+H Count = 252at colour: 133
+H Count = 255at colour: 135
+H Count = 259at colour: 137
+H Count = 264at colour: 139
+H Count = 267at colour: 141
+H Count = 270at colour: 143
+H Count = 276at colour: 145
+H Count = 282at colour: 147
+H Count = 287at colour: 149
+H Count = 291at colour: 151
+H Count = 293at colour: 153
+H Count = 298at colour: 155
+H Count = 300at colour: 157
+Time for the kernel: 19.6263 ms
+Max Colour = 158
+Colour numbers: 
+88
+133
+156
+61
+154
+5
+45
+86
+147
+64
+56
+78
+122
+76
+77
+99
+149
+134
+113
+22
+100
+32
+50
+56
+48
+36
+98
+107
+96
+68
+149
+27
+146
+31
+44
+145
+113
+130
+144
+94
+89
+84
+39
+67
+150
+74
+68
+47
+89
+93
+15
+58
+127
+54
+99
+23
+79
+77
+123
+43
+156
+40
+19
+64
+62
+113
+67
+32
+146
+82
+139
+38
+6
+126
+104
+14
+126
+20
+30
+63
+108
+124
+26
+41
+93
+34
+33
+138
+81
+39
+31
+111
+94
+2
+17
+153
+21
+57
+74
+23
+28
+41
+121
+7
+66
+18
+119
+137
+84
+118
+42
+94
+95
+70
+149
+33
+140
+152
+11
+139
+114
+44
+151
+73
+1
+52
+117
+48
+34
+40
+148
+68
+65
+67
+101
+122
+80
+142
+47
+138
+75
+147
+106
+35
+141
+103
+51
+138
+9
+62
+148
+131
+148
+55
+24
+128
+59
+78
+125
+53
+143
+100
+6
+46
+125
+13
+102
+29
+71
+116
+24
+141
+146
+66
+143
+112
+100
+76
+69
+131
+124
+38
+62
+89
+55
+107
+132
+15
+43
+155
+37
+4
+109
+83
+8
+87
+11
+27
+3
+4
+151
+30
+55
+28
+109
+12
+49
+16
+6
+101
+60
+59
+2
+44
+25
+129
+150
+18
+49
+57
+97
+135
+33
+17
+72
+110
+91
+119
+10
+131
+26
+44
+133
+4
+9
+146
+98
+103
+151
+52
+50
+105
+90
+97
+98
+110
+121
+127
+87
+2
+93
+7
+140
+108
+46
+136
+140
+157
+90
+155
+59
+112
+115
+53
+85
+145
+68
+45
+49
+124
+123
+90
+38
+32
+129
+58
+71
+120
+136
+130
+133
+119
+87
+88
+13
+158
+76
+5
+91
+147
+85
+34
+33
+11
+92
+50
+70
+156
+47
+74

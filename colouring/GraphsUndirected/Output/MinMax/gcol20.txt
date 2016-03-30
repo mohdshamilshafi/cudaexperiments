@@ -1,0 +1,232 @@
+Max = 59
+Random numbers: 
+6
+1
+54
+5
+41
+56
+47
+36
+49
+8
+24
+18
+32
+9
+50
+52
+9
+32
+30
+56
+6
+53
+23
+2
+23
+30
+8
+45
+40
+17
+1
+48
+55
+22
+50
+38
+16
+9
+53
+52
+41
+9
+39
+1
+59
+24
+46
+58
+25
+23
+57
+30
+58
+11
+37
+33
+26
+54
+47
+13
+24
+59
+33
+48
+7
+23
+19
+32
+57
+54
+40
+57
+33
+40
+44
+44
+33
+17
+8
+21
+26
+7
+14
+7
+41
+15
+56
+3
+17
+29
+38
+44
+7
+50
+44
+7
+5
+22
+35
+52
+H Count = 5at colour: 1
+H Count = 9at colour: 3
+H Count = 15at colour: 5
+H Count = 18at colour: 7
+H Count = 22at colour: 9
+H Count = 25at colour: 11
+H Count = 29at colour: 13
+H Count = 32at colour: 15
+H Count = 35at colour: 17
+H Count = 39at colour: 19
+H Count = 42at colour: 21
+H Count = 45at colour: 23
+H Count = 48at colour: 25
+H Count = 50at colour: 27
+H Count = 54at colour: 29
+H Count = 56at colour: 31
+H Count = 59at colour: 33
+H Count = 62at colour: 35
+H Count = 64at colour: 37
+H Count = 69at colour: 39
+H Count = 72at colour: 41
+H Count = 79at colour: 43
+H Count = 83at colour: 45
+H Count = 89at colour: 47
+H Count = 93at colour: 49
+H Count = 97at colour: 51
+H Count = 100at colour: 53
+Time for the kernel: 3.04435 ms
+Max Colour = 54
+Colour numbers: 
+8
+4
+15
+6
+43
+9
+33
+47
+29
+16
+44
+30
+53
+20
+23
+19
+18
+52
+50
+9
+4
+17
+42
+2
+40
+50
+14
+33
+45
+30
+2
+29
+13
+36
+25
+47
+26
+16
+19
+21
+41
+14
+47
+2
+1
+44
+37
+1
+46
+40
+5
+48
+5
+20
+49
+51
+46
+3
+35
+22
+44
+3
+53
+31
+6
+38
+32
+52
+7
+17
+43
+7
+54
+45
+39
+39
+52
+28
+14
+34
+44
+12
+22
+10
+43
+24
+11
+6
+26
+48
+49
+41
+12
+27
+39
+10
+6
+36
+47
+23

@@ -1,0 +1,4 @@
+Max = 176
+Count: 90
+Shamil
+Count: 0    90

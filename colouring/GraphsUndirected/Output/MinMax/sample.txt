@@ -1,0 +1,25 @@
+Max = 4
+Random numbers: 
+1
+2
+2
+3
+2
+2
+2
+3
+2
+H Count = 6at colour: 1
+H Count = 9at colour: 3
+Time for the kernel: 0.07952 ms
+Max Colour = 4
+Colour numbers: 
+2
+1
+3
+1
+3
+4
+2
+1
+2
