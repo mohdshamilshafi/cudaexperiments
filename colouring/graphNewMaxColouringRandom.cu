@@ -168,47 +168,72 @@ int main(int argc, char const *argv[])
 		h_vertexArray[i]=2*m;
 	}
 
-	int offset = 0;
-	int current = 0;
-	int mark = 1;
-
-	for (int i = 0; i < 2*m; ++i)
-	{
-		int start;
-		int end;
-
+	int NSlast = 0;
+	int NSoffset = 0;
+	int NSprev=0;
+	
+	
+	for (int i=0; i<2*m; i++){
+		int start, end;
 		cin>>start>>end;
-
-		if (start!=mark){ 
-
-			if (start == mark+1 && h_vertexArray[mark-1]!=2*m){ 
-
-			}
-
-			else{
-
-				for (int j = mark; j<start; j++){ 
-					h_vertexArray[j-1]=offset;
-				}
-			}
-			mark = start;
-
+		
+		for (int j=NSlast+1; j<start; j++){
+			h_vertexArray[j-1]=NSoffset;
+			
 		}
-
-		if (start==current){ 
-			h_neighbourArray[offset]=end;
-			offset++;
+		
+		if (NSprev!=start){
+			NSlast=start;
+			h_vertexArray[start-1]=NSoffset;
+			NSprev=start;
 		}
-
-		else { 
-			current = start;
-
-			h_vertexArray[current-1]=offset;
-
-			h_neighbourArray[offset]=end;
-			offset++;
-		}
+		
+		h_neighbourArray[NSoffset]=end;
+		NSoffset++;
+		
 	}
+
+//	int offset = 0;
+//	int current = 0;
+//	int mark = 1;
+
+//	for (int i = 0; i < 2*m; ++i)
+//	{
+//		int start;
+//		int end;
+
+//		cin>>start>>end;
+
+//		if (start!=mark){ 
+
+//			if (start == mark+1 && h_vertexArray[mark-1]!=2*m){ 
+
+//			}
+
+//			else{
+
+//				for (int j = mark; j<start; j++){ 
+//					h_vertexArray[j-1]=offset;
+//				}
+//			}
+//			mark = start;
+
+//		}
+
+//		if (start==current){ 
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+
+//		else { 
+//			current = start;
+
+//			h_vertexArray[current-1]=offset;
+
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+//	}
 	
 	
 	cudaMemcpy(d_vertexArray, h_vertexArray, n*sizeof(int), cudaMemcpyHostToDevice);
@@ -226,7 +251,7 @@ int main(int argc, char const *argv[])
 
 	setup_kernel <<<blocksPerGrid, threadsPerBlock>>> ( devStates, time(NULL) );
 	
-	randomNumbering<<<blocksPerGrid, threadsPerBlock>>>(devStates, d_degreeCount, n, maxDegree);
+	randomNumbering<<<blocksPerGrid, threadsPerBlock>>>(devStates, d_degreeCount, n, n);
 
 	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
@@ -272,11 +297,11 @@ int main(int argc, char const *argv[])
 
 	cout<<"Max Colour = "<<maxColour<<endl;
   	
-  	cout<<"Colour numbers: "<<endl;
-	
-	for (int i=0; i<n; i++){
-		cout<<h_colour[i]<<endl;
-	}
+//  	cout<<"Colour numbers: "<<endl;
+//	
+//	for (int i=0; i<n; i++){
+//		cout<<h_colour[i]<<endl;
+//	}
 
 	delete h_count;		
 	delete[] h_vertexArray;
