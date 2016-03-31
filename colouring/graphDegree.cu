@@ -75,14 +75,14 @@ int main(int argc, char const *argv[])
 	int h_degreeCount[n];
 	
 	int *d_vertexArray = NULL;
-    	cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
+    cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
+    
+    int *d_neighbourArray = NULL;
+    cudaMalloc((void **)&d_neighbourArray, m*sizeof(int));
     	
-    	int *d_neighbourArray = NULL;
-    	cudaMalloc((void **)&d_neighbourArray, m*sizeof(int));
-    	
-    	int *d_degreeCount = NULL;
-    	cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
-    	cudaMemset((void *)d_degreeCount, 0, (n)*sizeof(int));
+    int *d_degreeCount = NULL;
+    cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
+    cudaMemset((void *)d_degreeCount, 0, (n)*sizeof(int));
     	
 	for (int i = 0; i < n; ++i)
 	{
@@ -90,51 +90,76 @@ int main(int argc, char const *argv[])
 		h_vertexArray[i]=m;
 	}
 
-	int offset = 0;
+//	int offset = 0;
 
-	int current = 0;
-	int mark = 1;
+//	int current = 0;
+//	int mark = 1;
 
-	for (int i = 0; i < m; ++i)
-	{
-		/* code */
-		char c;
-		int start;
-		int end;
+//	for (int i = 0; i < m; ++i)
+//	{
+//		/* code */
+//		char c;
+//		int start;
+//		int end;
 
-		cin>>c>>start>>end;
+//		cin>>start>>end;
 
-		if (start!=mark){ 
+//		if (start!=mark){ 
 
-			if (start == mark+1 && h_vertexArray[mark-1]!=m){ 
+//			if (start == mark+1 && h_vertexArray[mark-1]!=m){ 
 
-			}
+//			}
 
-			else{
+//			else{
 
-				for (int j = mark; j<start; j++){ 
-					h_vertexArray[j-1]=offset;
-					// h_neighbourArray[offset]=0;
-					// offset++;
-				}
-			}
-			mark = start;
+//				for (int j = mark; j<start; j++){ 
+//					h_vertexArray[j-1]=offset;
+//					// h_neighbourArray[offset]=0;
+//					// offset++;
+//				}
+//			}
+//			mark = start;
 
+//		}
+
+//		if (start==current){ 
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+
+//		else { 
+//			current = start;
+
+//			h_vertexArray[current-1]=offset;
+
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+//	}
+
+	int NSlast = 0;
+	int NSoffset = 0;
+	int NSprev=0;
+	
+	
+	for (int i=0; i<m; i++){
+		int start, end;
+		cin>>start>>end;
+		
+		for (int j=NSlast+1; j<start; j++){
+			h_vertexArray[j-1]=NSoffset;
+			
 		}
-
-		if (start==current){ 
-			h_neighbourArray[offset]=end;
-			offset++;
+		
+		if (NSprev!=start){
+			NSlast=start;
+			h_vertexArray[start-1]=NSoffset;
+			NSprev=start;
 		}
-
-		else { 
-			current = start;
-
-			h_vertexArray[current-1]=offset;
-
-			h_neighbourArray[offset]=end;
-			offset++;
-		}
+		
+		h_neighbourArray[NSoffset]=end;
+		NSoffset++;
+		
 	}
 	
 	
