@@ -22,11 +22,11 @@ void edgesPrint (int vertexArray[], int neighbourArray[], int n, int m){
 
 void edgesPrintNew (int vertexArray[], int neighbourArray[], int n, int m){ 
 
-//	for (int i=0; i<n; i++){
-//		cout<<vertexArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
+	for (int i=0; i<n; i++){
+		cout<<vertexArray[i]<<" ";
+	}
+	
+	cout<<endl;
 
 
 	for (int i=0; i<m; i++){
@@ -54,59 +54,86 @@ int main(int argc, char const *argv[])
 		/* code */
 		vertexArray[i]=m;
 	}
-
-	int offset = 0;
-
-	int current = 0;
-	int mark = 1;
-
-	for (int i = 0; i < m; ++i)
-	{
-		/* code */
-		
-		int start;
-		int end;
-
+	
+	int NSlast = 0;
+	int NSoffset = 0;
+	int NSprev=0;
+	
+	
+	for (int i=0; i<m; i++){
+		int start, end;
 		cin>>start>>end;
-//		
-//		cin>>start>>end;
-//		start++;
-//		end++;
-
-		if (start!=mark){ 
-
-			if (start == mark+1 && vertexArray[mark-1]!=m){ 
-
-			}
-
-			else{
-
-				for (int j = mark; j<start; j++){ 
-					vertexArray[j-1]=offset;
-					// neighbourArray[offset]=0;
-					// offset++;
-				}
-			}
-			mark = start;
-
+		
+		for (int j=NSlast+1; j<start; j++){
+			vertexArray[j-1]=NSoffset;
+			
 		}
-
-		if (start==current){ 
-			neighbourArray[offset]=end;
-			offset++;
+		
+		if (NSprev!=start){
+			NSlast=start;
+			vertexArray[start-1]=NSoffset;
+			NSprev=start;
 		}
-
-		else { 
-			current = start;
-
-			vertexArray[current-1]=offset;
-
-			neighbourArray[offset]=end;
-			offset++;
-		}
+		
+		neighbourArray[NSoffset]=end;
+		NSoffset++;
+		
+		
 	}
 
-	edgesPrintNew(vertexArray, neighbourArray, n, m);
+//	int offset = 0;
+
+//	int current = 0;
+//	int mark = 1;
+
+//	for (int i = 0; i < m; ++i)
+//	{
+//		/* code */
+//		
+//		int start;
+//		int end;
+
+//		cin>>start>>end;
+////		
+////		cin>>start>>end;
+////		start++;
+////		end++;
+
+//		if (start!=mark){ 
+
+//			if (start == mark+1 && vertexArray[mark-1]!=m){ 
+
+//			}
+
+//			else{
+
+//				for (int j = mark; j<start; j++){ 
+//					vertexArray[j-1]=offset;
+//					// neighbourArray[offset]=0;
+//					// offset++;
+//				}
+//			}
+//			mark = start;
+
+//		}
+
+//		if (start==current){ 
+//			neighbourArray[offset]=end;
+//			offset++;
+//		}
+
+//		else { 
+//			current = start;
+
+//			vertexArray[current-1]=offset;
+
+//			neighbourArray[offset]=end;
+//			offset++;
+//		}
+//	}
+
+//	edgesPrintNew(vertexArray, neighbourArray, n, m);
+	
 
 	
 	int graphDegree[n+1];
@@ -139,10 +166,10 @@ int main(int argc, char const *argv[])
 	}
 	
 	
-//	for (unsigned int i = 0; i < n+1; i += 1)
-//	{
-//		cout<<graphDegree[i]<<endl;
-//	}
+	for (unsigned int i = 0; i < n+1; i += 1)
+	{
+		cout<<graphDegree[i]<<endl;
+	}
 	
 	cout<<graphDegree[n];
 	
