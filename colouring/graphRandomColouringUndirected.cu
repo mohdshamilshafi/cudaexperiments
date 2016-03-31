@@ -150,81 +150,106 @@ int main(int argc, char const *argv[])
 
 	
 	int *d_vertexArray = NULL;
-    	cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
-    	
-    	int *d_neighbourArray = NULL;
-    	cudaMalloc((void **)&d_neighbourArray, 2*m*sizeof(int));
-    	
-    	int *d_detectConflict = NULL;
-    	cudaMalloc((void **)&d_detectConflict, (n)*sizeof(int));
-    	cudaMemset((void *)d_detectConflict, 0, (n)*sizeof(int));
-    	
-    	int *d_degreeCount = NULL;
-    	cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
-    	cudaMemset((void *)d_degreeCount, 0, (n)*sizeof(int));
-    	
-    	curandState* devStates;
-    	cudaMalloc ( &devStates, n*sizeof( curandState ) );
-    	
+    cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
+    
+    int *d_neighbourArray = NULL;
+    cudaMalloc((void **)&d_neighbourArray, 2*m*sizeof(int));
+    
+    int *d_detectConflict = NULL;
+    cudaMalloc((void **)&d_detectConflict, (n)*sizeof(int));
+    cudaMemset((void *)d_detectConflict, 0, (n)*sizeof(int));
+    
+    int *d_degreeCount = NULL;
+    cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
+   	cudaMemset((void *)d_degreeCount, 0, (n)*sizeof(int));
+   	
+   	curandState* devStates;
+   	cudaMalloc ( &devStates, n*sizeof( curandState ) );
+   	
 	for (int i = 0; i < n; ++i)
 	{
 		/* code */
 		h_vertexArray[i]=2*m;
 	}
-
-	int offset = 0;
-
-	int current = 0;
-	int mark = 1;
-
-	for (int i = 0; i < 2*m; ++i)
-	{
-		/* code */
-		int start;
-		int end;
-
+	
+	int NSlast = 0;
+	int NSoffset = 0;
+	int NSprev=0;
+	
+	
+	for (int i=0; i<2*m; i++){
+		int start, end;
 		cin>>start>>end;
-
 		
+		for (int j=NSlast+1; j<start; j++){
+			h_vertexArray[j-1]=NSoffset;
+			
+		}
 		
-//		Uncomment for SNAP graph datasets with nodes indexed from 0 to n-1
+		if (NSprev!=start){
+			NSlast=start;
+			h_vertexArray[start-1]=NSoffset;
+			NSprev=start;
+		}
 		
-//		cin>>start>>end;
-//		start++;
-//		end++;
-
-		if (start!=mark){ 
-
-			if (start == mark+1 && h_vertexArray[mark-1]!=2*m){ 
-
-			}
-
-			else{
-
-				for (int j = mark; j<start; j++){ 
-					h_vertexArray[j-1]=offset;
-					// h_neighbourArray[offset]=0;
-					// offset++;
-				}
-			}
-			mark = start;
-
-		}
-
-		if (start==current){ 
-			h_neighbourArray[offset]=end;
-			offset++;
-		}
-
-		else { 
-			current = start;
-
-			h_vertexArray[current-1]=offset;
-
-			h_neighbourArray[offset]=end;
-			offset++;
-		}
+		h_neighbourArray[NSoffset]=end;
+		NSoffset++;
+		
 	}
+
+//	int offset = 0;
+
+//	int current = 0;
+//	int mark = 1;
+
+//	for (int i = 0; i < 2*m; ++i)
+//	{
+//		/* code */
+//		int start;
+//		int end;
+
+//		cin>>start>>end;
+
+//		
+//		
+////		Uncomment for SNAP graph datasets with nodes indexed from 0 to n-1
+//		
+////		cin>>start>>end;
+////		start++;
+////		end++;
+
+//		if (start!=mark){ 
+
+//			if (start == mark+1 && h_vertexArray[mark-1]!=2*m){ 
+
+//			}
+
+//			else{
+
+//				for (int j = mark; j<start; j++){ 
+//					h_vertexArray[j-1]=offset;
+//					// h_neighbourArray[offset]=0;
+//					// offset++;
+//				}
+//			}
+//			mark = start;
+
+//		}
+
+//		if (start==current){ 
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+
+//		else { 
+//			current = start;
+
+//			h_vertexArray[current-1]=offset;
+
+//			h_neighbourArray[offset]=end;
+//			offset++;
+//		}
+//	}
 	
 	
 	cudaMemcpy(d_vertexArray, h_vertexArray, n*sizeof(int), cudaMemcpyHostToDevice);
@@ -237,11 +262,11 @@ int main(int argc, char const *argv[])
 	
 	degreeCalc<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m);
 	
-//	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
-//	for (int i=0; i<n; i++){
-//		cout<<h_degreeCount[i]<<endl;
-//	}
+	for (int i=0; i<n; i++){
+		cout<<h_degreeCount[i]<<endl;
+	}
 	
 	thrust::device_ptr<int> d_ptr = thrust::device_pointer_cast(d_degreeCount);
   	int max = *(thrust::max_element(d_ptr, d_ptr + n));
