@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <vector>
 
-
 #include <curand_kernel.h>
 
 #include <thrust/reduce.h>
@@ -12,13 +11,92 @@
 #include <thrust/extrema.h>
 #include <thrust/device_ptr.h>
 
-#define d_maxColour 9
-
 using namespace std;
 
 __device__ int d_count = 0;
 
-__global__ void dynamicColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
+
+__global__ void propagationColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end, int maxColour){
+	int i = blockIdx.x * blockDim.x + threadIdx.x;
+	
+	if (i >= n){
+		return;
+	}
+	
+	
+}
+
+__global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end, int maxColour){
+	
+	int i = threadIdx.x;
+	
+	int startStart, startStop;
+	int me, you;
+	
+	if (i==0){
+		me = start;
+		you = end;
+	}
+	else{
+		me = end;
+		you = start;
+	}
+	
+	startStart = vertexArray[me-1];
+	
+	if (me==n){	
+		startStop = 2*m;
+	}
+	
+	else{
+		startStop = vertexArray[me];
+	}
+		
+	for (int j=startStart; j<startStop; j++){
+		if (neighbourArray[j]==you){
+			neighbourArray[j]=0;
+			break;
+		}
+	}	
+	
+	__syncthreads();
+	
+    int colours=0;
+	
+	bool bucket[me-1];
+	
+	for (int j=0; j<me-1; j++){
+		bucket[j]=true;
+	}	
+	
+	for (int j=startStart; j<startStop; j++){
+		if (neighbourArray[j]==0){
+			continue;
+		}
+		
+		int bucketIndex = colouring[neighbourArray[j]-1]; 
+		
+		if (bucketIndex < me){
+			bucket[bucketIndex-1] = false;
+		}
+		
+	}
+	
+	for (int j=0; j<me-1; j++){
+		if(bucket[j]){
+			colours=j+1;
+			break;
+		}
+	}
+	
+	if (!colours){
+		return;
+	}
+	
+	colouring[me-1]=colours;
+}
+
+__global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
 	
 	int i = threadIdx.x;
 	
@@ -67,9 +145,9 @@ __global__ void dynamicColouring (int *vertexArray, int *neighbourArray, int n, 
 	if (i==0)
 	printf("I am %d and %d and %d\n", i, colours[i], colours[1-i]);
 	
-	bool bucket[d_maxColour];
+	bool bucket[maxColour];
 	
-	for (int j=0; j<d_maxColour; j++){
+	for (int j=0; j<maxColour; j++){
 		bucket[j]=true;
 	}
 	
@@ -97,7 +175,7 @@ __global__ void dynamicColouring (int *vertexArray, int *neighbourArray, int n, 
 		printf("buvket clo %d and %d and %d\n", neighbourArray[j]-1, colouring[neighbourArray[j]-1], bucket[colouring[neighbourArray[j]-1]-1]);
 	}
 	
-	for (int j=0; j<d_maxColour; j++){
+	for (int j=0; j<maxColour; j++){
 		if(bucket[j]){
 			colours[i]=j+1;
 			printf("%d ashhas \t", j+1);	
@@ -106,7 +184,7 @@ __global__ void dynamicColouring (int *vertexArray, int *neighbourArray, int n, 
 	}
 	
 	if (i==0)
-	for (int j=0; j<d_maxColour; j++){
+	for (int j=0; j<maxColour; j++){
 		printf("%d \t",bucket[j]);
 	}
 	
@@ -313,6 +391,8 @@ int main(int argc, char const *argv[])
 	
 	cin>>n>>m;
 	
+	int h_maxColour;
+	
 	int *h_count = new int;
 
 	int *h_vertexArray = new int [n];
@@ -340,6 +420,8 @@ int main(int argc, char const *argv[])
     int offset = 0;
     
     vector<int> startArray, stopArray;
+    
+    cin>>h_maxColour;
     
 	for (int i = 0; i < n; ++i)
 	{
@@ -476,7 +558,7 @@ int main(int argc, char const *argv[])
 	
 		cout<<"New added edge: "<<startArray[i]<<" "<<stopArray[i]<<endl;
 		
-		dynamicColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i]);
+		incrementalColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i], h_maxColour);
 		
 		cudaDeviceSynchronize();
 		

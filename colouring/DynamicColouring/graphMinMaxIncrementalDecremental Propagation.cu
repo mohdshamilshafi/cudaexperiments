@@ -18,7 +18,7 @@ using namespace std;
 
 __device__ int d_count = 0;
 
-__global__ void dynamicColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
+__global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
 	
 	int i = threadIdx.x;
 	
@@ -476,7 +476,7 @@ int main(int argc, char const *argv[])
 	
 		cout<<"New added edge: "<<startArray[i]<<" "<<stopArray[i]<<endl;
 		
-		dynamicColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i]);
+		incrementalColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i]);
 		
 		cudaDeviceSynchronize();
 		
