@@ -13,6 +13,8 @@
 
 using namespace std;
 
+#define bucketLimit 1500
+
 __device__ int d_count = 0;
 
 
@@ -22,7 +24,6 @@ __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int
 	if (i >= n){
 		return;
 	}
-	
 	
 }
 
@@ -63,7 +64,7 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	
     int colours=0;
 	
-	bool bucket[me-1];
+	bool bucket[bucketLimit];
 	
 	for (int j=0; j<me-1; j++){
 		bucket[j]=true;
@@ -96,7 +97,7 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	colouring[me-1]=colours;
 }
 
-__global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
+__global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end, int maxColour){
 	
 	int i = threadIdx.x;
 	
@@ -145,7 +146,7 @@ __global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int
 	if (i==0)
 	printf("I am %d and %d and %d\n", i, colours[i], colours[1-i]);
 	
-	bool bucket[maxColour];
+	bool bucket[bucketLimit];
 	
 	for (int j=0; j<maxColour; j++){
 		bucket[j]=true;
@@ -559,6 +560,16 @@ int main(int argc, char const *argv[])
 		cout<<"New added edge: "<<startArray[i]<<" "<<stopArray[i]<<endl;
 		
 		incrementalColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i], h_maxColour);
+		
+		cudaDeviceSynchronize();
+		
+	}
+	
+	for (int i=0; i<startArray.size(); i++){
+	
+		cout<<"Deleted edge: "<<startArray[i]<<" "<<stopArray[i]<<endl;
+		
+		decrementalColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i], h_maxColour);
 		
 		cudaDeviceSynchronize();
 		
