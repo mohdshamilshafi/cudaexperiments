@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#define bucketLimit 1500
+#define bucketLimit 600
 
 __device__ int d_count = 0;
 
@@ -37,13 +37,19 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	if (i==0){
 		me = start;
 		you = end;
+		
+//		printf("I am %d and my me is %d and my you is %d", i, me, you);
 	}
 	else{
 		me = end;
 		you = start;
+		
+//		printf("I am %d and my me is %d and my you is %d", i, me, you);
 	}
 	
 	startStart = vertexArray[me-1];
+	
+//	printf("I am %d and my startStart is %d", i, startStart);
 	
 	if (me==n){	
 		startStop = 2*m;
@@ -52,6 +58,9 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	else{
 		startStop = vertexArray[me];
 	}
+	
+	
+//	printf("I am %d and my startStop is %d", i, startStop);
 		
 	for (int j=startStart; j<startStop; j++){
 		if (neighbourArray[j]==you){
@@ -66,7 +75,9 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	
 	bool bucket[bucketLimit];
 	
-	for (int j=0; j<me-1; j++){
+	int colouringLimit = colouring[me-1];
+	
+	for (int j=0; j<colouringLimit-1; j++){
 		bucket[j]=true;
 	}	
 	
@@ -77,13 +88,13 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 		
 		int bucketIndex = colouring[neighbourArray[j]-1]; 
 		
-		if (bucketIndex < me){
+		if (bucketIndex < colouringLimit){
 			bucket[bucketIndex-1] = false;
 		}
 		
 	}
 	
-	for (int j=0; j<me-1; j++){
+	for (int j=0; j<colouringLimit; j++){
 		if(bucket[j]){
 			colours=j+1;
 			break;
@@ -136,15 +147,15 @@ __global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int
 		return;
 	}
 	
-	if (i==0)
-	printf("%d and %d Conflict\n", start, end);
+//	if (i==0)
+//	printf("%d and %d Conflict\n", start, end);
 	
 	__shared__ int colours[2];
 	
 	colours[i]=0;
 	
-	if (i==0)
-	printf("I am %d and %d and %d\n", i, colours[i], colours[1-i]);
+//	if (i==0)
+//	printf("I am %d and %d and %d\n", i, colours[i], colours[1-i]);
 	
 	bool bucket[bucketLimit];
 	
@@ -152,18 +163,18 @@ __global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int
 		bucket[j]=true;
 	}
 	
-	if (i==0){
-		printf("%d %d", startStart, startStop);
-		
-		for (int j=startStart; j<startStop; j++){
-		
-			printf("clo %d\n", neighbourArray[j]);
-		
-			if (neighbourArray[j]!=0){
-				printf("clocli %d\n", colouring[neighbourArray[j]-1]);
-			}
-		}
-	}
+//	if (i==0){
+//		printf("%d %d", startStart, startStop);
+//		
+//		for (int j=startStart; j<startStop; j++){
+//		
+//			printf("clo %d\n", neighbourArray[j]);
+//		
+//			if (neighbourArray[j]!=0){
+//				printf("clocli %d\n", colouring[neighbourArray[j]-1]);
+//			}
+//		}
+//	}
 	
 	for (int j=startStart; j<startStop; j++){
 		if (neighbourArray[j]==0){
@@ -172,31 +183,31 @@ __global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int
 		
 		bucket[colouring[neighbourArray[j]-1]-1] = false;
 		
-		if (i==0)
-		printf("buvket clo %d and %d and %d\n", neighbourArray[j]-1, colouring[neighbourArray[j]-1], bucket[colouring[neighbourArray[j]-1]-1]);
+//		if (i==0)
+//		printf("buvket clo %d and %d and %d\n", neighbourArray[j]-1, colouring[neighbourArray[j]-1], bucket[colouring[neighbourArray[j]-1]-1]);
 	}
 	
 	for (int j=0; j<maxColour; j++){
 		if(bucket[j]){
 			colours[i]=j+1;
-			printf("%d ashhas \t", j+1);	
+//			printf("%d ashhas \t", j+1);	
 			break;
 		}
 	}
 	
-	if (i==0)
-	for (int j=0; j<maxColour; j++){
-		printf("%d \t",bucket[j]);
-	}
+//	if (i==0)
+//	for (int j=0; j<maxColour; j++){
+//		printf("%d \t",bucket[j]);
+//	}
 	
-	if (i==0){
-		printf("\n");
-	}
+//	if (i==0){
+//		printf("\n");
+//	}
 	
 	
 	__syncthreads();
 	
-	printf("%d and %d Conflict  new colour min %d \n", start, end, colours[i]);
+//	printf("%d and %d Conflict  new colour min %d \n", start, end, colours[i]);
 	
 	// Possible issue: There could be a number inbetween the smallest equal guess and the current colour.
 	
@@ -228,12 +239,12 @@ __global__ void incrementalColouring (int *vertexArray, int *neighbourArray, int
 	
 	__syncthreads();
 	
-	if (i==0){
-		for (int j=0; j<n; j++){
-			printf("%d ", colouring[j]);
-		}
-		printf("\n");
-	}
+//	if (i==0){
+//		for (int j=0; j<n; j++){
+//			printf("%d ", colouring[j]);
+//		}
+//		printf("\n");
+//	}
 	
 	
 }
@@ -492,17 +503,17 @@ int main(int argc, char const *argv[])
 
 	}
 	
-	for (int i=0; i<n; i++){
-		cout<<h_vertexArray[i]<<" ";
-	}
-	
-	cout<<endl;
-	
-	for (int i=0; i<2*m; i++){
-		cout<<h_neighbourArray[i]<<" ";
-	}
-	
-	cout<<endl;
+//	for (int i=0; i<n; i++){
+//		cout<<h_vertexArray[i]<<" ";
+//	}
+//	
+//	cout<<endl;
+//	
+//	for (int i=0; i<2*m; i++){
+//		cout<<h_neighbourArray[i]<<" ";
+//	}
+//	
+//	cout<<endl;
 	
 	cudaMemcpy(d_vertexArray, h_vertexArray, n*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(d_neighbourArray, h_neighbourArray, 2*m*sizeof(int), cudaMemcpyHostToDevice);
@@ -516,11 +527,11 @@ int main(int argc, char const *argv[])
 
 	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
-	cout<<"Random numbers: "<<endl;
-	
-	for (int i=0; i<n; i++){
-		cout<<h_degreeCount[i]<<endl;
-	}
+//	cout<<"Random numbers: "<<endl;
+//	
+//	for (int i=0; i<n; i++){
+//		cout<<h_degreeCount[i]<<endl;
+//	}
 
 	int colourCount = 1;
 	
@@ -531,12 +542,12 @@ int main(int argc, char const *argv[])
 	
 	cudaEventRecord(start, 0);
 	
-	cout<<"Worklist: "<<endl;
-	
-	for	(int i=0; i<startArray.size(); i++){
-		cout<<startArray[i]<<" "<<stopArray[i]<<endl;
-	}
-	
+//	cout<<"Worklist: "<<endl;
+//	
+//	for	(int i=0; i<startArray.size(); i++){
+//		cout<<startArray[i]<<" "<<stopArray[i]<<endl;
+//	}
+//	
 	while (1){
 		colourMinMax<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, colourCount);
 	
@@ -553,7 +564,7 @@ int main(int argc, char const *argv[])
 	
 	colourCount++;
 	
-	
+	cout<<"Size: "<<startArray.size()<<endl;
 	
 	for (int i=0; i<startArray.size(); i++){
 	
@@ -574,6 +585,8 @@ int main(int argc, char const *argv[])
 		cudaDeviceSynchronize();
 		
 	}
+	
+	cout<<"Shamil"<<endl;
 	
 	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
@@ -599,17 +612,17 @@ int main(int argc, char const *argv[])
 	cudaMemcpy(h_vertexArray, d_vertexArray, n*sizeof(int), cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
 	
-	for (int i=0; i<n; i++){
-		cout<<h_vertexArray[i]<<" ";
-	}
-	
-	cout<<endl;
-	
-	for (int i=0; i<2*m; i++){
-		cout<<h_neighbourArray[i]<<" ";
-	}
-	
-	cout<<endl;
+//	for (int i=0; i<n; i++){
+//		cout<<h_vertexArray[i]<<" ";
+//	}
+//	
+//	cout<<endl;
+//	
+//	for (int i=0; i<2*m; i++){
+//		cout<<h_neighbourArray[i]<<" ";
+//	}
+//	
+//	cout<<endl;
 
 	delete h_count;		
 	delete[] h_vertexArray;
