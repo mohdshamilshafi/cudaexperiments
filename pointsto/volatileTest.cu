@@ -55,12 +55,27 @@ int main(int argc, char const *argv[])
 	
 	int threadsPerBlock = 512;
 	int blocksPerGrid = (n + threadsPerBlock -1)/threadsPerBlock;
-		
+	
+	cudaEvent_t start, stop;
+	float time;
+	cudaEventCreate(&start);
+	cudaEventCreate(&stop);
+ 
+	cudaEventRecord(start, 0);
+ 		
 	degreeCalc<<<blocksPerGrid, threadsPerBlock>>>(d_array);
+
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
 	
 	cudaMemcpyFromSymbol(h_sum, sum, sizeof(int), 0, cudaMemcpyDeviceToHost);
 
 	cout<<*h_sum<<endl;
+
+	// Retrieve result from device and store it in host array
+	cudaEventElapsedTime(&time, start, stop);
+	cout<<"Time for the kernel: "<<time<<" ms"<<endl;
+
 	
 	delete[] h_array;
 	cudaFree(d_array);

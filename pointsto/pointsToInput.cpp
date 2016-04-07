@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 	int nodeCount = 0;
 	
 	map<string, int> variablesMap;
-	map<string,int>::iterator it;
+	map<string, int>::iterator it;
 	
 	for (int i=0; i<m; i++){
 		string a, b, temp;
