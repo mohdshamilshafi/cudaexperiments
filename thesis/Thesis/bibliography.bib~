@@ -1,0 +1,282 @@
+@article{RK82,
+  author    = {Ravi Kannan},
+  title     = {Circuit-Size {L}ower {B}ounds and {N}on-Reducibility to {S}parse
+               {S}ets},
+  journal   = {Information and Control},
+  volume    = {55},
+  number    = {1-3},
+  year      = {1982},
+  pages     = {40-56},
+  ee        = {http://dx.doi.org/10.1016/S0019-9958(82)90382-5},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{BH77,
+  author    = {Leonard Berman and
+               Juris Hartmanis},
+  title     = {On {I}somorphisms and {D}ensity of {NP} and {O}ther {C}omplete Sets},
+  journal   = {SIAM J. Comput.},
+  volume    = {6},
+  number    = {2},
+  year      = {1977},
+  pages     = {305-322},
+  ee        = {http://dx.doi.org/10.1137/0206023},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{KL80,
+  author    = {Richard M. Karp and
+               Richard J. Lipton},
+  title     = {Some Connections between Nonuniform and Uniform Complexity
+               Classes},
+  booktitle = {STOC},
+  year      = {1980},
+  pages     = {302-309},
+  ee        = {http://doi.acm.org/10.1145/800141.804678},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@article{Mah82,
+  author    = {Stephen R. Mahaney},
+  title     = {Sparse Complete Sets of NP: Solution of a Conjecture of
+               \textsc{B}erman and \textsc{H}artmanis},
+  journal   = {J. Comput. Syst. Sci.},
+  volume    = {25},
+  number    = {2},
+  year      = {1982},
+  pages     = {130-143},
+  ee        = {http://dx.doi.org/10.1016/0022-0000(82)90002-2},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{Mey75,
+  author    = {Albert Meyer},
+  title     = {Lower Bounds on the Size of Boolean Formulas: Preliminary
+               Report},
+  booktitle = {STOC},
+  year      = {1975},
+  pages     = {37-44},
+  ee        = {http://doi.acm.org/10.1145/800116.803751},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{Ber78,
+  author    = {Piotr Berman},
+  title     = {Relationship Between Density and Deterministic Complexity
+               of NP-Complete Languages},
+  booktitle = {ICALP},
+  year      = {1978},
+  pages     = {63-71},
+  ee        = {http://dx.doi.org/10.1007/3-540-08860-1_6},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{Hart78,
+  author    = {Juris Hartmanis},
+  title     = {On Log-Tape Isomorphisms of Complete Sets},
+  journal   = {Theor. Comput. Sci.},
+  volume    = {7},
+  year      = {1978},
+  pages     = {273-286},
+  ee        = {http://dx.doi.org/10.1016/0304-3975(78)90018-X},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{Ogi96,
+  author    = {Mitsunori Ogihara},
+  title     = {Sparse Hard Sets for \textsc{P} Yield Space-Efficient Algorithms},
+  journal   = {Chicago J. Theor. Comput. Sci.},
+  volume    = {7},
+  year      = {1996},
+  ee        = {http://cjtcs.cs.uchicago.edu/articles/1996/2/contents.html},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{Cook03,
+  author    = {Stephen A. Cook},
+  title     = {The importance of the \textsc{P} versus \textsc{NP} question},
+  journal   = {J. ACM},
+  volume    = {50},
+  number    = {1},
+  year      = {2003},
+  pages     = {27-29},
+  ee        = {http://doi.acm.org/10.1145/602382.602398},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{RARS94,
+ author = {Razborov, Alexander A. and Rudich, Steven},
+ title = {Natural Proofs},
+ booktitle = {Proceedings of the Twenty-sixth Annual ACM Symposium on Theory of Computing},
+ series = {STOC '94},
+ year = {1994},
+ isbn = {0-89791-663-8},
+ location = {Montreal, Quebec, Canada},
+ pages = {204--213},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/195058.195134},
+ doi = {10.1145/195058.195134},
+ acmid = {195134},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+@inproceedings{ref1,
+  author    = {Jin Cai and
+               D. Sivakumar},
+  title     = {The Resolution of a Hartmanis Conjecture},
+  booktitle = {FOCS},
+  year      = {1995},
+  pages     = {362-371},
+  ee        = {http://doi.ieeecomputersociety.org/10.1109/SFCS.1995.492492},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{ref3,
+  author    = {Leslie G. Valiant},
+  title     = {The Complexity of Computing the Permanent},
+  journal   = {Theor. Comput. Sci.},
+  volume    = {8},
+  year      = {1979},
+  pages     = {189-201},
+  ee        = {http://dx.doi.org/10.1016/0304-3975(79)90044-6},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@book{ref5,
+  author    = {Sanjeev Arora and
+               Boaz Barak},
+  title     = {Computational Complexity - A Modern Approach},
+  publisher = {Cambridge University Press},
+  year      = {2009},
+  isbn      = {978-0-521-42426-4},
+  pages     = {I-XXIV, 1-579},
+  ee        = {http://www.cambridge.org/catalogue/catalogue.asp?isbn=9780521424264},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{ref6,
+  author    = {John Gill},
+  title     = {Computational Complexity of Probabilistic Turing Machines},
+  journal   = {SIAM J. Comput.},
+  volume    = {6},
+  number    = {4},
+  year      = {1977},
+  pages     = {675-695},
+  ee        = {http://dx.doi.org/10.1137/0206049},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{ref9,
+  author    = {Richard Beigel},
+  title     = {The Polynomial Method in Circuit Complexity},
+  booktitle = {Structure in Complexity Theory Conference},
+  year      = {1993},
+  pages     = {82-95},
+  ee        = {http://dx.doi.org/10.1109/SCT.1993.336538},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@book{ref10,
+  author    = {J.H. van Lint},
+  title     = {Introduction to Coding Theory},
+  publisher = {Springer-Verlag},
+  year      = {1991},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{ref11,
+  author    = {Jin Cai and
+               Ashish V. Naik and
+               D. Sivakumar},
+  title     = {On the Existence of Hard Sparse Sets under Weak Reductions},
+  booktitle = {STACS},
+  year      = {1996},
+  pages     = {307-318},
+  ee        = {http://dx.doi.org/10.1007/3-540-60922-9_26},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{ref12,
+  author    = {Yuri Ofman},
+  title     = {On the algorithmic complexity of discrete functions},
+  journal   = {Soviet.Phys.Dokl.},
+  volume    = {7},
+  year      = {1963},
+  pages     = {589-591},
+}
+@book{ref13,
+  author    = {E.L. Post},
+  title     = {The Two-Valued Iterative Systems of Mathematical Logic},
+  publisher = {Princeton University Press},
+  year      = {1941},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{ref14,
+  author    = {Yishay Mansour and
+               Sigal Sahar},
+  title     = {Implementation Issues in the Fourier Transform Algorithm},
+  journal   = {Machine Learning},
+  volume    = {40},
+  number    = {1},
+  year      = {2000},
+  pages     = {5-33},
+  ee        = {http://dx.doi.org/10.1023/A:1011034100370},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@book{ref15,
+  author    = {Sanjeev Arora and
+               Boaz Barak},
+  title     = {Computational Complexity - A Modern Approach},
+  publisher = {Cambridge University Press},
+  year      = {2009},
+  pages     = {I-XXIV, 1-579},
+  ee        = {http://www.cambridge.org/catalogue/catalogue.asp?isbn=9780521424264},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{Cook71,
+  author    = {Stephen A. Cook},
+  title     = {The Complexity of Theorem-Proving Procedures},
+  booktitle = {STOC},
+  year      = {1971},
+  pages     = {151-158},
+  ee        = {http://doi.acm.org/10.1145/800157.805047},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@inproceedings{Karp72,
+  author    = {Richard M. Karp},
+  title     = {Reducibility Among Combinatorial Problems},
+  booktitle = {Complexity of Computer Computations},
+  year      = {1972},
+  pages     = {85-103},
+  ee        = {http://www.cs.berkeley.edu/$\sim$luca/cs172/karp.pdf},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{BGH82,
+  author    = {Allan Borodin and
+               Joachim von zur Gathen and
+               John E. Hopcroft},
+  title     = {Fast Parallel Matrix and GCD Computations},
+  journal   = {Information and Control},
+  volume    = {52},
+  number    = {3},
+  year      = {1982},
+  pages     = {241-256},
+  ee        = {http://dx.doi.org/10.1016/S0019-9958(82)90766-5},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{Mul87,
+  author    = {Ketan Mulmuley},
+  title     = {A fast parallel algorithm to compute the rank of a matrix
+               over an arbitrary field},
+  journal   = {Combinatorica},
+  volume    = {7},
+  number    = {1},
+  year      = {1987},
+  pages     = {101-104},
+  ee        = {http://dx.doi.org/10.1007/BF02579205},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@article{ref16,
+  author    = {Uwe Sch{\"o}ning},
+  title     = {On Random Reductions from Sparse Sets to Tally Sets},
+  journal   = {Inf. Process. Lett.},
+  volume    = {46},
+  number    = {5},
+  year      = {1993},
+  pages     = {239-241},
+  ee        = {http://dx.doi.org/10.1016/0020-0190(93)90102-F},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+@book{ref17,
+  author    = {Ivan Niven and Herbert Zuckerman},
+  title     = {An Introduction to the Theory Of Numbers},
+  publisher = {Wiley, New York},
+  year      = {1960},
+}
+
+

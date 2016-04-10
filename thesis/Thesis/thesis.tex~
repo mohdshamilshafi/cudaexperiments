@@ -1,0 +1,149 @@
+
+\documentclass[MTech]{iitmdiss}
+
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{verbatim}
+\usepackage{floatrow}
+\usepackage{fullpage}
+%\usepackage{txfonts,pxfonts,amsfonts}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{graphicx}
+
+\usepackage[square]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+%\usepackage{hyperref} % hyperlinks for references.
+\usepackage[all]{hypcap}
+\usepackage{complexity}
+\usepackage[named]{algo}
+%\usepackage{algpseudocode}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{corr}{Corollary}
+\newtheorem{lma}{Lemma}
+\newtheorem{case}{Case}
+\newtheorem{rmrk}{Remark}
+\newtheorem{prp}{Proposition}
+\newtheorem{dfn}{Definition}
+\newtheorem{qn}{Question}
+\newtheorem{att}{Attempt}
+\newtheorem{ex}{Example}
+\newtheorem{flaw}{Flaw in Attempt}
+% Strut macros for skipping spaces above and below text in tables. 
+\def\abovestrut#1{\rule[0in]{0in}{#1}\ignorespaces}
+\def\belowstrut#1{\rule[-#1]{0in}{#1}\ignorespaces}
+
+\def\abovespace{\abovestrut{0.20in }}
+\def\aroundspace{\abovestrut{0.20in}\belowstrut{0.10in}}
+\def\belowspace{\belowstrut{0.10in}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\thesistitle{A Study Of Uniformity In Boolean Circuits}
+\def\thesisauthor{Ramnath J}
+
+
+\begin{document}
+\bibliographystyle{iitm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Title page
+
+\title{\thesistitle}
+
+\author{\thesisauthor}
+
+\date{May 2013}
+\department{Computer Science and Engineering}
+
+%\nocite{*}
+\begin{singlespace}
+\maketitle 
+\end{singlespace} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Certificate
+\certificate
+
+\vspace*{0.5in}
+
+\noindent This is to certify that the thesis entitled {\bf {\thesistitle}}, 
+submitted by {\bf {\thesisauthor}}, to the Indian Institute of Technology, 
+Madras, for the award of the degree of {\bf Master of Technology}, 
+is a bona fide record of the research work carried out by him under my
+supervision. The contents of this thesis, in full or in parts, have not been
+submitted to any other Institute or University for the award of any degree or
+diploma.
+
+\vspace*{1.4in}
+\hspace*{-0.25in}
+\begin{singlespace}
+\noindent {\bf Jayalal Sarma M.N} \\
+\noindent Research Guide \\ 
+\noindent Assistant Professor \\
+\noindent Dept. of Computer Science and Engineering\\
+\noindent IIT-Madras, 600 036 \\
+\end{singlespace}
+\vspace*{0.20in}
+\noindent Place: Chennai\\ 
+Date:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+
+\abstract
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of contents etc.
+
+\begin{singlespace}
+\tableofcontents
+\thispagestyle{empty}
+
+\listoftables
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoffigures
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\end{singlespace}
+
+\pagebreak
+
+
+%The main text will follow from this point so set the page numbering
+%to arabic from here on.
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction.
+\input{introduction.tex}
+%\input{misc.tex}
+%\input{questions.tex}
+\chapter{Introduction}
+
+\chapter{Future Work}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices.
+%\appendix
+%\chapter{Appendix}
+%\input{appendix.tex}
+% Bibliography.
+\pagebreak
+\begin{singlespace}
+  \begin{small}
+	\bibliography{bibliography}
+	%\bibliographystyle{alpha}
+  \end{small}
+\end{singlespace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
