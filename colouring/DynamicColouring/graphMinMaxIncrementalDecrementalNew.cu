@@ -227,7 +227,7 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 	//colours[otheri]+=0;
 	
 	if (colours[i]==colours[otheri]){
-		printf("if\n");
+//		printf("if\n");
 		if (colours[i]<colouring[me-1]){
 			if(ipercent2){
 				colouring[me-1]=colours[i];
@@ -242,7 +242,7 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 	}
 	
 	else{
-		printf("else\n");
+//		printf("else\n");
 		if (colours[i]<colouring[me-1]){
 			colouring[me-1]=colours[i];
 		}
@@ -813,6 +813,16 @@ int main(int argc, char const *argv[])
 	
 	cin>>n>>m;
 	
+	float rLimit;
+	
+	if (m>=500000){
+		rLimit = 0.99;
+	}
+	
+	else {
+		rLimit = 0.9;
+	}
+	
 	int h_maxColour;
 	
 	int *h_count = new int;
@@ -873,7 +883,7 @@ int main(int argc, char const *argv[])
 
 		double r = ((double) rand() / (RAND_MAX));
 		
-		if (r<=0.5){
+		if (r<=rLimit){
 			int startStart, startStop, stopStart, stopStop;
 			
 			startStart = h_vertexArray[start-1];
@@ -988,16 +998,18 @@ int main(int argc, char const *argv[])
 	
 	int incrementalCount = 0;
 	
-	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-  	
-  	
-  	cout<<"Colour numbers: "<<endl;
-	
-	
-	
-	for (int i=0; i<n; i++){
-		cout<<h_colour[i]<<endl;
-	}
+//	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+//  	
+//  	
+//  	cout<<"Colour numbers: "<<endl;
+//	
+//	
+//	
+//	for (int i=0; i<n; i++){
+//		cout<<h_colour[i]<<endl;
+//	}
+
+	int printCount = 0;
 	
 	for (int i=0; i<startArray.size(); i++){
 		if (marked[i]){
@@ -1028,15 +1040,19 @@ int main(int argc, char const *argv[])
 				h_incrementalArray[incrementalCount+1] = stopArray[j];
 		
 				incrementalCount+=2;
+				
+				if (incrementalCount == 1024){
+					break;
+				}
 			}
 		}
 		
-		for (int j=0; j<incrementalCount; j++){
-			cout<<h_incrementalArray[j]<<" ";
-		}
-		cout<<endl;
-		
-		int blocksPerGridIncremental = (incrementalCount + threadsPerBlock -1)/threadsPerBlock;
+//		for (int j=0; j<incrementalCount; j++){
+//			cout<<h_incrementalArray[j]<<" ";
+//		}
+//		cout<<endl;
+		int threadsPerBlockIncremental=1024;
+		int blocksPerGridIncremental = (incrementalCount + threadsPerBlockIncremental -1)/threadsPerBlockIncremental;
 		
 		if (blocksPerGridIncremental!=1){
 			cout<<"DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER"<<endl;	
@@ -1044,8 +1060,9 @@ int main(int argc, char const *argv[])
 		
 		cudaMemcpy(d_incrementalArray, h_incrementalArray, incrementalCount*sizeof(int), cudaMemcpyHostToDevice);
 		
-		incrementalColouringNew<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
-		
+		cout<<incrementalCount<<endl;
+		incrementalColouringNew<<<threadsPerBlockIncremental, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
+		printCount++;
 //		incrementalColouringNewP1<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
 //		incrementalColouringNewP2<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
 //		incrementalColouringNewP3<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
@@ -1053,17 +1070,17 @@ int main(int argc, char const *argv[])
 		
 		cudaDeviceSynchronize();
 		
-		cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-  	
-  	
-  	cout<<"Colour numbers: "<<endl;
-	
-	
-	
-	for (int i=0; i<n; i++){
-		cout<<h_colour[i]<<endl;
-	}
-		
+//		cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+//  	
+//  	
+//  	cout<<"Colour numbers: "<<endl;
+//	
+//	
+//	
+//	for (int i=0; i<n; i++){
+//		cout<<h_colour[i]<<endl;
+//	}
+//		
 		
 		
 	}
@@ -1147,7 +1164,7 @@ int main(int argc, char const *argv[])
 //		
 //	}
 	
-	cout<<"Shamil"<<endl;
+	cout<<"Shamil "<<printCount<<endl;
 	
 	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
