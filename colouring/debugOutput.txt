@@ -1,0 +1,23 @@
+Max = 549
+H Count = 357278at colour: 1
+H Count = 419191at colour: 2
+H Count = 469601at colour: 3
+H Count = 508926at colour: 4
+H Count = 538344at colour: 5
+H Count = 559707at colour: 6
+H Count = 574518at colour: 7
+H Count = 584287at colour: 8
+H Count = 590545at colour: 9
+H Count = 594134at colour: 10
+H Count = 596449at colour: 11
+H Count = 597934at colour: 12
+H Count = 598897at colour: 13
+H Count = 599448at colour: 14
+H Count = 599813at colour: 15
+H Count = 599925at colour: 16
+H Count = 599960at colour: 17
+H Count = 599985at colour: 18
+H Count = 599999at colour: 19
+H Count = 600000at colour: 20
+Time for the kernel: 8.26832 ms
+Max Colour = 20

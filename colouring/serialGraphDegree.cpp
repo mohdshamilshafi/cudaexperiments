@@ -64,6 +64,9 @@ int main(int argc, char const *argv[])
 		int start, end;
 		cin>>start>>end;
 		
+		start++;
+		end++;
+		
 		for (int j=NSlast+1; j<start; j++){
 			vertexArray[j-1]=NSoffset;
 			
@@ -166,10 +169,10 @@ int main(int argc, char const *argv[])
 	}
 	
 	
-	for (unsigned int i = 0; i < n+1; i += 1)
-	{
-		cout<<graphDegree[i]<<endl;
-	}
+//	for (unsigned int i = 0; i < n+1; i += 1)
+//	{
+//		cout<<graphDegree[i]<<endl;
+//	}
 	
 	cout<<graphDegree[n];
 	

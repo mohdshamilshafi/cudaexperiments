@@ -9,25 +9,24 @@ int main(int argc, char const *argv[])
 	/* code */
 	string a, b;
 	int n, m;
-	cin>>a>>b>>n>>m;
+	cin>>n>>m;
 //	cin>>n>>m;
 	
 	int *array = new int [m];
 	int *array2 = new int [m];
 	
 	
-	cout<<n<<" "<<m<<endl;
+	cout<<n<<"\t"<<m<<endl;
 
 	for (int i = 0; i < m; ++i)
 	{
 		/* code */
 		int start;
 		int end;
-		char c;
 		
 		
 
-		cin>>c>>start>>end;
+		cin>>start>>end;
 		
 		
 		array[i]=start;
@@ -75,6 +74,10 @@ int main(int argc, char const *argv[])
 	int count = 0;
 	
 	for (int i=0; i<m; i++){
+		if (array[i]==array2[i]){
+			continue;
+		}
+		
 		if (array[i]<array2[i]){
 			temp.first = array[i];
 			temp.second = array2[i];
