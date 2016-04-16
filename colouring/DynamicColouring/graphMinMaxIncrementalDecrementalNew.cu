@@ -14,7 +14,7 @@
 
 using namespace std;
 
-#define bucketLimitDecr 60
+#define bucketLimitDecr 200
 #define bucketLimitIncr 7000
 #define incrementalColourCount 30000
 
@@ -28,6 +28,53 @@ __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int
 		return;
 	}
 	
+}
+
+__global__ void decrementalColouringNew (int *vertexArray, int *neighbourArray, int n, int m, int *decrementalArray, int size){
+	
+	int i = blockDim.x * blockIdx.x + threadIdx.x;
+	
+	if (i >= size){
+		return;
+	}
+	
+	
+	
+	int startStart, startStop;
+	int me, you;
+//	int otheri;
+//	bool ipercent2 = false;
+	
+	me = decrementalArray[i];
+	
+	if (i%2 == 0){
+		you = decrementalArray[i+1];
+//		otheri = i+1;
+//		ipercent2 = true;
+	}
+	else{
+		you = decrementalArray[i-1];
+//		otheri = i-1;
+	}
+	
+	printf("I am %d and I am deleting %d - %d\n", i, me, you);
+	
+	startStart = vertexArray[me-1];
+	
+	if (me==n){	
+		startStop = 2*m;
+	}
+	
+	else{
+		startStop = vertexArray[me];
+	}
+		
+	for (int j=startStart; j<startStop; j++){
+		if (neighbourArray[j]==you){
+			neighbourArray[j]=0;
+			break;
+		}
+	}	
 }
 
 __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int start, int end){
@@ -823,6 +870,10 @@ int main(int argc, char const *argv[])
 		rLimit = 0.9;
 	}
 	
+	if (n<100){
+		rLimit = 0.5;
+	}
+	
 	int h_maxColour;
 	
 	int *h_count = new int;
@@ -831,12 +882,6 @@ int main(int argc, char const *argv[])
 	int *h_neighbourArray = new int [2*m];
 	int *h_degreeCount = new int [n];
 	int *h_colour = new int [n];
-	
-	int *d_incrementalArray = NULL;
-	cudaMalloc((void **)&d_incrementalArray, incrementalColourCount*sizeof(int));
-	
-	int *d_colours = NULL;
-	cudaMalloc((void **)&d_colours, incrementalColourCount*sizeof(int));
 	
 	int *d_vertexArray = NULL;
     cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
@@ -992,7 +1037,13 @@ int main(int argc, char const *argv[])
 	
 	cout<<"Size: "<<startArray.size()<<endl;
 	
-	int *h_incrementalArray = new int [startArray.size()];
+	int *d_incrementalArray = NULL;
+	cudaMalloc((void **)&d_incrementalArray, 2*startArray.size()*sizeof(int));
+	
+	int *d_colours = NULL;
+	cudaMalloc((void **)&d_colours, 2*startArray.size()*sizeof(int));
+	
+	int *h_incrementalArray = new int [2*startArray.size()];
 	
 	vector<bool> marked (startArray.size(), false);
 	
@@ -1154,16 +1205,43 @@ int main(int argc, char const *argv[])
 //		
 //	}
 //	
-//	for (int i=0; i<startArray.size()/2; i++){
-//	
-//		//cout<<"Deleted edge: "<<startArray[i]<<" "<<stopArray[i]<<endl;
-//		
-//		decrementalColouring<<<1, 2>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, startArray[i], stopArray[i]);
-//		
-//		cudaDeviceSynchronize();
-//		
-//	}
+	for (int i=0; i<startArray.size(); i++){
 	
+		h_incrementalArray[2*i]=startArray[i];
+		h_incrementalArray[2*i+1]=stopArray[i];
+	}
+	
+	cout<<"Decremental Array:"<<endl;
+	
+	
+	for (int i=0; i<startArray.size(); i++){
+	
+		cout<<h_incrementalArray[2*i]<<" "<<h_incrementalArray[2*i+1]<<endl;
+	}
+	
+	cudaMemcpy(h_vertexArray, d_vertexArray, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
+	
+	for (int i=0; i<n; i++){
+		cout<<h_vertexArray[i]<<" ";
+	}
+	
+	cout<<endl;
+	
+	for (int i=0; i<2*m; i++){
+		cout<<h_neighbourArray[i]<<" ";
+	}
+	
+	cout<<endl;
+	
+	cudaMemcpy(d_incrementalArray, h_incrementalArray, 2*startArray.size()*sizeof(int), cudaMemcpyHostToDevice);
+	
+	int blocksPerGridDecremental = (startArray.size() + threadsPerBlock -1)/threadsPerBlock;
+	
+	decrementalColouringNew<<<threadsPerBlock, blocksPerGridDecremental>>>(d_vertexArray, d_neighbourArray, n, m, d_incrementalArray, 2*startArray.size());
+		
+	cudaDeviceSynchronize();
+//	
 	cout<<"Shamil "<<printCount<<endl;
 	
 	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
@@ -1190,17 +1268,17 @@ int main(int argc, char const *argv[])
 	cudaMemcpy(h_vertexArray, d_vertexArray, n*sizeof(int), cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
 	
-//	for (int i=0; i<n; i++){
-//		cout<<h_vertexArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
-//	
-//	for (int i=0; i<2*m; i++){
-//		cout<<h_neighbourArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
+	for (int i=0; i<n; i++){
+		cout<<h_vertexArray[i]<<" ";
+	}
+	
+	cout<<endl;
+	
+	for (int i=0; i<2*m; i++){
+		cout<<h_neighbourArray[i]<<" ";
+	}
+	
+	cout<<endl;
 
 	delete h_count;		
 	delete[] h_vertexArray;
