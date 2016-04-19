@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  10 APR 2016 18:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  19 APR 2016 01:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -559,7 +559,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
- <iitm.pdf, id=28, 333.245pt x 333.245pt>
+ <iitm.pdf, id=44, 333.245pt x 333.245pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -612,39 +612,61 @@ CHAPTER 1.
 CHAPTER 2.
 [2
 
+]
+CHAPTER 3.
+[3
+
+]
+CHAPTER 4.
+[4
+
+]
+CHAPTER 5.
+[5
+
 ] (./thesis.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 7.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
- [3
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 152.
+ [6
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 152.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 149.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 149.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: F33095BB0953319B788523E766C4A2BF;290.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 152.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 152.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 4DEB17409ECE39AC6469583E4DDF5C10;537
+(rerunfilecheck)             After:  3A38911576B987DED163B372BA8F5247;493.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
  ) 
 Here is how much of TeX's memory you used:
- 9808 strings out of 494985
- 138580 string characters out of 6180355
- 236491 words of memory out of 5000000
- 12873 multiletter control sequences out of 15000+600000
+ 9819 strings out of 494985
+ 138678 string characters out of 6180355
+ 237491 words of memory out of 5000000
+ 12877 multiletter control sequences out of 15000+600000
  15292 words of font info for 30 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,5n,40p,223b,373s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on thesis.pdf (10 pages, 61536 bytes).
+pdfTeX warning (dest): name{chapter.6} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
+texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on thesis.pdf (13 pages, 63996 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 18 named destinations out of 1000 (max. 500000)
- 54 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 140 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
