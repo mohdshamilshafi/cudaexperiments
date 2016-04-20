@@ -46,7 +46,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\def\thesistitle{Analysis of Incremental/Decremental Graph-based Algorithms on GPU}
+\def\thesistitle{Analysis of Incremental/Decremental Graph Colouring on GPU}
 \def\thesisauthor{Mohammed Shamil}
 
 
@@ -98,9 +98,17 @@ Date: 11 May, 2016
 \acknowledgements
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstract
-All thanks to God.
+First of all, I thank my guide, guru, counselor and teacher, Dr. Rupesh Nasre for all his help and guidance and acknowledge all his contributions, including but not limited to, to the completion of this work.
 
 \abstract
+Graphs are a well studied and widely used data structure in the field of algorithms, programming and computing. There are a lot of interesting applications of graphs and various algorithms are built on top of the graph data structure. One of the most famous and well studied graph problems is that of graph colouring. There are a lot of different versions of graph colouring problem of which the most common ones are that of vertex colouring and edge colouring. The problem is seemingly simple, to allocate a colour to every vertex/edge of a graph so that adjacent vertices/edges don't share the same colour minimizing the number of colours used.  
+Graph colouring is a very important and yet very challenging graph problem with ongoing active research. Graph colouring finds application in a varied range of problems including various scheduling problems like job scheduling on distributed computing systems, register allocation in compilers, pattern matching problems and solving Sudoku boards. \\
+\ \\
+Though the problem is seemingly simple, it is computationally hard. The graph colouring problem we are exploring in this work, that of vertex colouring, is an NP-hard problem. The sequential approaches like greedy colouring are simply not fast enough whereas advanced approximate/randomized solutions either produce colourings of bad colour quality or aren't fast enough. Thus came the parallel approaches to Graph Colouring. Most of the parallel versions of Graph Colouring algorithms were designed with either multi-core CPUs or heavy duty super computers in mind. With the advent of General purpose Programming on GPUs (GPGPU), we have access to cheap heavy multi-threaded parallel computing power. Our work is based on parallel computing on nVidia GPUs using Cuda programming language.\\  
+\ \\	
+We explore different parallel graph colouring algorithms on nVIdia GPUs in this work and try to adapt them to support addition of edges, called incremental graph colouring, and deletion of edges, called decremental graph colouring. In the first section, we explore different parallel graph algorithms and adapt a couple of them, one based on \textit{speculation} and \textit{conflict resolution} and the other on \textit{Vertex Independent Sets}, to work on nVidia GPUs. In the following sections, we adapt the GPU parallel colouring algorithm to support additions and deletions of edges. In the incremental part, we explore different methods to maximize parallelization while colouring newly added edges and use propagation to improve overall colour quality. In the decremental part, we explore different options to either process the vertices, on which the deleted edges were incident, on the go or to process them together and use propagation to propagate the information across the graph improving the colour quality.   \\
+\ \\
+\textbf{\textit{Keywords:} }\textit{Colour Quality, Compressed Sparse Row Representation, Decremental Graph Colouring, GPGPU, Graph Colouring, Incremental Graph Colouring, NP-hard, nVIDIA Cuda, Parallel Computing, Parallel Graph Algorithms, Vertex Colouring}
 \pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,11 +136,15 @@ All thanks to God.
 %\input{misc.tex}
 %\input{questions.tex}
 \chapter{Introduction}
+Graphs are one of the most important data structures and is used almost everywhere in practical applications.
 \chapter{Parallel Graph Colouring}
 \chapter{Parallel Graph Colouring: Incremental}
 \chapter{Parallel Graph Colouring: Decremental}
 
 \chapter{Future Work}
+Parallel VIS\\
+Multi GPU graph partition\\
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices.
