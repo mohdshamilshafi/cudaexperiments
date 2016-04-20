@@ -64,9 +64,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Load the correct class.
 \if@Synopsis
-    \LoadClass[11pt,a4paper]{article}
+    \LoadClass[12pt,a4paper]{article}
 \else
-    \LoadClass[11pt,a4paper]{report}
+    \LoadClass[12pt,a4paper]{report}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  20 APR 2016 18:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  20 APR 2016 21:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -10,8 +10,8 @@ Babel <3.9h> and hyphenation patterns for 4 languages loaded.
 Document Class: iitmdiss 2005/03/09 Class for IIT-Madras Dissertations
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -478,12 +478,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=0.0pt
 * \headheight=0.0pt
 * \headsep=0.0pt
-* \topskip=11.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=50.0pt
+* \marginparwidth=35.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -553,13 +553,13 @@ LaTeX Info: Redefining \nameref on input line 53.
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
- <iitm.pdf, id=40, 333.245pt x 333.245pt>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 68.
+ <iitm.pdf, id=72, 333.245pt x 333.245pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -583,27 +583,19 @@ l.98 \acknowledgements
 
 ] [1
 
-]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 111.
+] [2
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--113
+] [3] (./thesis.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 6.
 
- []
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 6.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--113
-
- []
-
-[2
-
-] [3] (./thesis.toc)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
@@ -613,7 +605,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--113
 \tf@lot=\write5
 \openout5 = `thesis.lot'.
 
- [5
+
+[5
 
 ] (./thesis.lof)
 \tf@lof=\write6
@@ -621,66 +614,194 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--113
 
  [6
 
-]
-(./introduction.tex)
+] (./introduction.tex)
 CHAPTER 1.
+
+Overfull \hbox (3.5661pt too wide) in paragraph at lines 147--150
+\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfs
+adfasffsdfsadf asffs-df-sad-fasffs-df-
+ []
+
+
+Overfull \hbox (13.44193pt too wide) in paragraph at lines 147--150
+\OT1/ptm/m/n/12 sad-fasffs-df-sad-fasffs-df-sad-fasffs-df-sad-fasffs-dfsadfasff
+sdfsadf asffs-df-sad-fasffs-df-sad-fasffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 152--155
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 156--159
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 161--164
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 165--168
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 170--173
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
 [1
 
 ]
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 174--177
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 179--182
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 183--186
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 188--191
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 192--195
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 197--200
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 201--204
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 206--209
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 211--214
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+[2]
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 216--219
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 220--223
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 225--228
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 229--232
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+
+Overfull \hbox (11.19496pt too wide) in paragraph at lines 234--237
+[]\OT1/ptm/m/n/12 asffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsdfsadfasffsd
+fsadfasffsdfsadf asffs-df-sad-fasffs-
+ []
+
+[3]
 CHAPTER 2.
-[2
-
-]
-CHAPTER 3.
-[3
-
-]
-CHAPTER 4.
 [4
 
 ]
-CHAPTER 5.
+CHAPTER 3.
+[5
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+]
+CHAPTER 4.
+[6
+
+]
+CHAPTER 5.
+[7
+
+]
+CHAPTER 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
 
  []
 
-[5
+[8
 
 ] (./thesis.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 7.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 164.
- [6
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 269.
+ [9
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 164.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 269.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 164.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 164.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 269.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 269.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 3A38911576B987DED163B372BA8F5247;493.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 164.
+(rerunfilecheck)             Checksum: 3A4E519EA89F268DE9C1516492E07E40;960.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 269.
  ) 
 Here is how much of TeX's memory you used:
- 9822 strings out of 494985
- 138716 string characters out of 6180355
- 240484 words of memory out of 5000000
- 12878 multiletter control sequences out of 15000+600000
- 16921 words of font info for 32 fonts, out of 8000000 for 9000
+ 9881 strings out of 494985
+ 139498 string characters out of 6180355
+ 239523 words of memory out of 5000000
+ 12908 multiletter control sequences out of 15000+600000
+ 19637 words of font info for 47 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,5n,40p,1058b,373s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,5n,40p,1050b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on thesis.pdf (14 pages, 77794 bytes).
+nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on thesis.pdf (17 pages, 73710 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 192 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 142 words of extra memory for PDF output out of 10000 (max. 10000000)
 
