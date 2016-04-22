@@ -71,16 +71,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Geometry and page layout
-%\RequirePackage[compat2,a4paper,left=1.5in,right=1in,top=1in,bottom=0.667in,
-                %nohead]{geometry}[2002/07/08]
-%\parskip 8pt
-
-\RequirePackage[compat2,a4paper,text={15.42cm,
-23cm},nohead,left=1.3in,right=1in,top=1.3in,
-footskip=30pt,bottom=1in]{geometry}
+\RequirePackage[a4paper,left=1.5in,right=1in,top=1in,footskip=30pt,bottom=1in,
+                nohead]{geometry}[2002/07/08]
 \parskip 8pt
-\setlength\oddsidemargin{0.52cm}
-\setlength\evensidemargin{0.6cm}
+
 \renewcommand{\@pnumwidth}{2.5em}
 %\renewcommand{\@tocrmarg}{2.5em}
 
@@ -90,8 +84,7 @@ footskip=30pt,bottom=1in]{geometry}
 %% makes all tables and figures have single spacing automatically.
 \RequirePackage{setspace} 
 \RequirePackage{atbeginend} % used to redefine the list environs
-%\setstretch{1.5}
-\setstretch{1.8}
+\setstretch{1.5}
 
 \BeforeBegin{itemize}{\vspace*{-5ex}\begin{singlespace}}
 \AfterEnd{itemize}{\end{singlespace}}
@@ -101,6 +94,7 @@ footskip=30pt,bottom=1in]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The figure captioning is done correctly via the hang option.
+%%\RequirePackage[hang]{caption2}  -> TeX generates error
 \RequirePackage[hang]{caption}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,18 +102,16 @@ footskip=30pt,bottom=1in]{geometry}
 % 
 % natbib allows easy switching of citation style and using it along
 % with the iitm.bst makes things perfect.
+\RequirePackage[authoryear,round]{natbib} 
+%\RequirePackage[numbers,square]{natbib} 
+\bibliographystyle{iitm}
 
-% Changed back to natbib standard - Vimal
-%\RequirePackage[square,numbers,sort]{natbib}
-%\bibliographystyle{iitm}
-
-%\RequirePackage[square,authoryear]{natbib}
-%\bibliographystyle{iitm}
-%\newcommand{\bibstyle@iitm}{\bibpunct{(}{)}{;}{a}{,}{,}%
-%    \gdef\NAT@biblabel##1{##1. }}
-% 
-% \setlength{\bibhang}{0pt}
-% \citestyle{iitm}
+\newcommand{\bibstyle@iitm}{\bibpunct{(}{)}{;}{a}{,}{,}%
+     \gdef\NAT@biblabel##1{##1. }}
+%
+\setlength{\bibhang}{0pt}
+\citestyle{iitm}
+%\citestyle{unsrt_newen}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,10 +120,12 @@ footskip=30pt,bottom=1in]{geometry}
 % \department{department name} -- user macro to declare name of department.
 \def\department#1{\gdef\@department{#1}}
 
-\RequirePackage[dvips]{graphicx}
+%\RequirePackage[dvips]{graphicx}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The title page
+
 \def\maketitle{%
   \pagenumbering{roman}
   \thispagestyle{empty}
@@ -199,14 +193,23 @@ footskip=30pt,bottom=1in]{geometry}
       \fi
     }
   \end{center}%
+  
+  {\large \em
+\begin{center} 
+under the guidance of \\
+{\bf Dr. Rupesh Nasre}
+\end{center}
+
+}
 
   \vspace*{0.75in}
   %\centerline{\psfig{figure=emblem.ps}}
-  \centerline{\includegraphics[scale=0.3]{iitm.eps}}
+%  \centerline{\includegraphics{iitm.eps}}
+  \centerline{\includegraphics[scale=1.]{iitm}}
   \vspace*{-0.15in}
   \begin{center}
-    {\bf \large DEPARTMENT OF \MakeUppercase{\@department}\par}
-    {\bf \large INDIAN INSTITUTE OF TECHNOLOGY, MADRAS.}
+    {\bf \large DEPARTMENT OF \@department\par}
+    {\bf \large INDIAN INSTITUTE OF TECHNOLOGY MADRAS}
     \vglue 0.50em
     {\bf \large \@date}\par
   \end{center}
@@ -319,7 +322,7 @@ footskip=30pt,bottom=1in]{geometry}
        \def\committee{\chapter*{\centerline{DOCTORAL COMMITTEE}}}
    \else
        \if@MS
-          \def\committee{\chapter*{\centerline{GENERAL TEST COMITTEE}}}
+          \def\committee{\chapter*{\centerline{GENERAL TEST COMITTEE}}}}
         \fi
    \fi
 

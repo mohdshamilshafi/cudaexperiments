@@ -161,6 +161,14 @@ The \textit{Chromatic Number} of a graph G, denoted by $ \chi(G) $, is the minim
 \begin{center}
 $ \chi(G) \leq k $
 \end{center}
+\subsection{Colour Quality}
+Colour Quality is a term used to denote how good the colouring done by a particular algorithm is. Colour Quality is said to be better for an algorithm if the number of colours used by the algorithm to colour a graph \textit{G} is closer to its Chromatic Number, $\chi(G)$.
+
+Mathematically, Colour Quality of a colouring is said to be better as the fraction,
+\begin{center}
+$\frac{No. \: of \: colours \: used \: by \: the \: algorithm}{\chi(G)} $
+\end{center}
+is closer to 1.
 \subsection{Complexity}
 Graph Colouring is a computationally complex problem. To decide if a Graph can be coloured using \textit{k} colours, is an NP-complete problem. Whereas, finding the Chromatic Number of a graph ($ \chi(G) $) is proved to be an NP-hard problem.
 
@@ -174,12 +182,64 @@ Graph Colouring problem, which started as a map colouring problem (four colour t
 \item Pattern matching applications
 \end{itemize}
 \section{Parallelization}
+\subsection{Frequency Scaling}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{mooreslaw.jpg}
+    \caption{
+        Graph showing Moore's Law in action, from \cite{WikipediaEN:ML}. Each data point is a processor.
+    }
+    \label{fig:moore's law}
+\end{figure}
+Moore's law, which observes that the number of transistors present in an integrated circuit approximately doubles every two years, still stands valid. Processors, and hence computers, have grown faster and faster over years. More and more transistors meant the processors could run faster, at a faster frequency. Processors with better and better clock speeds were introduced every year since the 1980s until around 2004 when instead of single core processors running at faster clock speeds, multi-core processors started rolling out.
+\subsection{Why Parallelization?}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{CPU-Scaling.jpg}
+    \caption{
+        \textit{Intel}'s transition from single core processors to multi-core processors around 2004-2005, from \cite{Herb:Intel}.
+    }
+    \label{fig:intel}
+\end{figure}
+Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical anymore. The increase in frequency meant an increase in power consumption which inturn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the figure \ref{fig:intel}.
+
+Parallelization enables us to run programs faster by splitting the work across different cores of a processor which are ideally run in parallel. In an ideal setup, with \textit{n} cores, we should see a speed up of \textit{n}, which means the running time will become $1/n^{th}$ compared to the running time when run on a single core processor. Though we never really reach this ideal speedup, as stated by Amdahl's law etc., we still achieve significant speed ups.
+\subsection{Parallezation of Graph Colouring}
+Since the computer architecture industry made a shift to the multi-core paradigm, there had to be a shift in programming paradigm to support the newly available parallelism. Almost all the algorithms, programs etc. were designed and developed to run sequentially on a single core processor. Things have changed recently as more and more algorithms and programs are redesigned and redeveloped to make use of the newly availble parallel hardware.
+
+As discussed earlier, Graph Colouring is a computationally complex problem. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well celebrated graph problem though most of them were meant specifically for distributed computing setups and super computers. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
 \section{GPGPU}
+In the domain of parallel programs and applications, one big deterrent was that the number of processor cores available for parallelism was small. Most of the multi-core processors have 32 cores at the maximum. Only super computers had a very high number of cores and they came at a price. 
+\subsection{Why GPUs?}
+Graphics Processing Units, GPUs, have been using parallelism since their birth. They have almost always been very accessible to the normal public as they are much cheaper than super computers. They also came with thousands of cores. But they were specialized for graphics related operations. Then came the paradigm of GPGPU, General Purpose computing on Graphics Processing Units. And with that, it was now possible to run regular operations and not just graphics related operations on the GPU. GPGPU brought with it easy, cheap access to massive parallelism.
+\subsection{nVidia CUDA}
+nVidia, one of the biggest players in the GPUs market, introduced its famous parallel computing platform, CUDA, in 2006, thus enabling easy GPU based parallel acceleration. In our work, we use CUDA C to parallelize graph colouring. CUDA lets us harness the power of thousands of cores in the CUDA enabled nVidia GPUs.
+\subsubsection{Architecture}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.4,keepaspectratio=true]{hardware-model.png}
+    \caption{
+        nVidia GPU hardware model, from \cite{nVidia:Hardware}.
+    }
+    \label{fig:nvidia}
+\end{figure}
+In an nVidia GPU, as shown in the figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
+\subsection{Challenges}
+Though, GPUs let us access thousands of threads easily, it comes with a cost. GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast, there is a cost for transferring data between the CPU and the GPU. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
+\section{Incremental/Decremental}
+As we discussed already, Graph Colouring is a very important algorithm on graphs. We have so many practical applications for the same. But most of the practical graphs are dynamic in nature. Vertices and edges are added and deleted often. But the number of these changes are very small compared to the size of the full graph. So, it follows that it is not wise to rerun the graph colouring algorithm on the entire graph every time some vertices/edges are added or deleted. Our work on Incremental/Decremental graph colouring tries to take care of precisely the same.
+
+In our work, we try to re-colour only the relevant parts of the graphs on addition/deletion of edges instead of re-colouring the entire graph. We consider only addition/deletion of edges as deletion of a vertex is considered as the deletion of all edges incident on that vertex. We consider different implications of Incremental/Decremental colouring such as the amount of time we save vs maintaining/improving the colour quality.
 
 \chapter{PARALLEL GRAPH COLOURING}
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \chapter{EXPERIMENTAL EVALUATION}
+\section{Experimental Setup}
+\section{Test Data}
+\section{Parallel Graph Colouring on GPU}
+\section{Incremental Parallel Graph Coloruing on GPU}
+\section{Decremental Parallel Graph Colouring on GPU}
 \chapter{CONCLUSION AND FUTURE WORK}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices.
@@ -193,11 +253,10 @@ Graph Colouring problem, which started as a map colouring problem (four colour t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography.
-
 \pagebreak
 \begin{singlespace}
   \begin{small}
-	\bibliography{bibliography}
+	\bibliography{refs}
   \end{small}
 \end{singlespace}
 

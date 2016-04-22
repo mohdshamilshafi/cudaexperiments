@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+The style file: iitm.bst
+Database file #1: refs.bib
+Warning--string name "march" is undefined
+--line 44 of file refs.bib
+You've used 3 entries,
+            2930 wiz_defined-function locations,
+            616 strings with 5264 characters,
+and the built_in function-call counts, 1275 in all, are:
+= -- 110
+> -- 33
+< -- 3
++ -- 14
+- -- 9
+* -- 72
+:= -- 219
+add.period$ -- 12
+call.type$ -- 3
+change.case$ -- 20
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 106
+empty$ -- 97
+format.name$ -- 12
+if$ -- 243
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 18
+newline$ -- 25
+num.names$ -- 12
+pop$ -- 37
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 40
+stack$ -- 0
+substring$ -- 39
+swap$ -- 42
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 27
+warning$ -- 0
+while$ -- 9
+width$ -- 0
+write$ -- 49
+(There was 1 warning)

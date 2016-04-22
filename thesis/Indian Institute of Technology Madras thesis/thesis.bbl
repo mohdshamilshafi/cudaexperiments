@@ -1,0 +1,28 @@
+\begin{thebibliography}{3}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{{NVIDIA Corporation}(2016)}]{nVidia:Hardware}
+{\bf {NVIDIA Corporation}} (2016).
+\newblock Cuda toolkit documentation.
+\newblock
+  \urlprefix\url{http://docs.nvidia.com/cuda/parallel-thread-execution/#ptx-machine-model}.
+\newblock [Online; accessed on 22 April, 2016].
+
+\bibitem[{Sutter(2005)}]{Herb:Intel}
+{\bf Sutter, H.} (2005).
+\newblock The free lunch is over: A fundamental turn toward concurrency in
+  software.
+\newblock {\em Dr. Dobb's Journal\/}, {\bf 30}(3).
+\newblock \urlprefix\url{http://www.gotw.ca/publications/concurrency-ddj.htm}.
+
+\bibitem[{{Wikipedia, the free encyclopedia}(2016)}]{WikipediaEN:ML}
+{\bf {Wikipedia, the free encyclopedia}} (2016).
+\newblock Moore's law.
+\newblock
+  \urlprefix\url{https://en.wikipedia.org/wiki/Moore\%27s_law#/media/File:Transistor_Count_and_Moore\%27s_Law_-_2011.svg}.
+\newblock [Online; accessed on 22 April, 2016].
+
+\end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  19 APR 2016 00:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  22 APR 2016 00:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -56,28 +56,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen109
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
-
-
-! Package keyval Error: compat2 undefined.
-
-See the keyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.994 \ProcessOptionsKV[p]{Gm}
-                              %
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Package geometry Warning: Over-specification in `h'-direction.
-    `width' (438.74144pt) is ignored.
-
-
-Package geometry Warning: Over-specification in `v'-direction.
-    `height' (654.41338pt) is ignored.
-
-) (./setspace.sty
+)
+(./setspace.sty
 Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
 
 Package: `setspace' 6.7 <2000/12/01>
@@ -98,25 +78,12 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 )
 \c@ContinuedFloat=\count91
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: dvips.def on input line 91.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
-\Gin@req@height=\dimen118
-\Gin@req@width=\dimen119
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count92
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -124,21 +91,21 @@ Package: times 2005/04/12 PSNFSS-v9.2a (SPQR)
 (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen120
-\epsfframethickness=\dimen121
-\epsfrsize=\dimen122
-\epsftmp=\dimen123
-\epsftsize=\dimen124
-\epsfxsize=\dimen125
-\epsfysize=\dimen126
-\pspoints=\dimen127
+\epsfframemargin=\dimen118
+\epsfframethickness=\dimen119
+\epsfrsize=\dimen120
+\epsftmp=\dimen121
+\epsftsize=\dimen122
+\epsfxsize=\dimen123
+\epsfysize=\dimen124
+\pspoints=\dimen125
 ) (/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box26
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip43
+\@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -147,49 +114,49 @@ Package: amstext 2000/06/29 v2.01
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
-\ex@=\dimen128
+\ex@=\dimen126
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen129
+\pmbraise@=\dimen127
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count92
+\inf@bad=\count93
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count93
-\leftroot@=\count94
+\uproot@=\count94
+\leftroot@=\count95
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count95
-\DOTSCASE@=\count96
+\classnum@=\count96
+\DOTSCASE@=\count97
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box27
 \strutbox@=\box28
-\big@size=\dimen130
+\big@size=\dimen128
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count97
-\c@MaxMatrixCols=\count98
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
 \dotsspace@=\muskip10
-\c@parentequation=\count99
-\dspbrk@lvl=\count100
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
 \tag@help=\toks17
-\row@=\count101
-\column@=\count102
-\maxfields@=\count103
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
 \andhelp@=\toks18
-\eqnshift@=\dimen131
-\alignsep@=\dimen132
-\tagshift@=\dimen133
-\tagwidth@=\dimen134
-\totwidth@=\dimen135
-\lineht@=\dimen136
+\eqnshift@=\dimen129
+\alignsep@=\dimen130
+\tagshift@=\dimen131
+\tagwidth@=\dimen132
+\totwidth@=\dimen133
+\lineht@=\dimen134
 \@envbody=\toks19
-\multlinegap=\skip44
-\multlinetaggap=\skip45
+\multlinegap=\skip46
+\multlinetaggap=\skip47
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
@@ -201,9 +168,9 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headfont=\toks23
 \thm@notefont=\toks24
 \thm@headpunct=\toks25
-\thm@preskip=\skip46
-\thm@postskip=\skip47
-\thm@headsep=\skip48
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
 \dth@everypar=\toks26
 )
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/txfonts.sty
@@ -409,32 +376,90 @@ LaTeX Font Info:    Redeclaring math symbol \lozenge on input line 142.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count105
+))
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
+)
 \epsfxsize=\dimen137
 \epsfysize=\dimen138
 )
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count104
-\sf@farskip=\skip49
+\c@KVtest=\count106
+\sf@farskip=\skip51
 \sf@captopadj=\dimen139
-\sf@capskip=\skip50
-\sf@nearskip=\skip51
-\c@subfigure=\count105
-\c@subfigure@save=\count106
-\c@lofdepth=\count107
-\c@subtable=\count108
-\c@subtable@save=\count109
-\c@lotdepth=\count110
-\sf@top=\skip52
-\sf@bottom=\skip53
+\sf@capskip=\skip52
+\sf@nearskip=\skip53
+\c@subfigure=\count107
+\c@subfigure@save=\count108
+\c@lofdepth=\count109
+\c@subtable=\count110
+\c@subtable@save=\count111
+\c@lotdepth=\count112
+\sf@top=\skip54
+\sf@bottom=\skip55
 )
-(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip54
-\bibsep=\skip55
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count111
-)
+
+! LaTeX Error: Option clash for package graphicx.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 \usepackage
+                [square]{natbib}
+The package graphicx has already been loaded with options:
+  []
+There has now been an attempt to load it with options
+  [dvips]
+Adding the global options:
+  ,dvips
+to your \documentclass declaration may fix this.
+Try typing  <return>  to proceed.
+
+
+! LaTeX Error: Option clash for package natbib.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \usepackage
+                [hypertex]{hyperref} % hyperlinks for references.
+The package natbib has already been loaded with options:
+  [authoryear,round]
+There has now been an attempt to load it with options
+  [square]
+Adding the global options:
+  authoryear,round,square
+to your \documentclass declaration may fix this.
+Try typing  <return>  to proceed.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -445,8 +470,8 @@ Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package hobsub Info: Skipping package `ifvtex' (already loaded).
@@ -488,13 +513,13 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen140
-\Hy@linkcounter=\count112
-\Hy@pagecounter=\count113
+\Hy@linkcounter=\count113
+\Hy@pagecounter=\count114
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count114
+\Hy@SavedSpaceFactor=\count115
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -519,14 +544,14 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count115
+\c@Hy@tempcnt=\count116
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen141
-\Fld@menulength=\count116
+\Fld@menulength=\count117
 \Field@Width=\dimen142
 \Fld@charsize=\dimen143
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -538,17 +563,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count117
-\c@Item=\count118
-\c@Hfootnote=\count119
+\Hy@abspage=\count118
+\c@Item=\count119
+\c@Hfootnote=\count120
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count120
-\c@bookmark@seq@number=\count121
+\Fld@listcount=\count121
+\c@bookmark@seq@number=\count122
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -560,43 +585,43 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/pxmi/m/it on input line 37.
-LaTeX Font Info:    Try loading font information for OML+pxmi on input line 37.
+LaTeX Font Info:    Checking defaults for OML/pxmi/m/it on input line 38.
+LaTeX Font Info:    Try loading font information for OML+pxmi on input line 38.
 
  (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
 File: omlpxmi.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/pxsy/m/n on input line 37.
-LaTeX Font Info:    Try loading font information for OMS+pxsy on input line 37.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/pxsy/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for OMS+pxsy on input line 38.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/omspxsy.fd
 File: omspxsy.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/pxex/m/n on input line 37.
-LaTeX Font Info:    Try loading font information for OMX+pxex on input line 37.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/pxex/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for OMX+pxex on input line 38.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/omxpxex.fd
 File: omxpxex.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/pxexa/m/n on input line 37.
-LaTeX Font Info:    Try loading font information for U+pxexa on input line 37.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/pxexa/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for U+pxexa on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/upxexa.fd
 File: upxexa.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Try loading font information for OT1+pxr on input line 37.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Try loading font information for OT1+pxr on input line 38.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/ot1pxr.fd
 File: ot1pxr.fd 2000/12/14 v1.0
@@ -609,15 +634,15 @@ File: ot1pxr.fd 2000/12/14 v1.0
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(93.95122pt, 431.28667pt, 72.26999pt)
-* v-part:(T,H,B)=(93.95122pt, 678.82564pt, 72.26999pt)
+* h-part:(L,W,R)=(108.405pt, 416.83289pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=431.28667pt
-* \textheight=678.82564pt
-* \oddsidemargin=14.79555pt
-* \evensidemargin=17.07182pt
-* \topmargin=21.68123pt
+* \textwidth=416.83289pt
+* \textheight=700.50687pt
+* \oddsidemargin=36.13501pt
+* \evensidemargin=36.13501pt
+* \topmargin=0.0pt
 * \headheight=0.0pt
 * \headsep=0.0pt
 * \topskip=12.0pt
@@ -640,42 +665,77 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count123
+\scratchdimen=\dimen144
+\scratchbox=\box29
+\nofMPsegments=\count124
+\nofMParguments=\count125
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count126
+\MPscratchDim=\dimen145
+\MPnumerator=\count127
+\makeMPintoPDFobject=\count128
+\everyMPtoPDFconversion=\toks28
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring OFF on input line 38.
 
-)
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 37.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count122
+\c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 37.
-LaTeX Info: Redefining \pageref on input line 37.
-LaTeX Info: Redefining \nameref on input line 37.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
-File: iitm.eps Graphic file (type eps)
- <iitm.eps> [0
+Package epstopdf Info: Source file: <iitm.eps>
+(epstopdf)                    date: 2009-02-17 16:29:41
+(epstopdf)                    size: 711659 bytes
+(epstopdf)             Output file: <iitm-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-04-22 00:48:11
+(epstopdf)                    size: 40389 bytes
+(epstopdf)             Command: <repstopdf --outfile=iitm-eps-converted-to.pdf 
+iitm.eps>
+(epstopdf)             \includegraphics on input line 53.
+Package epstopdf Info: Output file is already uptodate.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-Non-PDF special ignored!]
+<iitm-eps-converted-to.pdf, id=52, 332.24126pt x 332.24126pt>
+File: iitm-eps-converted-to.pdf Graphic file (type pdf)
+
+<use iitm-eps-converted-to.pdf>
+Package pdftex.def Info: iitm-eps-converted-to.pdf used on input line 53.
+(pdftex.def)             Requested size: 332.24043pt x 332.24043pt.
+ [0
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1 <./iitm-eps-converted-t
+o.pdf>]
 Certificate
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--78
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 
  []
 
@@ -683,29 +743,33 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.85 \acknowledgements
+l.86 \acknowledgements
                        [0
 
-] [1
+]pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.93 \abstract
+               [1
 
 ]
-LaTeX Font Info:    Try loading font information for U+pxmia on input line 118.
+LaTeX Font Info:    Try loading font information for U+pxmia on input line 119.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/pxfonts/upxmia.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/upxmia.fd
 File: upxmia.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 118.
+LaTeX Font Info:    Try loading font information for U+msa on input line 119.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 118.
+LaTeX Font Info:    Try loading font information for U+msb on input line 119.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+pxsyc on input line 118.
+LaTeX Font Info:    Try loading font information for U+pxsyc on input line 119.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/upxsyc.fd
@@ -737,7 +801,7 @@ File: upxsyc.fd 2000/12/14 v1.0
 
 ]
 CHAPTER 1.
-LaTeX Font Info:    Try loading font information for OT1+pxtt on input line 195
+LaTeX Font Info:    Try loading font information for OT1+pxtt on input line 196
 .
 (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/ot1pxtt.fd
 File: ot1pxtt.fd 2000/12/14 v1.0
@@ -745,57 +809,71 @@ File: ot1pxtt.fd 2000/12/14 v1.0
 
 
 ] [2]
-File: iitm.eps Graphic file (type eps)
+Package epstopdf Info: Source file: <iitm.eps>
+(epstopdf)                    date: 2009-02-17 16:29:41
+(epstopdf)                    size: 711659 bytes
+(epstopdf)             Output file: <iitm-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-04-22 00:48:11
+(epstopdf)                    size: 40389 bytes
+(epstopdf)             Command: <repstopdf --outfile=iitm-eps-converted-to.pdf 
+iitm.eps>
+(epstopdf)             \includegraphics on input line 273.
+Package epstopdf Info: Output file is already uptodate.
+File: iitm-eps-converted-to.pdf Graphic file (type pdf)
 
-<iitm.eps>
-File: iitm.eps Graphic file (type eps)
- <iitm.eps> [3
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!]
-Overfull \hbox (8.54507pt too wide) in paragraph at lines 310--323
-[]\OT1/pxr/m/n/12 I've in-cluded a sim-ple ex-am-ple BIBT[]X file along in this
- di-rec-tory called []\OT1/pxtt/m/n/12 refs.bib\OT1/pxr/m/n/12 .
- []
+<use iitm-eps-converted-to.pdf>
+Package pdftex.def Info: iitm-eps-converted-to.pdf used on input line 273.
+(pdftex.def)             Requested size: 332.24043pt x 332.24043pt.
+Package epstopdf Info: Source file: <iitm.eps>
+(epstopdf)                    date: 2009-02-17 16:29:41
+(epstopdf)                    size: 711659 bytes
+(epstopdf)             Output file: <iitm-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-04-22 00:48:11
+(epstopdf)                    size: 40389 bytes
+(epstopdf)             Command: <repstopdf --outfile=iitm-eps-converted-to.pdf 
+iitm.eps>
+(epstopdf)             \includegraphics on input line 274.
+Package epstopdf Info: Output file is already uptodate.
+File: iitm-eps-converted-to.pdf Graphic file (type pdf)
+ <use iitm-eps-converted-to.pdf>
+Package pdftex.def Info: iitm-eps-converted-to.pdf used on input line 274.
+(pdftex.def)             Requested size: 332.24043pt x 332.24043pt.
+ [3]
+LaTeX Font Info:    Try loading font information for OMS+pxr on input line 338.
 
-[4]
-LaTeX Font Info:    Try loading font information for OMS+pxr on input line 337.
 
- (/usr/share/texlive/texmf-dist/tex/latex/pxfonts/omspxr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/pxfonts/omspxr.fd
 File: omspxr.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Font shape `OMS/pxr/m/n' in size <12> not available
-(Font)              Font shape `OMS/pxsy/m/n' tried instead on input line 337.
- [5]
+(Font)              Font shape `OMS/pxsy/m/n' tried instead on input line 338.
+ [4] [5]
 APPENDIX A.
 [6
 
 ] [7
 
 ] (./thesis.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 398.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 399.
  [8
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 398.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 399.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 398.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 398.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 399.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 399.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 10A9201557FF50285FE26EFFA40B5958;669.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 398.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 399.
  ) 
 Here is how much of TeX's memory you used:
- 8360 strings out of 494985
- 122337 string characters out of 6180355
- 205569 words of memory out of 5000000
- 11386 multiletter control sequences out of 15000+600000
- 32239 words of font info for 100 fonts, out of 8000000 for 9000
+ 8881 strings out of 494985
+ 129714 string characters out of 6180355
+ 211488 words of memory out of 5000000
+ 11877 multiletter control sequences out of 15000+600000
+ 34120 words of font info for 104 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,8n,40p,296b,403s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,40p,296b,441s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/pxfonts/rpxb.pfb></usr/share/texlive/texmf-dist/fonts/type1
@@ -804,10 +882,10 @@ onts/rpxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txtt.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (18 pages, 96661 bytes).
+Output written on thesis.pdf (19 pages, 113480 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
+ 251 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
  46 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
 

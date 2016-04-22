@@ -55,7 +55,7 @@ Concurrency in Software},
 }
 
 @Misc{nVidia:Hardware,
-    author = {{NVIDIA Corporation}},
+    author = {{NVIDIA}},
     title = {CUDA Toolkit Documentation},
     year = {2016},
     note = {[Online; accessed on 22 April, 2016]},
