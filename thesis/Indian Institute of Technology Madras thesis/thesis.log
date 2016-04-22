@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  22 APR 2016 02:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  22 APR 2016 21:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -413,7 +413,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 32.
- <iitm.pdf, id=132, 109.40875pt x 109.40875pt>
+ <iitm.pdf, id=152, 109.40875pt x 109.40875pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -490,7 +490,7 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 179.
 
-<mooreslaw.jpg, id=244, 642.4pt x 577.357pt>
+<mooreslaw.jpg, id=269, 642.4pt x 577.357pt>
 File: mooreslaw.jpg Graphic file (type jpg)
  <use mooreslaw.jpg>
 Package pdftex.def Info: mooreslaw.jpg used on input line 188.
@@ -499,7 +499,7 @@ Package pdftex.def Info: mooreslaw.jpg used on input line 188.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] <CPU-Scaling.jpg, id=256, 419.6478pt x 418.2024pt>
+[3] <CPU-Scaling.jpg, id=281, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
  <use CPU-Scaling.jpg>
 Package pdftex.def Info: CPU-Scaling.jpg used on input line 198.
@@ -509,7 +509,7 @@ Package pdftex.def Info: CPU-Scaling.jpg used on input line 198.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4 <./mooreslaw.jpg>] [5 <./CPU-Scaling.jpg>] [6]
-<hardware-model.png, id=275, 429.605pt x 432.817pt>
+<hardware-model.png, id=302, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
 Package pdftex.def Info: hardware-model.png used on input line 220.
@@ -522,69 +522,96 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 CHAPTER 2.
 [10
 
-]
+] [11]
 CHAPTER 3.
-[11
-
-]
-CHAPTER 4.
 [12
 
 ]
-CHAPTER 5.
+CHAPTER 4.
 [13
 
 ]
-CHAPTER 6.
+CHAPTER 5.
 [14
+
+]
+CHAPTER 6.
+[15
 
 ] (./thesis.bbl
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 8.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 11.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 15.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 22--27
+Underfull \hbox (badness 6078) in paragraph at lines 28--34
+[]\T1/ptm/b/n/10.95 Naumov, M.\T1/ptm/m/n/10.95 , \T1/ptm/b/n/10.95 P. Cas-tong
+uay\T1/ptm/m/n/10.95 , and \T1/ptm/b/n/10.95 J. Co-hen \T1/ptm/m/n/10.95 (2015)
+.  Par-al-lel graph col-or-ing
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 28--34
+\T1/ptm/m/n/10.95 with ap-pli-ca-tions to the incomplete-lu fac-tor-iza-tion on
+ the gpu.  \T1/ptm/m/it/10.95 NVIDIA Tech-ni-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--34
+\T1/ptm/m/it/10.95 cal Re-port\T1/ptm/m/n/10.95 , \T1/ptm/b/n/10.95 001\T1/ptm/
+m/n/10.95 .  URL []$\T1/pcr/m/n/10.95 https : / / research . nvidia . com / pub
+lication /
+ []
+
+
+Overfull \hbox (36.16406pt too wide) in paragraph at lines 28--34
+\T1/pcr/m/n/10.95 parallel-[]graph-[]coloring-[]applications-[]incomplete-[]lu-
+[]factorization-[]gpu$[]\T1/ptm/m/n/10.95 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--60
 \T1/pcr/m/n/10.95 org / wiki / Moore % 27s _ law # /media / File : Transistor _
  Count _ and _ Moore %
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
- [15
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 291.
+ [16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 291.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 291.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 291.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 293A78591CBA4CA0DB151E3FC1341120;2107.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
+(rerunfilecheck)             Checksum: FE135CE707E4EDFE2179432071215425;2466.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 291.
  ) 
 Here is how much of TeX's memory you used:
- 7826 strings out of 494985
- 116891 string characters out of 6180355
- 203820 words of memory out of 5000000
- 10853 multiletter control sequences out of 15000+600000
+ 7853 strings out of 494985
+ 117502 string characters out of 6180355
+ 204102 words of memory out of 5000000
+ 10870 multiletter control sequences out of 15000+600000
  44917 words of font info for 62 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,5n,41p,1049b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,5n,41p,1049b,401s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/couri
-er/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (25 pages, 402875 bytes).
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on thesis.pdf (26 pages, 420697 bytes).
 PDF statistics:
- 383 PDF objects out of 1000 (max. 8388607)
- 330 compressed objects within 4 object streams
- 66 named destinations out of 1000 (max. 500000)
- 277 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 437 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 317 words of extra memory for PDF output out of 10000 (max. 10000000)
 

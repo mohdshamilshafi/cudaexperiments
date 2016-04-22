@@ -24,6 +24,17 @@
   note =         {Software available at: {http://mayavi.sf.net}}
 }
 
+@Article{nvidia:naumov,
+  author =       {Maxim Naumov and Patrice Castonguay and Jonathan Cohen},
+  title =        {Parallel Graph Coloring with Applications
+to the Incomplete-LU Factorization on the GPU},
+  journal =      {NVIDIA Technical Report},
+  month = {May},
+  year =         2015,
+  volume =       001,
+  url = {https://research.nvidia.com/publication/parallel-graph-coloring-applications-incomplete-lu-factorization-gpu}
+}
+
 @Article{pan:pr:flat-fst,
   author =       {Prabhu Ramachandran and S. C. Rajan and M. Ramakrishna},
   title =        {A fast, two-dimensional panel method},
@@ -55,9 +66,49 @@ Concurrency in Software},
 }
 
 @Misc{nVidia:Hardware,
-    author = {{NVIDIA}},
+    author = {{NVIDIA Corporation}},
     title = {CUDA Toolkit Documentation},
     year = {2016},
     note = {[Online; accessed on 22 April, 2016]},
     url = {http://docs.nvidia.com/cuda/parallel-thread-execution/#ptx-machine-model}
 }
+
+@article{CAtalyuRek:2012:GCA:2396901.2397093,
+ author = {\c{C}Ataly\"{u}Rek, \'{\i}Mit V. and Feo, John and Gebremedhin, Assefaw H. and Halappanavar, Mahantesh and Pothen, Alex},
+ title = {Graph Coloring Algorithms for Multi-core and Massively Multithreaded Architectures},
+ journal = {Parallel Comput.},
+ issue_date = {October, 2012},
+ volume = {38},
+ number = {10-11},
+ month = oct,
+ year = {2012},
+ issn = {0167-8191},
+ pages = {576--594},
+ numpages = {19},
+ url = {http://dx.doi.org/10.1016/j.parco.2012.07.001},
+ doi = {10.1016/j.parco.2012.07.001},
+ acmid = {2397093},
+ publisher = {Elsevier Science Publishers B. V.},
+ address = {Amsterdam, The Netherlands, The Netherlands},
+ keywords = {Combinatorial scientific computing, Graph coloring, Multi-core/multithreaded computing, Parallel graph algorithms},
+} 
+
+@article{Grosset:2011:EGC:2038037.1941597,
+ author = {Grosset, Andre Vincent Pascal and Zhu, Peihong and Liu, Shusen and Venkatasubramanian, Suresh and Hall, Mary},
+ title = {Evaluating Graph Coloring on GPUs},
+ journal = {SIGPLAN Not.},
+ issue_date = {August 2011},
+ volume = {46},
+ number = {8},
+ month = feb,
+ year = {2011},
+ issn = {0362-1340},
+ pages = {297--298},
+ numpages = {2},
+ url = {http://doi.acm.org/10.1145/2038037.1941597},
+ doi = {10.1145/2038037.1941597},
+ acmid = {1941597},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {cuda, gpu, graph coloring, parallel algorithm},
+} 

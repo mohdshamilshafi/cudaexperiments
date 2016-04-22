@@ -207,7 +207,7 @@ Parallelization enables us to run programs faster by splitting the work across d
 \subsection{Parallezation of Graph Colouring}
 Since the computer architecture industry made a shift to the multi-core paradigm, there had to be a shift in programming paradigm to support the newly available parallelism. Almost all the algorithms, programs etc. were designed and developed to run sequentially on a single core processor. Things have changed recently as more and more algorithms and programs are redesigned and redeveloped to make use of the newly availble parallel hardware.
 
-As discussed earlier, Graph Colouring is a computationally complex problem. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well celebrated graph problem though most of them were meant specifically for distributed computing setups and super computers. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
+As discussed earlier, Graph Colouring is a computationally complex problem. It is NP-hard to solve. Also, the approximation algorithms for colouring a graph with n vertices are also NP-hard within $n^{1-\epsilon}$ for all $\epsilon > 0$. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well celebrated graph problem though most of them were meant specifically for distributed computing setups and super computers. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
 \section{GPGPU}
 In the domain of parallel programs and applications, one big deterrent was that the number of processor cores available for parallelism was small. Most of the multi-core processors have 32 cores at the maximum. Only super computers had a very high number of cores and they came at a price. 
 \subsection{Why GPUs?}
@@ -225,13 +225,28 @@ nVidia, one of the biggest players in the GPUs market, introduced its famous par
 \end{figure}
 In an nVidia GPU, as shown in the figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
 \subsection{Challenges}
-Though, GPUs let us access thousands of threads easily, it comes with a cost. GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast, there is a cost for transferring data between the CPU and the GPU. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
+Though, GPUs let us access thousands of threads easily, it comes with a cost. GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
 \section{Incremental/Decremental}
 As we discussed already, Graph Colouring is a very important algorithm on graphs. We have so many practical applications for the same. But most of the practical graphs are dynamic in nature. Vertices and edges are added and deleted often. But the number of these changes are very small compared to the size of the full graph. So, it follows that it is not wise to rerun the graph colouring algorithm on the entire graph every time some vertices/edges are added or deleted. Our work on Incremental/Decremental graph colouring tries to take care of precisely the same.
 
 In our work, we try to re-colour only the relevant parts of the graphs on addition/deletion of edges instead of re-colouring the entire graph. We consider only addition/deletion of edges as deletion of a vertex is considered as the deletion of all edges incident on that vertex. We consider different implications of Incremental/Decremental colouring such as the amount of time we save vs maintaining/improving the colour quality.
 
 \chapter{PARALLEL GRAPH COLOURING}
+We have established why we are interested in the paradigm of parallel programming and why we want to parallelize graph colouring.
+\section{Graph Colouring Problem}
+The problem we are concerned with is that of \textit{1-distance Vertex Colouring} or simply, \textit{Vertex Colouring}.
+\begin{verse}
+\textit{\textbf{Parallel 1-distance Vertex Colouring:} Colouring all \textit{V} vertices of a graph \textit{G(V,E)} in parallel, such that vertices at a distance of 1 edge, adjacent vertices, don't share the same colour.}
+\end{verse}
+\section{Related Work}
+Graph Colouring is a well studied problem and there have been so many works on the same over years. But most of them were regarding sequentially solving the problem using various paradigms, like that of semi-definite programming, integer programming etc.
+
+Recently there have been some parallel approaches to the same, but most of them like the works by \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on Super Computers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
+\section{Algorithms}
+As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecure can be broadly classified into two of the following categories:
+\subsection{Independent Sets and Colouring}
+\subsection{Speculation and Conflict Resolution}
+
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \chapter{EXPERIMENTAL EVALUATION}

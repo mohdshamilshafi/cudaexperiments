@@ -21,12 +21,17 @@
 \BOOKMARK [2][-]{subsection.1.4.3}{Challenges}{section.1.4}% 21
 \BOOKMARK [1][-]{section.1.5}{Incremental/Decremental}{chapter.1}% 22
 \BOOKMARK [0][-]{chapter.2}{PARALLEL GRAPH COLOURING}{}% 23
-\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 24
-\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 25
-\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 26
-\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Coloruing on GPU}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 31
-\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 32
+\BOOKMARK [1][-]{section.2.1}{Graph Colouring Problem}{chapter.2}% 24
+\BOOKMARK [1][-]{section.2.2}{Related Work}{chapter.2}% 25
+\BOOKMARK [1][-]{section.2.3}{Algorithms}{chapter.2}% 26
+\BOOKMARK [2][-]{subsection.2.3.1}{Independent Sets and Colouring}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.2}{Speculation and Conflict Resolution}{section.2.3}% 28
+\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 29
+\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 30
+\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Coloruing on GPU}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 37

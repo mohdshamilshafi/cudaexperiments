@@ -4,3 +4,9 @@ Also for the data structure.
 
 Loopless graphs. While processing
 
+
+Table explaining the GPU.
+
+Future work:
+Warp centric approach.
+

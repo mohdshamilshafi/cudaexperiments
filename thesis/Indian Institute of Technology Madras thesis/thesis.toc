@@ -22,12 +22,17 @@
 \contentsline {subsection}{\numberline {1.4.3}Challenges}{7}{subsection.1.4.3}
 \contentsline {section}{\numberline {1.5}Incremental/Decremental}{8}{section.1.5}
 \contentsline {chapter}{\numberline {2}PARALLEL GRAPH COLOURING}{10}{chapter.2}
-\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING: INCREMENTAL}{11}{chapter.3}
-\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: DECREMENTAL}{12}{chapter.4}
-\contentsline {chapter}{\numberline {5}EXPERIMENTAL EVALUATION}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Experimental Setup}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Test Data}{13}{section.5.2}
-\contentsline {section}{\numberline {5.3}Parallel Graph Colouring on GPU}{13}{section.5.3}
-\contentsline {section}{\numberline {5.4}Incremental Parallel Graph Coloruing on GPU}{13}{section.5.4}
-\contentsline {section}{\numberline {5.5}Decremental Parallel Graph Colouring on GPU}{13}{section.5.5}
-\contentsline {chapter}{\numberline {6}CONCLUSION AND FUTURE WORK}{14}{chapter.6}
+\contentsline {section}{\numberline {2.1}Graph Colouring Problem}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Related Work}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Algorithms}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Independent Sets and Colouring}{11}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Speculation and Conflict Resolution}{11}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING: INCREMENTAL}{12}{chapter.3}
+\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: DECREMENTAL}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}EXPERIMENTAL EVALUATION}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Experimental Setup}{14}{section.5.1}
+\contentsline {section}{\numberline {5.2}Test Data}{14}{section.5.2}
+\contentsline {section}{\numberline {5.3}Parallel Graph Colouring on GPU}{14}{section.5.3}
+\contentsline {section}{\numberline {5.4}Incremental Parallel Graph Coloruing on GPU}{14}{section.5.4}
+\contentsline {section}{\numberline {5.5}Decremental Parallel Graph Colouring on GPU}{14}{section.5.5}
+\contentsline {chapter}{\numberline {6}CONCLUSION AND FUTURE WORK}{15}{chapter.6}
