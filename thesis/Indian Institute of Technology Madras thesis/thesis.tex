@@ -248,7 +248,7 @@ The problem we are concerned with is that of \textit{1-distance Vertex Colouring
 Graph Colouring is a well studied problem and there have been so many works on the same over years. But most of them were regarding sequentially solving the problem using various paradigms, like that of semi-definite programming, integer programming etc.
 
 Recently there have been some parallel approaches to the same, but most of them like the works by \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on Super Computers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
-\section{Broad Classification of Algorithms}
+\section{Broad Classification of Parallel Graph Colouring Algorithms}
 As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecure can be broadly classified into two of the following categories:
 \subsection{Vertex Independent Sets and Colouring}
 Algorithms falling under this category work in two phases:
@@ -304,7 +304,7 @@ So, in the first phase, instead of finding a VIS and colouring just the vertices
 
 \begin{algorithm}
 \caption{Speculation and Conflict Resolution}\label{SpecColouring}
-\begin{algorithmic}[2]
+\begin{algorithmic}[1]
 \Procedure{SpecCRParallelGraphColouring(G(V,E))}{}
 \State $\textit{Initialization}$
 \BState \emph{speculation}:
@@ -320,6 +320,37 @@ So, in the first phase, instead of finding a VIS and colouring just the vertices
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+\section{Algorithms}
+In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section.
+\subsection{Sequential Greedy Graph Colouring}
+We start with discussing a sequential graph colouring algorithm, one of the easiest, the Greedy Colouring algorithm. Many other algorithms, including many parallel graph colouring algorithms, are based on greedy colouring.
+
+In Greedy Colouring, you choose each vertex of the graph and assign it the smallest colour number available which is not currently in use by one of its adjacent vertices. This is described in Algorithm \ref{GreedyColouring}. As is evident, the colour quality produced by Greed Colouring can be arbitrary. In other words, the colour quality produced will depend on the order in which vertices are processed by the algorithm.
+
+Greedy Colouring can produce a colour quality of $\chi(G)$ for atleast one ordering of the vertices. But, on an average, this heuristic performs far from optimal. But the greedy colouring algorithm gives us an upper bound on the number of colours that it uses. The colouring produced uses at most $\Delta+1$ colours, where $\Delta$ is the maximum degree among all the vertices of the graph. AS the order in which the vertices are processed is very important, there have been many approaches suggested over the years which on an average produces a better colour quality. One of them is the so called Welsh-Powell Algorithm, in which we process the vertices in the order of their degrees.
+\begin{algorithm}
+\caption{Sequential Greedy Graph Colouring}\label{GreedyColouring}
+\begin{algorithmic}[1]
+\Procedure{GreedyColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\For{$each \: v \in V$}
+\For{$each \: u \in V$ adjacent to $v$}
+\If{$\textit{colour[u]} \neq 0$}
+\State $\textit{availableColours[colour[u]]} \gets FALSE$
+\EndIf 
+\EndFor
+\For{$i$ from $1$ to $\Delta+1$}
+\If{$\textit{availableColours[i] is TRUE}$}
+\State $\textit{colour[v]} \gets i$
+\State $\textit{break}$
+\EndIf 
+\EndFor
+\State $\textit{Re-initialize availableColours[] array to TRUE}$
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\section{Our Approach}
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \chapter{EXPERIMENTAL EVALUATION}

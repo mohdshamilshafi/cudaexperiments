@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  23 APR 2016 03:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  23 APR 2016 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,7 +451,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
- <iitm.pdf, id=152, 109.40875pt x 109.40875pt>
+ <iitm.pdf, id=164, 109.40875pt x 109.40875pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -528,7 +528,7 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
 
-<mooreslaw.jpg, id=269, 642.4pt x 577.357pt>
+<mooreslaw.jpg, id=284, 642.4pt x 577.357pt>
 File: mooreslaw.jpg Graphic file (type jpg)
  <use mooreslaw.jpg>
 Package pdftex.def Info: mooreslaw.jpg used on input line 194.
@@ -537,7 +537,7 @@ Package pdftex.def Info: mooreslaw.jpg used on input line 194.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] <CPU-Scaling.jpg, id=281, 419.6478pt x 418.2024pt>
+[3] <CPU-Scaling.jpg, id=296, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
  <use CPU-Scaling.jpg>
 Package pdftex.def Info: CPU-Scaling.jpg used on input line 204.
@@ -547,7 +547,7 @@ Package pdftex.def Info: CPU-Scaling.jpg used on input line 204.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4 <./mooreslaw.jpg>] [5 <./CPU-Scaling.jpg>] [6]
-<hardware-model.png, id=302, 429.605pt x 432.817pt>
+<hardware-model.png, id=317, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
 Package pdftex.def Info: hardware-model.png used on input line 226.
@@ -563,21 +563,21 @@ CHAPTER 2.
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 278.
- [11] [12] [13]
+ [11] [12] [13] [14]
 CHAPTER 3.
-[14
-
-]
-CHAPTER 4.
 [15
 
 ]
-CHAPTER 5.
+CHAPTER 4.
 [16
 
 ]
-CHAPTER 6.
+CHAPTER 5.
 [17
+
+]
+CHAPTER 6.
+[18
 
 ] (./thesis.bbl
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
@@ -618,26 +618,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--60
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 364.
- [18
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 395.
+ [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 364.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 395.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 364.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 364.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 395.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 395.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 52E0E60E2049EC4321FB1AB2CB1C4C8C;2497.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 364.
+(rerunfilecheck)             Checksum: 177C9FA50CBC7746C71BED8B9EFFA7DD;2725.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
  ) 
 Here is how much of TeX's memory you used:
- 8515 strings out of 494985
- 126983 string characters out of 6180355
- 215997 words of memory out of 5000000
- 11503 multiletter control sequences out of 15000+600000
+ 8528 strings out of 494985
+ 127161 string characters out of 6180355
+ 217057 words of memory out of 5000000
+ 11511 multiletter control sequences out of 15000+600000
  57923 words of font info for 69 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 43i,5n,41p,1049b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,6n,41p,1049b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
@@ -649,10 +649,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (28 pages, 432467 bytes).
+Output written on thesis.pdf (29 pages, 437026 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 397 compressed objects within 4 object streams
- 84 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 477 PDF objects out of 1000 (max. 8388607)
+ 418 compressed objects within 5 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 341 words of extra memory for PDF output out of 10000 (max. 10000000)
 
