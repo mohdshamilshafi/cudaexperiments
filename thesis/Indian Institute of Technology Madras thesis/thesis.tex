@@ -10,6 +10,12 @@
 %\usepackage[hypertex]{hyperref} % hyperlinks for references.
 \usepackage[driverfallback=dvipdfm]{hyperref}
 \usepackage{amsmath} % easier math formulae, align, subequations \ldots
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
 
 \def\thesistitle{Analysis of Parallel Incremental/Decremental Graph Colouring on GPU}
 \def\thesisauthor{Mohammed Shamil}
@@ -242,11 +248,78 @@ The problem we are concerned with is that of \textit{1-distance Vertex Colouring
 Graph Colouring is a well studied problem and there have been so many works on the same over years. But most of them were regarding sequentially solving the problem using various paradigms, like that of semi-definite programming, integer programming etc.
 
 Recently there have been some parallel approaches to the same, but most of them like the works by \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on Super Computers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
-\section{Algorithms}
+\section{Broad Classification of Algorithms}
 As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecure can be broadly classified into two of the following categories:
-\subsection{Independent Sets and Colouring}
-\subsection{Speculation and Conflict Resolution}
+\subsection{Vertex Independent Sets and Colouring}
+Algorithms falling under this category work in two phases:
+\begin{enumerate}
+\item Vertex Independent Sets: Find VIS
+\item Colouring: Colour the VIS found without conflicts
+\end{enumerate}
 
+This set of algorithms relies upon finding  Vertex Independent Sets of vertices and colouring them in parallel. Most of the earlier parallel algorithms developed for graph colouring were based on this idea.
+
+\begin{verse}
+Vertex Independent Set (VIS): A vertex independent set of a graph G is a set of vertices who don't have any edges amongst each other.   
+\end{verse}
+
+Mathematically, $\gamma$ is a valid Vertex Independent Set of a graph $G(V,E)$ if
+\begin{center}
+$\gamma \subseteq V$
+
+and
+
+$\forall \: v_{i}, v_{j}\in\gamma$, $e\in E$, if $v_{i}$ is incident on $e$, then $\forall \: j \neq i$, $v_{j}$ is not incident on $e$.
+\end{center}
+
+The idea is pretty straight forward. These are iterative algorithms where, in each iteration, you find a Vertex Independent Set of the given graph and colour all of the vertices in that VIS with a single colour. The process is continued with different colours until there are no more vertices to be coloured. Both the steps, finding VIS and colouring the vertices in that VIS, can be done in parallel. This category of algorithms roughly work as explained in Algorithm \ref{VISColouring}.
+
+\begin{algorithm}
+\caption{Vertex Independent Sets and Colouring}\label{VISColouring}
+\begin{algorithmic}[1]
+\Procedure{VISParallelGraphColouring(G(V,E))}{}
+\State $\textit{Initialization}$\Comment{Initialize all the variables and other data structures}
+\State $\textit{currentColour} \gets 1$
+\While{$V\not=\phi$} \Comment{Run until all the vertices are coloured}
+\State $\gamma \gets \textit{a VIS of G(V,E)}$ \Comment{VIS can be found in parallel}
+\For{$each \: v \in \gamma$} \Comment{This loop can be run in parallel}
+\State $\textit{colour[v]} \gets currentColour$
+\EndFor
+\State $V \gets V-\gamma$
+\State $\textit{currentColour} \gets \textit{currentColour}+1$
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Speculation and Conflict Resolution}
+Algorithms falling under this category work in two phases:
+\begin{enumerate}
+\item Speculation: Colour the graph based on some pre-existing knowledge possibly generating conficts
+\item Conflict Resolution: Resolve the conflicts possibly generated in the first phase
+\end{enumerate}
+The first category of algorithms relied upon finding Vertex Independent Sets iteratively so that we can colour the vertices in the VIS found in each step without any conflict. This second category of algorithms instead let us commit some mistakes, or rather conflicts, in our colouring. That is, it saves us from finding a VIS in each step, instead we colour the graph using some pre-existing knowledge like existing colouring of the graph or some structural information regarding the graph.
+
+So, in the first phase, instead of finding a VIS and colouring just the vertices in that VIS without any conflict in an iteration, we speculate the colours of the entire graph with some pre-existing knowledge and possibly commit conflicts. The possible conflicts inflicted in this first phase are rectified in the second phase in which we find the conflicts and resolve them. For practical reasons, the first phase is done in parallel and the second phase is done sequentially or partially in parallel. This category of algorithms roughly work as explained in Algorithm \ref{SpecColouring}.
+
+\begin{algorithm}
+\caption{Speculation and Conflict Resolution}\label{SpecColouring}
+\begin{algorithmic}[2]
+\Procedure{SpecCRParallelGraphColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\BState \emph{speculation}:
+\For{$each \: v \in V$}\Comment{Can be done in parallel}
+\State $\textit{colour[v]} \gets speculatedColour$ 
+\EndFor
+\BState \emph{conflict resolution}:\Comment{Done serially or partially in parallel}
+\For{$each \: v \in V$}
+\If{$\textit{colour[v]}$ has a conflict}\Comment{Conflicts can be found in parallel}
+\State $\textit{colour[v]} \gets$ a new colour which resolves the conflict \Comment{Greedy?}
+\EndIf 
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \chapter{EXPERIMENTAL EVALUATION}

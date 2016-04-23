@@ -23,8 +23,8 @@
 \BOOKMARK [0][-]{chapter.2}{PARALLEL GRAPH COLOURING}{}% 23
 \BOOKMARK [1][-]{section.2.1}{Graph Colouring Problem}{chapter.2}% 24
 \BOOKMARK [1][-]{section.2.2}{Related Work}{chapter.2}% 25
-\BOOKMARK [1][-]{section.2.3}{Algorithms}{chapter.2}% 26
-\BOOKMARK [2][-]{subsection.2.3.1}{Independent Sets and Colouring}{section.2.3}% 27
+\BOOKMARK [1][-]{section.2.3}{Broad Classification of Algorithms}{chapter.2}% 26
+\BOOKMARK [2][-]{subsection.2.3.1}{Vertex Independent Sets and Colouring}{section.2.3}% 27
 \BOOKMARK [2][-]{subsection.2.3.2}{Speculation and Conflict Resolution}{section.2.3}% 28
 \BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 29
 \BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 30
