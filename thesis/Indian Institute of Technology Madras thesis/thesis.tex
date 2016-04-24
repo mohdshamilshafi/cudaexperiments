@@ -151,9 +151,9 @@ xxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
 \section{Graphs and Graph Algorithms}
 Graphs are really important mathematical concepts and in the area of computing, their various forms are widely used as data structures to aid various algorithms. Graphs are commonly used to denote relations between different entities and hence is a very important and integral part of many algorithms. On a practical level, we deal with graphs in the order of billions of nodes and edges on a daily basis. Especially with the advent of social networks and big data, a lot of active research is ongoing in the analysis and understanding of large graphs.
 
-Many problems in the area of Computer Science, Biology etc. are solved with the help of algorithms which are based on graphs. Shortest path problem, Traveling Salesman Problem (TSP), network flow problems, vertex cover problem, graph colouring etc. are important graph-based problems with many practical applications in the real world. Our work is on Graph Colouring which is one of the most famous and well studied graph problems.
+Many problems in the area of Computer Science, Biology etc. are solved with the help of algorithms which are based on graphs. Shortest path problem, Travelling Salesman Problem (TSP), network flow problems, vertex cover problem, graph colouring etc. are important graph-based problems with many practical applications in the real world. Our work is on Graph Colouring which is one of the most famous and well studied graph problems.
 \section{Vertex Colouring}
-Graph Colouring problem entails \textit{colouring/labeling} of the vertices/edges of a graph based on some set of conditions which are to be satisfied. In other words, its a problem in which you allocate a colour/number to every vertex/edge of a graph such that a set of constraints are satified. There are different versions of Graph Colouring and the one which is of interest to us is that of Vertex Colouring.
+Graph Colouring problem entails \textit{colouring/labeling} of the vertices/edges of a graph based on some set of conditions which are to be satisfied. In other words, its a problem in which you allocate a colour/number to every vertex/edge of a graph such that a set of constraints are satisfied. There are different versions of Graph Colouring and the one which is of interest to us is that of Vertex Colouring.
 \subsection{Classical Vertex Colouring Problem}
 Vertex Colouring is the most basic version of Graph Colouring and other Graph Colouring problems can be presented as a Vertex Colouring problem. In it's classical form, Vertex Colouring is:
 \begin{verse}
@@ -207,11 +207,11 @@ Moore's law, which observes that the number of transistors present in an integra
     }
     \label{fig:intel}
 \end{figure}
-Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical anymore. The increase in frequency meant an increase in power consumption which inturn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the figure \ref{fig:intel}.
+Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical any more. The increase in frequency meant an increase in power consumption which in turn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the figure \ref{fig:intel}.
 
 Parallelization enables us to run programs faster by splitting the work across different cores of a processor which are ideally run in parallel. In an ideal setup, with \textit{n} cores, we should see a speed up of \textit{n}, which means the running time will become $1/n^{th}$ compared to the running time when run on a single core processor. Though we never really reach this ideal speedup, as stated by Amdahl's law etc., we still achieve significant speed ups.
 \subsection{Parallezation of Graph Colouring}
-Since the computer architecture industry made a shift to the multi-core paradigm, there had to be a shift in programming paradigm to support the newly available parallelism. Almost all the algorithms, programs etc. were designed and developed to run sequentially on a single core processor. Things have changed recently as more and more algorithms and programs are redesigned and redeveloped to make use of the newly availble parallel hardware.
+Since the computer architecture industry made a shift to the multi-core paradigm, there had to be a shift in programming paradigm to support the newly available parallelism. Almost all the algorithms, programs etc. were designed and developed to run sequentially on a single core processor. Things have changed recently as more and more algorithms and programs are redesigned and redeveloped to make use of the newly available parallel hardware.
 
 As discussed earlier, Graph Colouring is a computationally complex problem. It is NP-hard to solve. Also, the approximation algorithms for colouring a graph with n vertices are also NP-hard within $n^{1-\epsilon}$ for all $\epsilon > 0$. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well celebrated graph problem though most of them were meant specifically for distributed computing setups and super computers. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
 \section{GPGPU}
@@ -235,7 +235,7 @@ Though, GPUs let us access thousands of threads easily, it comes with a cost. GP
 \section{Incremental/Decremental}
 As we discussed already, Graph Colouring is a very important algorithm on graphs. We have so many practical applications for the same. But most of the practical graphs are dynamic in nature. Vertices and edges are added and deleted often. But the number of these changes are very small compared to the size of the full graph. So, it follows that it is not wise to rerun the graph colouring algorithm on the entire graph every time some vertices/edges are added or deleted. Our work on Incremental/Decremental graph colouring tries to take care of precisely the same.
 
-In our work, we try to re-colour only the relevant parts of the graphs on addition/deletion of edges instead of re-colouring the entire graph. We consider only addition/deletion of edges as deletion of a vertex is considered as the deletion of all edges incident on that vertex. We consider different implications of Incremental/Decremental colouring such as the amount of time we save vs maintaining/improving the colour quality.
+In our work, we try to re-colour only the relevant parts of the graphs on addition/deletion of edges instead of re-colouring the entire graph. We consider only addition/deletion of edges as deletion of a vertex is considered as the deletion of all edges incident on that vertex. We consider different implications of Incremental/Decremental colouring such as the amount of time we save versus maintaining/improving the colour quality.
 
 \chapter{PARALLEL GRAPH COLOURING}
 We have established why we are interested in the paradigm of parallel programming and why we want to parallelize graph colouring.
@@ -249,7 +249,7 @@ Graph Colouring is a well studied problem and there have been so many works on t
 
 Recently there have been some parallel approaches to the same, but most of them like the works by \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on Super Computers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
 \section{Broad Classification of Parallel Graph Colouring Algorithms}
-As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecure can be broadly classified into two of the following categories:
+As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecture can be broadly classified into two of the following categories:
 \subsection{Vertex Independent Sets and Colouring}
 Algorithms falling under this category work in two phases:
 \begin{enumerate}
@@ -295,7 +295,7 @@ The idea is pretty straight forward. These are iterative algorithms where, in ea
 \subsection{Speculation and Conflict Resolution}
 Algorithms falling under this category work in two phases:
 \begin{enumerate}
-\item Speculation: Colour the graph based on some pre-existing knowledge possibly generating conficts
+\item Speculation: Colour the graph based on some pre-existing knowledge possibly generating conflicts
 \item Conflict Resolution: Resolve the conflicts possibly generated in the first phase
 \end{enumerate}
 The first category of algorithms relied upon finding Vertex Independent Sets iteratively so that we can colour the vertices in the VIS found in each step without any conflict. This second category of algorithms instead let us commit some mistakes, or rather conflicts, in our colouring. That is, it saves us from finding a VIS in each step, instead we colour the graph using some pre-existing knowledge like existing colouring of the graph or some structural information regarding the graph.
@@ -321,7 +321,7 @@ So, in the first phase, instead of finding a VIS and colouring just the vertices
 \end{algorithmic}
 \end{algorithm}
 \section{Algorithms}
-In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section. We also concertn ourselves with only those parallel algorithms which are scalable. Hence algorithms like Parallel First Fit graph colouring, the parallel version of the Firsst Fit colouring heuristic, are not considered. 
+In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section. We also concern ourselves with only those parallel algorithms which are scalable. Hence algorithms like Parallel First Fit graph colouring, the parallel version of the First Fit colouring heuristic, are not considered. 
 \subsection{Sequential Greedy Graph Colouring}
 We start with discussing a sequential graph colouring algorithm, one of the easiest, the Greedy Colouring algorithm. Many other algorithms, including many parallel graph colouring algorithms, are based on greedy colouring.
 
@@ -416,7 +416,7 @@ In Luby's algorithm, every node is first assigned with some random number. Now, 
 \subsection{Parallel Conflict Resolution Based Colouring}
 Here, we consider two algorithms belonging to category \ref{SpecColouring} algorithms. It involves two phases, the first colouring phase with potential conflicts and the second phase where these conflicts are resolved either sequentially or partially in parallel.
 \subsubsection{2.4.3.1 \: \: Speculation and Colouring}
-Here, we discuss an algorithm presented by \citet{CPE:CPE528} which instead of finding Maximal Vertex Independent Sets in each iteration, relaxes the condition, so that we find and colour sets which are not really independent sets in each iteration possibly incurring conflicts. These conflicts are then identitified in parallel in phase 2. In phase 3, we re-colour the vertices identified with conflicts sequentially.
+Here, we discuss an algorithm presented by \citet{CPE:CPE528} which instead of finding Maximal Vertex Independent Sets in each iteration, relaxes the condition, so that we find and colour sets which are not really independent sets in each iteration possibly incurring conflicts. These conflicts are then identified in parallel in phase 2. In phase 3, we re-colour the vertices identified with conflicts sequentially.
 
 This involves an initial graph partitioning phase, during which we partition the graph into \textit{n} parts, where \textit{n} is the number of processors/cores we have. Then each processor/core takes up each partition and then colour them using some sequential colouring method. At the end of this phase 1, we thus have a colouring with possible conflicts at the partition boundaries. In phase 2, we identify these conflicts in parallel. In phase 3, we re-colour these vertices with conflicts sequentially. The scheme is presented as in Algorithm \ref{spec1}.
 
@@ -426,7 +426,21 @@ This involves an initial graph partitioning phase, during which we partition the
 \Procedure{PartitionColouring(G(V,E))}{}
 \State $\textit{Initialization}$
 \State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one 
+\BState \emph{Phase 1 (Partition Colouring)}:
 \For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\EndFor
+\BState \emph{Phase 2 (Conflict Detection)}:
+\State $\textit{conflictSet} \gets \phi$
+\For{$each \: v \in V$} \Comment{Done in parallel}
+\For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
+\If{$colour[v] = colour[u]$}
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup min(v,u)$
+\EndIf
+\EndFor
+\EndFor 
+\BState \emph{Phase 3 (Conflict Resolution)}:
+\For {$each \: v \in \textit{conflictSet}$}
 \State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
 \EndFor
 \EndProcedure
@@ -438,26 +452,154 @@ We also have a GPU based graph partitioning, speculation and conflict resolution
 \begin{algorithm}
 \caption{GPU: Partitioning, Speculation and Conflict Resolution}\label{spec2}
 \begin{algorithmic}[1]
-\Procedure{ParallelColouring(G(V,E))}{}
+\Procedure{PartitionColouring(G(V,E))}{}
 \State $\textit{Initialization}$
-\State $n \gets 0$
-\State $currentColour \gets 1$
-\State $graphSize \gets |V|$
-\While{$n \neq graphSize$}
-\State $S \gets $\verb+MaximalSet(V,E)+
-\For {$each \: v \in S$}\Comment{Done in parallel}
-\State $colour[v] \gets currentColour$
+\BState \emph{CPU}:
+\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one
+\BState \emph{GPU (Partition Colouring)}:
+\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
 \EndFor
-\State $currentColour \gets currentColour+1$
-\State $n \gets n+|S|$
-\EndWhile
+\BState \emph{GPU (Conflict Detection)}:
+\State $\textit{conflictSet} \gets \phi$
+\For{$each \: v \in V$} \Comment{Done in parallel}
+\For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
+\If{$colour[v] = colour[u]$}
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup min(v,u)$
+\EndIf
+\EndFor
+\EndFor
+\If{$|conflictSet| < threshold$}
+\State $\textit{goto} \: \textit{CPU (Conflict Resolution)}$
+\EndIf 
+\BState \emph{GPU (Conflict Resolution)}:
+\For {$each \: v \in \textit{conflictSet}$} \Comment Done in parallel
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\EndFor
+\State $\textit{goto} \: \textit{GPU (Conflict Detection)}$
+\BState \emph{CPU (Conflict Resolution)}:
+\For {$each \: v \in \textit{conflictSet}$}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\EndFor
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
 \section{Our Approach}
+In our work, we follow an approach which uses some of the suggestions by \citet{cohenefficient} on top of the algorithm put forward by \citet{Jones:1993:PGC:153109.153119}. Like every other implementation, the data structures used are really important. Especially in our case, as we are using a GPU, the structure and size of data copied to and stored on the GPU are very important. From here on, $n$ represents the number of vertices and $m$ represents the number of edges in the graph.
 \subsection{CSR: Compressed Sparse Row Representation}
+Graphs are usually stored in an adjacent matrix representation or an adjacency list representation. Both have their own pros and cons. In our case, as we have to copy the entire graph, which are itself huge, to the GPU, we can't have the luxury of adjacent matrix representation as it requires $O(n^{2})$ storage space. As we are dealing with GPUs, which don't really provide enough support to use connected lists, adjacency list representation ($O(m+n)$) in its classical form is also not practical. So, we use an array based adjacency list representation called Compressed Sparse Row Representation.
+\begin{verse}
+Compressed Sparse Raw Representation of a graph involves the use of just three arrays (two in case the edges are of unit weight). The first array, called the Offsets Array, has a size of the number of vertices. The second array, called the Edges Array, and the third array, called the Weights Array, have the size of the number of edges each.
+\end{verse}
+With respect to our problem, the third array, Weights Array, is not used as all the edges are assumed to be of unit weight. So, CSR takes up $O(m+n)$ space, but uses only arrays which are easier to work with on GPUs.
+\subsubsection{Offsets Array}
+The offsets array (\verb+offsetArray[]+) has \textit{n} (no. of vertices) elements. Each of these elements represent the offset in the Edges Array where the edges adjacent to the respective vertices are stored. So, \verb+offsetArray[i]+ represents the offset in the \verb+edgesArray[]+ where the edges adjacent to vertex $i+1$ (assuming vertices are number $1$ to $n$) are stored from. Therefore, it follows that the adjacent edges of the vertex $i+1$ will be stored from index \verb+offsetArray[i]+ upto, but not including, \verb|offsetArray[i+1]| for all $i<n-1$ and for $i=n-1$, from index \verb+offsetArray[i]+ upto, but not including, \verb|m|. It also follows that if a vertex $i+1$ is of degree 0, that is if a vertex doesn't have any adjacent vertices, then
+\begin{center}
+\verb+offsetArray[i]+ = \verb|offsetArray[i+1]| (\verb+m+ if $i = n-1$).
+\end{center}
+\subsubsection{Edges Array}
+The edges array (\verb+edgesArray[]+) has $m$ (no. of edges) elements. All these m elements represent one of the $n$ vertices. For a vertex, $i+1$, the \verb+edgesArray[]+ stores its adjacent vertices from index \verb+offsetArray[i]+ upto, but not including, \verb|offsetArray[i+1]| for all $i<n-1$ and for $i=n-1$, from index \verb+offsetArray[i]+ upto, but not including, \verb|m|.
+\subsubsection{Undirected Graphs in CSR: UCSR}
+It is to be noted that CSR is predominantly used for directed graphs. It can be used as such for undirected graphs too, but that might cause some extra processing to be done to find the neighbourhood of a vertex in the graph and might lead to a data race in parallel computing. So, one way around this is to include all edges of a graph as directed edges in both directions. That is, given an undirected graph $G(V,E)$ with $m$ edges, our \verb+edgesArray[]+ graph will have $2m$ elements instead of $m$ elements. But the order of space remains the same. We call this \textit{Undirected CSR} or \textit{UCSR}.
+\subsubsection{Example}
+Here, we take an example to explain how CSR works. We take both a directed graph and an undirected graph to show how we use the CSR.
+
+Consider the directed graph with $n=4$ and $m=4$ as given in the table \ref{table:1}. It's corresponding CSR is given in the figure \ref{fig:csrd}.
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c|c||} 
+ \hline
+ From Node & To Node \\ [0.5ex] 
+ \hline\hline
+1 & 2\\
+\hline
+1 & 3\\
+\hline
+2 & 3\\
+\hline
+2 & 4\\
+ \hline
+\end{tabular}
+\caption{A Directed Graph with $n=4$ and $m=4$}
+\label{table:1}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrdirected.jpg}
+    \caption{
+       The Directed Graph from \ref{table:1} and its CSR
+    }
+    \label{fig:csrd}
+\end{figure}
+
+Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{table:2}. It's corresponding CSR is given in the figure \ref{fig:csru} and it's UCSR is given in the figure \ref{fig:csrun}. Note that the \verb+edgesArray[]+ has $2m = 6$ elements in the UCSR.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c|c||} 
+ \hline
+ Incident Node & Incident Node \\ [0.5ex] 
+ \hline\hline
+ 1 & 2\\
+ \hline
+ 1 & 4\\
+ \hline
+ 2 & 3\\
+ \hline
+\end{tabular}
+\caption{An Undirected Graph with $n=4$ and $m=3$}
+\label{table:2}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrundirected.jpg}
+    \caption{
+        The Undirected Graph from \ref{table:2} and its CSR
+    }
+    \label{fig:csru}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrundirectednew.jpg}
+    \caption{
+        The Undirected Graph from \ref{table:2} and its UCSR
+    }
+    \label{fig:csrun}
+\end{figure}
 \subsection{RANDCOLOUR: Random Colouring And Conflict Resolution}
+We started with a random colouring and conflict resolution based algorithm which we call \verb+RANDCOLOUR+. This is an algorithm pertaining to category \ref{SpecColouring} algorithms. We first speculate the colours randomly and then find the conflicts on the GPU, both of which are done in parallel. And then we resolve the conflicts sequentially on the CPU. As we know a graph $G(V,E)$ with maximum degree $\Delta$ can be coloured with atmost $\Delta+1$ colours, RANDCOLOUR is an attempt at a fast $\Delta+1$ colouring using GPU. \verb+RANDCOLOUR+ algorithm almost always produces a colour quality of $\Delta+1$ and was aimed at a fast colouring compromising colour quality in the process.
+
+\begin{algorithm}
+\caption{RANDCOLOUR}\label{randcolour}
+\begin{algorithmic}[1]
+\Procedure{RandomColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\BState \emph{GPU}:
+\State $\textit{Initialize MaxDegree}$ \Comment{Found in parallel on GPU}
+\For {$each \: v \in V$}\Comment{Done in parallel by |V| threads}
+\State $colour[v] \gets CURAND(MaxDegree+1)+1$\Comment{RAND on GPU}
+\EndFor
+\State $\textit{conflictSet} \gets \phi$
+\For{$each \: v \in V$} \Comment{Done in parallel}
+\For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
+\If{$colour[v] = colour[u]$}
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup min(v,u)$
+\EndIf
+\EndFor
+\EndFor
+\BState \emph{CPU}:
+\For {$each \: v \in \textit{conflictSet}$}
+\State $colour[v] \gets \textit{A colour by some greedy colouring algorithm}$
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The scheme is given in Algorithm \ref{randcolour}.
+
 \subsection{MINMAXCOLOUR: Maximal VIS And Colouring}
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
@@ -465,7 +607,7 @@ We also have a GPU based graph partitioning, speculation and conflict resolution
 \section{Experimental Setup}
 \section{Test Data}
 \section{Parallel Graph Colouring on GPU}
-\section{Incremental Parallel Graph Coloruing on GPU}
+\section{Incremental Parallel Graph Colouring on GPU}
 \section{Decremental Parallel Graph Colouring on GPU}
 \chapter{CONCLUSION AND FUTURE WORK}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

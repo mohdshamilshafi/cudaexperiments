@@ -159,3 +159,27 @@ month={March},}
  address = {Philadelphia, PA, USA},
  keywords = {distributed memory computers, graph coloring heuristics, parallel algorithms, random algorithms, sparse matrices},
 }
+
+@article {CPE:CPE528,
+author = {Gebremedhin, Assefaw Hadish and Manne, Fredrik},
+title = {Scalable parallel graph coloring algorithms},
+journal = {Concurrency: Practice and Experience},
+volume = {12},
+number = {12},
+publisher = {John Wiley & Sons, Ltd.},
+issn = {1096-9128},
+url = {http://dx.doi.org/10.1002/1096-9128(200010)12:12<1131::AID-CPE528>3.0.CO;2-2},
+doi = {10.1002/1096-9128(200010)12:12<1131::AID-CPE528>3.0.CO;2-2},
+pages = {1131--1146},
+keywords = {graph coloring, parallel algorithms, shared memory programming, OpenMP},
+year = {2000},
+}
+
+@article{cohenefficient,
+  title={Efficient Graph Matching and Coloring on the GPU},
+  author={Cohen, Jonathan and Castonguay, Patrice},
+  journal = {GPU Tech.},
+  volume = {GTC on-demand S0332},
+  year={2012}
+}
+
