@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -13,6 +13,15 @@
 \newblock {\em Parallel Comput.\/}, {\bf 38}(10-11), 576--594.
 \newblock ISSN 0167-8191.
 \newblock \urlprefix\url{http://dx.doi.org/10.1016/j.parco.2012.07.001}.
+
+\bibitem[{Gebremedhin and Manne(2000)}]{CPE:CPE528}
+{\bf Gebremedhin, A.~H.} and {\bf F.~Manne} (2000).
+\newblock Scalable parallel graph coloring algorithms.
+\newblock {\em Concurrency: Practice and Experience\/}, {\bf 12}(12),
+  1131--1146.
+\newblock ISSN 1096-9128.
+\newblock
+  \urlprefix\url{http://dx.doi.org/10.1002/1096-9128(200010)12:12<1131::AID-CPE528>3.0.CO;2-2}.
 
 \bibitem[{Grosset {\em et~al.\/}(2011)Grosset, Zhu, Liu, Venkatasubramanian,
   and Hall}]{Grosset:2011:EGC:2038037.1941597}

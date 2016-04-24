@@ -416,8 +416,45 @@ In Luby's algorithm, every node is first assigned with some random number. Now, 
 \subsection{Parallel Conflict Resolution Based Colouring}
 Here, we consider two algorithms belonging to category \ref{SpecColouring} algorithms. It involves two phases, the first colouring phase with potential conflicts and the second phase where these conflicts are resolved either sequentially or partially in parallel.
 \subsubsection{2.4.3.1 \: \: Speculation and Colouring}
+Here, we discuss an algorithm presented by \citet{CPE:CPE528} which instead of finding Maximal Vertex Independent Sets in each iteration, relaxes the condition, so that we find and colour sets which are not really independent sets in each iteration possibly incurring conflicts. These conflicts are then identitified in parallel in phase 2. In phase 3, we re-colour the vertices identified with conflicts sequentially.
 
-\subsubsection{2.4.3.2 \: \: Graph Partitioning and Colouring}
+This involves an initial graph partitioning phase, during which we partition the graph into \textit{n} parts, where \textit{n} is the number of processors/cores we have. Then each processor/core takes up each partition and then colour them using some sequential colouring method. At the end of this phase 1, we thus have a colouring with possible conflicts at the partition boundaries. In phase 2, we identify these conflicts in parallel. In phase 3, we re-colour these vertices with conflicts sequentially. The scheme is presented as in Algorithm \ref{spec1}.
+
+\begin{algorithm}
+\caption{Partitioning, Speculation and Conflict Resolution}\label{spec1}
+\begin{algorithmic}[1]
+\Procedure{PartitionColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one 
+\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+We also have a GPU based graph partitioning, speculation and conflict resolution algorithm by \citet{Grosset:2011:EGC:2038037.1941597}. The graph is first partitioned in the CPU. The partitions are then coloured using some sequential colouring heuristics on the GPU. At the end of this phase, the potential conflicts are found in parallel at the boundary vertices. In the next iteration, these conflicts are recoloured possibly generating other conflicts. This process is continued until the total number of conflicts are below some threshold. And then the rest of the conflicts are resolved sequentially. This is depicted in Algorithm \ref{spec2}.
+
+\begin{algorithm}
+\caption{GPU: Partitioning, Speculation and Conflict Resolution}\label{spec2}
+\begin{algorithmic}[1]
+\Procedure{ParallelColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\State $n \gets 0$
+\State $currentColour \gets 1$
+\State $graphSize \gets |V|$
+\While{$n \neq graphSize$}
+\State $S \gets $\verb+MaximalSet(V,E)+
+\For {$each \: v \in S$}\Comment{Done in parallel}
+\State $colour[v] \gets currentColour$
+\EndFor
+\State $currentColour \gets currentColour+1$
+\State $n \gets n+|S|$
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \section{Our Approach}
 \subsection{CSR: Compressed Sparse Row Representation}
 \subsection{RANDCOLOUR: Random Colouring And Conflict Resolution}
