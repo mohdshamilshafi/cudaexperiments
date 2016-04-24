@@ -691,7 +691,16 @@ Graphs are being used in a varied lot of applications these days. Graphs are eve
 So, with incremental graph colouring, we are accommodating additions of vertices and edges. We assume without any loss of functionality that no new vertices are added. Only edges are added. This is easy to see as adding a new vertex (with some edges incident on it) is equivalent to adding edges to a vertex with zero degree. As long as we have an idea about the upper bound on the number of vertices through the applications of the graph, we should be fine. 
 
 Through the additions of edges, the \verb+offsetArray[]+ of UCSR doesn't grow in size. But the size of \verb+edgesArray[]+ will grow. So, we should have a reasonable upper bound on the number of edges that can be incident on each vertex. We can set the extra \verb+edgesArray[]+ elements to zero initially. When an edge is added, the new edge's information can be added to the \verb+edgesArray[]+ at these elements which are set to zero.
+
+
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
+\section{Why Decremental?}
+As discussed in the last chapter, almost all practical graphs keep on changing. Edges and Vertices get added and deleted often. Deletion of a small fraction of edges compared to total graph size shouldn't call for running a computationally intensive algorithm all over again again on the graph. Decremental approach helps save running time and avoids unnecessary computations.
+
+\section{Handling a Shrinking Graph}
+With decremental graph colouring, we are removing vertices and edges. Without any loss of functionality, we can choose not to remove vertices. Only edges are deleted. Removing a vertex (with some edges incident on it) is equivalent to removing all the edges incident on that vertex. 
+
+So, through the deletions of edges, the \verb+offsetArray[]+ of UCSR doesn't change in size as we don't really remove vertices. But the size of \verb+edgesArray[]+ can change. As we want the size of \verb+edgesArray[]+ to not change, when an edge is deleted, the new edge's information can be removed from the \verb+edgesArray[]+ by setting those elements to zero.
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
 \section{Test Data}

@@ -45,6 +45,8 @@
 \contentsline {section}{\numberline {3.1}Why Incremental?}{26}{section.3.1}
 \contentsline {section}{\numberline {3.2}Handling a Growing Graph}{26}{section.3.2}
 \contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: DECREMENTAL}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Why Decremental?}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Handling a Shrinking Graph}{27}{section.4.2}
 \contentsline {chapter}{\numberline {5}EXPERIMENTAL EVALUATION}{28}{chapter.5}
 \contentsline {section}{\numberline {5.1}Experimental Setup}{28}{section.5.1}
 \contentsline {section}{\numberline {5.2}Test Data}{28}{section.5.2}
