@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{9}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -22,6 +22,21 @@
 \newblock {\em SIGPLAN Not.\/}, {\bf 46}(8), 297--298.
 \newblock ISSN 0362-1340.
 \newblock \urlprefix\url{http://doi.acm.org/10.1145/2038037.1941597}.
+
+\bibitem[{Jones and Plassmann(1993)}]{Jones:1993:PGC:153109.153119}
+{\bf Jones, M.~T.} and {\bf P.~E. Plassmann} (1993).
+\newblock A parallel graph coloring heuristic.
+\newblock {\em SIAM J. Sci. Comput.\/}, {\bf 14}(3), 654--669.
+\newblock ISSN 1064-8275.
+\newblock \urlprefix\url{http://dx.doi.org/10.1137/0914041}.
+
+\bibitem[{Luby(1985)}]{Luby:1985:SPA:22145.22146}
+{\bf Luby, M.}, A simple parallel algorithm for the maximal independent set
+  problem.
+\newblock {\em In\/} {\em Proceedings of the Seventeenth Annual ACM Symposium
+  on Theory of Computing\/}, STOC '85. ACM, New York, NY, USA, 1985.
+\newblock ISBN 0-89791-151-2.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/22145.22146}.
 
 \bibitem[{Naumov {\em et~al.\/}(2015)Naumov, Castonguay, and
   Cohen}]{nvidia:naumov}

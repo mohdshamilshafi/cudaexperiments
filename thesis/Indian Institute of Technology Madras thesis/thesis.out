@@ -28,13 +28,18 @@
 \BOOKMARK [2][-]{subsection.2.3.2}{Speculation and Conflict Resolution}{section.2.3}% 28
 \BOOKMARK [1][-]{section.2.4}{Algorithms}{chapter.2}% 29
 \BOOKMARK [2][-]{subsection.2.4.1}{Sequential Greedy Graph Colouring}{section.2.4}% 30
-\BOOKMARK [1][-]{section.2.5}{Our Approach}{chapter.2}% 31
-\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 32
-\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 33
-\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 34
-\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 35
-\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 36
-\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 37
-\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Coloruing on GPU}{chapter.5}% 38
-\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 39
-\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 40
+\BOOKMARK [2][-]{subsection.2.4.2}{Parallel VIS Based Colouring}{section.2.4}% 31
+\BOOKMARK [2][-]{subsection.2.4.3}{Parallel Conflict Resolution Based Colouring}{section.2.4}% 32
+\BOOKMARK [1][-]{section.2.5}{Our Approach}{chapter.2}% 33
+\BOOKMARK [2][-]{subsection.2.5.1}{CSR: Compressed Sparse Row Representation}{section.2.5}% 34
+\BOOKMARK [2][-]{subsection.2.5.2}{RANDCOLOUR: Random Colouring And Conflict Resolution}{section.2.5}% 35
+\BOOKMARK [2][-]{subsection.2.5.3}{MINMAXCOLOUR: Maximal VIS And Colouring}{section.2.5}% 36
+\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 37
+\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 38
+\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Coloruing on GPU}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 44
+\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 45

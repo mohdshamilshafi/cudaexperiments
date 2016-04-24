@@ -321,7 +321,7 @@ So, in the first phase, instead of finding a VIS and colouring just the vertices
 \end{algorithmic}
 \end{algorithm}
 \section{Algorithms}
-In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section.
+In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section. We also concertn ourselves with only those parallel algorithms which are scalable. Hence algorithms like Parallel First Fit graph colouring, the parallel version of the Firsst Fit colouring heuristic, are not considered. 
 \subsection{Sequential Greedy Graph Colouring}
 We start with discussing a sequential graph colouring algorithm, one of the easiest, the Greedy Colouring algorithm. Many other algorithms, including many parallel graph colouring algorithms, are based on greedy colouring.
 
@@ -350,7 +350,78 @@ Greedy Colouring can produce a colour quality of $\chi(G)$ for atleast one order
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+\subsection{Parallel VIS Based Colouring}
+Here, we consider an algorithm belonging to category \ref{VISColouring} algorithms. As discussed earlier, this involves finding Vertex Independent Sets and colouring those VIS in parallel. Now, we will introduce two more terms:
+\begin{verse}
+Maximal Vertex Independent Set: A Vertex Independent Set, $\gamma$, is said to be a Maximal Vertex Independent Set of a graph $G(V,E)$ if,
+\begin{center}
+$\forall \eta, \gamma \not\subset \eta$ 
+\end{center}
+where $\eta$ is a valid Vertex Independent Set of $G(V,E)$. It follows that there can be multiple Maximal Vertex Independent Sets.
+\end{verse}
+\begin{verse}
+Maximum Vertex Independent Set: A Vertex Independent Set, $\gamma$, is said to be a Maximum Vertex Independent Set of a graph $G(V,E)$, if $\gamma$ is a Maximal Independent Set and,
+\begin{center}
+$|\gamma| = max_{\eta}|\eta|$ 
+\end{center}
+where $\eta$ is a Maximal Vertex Independent Set of $G(V,E)$. It follows that there can be multiple Maximum Vertex Independent Sets.
+\end{verse}
+Ideally, we want to find a Maximum Vertex Independent Set of the graph in each iteration and colour those vertices in parallel. But finding Maximum Independent Sets of a graph is an NP-Complete problem. So, we have to instead go for non-optimal solutions. We consider the parallel algorithm suggested by \citet{Luby:1985:SPA:22145.22146} which finds Maximal Vertex Independent Sets of a graph in parallel.
+
+In Luby's algorithm, every node is first assigned with some random number. Now, in each iteration, the random number assigned to each node is compared to its neighbours, done in parallel, to see if it is the local maximum, in which case, that node is added to a set \textit{S}. At the end of each iteration, \textit{S}, is a Maximal Vertex Independent Set of the graph \textit{G(V,E)} and the vertices in \textit{S} are removed from \textit{V}. The set is \textit{S} is emptied before a new iteration. This is a very simple algorithm to generate Maximal Vertex Independent Sets of a graph as depicted in Algorithm \ref{Luby}.
+
+\begin{algorithm}
+\caption{Maximal Vertex Independent Set}\label{Luby}
+\begin{algorithmic}[1]
+\Procedure{MaximalSet(G(V,E))}{}
+\State $\textit{Initialization}$\Comment{randomNumber[] is initialized only once}
+\State $S \gets \phi$
+\For {$each \: v \in V$}\Comment{Done in parallel}
+\State $S \gets S \cup v$
+\For {$each \: u \in V$ such that $u$ is adjacent to $v$}
+\If{$\textit{randomNumber}[u] \geq \textit{randomNumber}[v]$}
+\State $S \gets S - v$
+\State $\textit{break}$
+\EndIf
+\EndFor
+\EndFor
+\State $V \gets V - S$
+\State $\textit{return} \: S$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\citet{Jones:1993:PGC:153109.153119} introduced a parallel graph colouring algorithm based on Luby's Maximal Vertex Independent Set algorithm. By their algorithm, in each iteration, we find a Maximal Vertex Independent Set of the graph using Luby's algorithm and then colour all the vertices in the set found, in parallel, using a single colour. Each iteration uses a different colour. We do this iteratively until all the vertices of the graph are coloured. This is explained in Algorithm \ref{Jones}
+
+\begin{algorithm}
+\caption{Jones-Plassmann-Luby Parallel Colouring Heuristic}\label{Jones}
+\begin{algorithmic}[1]
+\Procedure{ParallelColouring(G(V,E))}{}
+\State $\textit{Initialization}$
+\State $n \gets 0$
+\State $currentColour \gets 1$
+\State $graphSize \gets |V|$
+\While{$n \neq graphSize$}
+\State $S \gets $\verb+MaximalSet(V,E)+
+\For {$each \: v \in S$}\Comment{Done in parallel}
+\State $colour[v] \gets currentColour$
+\EndFor
+\State $currentColour \gets currentColour+1$
+\State $n \gets n+|S|$
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Parallel Conflict Resolution Based Colouring}
+Here, we consider two algorithms belonging to category \ref{SpecColouring} algorithms. It involves two phases, the first colouring phase with potential conflicts and the second phase where these conflicts are resolved either sequentially or partially in parallel.
+\subsubsection{2.4.3.1 \: \: Speculation and Colouring}
+
+\subsubsection{2.4.3.2 \: \: Graph Partitioning and Colouring}
 \section{Our Approach}
+\subsection{CSR: Compressed Sparse Row Representation}
+\subsection{RANDCOLOUR: Random Colouring And Conflict Resolution}
+\subsection{MINMAXCOLOUR: Maximal VIS And Colouring}
 \chapter{PARALLEL GRAPH COLOURING: INCREMENTAL}
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \chapter{EXPERIMENTAL EVALUATION}

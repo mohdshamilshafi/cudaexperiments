@@ -5,45 +5,45 @@ The style file: iitm.bst
 Database file #1: refs.bib
 Warning--string name "march" is undefined
 --line 55 of file refs.bib
-You've used 7 entries,
+You've used 9 entries,
             2930 wiz_defined-function locations,
-            655 strings with 6471 characters,
-and the built_in function-call counts, 4039 in all, are:
-= -- 311
-> -- 173
-< -- 4
-+ -- 60
-- -- 51
-* -- 315
-:= -- 621
-add.period$ -- 29
-call.type$ -- 7
-change.case$ -- 56
-chr.to.int$ -- 7
-cite$ -- 7
-duplicate$ -- 338
-empty$ -- 307
-format.name$ -- 64
-if$ -- 782
+            677 strings with 7008 characters,
+and the built_in function-call counts, 5228 in all, are:
+= -- 407
+> -- 206
+< -- 6
++ -- 75
+- -- 60
+* -- 403
+:= -- 790
+add.period$ -- 39
+call.type$ -- 9
+change.case$ -- 71
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 442
+empty$ -- 412
+format.name$ -- 79
+if$ -- 1021
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 63
-newline$ -- 49
-num.names$ -- 28
-pop$ -- 129
+missing$ -- 83
+newline$ -- 62
+num.names$ -- 36
+pop$ -- 167
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 56
 quote$ -- 0
-skip$ -- 95
+skip$ -- 124
 stack$ -- 0
-substring$ -- 133
-swap$ -- 165
+substring$ -- 184
+swap$ -- 219
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 63
+type$ -- 81
 warning$ -- 0
-while$ -- 25
+while$ -- 33
 width$ -- 0
-write$ -- 109
+write$ -- 142
 (There was 1 warning)
