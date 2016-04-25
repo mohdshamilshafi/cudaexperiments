@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  24 APR 2016 23:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  25 APR 2016 02:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,7 +451,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
- <iitm.pdf, id=200, 109.40875pt x 109.40875pt>
+ <iitm.pdf, id=205, 109.40875pt x 109.40875pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -528,7 +528,7 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
 
-<mooreslaw.jpg, id=343, 642.4pt x 577.357pt>
+<mooreslaw.jpg, id=350, 642.4pt x 577.357pt>
 File: mooreslaw.jpg Graphic file (type jpg)
  <use mooreslaw.jpg>
 Package pdftex.def Info: mooreslaw.jpg used on input line 194.
@@ -537,7 +537,7 @@ Package pdftex.def Info: mooreslaw.jpg used on input line 194.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] <CPU-Scaling.jpg, id=355, 419.6478pt x 418.2024pt>
+[3] <CPU-Scaling.jpg, id=362, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
  <use CPU-Scaling.jpg>
 Package pdftex.def Info: CPU-Scaling.jpg used on input line 204.
@@ -547,7 +547,7 @@ Package pdftex.def Info: CPU-Scaling.jpg used on input line 204.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4 <./mooreslaw.jpg>] [5 <./CPU-Scaling.jpg>] [6]
-<hardware-model.png, id=375, 429.605pt x 432.817pt>
+<hardware-model.png, id=382, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
 Package pdftex.def Info: hardware-model.png used on input line 226.
@@ -582,7 +582,7 @@ n \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1$ \T1/ptm/m/n/12 and for $\OML/cmm/m/it
  1$\T1/ptm/m/n/12 , from in-dex []\T1/pcr/m/n/12 offsetArray[i]
  []
 
-[19] <csrdirected.jpg, id=492, 542.025pt x 274.02374pt>
+[19] <csrdirected.jpg, id=499, 542.025pt x 274.02374pt>
 File: csrdirected.jpg Graphic file (type jpg)
  <use csrdirected.jpg>
 Package pdftex.def Info: csrdirected.jpg used on input line 530.
@@ -591,7 +591,7 @@ Package pdftex.def Info: csrdirected.jpg used on input line 530.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20] <csrundirected.jpg, id=505, 548.0475pt x 266.9975pt>
+[20] <csrundirected.jpg, id=512, 548.0475pt x 266.9975pt>
 File: csrundirected.jpg Graphic file (type jpg)
 
 <use csrundirected.jpg>
@@ -601,7 +601,7 @@ Package pdftex.def Info: csrundirected.jpg used on input line 558.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<csrundirectednew.jpg, id=508, 631.35875pt x 287.0725pt>
+<csrundirectednew.jpg, id=515, 631.35875pt x 287.0725pt>
 File: csrundirectednew.jpg Graphic file (type jpg)
 
 <use csrundirectednew.jpg>
@@ -617,16 +617,21 @@ CHAPTER 3.
 [26
 
 ]
+Overfull \hbox (43.72989pt too wide) in paragraph at lines 724--725
+[] $[] \OMS/cmsy/m/n/12   []$ 
+ []
+
+[27] [28] [29]
 CHAPTER 4.
-[27
+[30
 
 ]
 CHAPTER 5.
-[28
+[31
 
 ]
 CHAPTER 6.
-[29
+[32
 
 ] (./thesis.bbl
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
@@ -678,23 +683,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--89
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 743.
- [30
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
+ [33
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 743.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 743.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 743.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C21101AE525F7CC44F4758EFB38DBCA0;3469.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 743.
+(rerunfilecheck)             Checksum: 2B071C87ED15797A59A0F679C5BA2201;3548.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 829.
  ) 
 Here is how much of TeX's memory you used:
- 8641 strings out of 494985
- 128917 string characters out of 6180355
- 223029 words of memory out of 5000000
- 11578 multiletter control sequences out of 15000+600000
+ 8652 strings out of 494985
+ 129048 string characters out of 6180355
+ 223162 words of memory out of 5000000
+ 11583 multiletter control sequences out of 15000+600000
  58544 words of font info for 71 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,8n,41p,1049b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -709,10 +714,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (40 pages, 542218 bytes).
+Output written on thesis.pdf (43 pages, 550466 bytes).
 PDF statistics:
- 661 PDF objects out of 1000 (max. 8388607)
- 584 compressed objects within 6 object streams
- 131 named destinations out of 1000 (max. 500000)
- 428 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 687 PDF objects out of 1000 (max. 8388607)
+ 606 compressed objects within 7 object streams
+ 137 named destinations out of 1000 (max. 500000)
+ 436 words of extra memory for PDF output out of 10000 (max. 10000000)
 

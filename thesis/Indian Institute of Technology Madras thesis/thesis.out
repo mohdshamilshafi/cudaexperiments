@@ -37,13 +37,14 @@
 \BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 37
 \BOOKMARK [1][-]{section.3.1}{Why Incremental?}{chapter.3}% 38
 \BOOKMARK [1][-]{section.3.2}{Handling a Growing Graph}{chapter.3}% 39
-\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 40
-\BOOKMARK [1][-]{section.4.1}{Why Decremental?}{chapter.4}% 41
-\BOOKMARK [1][-]{section.4.2}{Handling a Shrinking Graph}{chapter.4}% 42
-\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 43
-\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Colouring on GPU}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 48
-\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 49
+\BOOKMARK [1][-]{section.3.3}{The Two Thread Incremental Model}{chapter.3}% 40
+\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 41
+\BOOKMARK [1][-]{section.4.1}{Why Decremental?}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.2}{Handling a Shrinking Graph}{chapter.4}% 43
+\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 44
+\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Colouring on GPU}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 49
+\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 50

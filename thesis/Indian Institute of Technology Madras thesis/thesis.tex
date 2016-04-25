@@ -692,6 +692,92 @@ So, with incremental graph colouring, we are accommodating additions of vertices
 
 Through the additions of edges, the \verb+offsetArray[]+ of UCSR doesn't grow in size. But the size of \verb+edgesArray[]+ will grow. So, we should have a reasonable upper bound on the number of edges that can be incident on each vertex. We can set the extra \verb+edgesArray[]+ elements to zero initially. When an edge is added, the new edge's information can be added to the \verb+edgesArray[]+ at these elements which are set to zero.
 
+\section{The Two Thread Incremental Model}
+We assume we have a graph which is already coloured using one of the algorithms, in our case Algorithm \ref{MinMaxAlgo} from last chapter, on the GPU. We also assume that we have the UCSR graph already residing on the GPU memory. 
+
+In the incremental model, when an edge is added, only two vertices are immediately affected. The vertices on which the added edge is incident. If those two vertices have different colours, already, we assume they were coloured optimally by the main algorithm already and leave those two vertices be with their existing colours. If those two vertices have the same colour, then we have a conflict on the addition of the new edge. We are concerned with only those two vertices for the immediate task of resolving the conflict.
+
+We introduce an algorithm called The Two Thread Incremental Model to deal with recolouring the graph. This model makes use of only two threads, each thread for each of the two vertices in conflict, as our immediate objective is to remove the conflict. But, in our model, while removing the conflict, we try to optimize the colours of those two vertices and thus locally maximizing the colour quality. It follows that when the colours of the two vertices are changed in a locally optimized way, there could be positive changes in the other parts of the graph. We will deal with this later in the propagation part.
+
+\begin{algorithm}
+\caption{The Two Thread Incremental Model}\label{twoThreadIncremental}
+\begin{algorithmic}[1]
+\Procedure{TwoThreadIncrementalColouring(G(V,E), edge)}{}
+\State $\textit{Initialization}$
+\State \textit{Let uv be the newly added edge}
+\State \textit{Thread 0 represents u and thread 1 represent v}
+\State $\textit{Add the new edge information to the UCSR}$\Comment{Each thread add its neighbour}
+\State \textit{synchronize}
+\If{$colour[u] \neq colour[v]$}
+\State \textit{return}
+\EndIf
+\For {$i \in \{u, v\}$} \Comment{In parallel by two threads}
+\State $oldColour \gets colour[i]$
+\State $possibleColour[threadId] \gets \textit{Smallest possible colour for i}$
+\State \textit{synchronize}
+\If {$possibleColour[threadId]=possibleColour[1-threadId]$}
+\If {$possibleColour[threadId]<oldColour$}
+\BState \emph{Case 1}:
+\If {\textit{threadId}$=0$}
+\State $colour[i] \gets possibleColour[threadId]$
+\Else
+\State $\textit{newColour} \gets \textit{Smallest possible colour > possibleColour[threadId] for i}$
+\BState \emph{Case 2}:
+\If {$ newColour < oldColour $}
+\State $colour[i] \gets newColour$
+\EndIf
+\EndIf
+\Else
+\BState \emph{Case 3}:
+\If {\textit{threadId}$=1$}
+\State $colour[i] \gets possibleColour[threadId]$
+\EndIf
+\EndIf
+\Else
+\BState \emph{Case 4}:
+\If {$possibleColour[threadId]<oldColour$}
+\State $colour[i] \gets possibleColour[threadId]$
+\Else
+\BState \emph{Case 5}:
+\If {$possibleColour[threadId]<possibleColour[1-threadId]$}
+\State $colour[i] \gets possibleColour[threadId]$
+\EndIf
+\EndIf
+\EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Our Two Thread Incremental Model is explained in Algorithm \ref{twoThreadIncremental}. From the structure of the problem and our algorithm, it is clear that we actually need only two threads to deal with locally maximizing the colour quality at the region of edge addition. And as we have the graph already on the GPU memory, we don't have an issue with memory latency, the biggest hurdle with GPGPU.
+
+This algorithm is meant for addition of a single edge. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the new edge is incident. In our algorithm, we assume \textit{uv} is the added edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 2} in charge of \textit{v}. Initially, each thread modifies their portions of the UCSR to accommodate the newly added edge. Then they check if the current colouring of \textit{u} and \textit{v} are the same. If not, we are through.
+
+If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found lease possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. But then, we have many cases that can arise in most of which $x$ and $y$ are interchangeable with no side effects. The cases are tabulated in Table \ref{table:3}. In the case of $x=y$, $z$ be the least colour greater than $y$ that \textit{v} can take in a greedy fashion. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c|c|c||} 
+ \hline
+ Case & Action & Case No. In Algorithm \\ [0.5ex] 
+ \hline\hline
+$x=y < p; \: z<p$ & $colour[u]=x; \: colour[v]=z$ & 1, 2 \\
+\hline
+$x=y < p; \: p<z$ & $colour[u]=x$ & 1\\
+\hline
+$p < x=y$ & $colour[v]=y$ & 3\\
+\hline
+$x \neq y; \: x < y < p$ & $colour[u]=x; \: colour[v]=y$ & 4\\
+\hline
+$x \neq y; \: x < p < y$ & $colour[u]=x$ & 4\\
+\hline
+$x \neq y; \: p < x < y$ & $colour[u]=x$& 5\\
+\hline
+\end{tabular}
+\caption{The Two Threads Model: Different Cases}
+\label{table:3}
+\end{table}
+
 
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \section{Why Decremental?}
