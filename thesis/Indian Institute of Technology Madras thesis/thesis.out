@@ -4,47 +4,55 @@
 \BOOKMARK [0][-]{chapter*.5}{LIST OF FIGURES}{}% 4
 \BOOKMARK [0][-]{chapter*.6}{ABBREVIATIONS}{}% 5
 \BOOKMARK [0][-]{chapter.1}{INTRODUCTION}{}% 6
-\BOOKMARK [1][-]{section.1.1}{Graphs and Graph Algorithms}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.2}{Vertex Colouring}{chapter.1}% 8
-\BOOKMARK [2][-]{subsection.1.2.1}{Classical Vertex Colouring Problem}{section.1.2}% 9
-\BOOKMARK [2][-]{subsection.1.2.2}{Chromatic Number \040\(G\) }{section.1.2}% 10
-\BOOKMARK [2][-]{subsection.1.2.3}{Colour Quality}{section.1.2}% 11
-\BOOKMARK [2][-]{subsection.1.2.4}{Complexity}{section.1.2}% 12
-\BOOKMARK [2][-]{subsection.1.2.5}{Applications}{section.1.2}% 13
-\BOOKMARK [1][-]{section.1.3}{Parallelization}{chapter.1}% 14
-\BOOKMARK [2][-]{subsection.1.3.1}{Frequency Scaling}{section.1.3}% 15
-\BOOKMARK [2][-]{subsection.1.3.2}{Why Parallelization?}{section.1.3}% 16
-\BOOKMARK [2][-]{subsection.1.3.3}{Parallezation of Graph Colouring}{section.1.3}% 17
-\BOOKMARK [1][-]{section.1.4}{GPGPU}{chapter.1}% 18
-\BOOKMARK [2][-]{subsection.1.4.1}{Why GPUs?}{section.1.4}% 19
-\BOOKMARK [2][-]{subsection.1.4.2}{nVidia CUDA}{section.1.4}% 20
-\BOOKMARK [2][-]{subsection.1.4.3}{Challenges}{section.1.4}% 21
-\BOOKMARK [1][-]{section.1.5}{Incremental/Decremental}{chapter.1}% 22
-\BOOKMARK [0][-]{chapter.2}{PARALLEL GRAPH COLOURING}{}% 23
-\BOOKMARK [1][-]{section.2.1}{Graph Colouring Problem}{chapter.2}% 24
-\BOOKMARK [1][-]{section.2.2}{Related Work}{chapter.2}% 25
-\BOOKMARK [1][-]{section.2.3}{Broad Classification of Parallel Graph Colouring Algorithms}{chapter.2}% 26
-\BOOKMARK [2][-]{subsection.2.3.1}{Vertex Independent Sets and Colouring}{section.2.3}% 27
-\BOOKMARK [2][-]{subsection.2.3.2}{Speculation and Conflict Resolution}{section.2.3}% 28
-\BOOKMARK [1][-]{section.2.4}{Algorithms}{chapter.2}% 29
-\BOOKMARK [2][-]{subsection.2.4.1}{Sequential Greedy Graph Colouring}{section.2.4}% 30
-\BOOKMARK [2][-]{subsection.2.4.2}{Parallel VIS Based Colouring}{section.2.4}% 31
-\BOOKMARK [2][-]{subsection.2.4.3}{Parallel Conflict Resolution Based Colouring}{section.2.4}% 32
-\BOOKMARK [1][-]{section.2.5}{Our Approach}{chapter.2}% 33
-\BOOKMARK [2][-]{subsection.2.5.1}{CSR: Compressed Sparse Row Representation}{section.2.5}% 34
-\BOOKMARK [2][-]{subsection.2.5.2}{RANDCOLOUR: Random Colouring And Conflict Resolution}{section.2.5}% 35
-\BOOKMARK [2][-]{subsection.2.5.3}{MINMAXCOLOUR: Maximal VIS And Colouring}{section.2.5}% 36
-\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 37
-\BOOKMARK [1][-]{section.3.1}{Why Incremental?}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.2}{Handling a Growing Graph}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.3}{The Two Thread Incremental Model}{chapter.3}% 40
-\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 41
-\BOOKMARK [1][-]{section.4.1}{Why Decremental?}{chapter.4}% 42
-\BOOKMARK [1][-]{section.4.2}{Handling a Shrinking Graph}{chapter.4}% 43
-\BOOKMARK [0][-]{chapter.5}{EXPERIMENTAL EVALUATION}{}% 44
-\BOOKMARK [1][-]{section.5.1}{Experimental Setup}{chapter.5}% 45
-\BOOKMARK [1][-]{section.5.2}{Test Data}{chapter.5}% 46
-\BOOKMARK [1][-]{section.5.3}{Parallel Graph Colouring on GPU}{chapter.5}% 47
-\BOOKMARK [1][-]{section.5.4}{Incremental Parallel Graph Colouring on GPU}{chapter.5}% 48
-\BOOKMARK [1][-]{section.5.5}{Decremental Parallel Graph Colouring on GPU}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter.6}{CONCLUSION AND FUTURE WORK}{}% 50
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Graphs and Graph Algorithms}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Vertex Colouring}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Classical Vertex Colouring Problem}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Chromatic Number \040\(G\) }{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Colour Quality}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Complexity}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.5}{Applications}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Parallelization}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.3.1}{Frequency Scaling}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.2}{Why Parallelization?}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.3}{Parallezation of Graph Colouring}{section.2.3}% 18
+\BOOKMARK [1][-]{section.2.4}{GPGPU}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.2.4.1}{Why GPUs?}{section.2.4}% 20
+\BOOKMARK [2][-]{subsection.2.4.2}{nVidia CUDA}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.3}{Challenges}{section.2.4}% 22
+\BOOKMARK [1][-]{section.2.5}{Incremental/Decremental}{chapter.2}% 23
+\BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING}{}% 24
+\BOOKMARK [1][-]{section.3.1}{Graph Colouring Problem}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Related Work}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{Broad Classification of Parallel Graph Colouring Algorithms}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.1}{Vertex Independent Sets and Colouring}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.2}{Speculation and Conflict Resolution}{section.3.3}% 29
+\BOOKMARK [1][-]{section.3.4}{Algorithms}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.4.1}{Sequential Greedy Graph Colouring}{section.3.4}% 31
+\BOOKMARK [2][-]{subsection.3.4.2}{Parallel VIS Based Colouring}{section.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.4.3}{Parallel Conflict Resolution Based Colouring}{section.3.4}% 33
+\BOOKMARK [1][-]{section.3.5}{Our Approach}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.5.1}{CSR: Compressed Sparse Row Representation}{section.3.5}% 35
+\BOOKMARK [2][-]{subsection.3.5.2}{RANDCOLOUR: Random Colouring And Conflict Resolution}{section.3.5}% 36
+\BOOKMARK [2][-]{subsection.3.5.3}{MINMAXCOLOUR: Maximal VIS And Colouring}{section.3.5}% 37
+\BOOKMARK [0][-]{chapter.4}{PARALLEL GRAPH COLOURING: INCREMENTAL}{}% 38
+\BOOKMARK [1][-]{section.4.1}{Why Incremental?}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.2}{Handling a Growing Graph}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.3}{The Two Thread Incremental Model}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.4}{The Many Thread Incremental Model}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.5}{Propagation}{chapter.4}% 43
+\BOOKMARK [0][-]{chapter.5}{PARALLEL GRAPH COLOURING: DECREMENTAL}{}% 44
+\BOOKMARK [1][-]{section.5.1}{Why Decremental?}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.2}{Handling a Shrinking Graph}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.3}{The Two Thread Decremental Model}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.4}{The Many Thread Decremental Model}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.5}{Propagation}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.5.1}{One Time Propagation}{section.5.5}% 50
+\BOOKMARK [2][-]{subsection.5.5.2}{Wave Propagation}{section.5.5}% 51
+\BOOKMARK [0][-]{chapter.6}{EXPERIMENTAL EVALUATION}{}% 52
+\BOOKMARK [1][-]{section.6.1}{Experimental Setup}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.2}{Test Data}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.3}{Parallel Graph Colouring on GPU}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.4}{Incremental Parallel Graph Colouring on GPU}{chapter.6}% 56
+\BOOKMARK [1][-]{section.6.5}{Decremental Parallel Graph Colouring on GPU}{chapter.6}% 57
+\BOOKMARK [0][-]{chapter.7}{CONCLUSION AND FUTURE WORK}{}% 58

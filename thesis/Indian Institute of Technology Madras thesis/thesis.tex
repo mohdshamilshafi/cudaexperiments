@@ -68,8 +68,9 @@ Date: 11 May, 2016
 % Acknowledgements
 \acknowledgements
 
-Thanks to all those who made \TeX\ and \LaTeX\ what it is today.
-
+Thanks to all those who made \verb+Shamil+ what he is today.
+\\
+Thank God.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstract
 
@@ -79,12 +80,7 @@ Thanks to all those who made \TeX\ and \LaTeX\ what it is today.
 
 \vspace*{24pt}
 
-\noindent Graphs are a well studied and widely used data structure in the field of algorithms, programming and computing. There are a lot of interesting applications of graphs and various algorithms are built on top of the graph data structure. One of the most famous and well studied graph problems is that of graph colouring. There are a lot of different versions of graph colouring problem of which the most common ones are that of vertex colouring and edge colouring. The problem is seemingly simple, to allocate a colour to every vertex/edge of a graph so that adjacent vertices/edges don't share the same colour minimizing the number of colours used.  
-Graph colouring is a very important and yet very challenging graph problem with ongoing active research. Graph colouring finds application in a varied range of problems including various scheduling problems like job scheduling on distributed computing systems, register allocation in compilers, pattern matching problems and solving Sudoku boards.
-
-Though the problem is seemingly simple, it is computationally hard. The graph colouring problem we are exploring in this work, that of vertex colouring, is an NP-hard problem. The sequential approaches like greedy colouring are simply not fast enough whereas advanced approximate/randomized solutions either produce colourings of bad colour quality or aren't fast enough. Thus came the parallel approaches to Graph Colouring. Most of the parallel versions of Graph Colouring algorithms were designed with either multi-core CPUs or heavy duty super computers in mind. With the advent of General-Purpose computing on GPUs (GPGPU), we have access to cheap heavy multi-threaded parallel computing power. Our work is based on parallel computing on nVidia GPUs using Cuda programming language.
-
-We explore different parallel graph colouring algorithms on nVIdia GPUs in this work and try to adapt them to support addition of edges, called incremental graph colouring, and deletion of edges, called decremental graph colouring. In the first section, we explore different parallel graph algorithms and adapt a couple of them, one based on \textit{speculation} and \textit{conflict resolution} and the other on \textit{Vertex Independent Sets}, to work on nVidia GPUs. In the following sections, we adapt the GPU parallel colouring algorithm to support additions and deletions of edges. In the incremental part, we explore different methods to maximize parallelization while colouring newly added edges and use propagation to improve overall colour quality. In the decremental part, we explore different options to either process the vertices, on which the deleted edges were incident, on the go or to process them together and use propagation to propagate the information across the graph improving the colour quality.  
+\noindent To be filled. 
 
 \pagebreak
 
@@ -148,6 +144,13 @@ xxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
 
 \chapter{INTRODUCTION}
 \label{chap:intro}
+Graphs are a well studied and widely used data structure in the field of algorithms, programming and computing. There are a lot of interesting applications of graphs and various algorithms are built on top of the graph data structure. One of the most famous and well studied graph problems is that of graph colouring. There are a lot of different versions of graph colouring problem of which the most common ones are that of vertex colouring and edge colouring. The problem is seemingly simple, to allocate a colour to every vertex/edge of a graph so that adjacent vertices/edges don't share the same colour minimizing the number of colours used.  
+Graph colouring is a very important and yet very challenging graph problem with ongoing active research. Graph colouring finds application in a varied range of problems including various scheduling problems like job scheduling on distributed computing systems, register allocation in compilers, pattern matching problems and solving Sudoku boards.
+
+Though the problem is seemingly simple, it is computationally hard. The graph colouring problem we are exploring in this work, that of vertex colouring, is an NP-hard problem. The sequential approaches like greedy colouring are simply not fast enough whereas advanced approximate/randomized solutions either produce colourings of bad colour quality or aren't fast enough. Thus came the parallel approaches to Graph Colouring. Most of the parallel versions of Graph Colouring algorithms were designed with either multi-core CPUs or heavy duty super computers in mind. With the advent of General-Purpose computing on GPUs (GPGPU), we have access to cheap heavy multi-threaded parallel computing power. Our work is based on parallel computing on nVidia GPUs using Cuda programming language.
+
+We explore different parallel graph colouring algorithms on nVIdia GPUs in this work and try to adapt them to support addition of edges, called incremental graph colouring, and deletion of edges, called decremental graph colouring. In the first section, we explore different parallel graph algorithms and adapt a couple of them, one based on \textit{speculation} and \textit{conflict resolution} and the other on \textit{Vertex Independent Sets}, to work on nVidia GPUs. In the following sections, we adapt the GPU parallel colouring algorithm to support additions and deletions of edges. In the incremental part, we explore different methods to maximize parallelization while colouring newly added edges and use propagation to improve overall colour quality. In the decremental part, we explore different options to either process the vertices, on which the deleted edges were incident, on the go or to process them together and use propagation to propagate the information across the graph improving the colour quality. 
+\chapter{Background}
 \section{Graphs and Graph Algorithms}
 Graphs are really important mathematical concepts and in the area of computing, their various forms are widely used as data structures to aid various algorithms. Graphs are commonly used to denote relations between different entities and hence is a very important and integral part of many algorithms. On a practical level, we deal with graphs in the order of billions of nodes and edges on a daily basis. Especially with the advent of social networks and big data, a lot of active research is ongoing in the analysis and understanding of large graphs.
 
@@ -717,28 +720,28 @@ We introduce an algorithm called The Two Thread Incremental Model to deal with r
 \State \textit{synchronize}
 \If {$possibleColour[threadId]=possibleColour[1-threadId]$}
 \If {$possibleColour[threadId]<oldColour$}
-\BState \emph{Case 1}:
+\BState \emph{Label 1}:
 \If {\textit{threadId}$=0$}
 \State $colour[i] \gets possibleColour[threadId]$
 \Else
 \State $\textit{newColour} \gets \textit{Smallest possible colour > possibleColour[threadId] for i}$
-\BState \emph{Case 2}:
+\BState \emph{Label 2}:
 \If {$ newColour < oldColour $}
 \State $colour[i] \gets newColour$
 \EndIf
 \EndIf
 \Else
-\BState \emph{Case 3}:
+\BState \emph{Label 3}:
 \If {\textit{threadId}$=1$}
 \State $colour[i] \gets possibleColour[threadId]$
 \EndIf
 \EndIf
 \Else
-\BState \emph{Case 4}:
+\BState \emph{Label 4}:
 \If {$possibleColour[threadId]<oldColour$}
 \State $colour[i] \gets possibleColour[threadId]$
 \Else
-\BState \emph{Case 5}:
+\BState \emph{Label 5}:
 \If {$possibleColour[threadId]<possibleColour[1-threadId]$}
 \State $colour[i] \gets possibleColour[threadId]$
 \EndIf
@@ -753,13 +756,13 @@ Our Two Thread Incremental Model is explained in Algorithm \ref{twoThreadIncreme
 
 This algorithm is meant for addition of a single edge. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the new edge is incident. In our algorithm, we assume \textit{uv} is the added edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 2} in charge of \textit{v}. Initially, each thread modifies their portions of the UCSR to accommodate the newly added edge. Then they check if the current colouring of \textit{u} and \textit{v} are the same. If not, we are through.
 
-If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found lease possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. But then, we have many cases that can arise in most of which $x$ and $y$ are interchangeable with no side effects. The cases are tabulated in Table \ref{table:3}. In the case of $x=y$, $z$ be the least colour greater than $y$ that \textit{v} can take in a greedy fashion. 
+If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found lease possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. In the case of $x=y$, $z$ be the least colour greater than $y$ that \textit{v} can take in a greedy fashion. We have many cases that can arise in most of which $x$ and $y$ are interchangeable with no side effects. These cases and the actions required are tabulated in Table \ref{table:3}. 
 
-\begin{table}[h!]
+\begin{table}[h]
 \centering
 \begin{tabular}{||c|c|c|c||} 
  \hline
- No & Case & Action & Case No. in Algorithm \\ [0.5ex] 
+ No & Case & Action & Label No. in Algorithm \\ [0.5ex] 
  \hline\hline
 1 & $x=y < p; \: z<p$ & $colour[u]=x; \: colour[v]=z$ & 1, 2 \\
 \hline
@@ -778,6 +781,115 @@ If the current colouring of \textit{u} and \textit{v} are the same, we first try
 \label{table:3}
 \end{table}
 
+Each of the cases given in the table \ref{table:3} are explained using examples in the figures \ref{fig:case1}, \ref{fig:case2}, \ref{fig:case3}, \ref{fig:case4}, \ref{fig:case5} and \ref{fig:case6}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case1.jpg}
+    \caption{
+        \textbf{Case 1:} $x=y < p; \: z<p$
+    }
+    \label{fig:case1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case2.jpg}
+    \caption{
+        \textbf{Case 2:} $x=y < p; \: p<z$
+    }
+    \label{fig:case2}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case3.jpg}
+    \caption{
+        \textbf{Case 3:} $p < x=y$
+    }
+    \label{fig:case3}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case4.jpg}
+    \caption{
+        \textbf{Case 4:} $x \neq y; \: x < y < p$
+    }
+    \label{fig:case4}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case5.jpg}
+    \caption{
+        \textbf{Case 5:} $x \neq y; \: x < p < y$
+    }
+    \label{fig:case5}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case6.jpg}
+    \caption{
+        \textbf{Case 6:} $x \neq y; \: p < x < y$ 
+    }
+    \label{fig:case6}
+\end{figure}
+
+\section{The Many Thread Incremental Model}
+We have seen in The Two Thread Incremental Model in the last section and how it actually requires only two threads per addition of a new edge. As the graph is already on the GPU, we don't have much memory latency issues too. But then, GPUs are devices for massive parallelism. In this section, we will try to increase the parallelism involved in Incremental colouring.
+
+As we have seen in the last session, we can handle a newly added edge with 2 threads. That is, if we colour on the go, we have to call a kernel with 2 threads each time we come across a new edge. To increase parallelism, we can try to club a bunch of new edges and process them together. But these edges shouldn't have any data races among them. So, we try to club edges which won't have any data races amongst them and process them all together in parallel. We call our new approach \textbf{The Many Thread Incremental Model} and it is explained in Algorithm \ref{manythread}.
+
+According to our algorithm, we keep on taking new edges as inputs and add them to \verb+edgeSet+, as long as all the edges stored in our \verb+edgeSet+ are data race free. That is, there are no two edges which are incident on a common vertex. If a new edge added doesn't hold this true, we process the existing \verb+edgeSet+, all the edges processed in parallel with each edge getting two threads each, using \verb+TwoThreadIncrementalModel+ as discussed in the previous section. Once all the edges from \verb+edgeSet+ are processed, it is cleared and the new edge is added to it. Then it goes back to accepting more edges. 
+
+New added edges can create conflicts. These conflicts will be resolved only after these edges are processed. So, it is not wise to wait for very long to club them with other edges for added parallelism. So, in our implementation, we have set a limit of 1024 edges as the maximum \verb+edgeSet+ size before it is forcibly processed.
+
+\begin{algorithm}
+\caption{The Many Thread Incremental Model}\label{manythread}
+\begin{algorithmic}[1]
+\Procedure{ManyThreadIncrementalColouring(G(V,E), edge)}{}
+\State $\textit{Initialization}$
+\State $\textit{edgeSet} \gets \phi$
+\BState \emph{NewEdge}:
+\State \textit{Take the new edge to added, $\bar{e}$, as the input}
+\State $\bar{u}, \bar{v} \gets \textit{endpoints of }\bar{e}$
+\For {$each e \in edgeSet$}
+\State $\textit{u, v} \gets \textit{endpoints of e}$
+
+\State $setU \gets V-adj(u)$\Comment adj(k) gives adjacent vertices of k
+\State $setV \gets V-adj(v)$
+\State $setPermissible \gets setU \cap setV$
+
+\If {$\bar{u} \not\in setPermissible \: OR \: \bar{v} \not\in setPermissible$}
+\State // Done in parallel for all edges in the edgeSet
+\State \verb+TwoThreadIncrementalColouring(G(V,E), edgeSet)+
+\State $\textit{edgeSet} \gets \phi \cup \bar{e}$
+\State \textit{goto NewEdge}
+\EndIf
+\EndFor
+\State $\textit{edgeSet} \gets \textit{edgeSet} \cup \bar{e}$
+\State \textit{goto NewEdge}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\section{Propagation}
+As discussed earlier, our algorithm tries improves the colouring locally at the end points of the new edge added. But, we consider only those two vertices. If any of them changes its colouring, it could have an effect on its adjacent vertices who could now probably improve their own colouring as they themselves might not be locally optimized. And when they indeed change their colours, there could be scope for improvement in their neighbourhood. So, this has a ripple effect. The need for propagation and propagation itself is portrayed with the help of an example in the figure \ref{fig:propagation}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{propagation.jpg}
+    \caption{
+        1-step propagation after adding a new edge and processing it. 
+    }
+    \label{fig:propagation}
+\end{figure}
+
+Though our locally optimizing algorithm works well without considering the ripple effect, it's always good to try for better colour quality. We introduce the idea of propagation to handle this ripple effect. Propagation is done only after a fixed number of edge additions are done so as to save on computation. Our propagation procedure propagates the newly changed colouring info across the graph to the vertices who could possibly be affected. 
+
+We discuss our propagation algorithm in the next chapter when we discuss Decremental graph colouring as the propagation step is one and the same for both Incremental and Decremental graph colouring.
 
 \chapter{PARALLEL GRAPH COLOURING: DECREMENTAL}
 \section{Why Decremental?}
@@ -787,6 +899,13 @@ As discussed in the last chapter, almost all practical graphs keep on changing. 
 With decremental graph colouring, we are removing vertices and edges. Without any loss of functionality, we can choose not to remove vertices. Only edges are deleted. Removing a vertex (with some edges incident on it) is equivalent to removing all the edges incident on that vertex. 
 
 So, through the deletions of edges, the \verb+offsetArray[]+ of UCSR doesn't change in size as we don't really remove vertices. But the size of \verb+edgesArray[]+ can change. As we want the size of \verb+edgesArray[]+ to not change, when an edge is deleted, the new edge's information can be removed from the \verb+edgesArray[]+ by setting those elements to zero.
+\section{The Two Thread Decremental Model}
+
+\section{The Many Thread Decremental Model}
+
+\section{Propagation}
+\subsection{One Time Propagation}
+\subsection{Wave Propagation}
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
 \section{Test Data}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  25 APR 2016 02:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  25 APR 2016 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,7 +451,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 38.
- <iitm.pdf, id=205, 109.40875pt x 109.40875pt>
+ <iitm.pdf, id=237, 109.40875pt x 109.40875pt>
 File: iitm.pdf Graphic file (type pdf)
 
 <use iitm.pdf>
@@ -473,13 +473,18 @@ een already used, duplicate ignored
 l.69 \acknowledgements
                        [0
 
-] [1
+]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 71.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [1
 
 ] [2
 
-] [3] (./thesis.toc [4
+] (./thesis.toc [3
 
-])
+] [4])
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
@@ -487,8 +492,7 @@ l.69 \acknowledgements
 \tf@lot=\write5
 \openout5 = `thesis.lot'.
 
-
-[6
+ [6
 
 ] (./thesis.lof)
 \tf@lof=\write6
@@ -503,135 +507,201 @@ CHAPTER 1.
 [1
 
 
+] [2]
+CHAPTER 2.
+[3
+
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 160.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 163.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 166.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 163.
+(hyperref)                removing `\chi' on input line 166.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 166.
 
-[2]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 185.
+[4]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 188.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 188.
 
-<mooreslaw.jpg, id=350, 642.4pt x 577.357pt>
+<mooreslaw.jpg, id=414, 642.4pt x 577.357pt>
 File: mooreslaw.jpg Graphic file (type jpg)
  <use mooreslaw.jpg>
-Package pdftex.def Info: mooreslaw.jpg used on input line 194.
+Package pdftex.def Info: mooreslaw.jpg used on input line 197.
 (pdftex.def)             Requested size: 385.44298pt x 346.41685pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] <CPU-Scaling.jpg, id=362, 419.6478pt x 418.2024pt>
+[5] <CPU-Scaling.jpg, id=425, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
  <use CPU-Scaling.jpg>
-Package pdftex.def Info: CPU-Scaling.jpg used on input line 204.
+Package pdftex.def Info: CPU-Scaling.jpg used on input line 207.
 (pdftex.def)             Requested size: 251.79062pt x 250.92337pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <./mooreslaw.jpg>] [5 <./CPU-Scaling.jpg>] [6]
-<hardware-model.png, id=382, 429.605pt x 432.817pt>
+[6 <./mooreslaw.jpg>] [7 <./CPU-Scaling.jpg>] [8]
+<hardware-model.png, id=445, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
-Package pdftex.def Info: hardware-model.png used on input line 226.
+Package pdftex.def Info: hardware-model.png used on input line 229.
 (pdftex.def)             Requested size: 171.83894pt x 173.12372pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8 <./hardware-model.png>] [9]
-CHAPTER 2.
-[10
+[9] [10 <./hardware-model.png>] [11]
+CHAPTER 3.
+[12
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 278.
- [11] [12] [13] [14]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 405.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [15] [16]
-Overfull \hbox (15.65712pt too wide) in paragraph at lines 489--490
+put line 281.
+ [13] [14] [15] [16] [17] [18]
+Overfull \hbox (15.65712pt too wide) in paragraph at lines 492--493
 \T1/ptm/m/n/12 In our work, we try a num-ber of op-tions like []\T1/pcr/m/n/12 
 RANDCOLOURING \T1/ptm/m/n/12 and []\T1/pcr/m/n/12 MINMAXCOLOURING
  []
 
-[17] [18]
-Overfull \hbox (14.02617pt too wide) in paragraph at lines 502--503
+[19] [20]
+Overfull \hbox (14.02617pt too wide) in paragraph at lines 505--506
 []\T1/pcr/m/n/12 offsetArray[i+1] \T1/ptm/m/n/12 for all $\OML/cmm/m/it/12 i < 
 n \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1$ \T1/ptm/m/n/12 and for $\OML/cmm/m/it
 /12 i \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12
  1$\T1/ptm/m/n/12 , from in-dex []\T1/pcr/m/n/12 offsetArray[i]
  []
 
-[19] <csrdirected.jpg, id=499, 542.025pt x 274.02374pt>
+[21] <csrdirected.jpg, id=562, 542.025pt x 274.02374pt>
 File: csrdirected.jpg Graphic file (type jpg)
  <use csrdirected.jpg>
-Package pdftex.def Info: csrdirected.jpg used on input line 530.
+Package pdftex.def Info: csrdirected.jpg used on input line 533.
 (pdftex.def)             Requested size: 325.2175pt x 164.41551pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20] <csrundirected.jpg, id=512, 548.0475pt x 266.9975pt>
+[22] <csrundirected.jpg, id=576, 548.0475pt x 266.9975pt>
 File: csrundirected.jpg Graphic file (type jpg)
 
 <use csrundirected.jpg>
-Package pdftex.def Info: csrundirected.jpg used on input line 558.
+Package pdftex.def Info: csrundirected.jpg used on input line 561.
 (pdftex.def)             Requested size: 328.83104pt x 160.19972pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<csrundirectednew.jpg, id=515, 631.35875pt x 287.0725pt>
+<csrundirectednew.jpg, id=579, 631.35875pt x 287.0725pt>
 File: csrundirectednew.jpg Graphic file (type jpg)
 
 <use csrundirectednew.jpg>
-Package pdftex.def Info: csrundirectednew.jpg used on input line 566.
+Package pdftex.def Info: csrundirectednew.jpg used on input line 569.
 (pdftex.def)             Requested size: 378.81818pt x 172.24483pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21 <./csrdirected.jpg>] [22 <./csrundirected.jpg> <./csrundirectednew.jpg>]
-[23] [24] [25]
-CHAPTER 3.
-[26
+[23 <./csrdirected.jpg>] [24 <./csrundirected.jpg> <./csrundirectednew.jpg>]
+[25] [26] [27]
+CHAPTER 4.
+[28
 
 ]
-Overfull \hbox (43.72989pt too wide) in paragraph at lines 724--725
+Overfull \hbox (43.72989pt too wide) in paragraph at lines 727--728
 [] $[] \OMS/cmsy/m/n/12   []$ 
  []
 
-[27] [28] [29]
-CHAPTER 4.
-[30
+[29] [30] <case1.jpg, id=644, 898.35625pt x 327.2225pt>
+File: case1.jpg Graphic file (type jpg)
+ <use case1.jpg>
+Package pdftex.def Info: case1.jpg used on input line 788.
+(pdftex.def)             Requested size: 416.83289pt x 151.82735pt.
 
-]
+<case2.jpg, id=645, 901.3675pt x 351.3125pt>
+File: case2.jpg Graphic file (type jpg)
+ <use case2.jpg>
+Package pdftex.def Info: case2.jpg used on input line 797.
+(pdftex.def)             Requested size: 416.83289pt x 162.4634pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<case3.jpg, id=646, 799.98875pt x 290.08376pt>
+File: case3.jpg Graphic file (type jpg)
+ <use case3.jpg>
+Package pdftex.def Info: case3.jpg used on input line 806.
+(pdftex.def)             Requested size: 416.83289pt x 151.14983pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<case4.jpg, id=647, 941.5175pt x 332.24126pt>
+File: case4.jpg Graphic file (type jpg)
+ <use case4.jpg>
+Package pdftex.def Info: case4.jpg used on input line 815.
+(pdftex.def)             Requested size: 416.83289pt x 147.08897pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<case5.jpg, id=648, 941.5175pt x 328.22626pt>
+File: case5.jpg Graphic file (type jpg)
+ <use case5.jpg>
+Package pdftex.def Info: case5.jpg used on input line 824.
+(pdftex.def)             Requested size: 416.83289pt x 145.31148pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<case6.jpg, id=649, 897.3525pt x 386.44376pt>
+File: case6.jpg Graphic file (type jpg)
+ <use case6.jpg>
+Package pdftex.def Info: case6.jpg used on input line 833.
+(pdftex.def)             Requested size: 416.83289pt x 179.5058pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31 <./case1.jpg>]
+Overfull \hbox (7.32863pt too wide) in paragraph at lines 845--846
+\T1/ptm/m/n/12 al-lel with each edge get-ting two threads each, us-ing []\T1/pc
+r/m/n/12 TwoThreadIncrementalModel
+ []
+
+[32 <./case2.jpg> <./case3.jpg>] [33 <./case4.jpg> <./case5.jpg>]
+<propagation.jpg, id=666, 963.6pt x 722.7pt>
+File: propagation.jpg Graphic file (type jpg)
+ <use propagation.jpg>
+Package pdftex.def Info: propagation.jpg used on input line 883.
+(pdftex.def)             Requested size: 416.83289pt x 312.61859pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[34 <./case6.jpg>] [35 <./propagation.jpg>]
 CHAPTER 5.
-[31
+[36
+
+] [37]
+CHAPTER 6.
+[38
 
 ]
-CHAPTER 6.
-[32
+CHAPTER 7.
+[39
 
 ] (./thesis.bbl
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
@@ -683,24 +753,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--89
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
- [33
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 948.
+ [40
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 948.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 948.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 948.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 2B071C87ED15797A59A0F679C5BA2201;3548.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 829.
+(rerunfilecheck)             Checksum: BC661C1B25DF3455D28989501AF20CF0;4093.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 948.
  ) 
 Here is how much of TeX's memory you used:
- 8652 strings out of 494985
- 129048 string characters out of 6180355
- 223162 words of memory out of 5000000
- 11583 multiletter control sequences out of 15000+600000
- 58544 words of font info for 71 fonts, out of 8000000 for 9000
+ 8725 strings out of 494985
+ 130003 string characters out of 6180355
+ 223702 words of memory out of 5000000
+ 11627 multiletter control sequences out of 15000+600000
+ 57466 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,8n,41p,1049b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -714,10 +784,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (43 pages, 550558 bytes).
+Output written on thesis.pdf (50 pages, 752211 bytes).
 PDF statistics:
- 687 PDF objects out of 1000 (max. 8388607)
- 606 compressed objects within 7 object streams
- 137 named destinations out of 1000 (max. 500000)
- 436 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 792 PDF objects out of 1000 (max. 8388607)
+ 697 compressed objects within 7 object streams
+ 160 named destinations out of 1000 (max. 500000)
+ 535 words of extra memory for PDF output out of 10000 (max. 10000000)
 
