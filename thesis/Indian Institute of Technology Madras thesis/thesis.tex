@@ -757,21 +757,21 @@ If the current colouring of \textit{u} and \textit{v} are the same, we first try
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{||c|c|c||} 
+\begin{tabular}{||c|c|c|c||} 
  \hline
- Case & Action & Case No. In Algorithm \\ [0.5ex] 
+ No & Case & Action & Case No. in Algorithm \\ [0.5ex] 
  \hline\hline
-$x=y < p; \: z<p$ & $colour[u]=x; \: colour[v]=z$ & 1, 2 \\
+1 & $x=y < p; \: z<p$ & $colour[u]=x; \: colour[v]=z$ & 1, 2 \\
 \hline
-$x=y < p; \: p<z$ & $colour[u]=x$ & 1\\
+2 & $x=y < p; \: p<z$ & $colour[u]=x$ & 1\\
 \hline
-$p < x=y$ & $colour[v]=y$ & 3\\
+3 & $p < x=y$ & $colour[v]=y$ & 3\\
 \hline
-$x \neq y; \: x < y < p$ & $colour[u]=x; \: colour[v]=y$ & 4\\
+4 & $x \neq y; \: x < y < p$ & $colour[u]=x; \: colour[v]=y$ & 4\\
 \hline
-$x \neq y; \: x < p < y$ & $colour[u]=x$ & 4\\
+5 & $x \neq y; \: x < p < y$ & $colour[u]=x$ & 4\\
 \hline
-$x \neq y; \: p < x < y$ & $colour[u]=x$& 5\\
+6 & $x \neq y; \: p < x < y$ & $colour[u]=x$& 5\\
 \hline
 \end{tabular}
 \caption{The Two Threads Model: Different Cases}
