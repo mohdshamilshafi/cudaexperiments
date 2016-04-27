@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  26 APR 2016 18:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  27 APR 2016 05:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -514,51 +514,51 @@ CHAPTER 2.
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 163.
+ <graphcolouring.jpg, id=412, 783.92876pt x 340.27126pt>
+File: graphcolouring.jpg Graphic file (type jpg)
+
+<use graphcolouring.jpg>
+Package pdftex.def Info: graphcolouring.jpg used on input line 169.
+(pdftex.def)             Requested size: 416.83289pt x 180.92961pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 176.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 166.
+(hyperref)                removing `\chi' on input line 176.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 166.
+(hyperref)                removing `math shift' on input line 176.
 
-[4]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 188.
+[4 <./graphcolouring.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 202.
 
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 188.
-
-<mooreslaw.jpg, id=414, 642.4pt x 577.357pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
+ [5]
+<mooreslaw.jpg, id=425, 642.4pt x 577.357pt>
 File: mooreslaw.jpg Graphic file (type jpg)
  <use mooreslaw.jpg>
-Package pdftex.def Info: mooreslaw.jpg used on input line 197.
+Package pdftex.def Info: mooreslaw.jpg used on input line 211.
 (pdftex.def)             Requested size: 385.44298pt x 346.41685pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5] <CPU-Scaling.jpg, id=425, 419.6478pt x 418.2024pt>
+ [6 <./mooreslaw.jpg>] <CPU-Scaling.jpg, id=435, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
- <use CPU-Scaling.jpg>
-Package pdftex.def Info: CPU-Scaling.jpg used on input line 207.
+
+<use CPU-Scaling.jpg>
+Package pdftex.def Info: CPU-Scaling.jpg used on input line 221.
 (pdftex.def)             Requested size: 251.79062pt x 250.92337pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6 <./mooreslaw.jpg>] [7 <./CPU-Scaling.jpg>] [8]
-<hardware-model.png, id=445, 429.605pt x 432.817pt>
+ [7 <./CPU-Scaling.jpg>] [8]
+<hardware-model.png, id=450, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
-Package pdftex.def Info: hardware-model.png used on input line 229.
+Package pdftex.def Info: hardware-model.png used on input line 243.
 (pdftex.def)             Requested size: 171.83894pt x 173.12372pt.
 
 
@@ -570,45 +570,45 @@ CHAPTER 3.
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 281.
+put line 295.
  [13] [14] [15] [16] [17] [18]
-Overfull \hbox (15.65712pt too wide) in paragraph at lines 492--493
+Overfull \hbox (15.65712pt too wide) in paragraph at lines 506--507
 \T1/ptm/m/n/12 In our work, we try a num-ber of op-tions like []\T1/pcr/m/n/12 
 RANDCOLOURING \T1/ptm/m/n/12 and []\T1/pcr/m/n/12 MINMAXCOLOURING
  []
 
 [19] [20]
-Overfull \hbox (14.02617pt too wide) in paragraph at lines 505--506
+Overfull \hbox (14.02617pt too wide) in paragraph at lines 519--520
 []\T1/pcr/m/n/12 offsetArray[i+1] \T1/ptm/m/n/12 for all $\OML/cmm/m/it/12 i < 
 n \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1$ \T1/ptm/m/n/12 and for $\OML/cmm/m/it
 /12 i \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12
  1$\T1/ptm/m/n/12 , from in-dex []\T1/pcr/m/n/12 offsetArray[i]
  []
 
-[21] <csrdirected.jpg, id=562, 542.025pt x 274.02374pt>
+[21] <csrdirected.jpg, id=567, 542.025pt x 274.02374pt>
 File: csrdirected.jpg Graphic file (type jpg)
  <use csrdirected.jpg>
-Package pdftex.def Info: csrdirected.jpg used on input line 533.
+Package pdftex.def Info: csrdirected.jpg used on input line 547.
 (pdftex.def)             Requested size: 325.2175pt x 164.41551pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22] <csrundirected.jpg, id=576, 548.0475pt x 266.9975pt>
+[22] <csrundirected.jpg, id=581, 548.0475pt x 266.9975pt>
 File: csrundirected.jpg Graphic file (type jpg)
 
 <use csrundirected.jpg>
-Package pdftex.def Info: csrundirected.jpg used on input line 561.
+Package pdftex.def Info: csrundirected.jpg used on input line 575.
 (pdftex.def)             Requested size: 328.83104pt x 160.19972pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<csrundirectednew.jpg, id=579, 631.35875pt x 287.0725pt>
+<csrundirectednew.jpg, id=584, 631.35875pt x 287.0725pt>
 File: csrundirectednew.jpg Graphic file (type jpg)
 
 <use csrundirectednew.jpg>
-Package pdftex.def Info: csrundirectednew.jpg used on input line 569.
+Package pdftex.def Info: csrundirectednew.jpg used on input line 583.
 (pdftex.def)             Requested size: 378.81818pt x 172.24483pt.
 
 
@@ -620,72 +620,72 @@ CHAPTER 4.
 [28
 
 ]
-Overfull \hbox (43.72989pt too wide) in paragraph at lines 727--728
+Overfull \hbox (43.72989pt too wide) in paragraph at lines 741--742
 [] $[] \OMS/cmsy/m/n/12   []$ 
  []
 
-[29] [30] <case1.jpg, id=644, 898.35625pt x 327.2225pt>
+[29] [30] <case1.jpg, id=649, 898.35625pt x 327.2225pt>
 File: case1.jpg Graphic file (type jpg)
  <use case1.jpg>
-Package pdftex.def Info: case1.jpg used on input line 788.
+Package pdftex.def Info: case1.jpg used on input line 802.
 (pdftex.def)             Requested size: 416.83289pt x 151.82735pt.
 
-<case2.jpg, id=645, 901.3675pt x 351.3125pt>
+<case2.jpg, id=650, 901.3675pt x 351.3125pt>
 File: case2.jpg Graphic file (type jpg)
  <use case2.jpg>
-Package pdftex.def Info: case2.jpg used on input line 797.
+Package pdftex.def Info: case2.jpg used on input line 811.
 (pdftex.def)             Requested size: 416.83289pt x 162.4634pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case3.jpg, id=646, 799.98875pt x 290.08376pt>
+<case3.jpg, id=651, 799.98875pt x 290.08376pt>
 File: case3.jpg Graphic file (type jpg)
  <use case3.jpg>
-Package pdftex.def Info: case3.jpg used on input line 806.
+Package pdftex.def Info: case3.jpg used on input line 820.
 (pdftex.def)             Requested size: 416.83289pt x 151.14983pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case4.jpg, id=647, 941.5175pt x 332.24126pt>
+<case4.jpg, id=652, 941.5175pt x 332.24126pt>
 File: case4.jpg Graphic file (type jpg)
  <use case4.jpg>
-Package pdftex.def Info: case4.jpg used on input line 815.
+Package pdftex.def Info: case4.jpg used on input line 829.
 (pdftex.def)             Requested size: 416.83289pt x 147.08897pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case5.jpg, id=648, 941.5175pt x 328.22626pt>
+<case5.jpg, id=653, 941.5175pt x 328.22626pt>
 File: case5.jpg Graphic file (type jpg)
  <use case5.jpg>
-Package pdftex.def Info: case5.jpg used on input line 824.
+Package pdftex.def Info: case5.jpg used on input line 838.
 (pdftex.def)             Requested size: 416.83289pt x 145.31148pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case6.jpg, id=649, 897.3525pt x 386.44376pt>
+<case6.jpg, id=654, 897.3525pt x 386.44376pt>
 File: case6.jpg Graphic file (type jpg)
  <use case6.jpg>
-Package pdftex.def Info: case6.jpg used on input line 833.
+Package pdftex.def Info: case6.jpg used on input line 847.
 (pdftex.def)             Requested size: 416.83289pt x 179.5058pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <./case1.jpg>]
-Overfull \hbox (7.32863pt too wide) in paragraph at lines 845--846
+Overfull \hbox (7.32863pt too wide) in paragraph at lines 859--860
 \T1/ptm/m/n/12 al-lel with each edge get-ting two threads each, us-ing []\T1/pc
 r/m/n/12 TwoThreadIncrementalModel
  []
 
 [32 <./case2.jpg> <./case3.jpg>] [33 <./case4.jpg> <./case5.jpg>]
-<propagation.jpg, id=666, 963.6pt x 722.7pt>
+<propagation.jpg, id=671, 963.6pt x 722.7pt>
 File: propagation.jpg Graphic file (type jpg)
  <use propagation.jpg>
-Package pdftex.def Info: propagation.jpg used on input line 883.
+Package pdftex.def Info: propagation.jpg used on input line 897.
 (pdftex.def)             Requested size: 416.83289pt x 312.61859pt.
 
 
@@ -753,23 +753,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--89
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 953.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 965.
  [40
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 953.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 965.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 953.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 953.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 965.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 965.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: BC661C1B25DF3455D28989501AF20CF0;4093.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 953.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 965.
  ) 
 Here is how much of TeX's memory you used:
- 8725 strings out of 494985
- 130003 string characters out of 6180355
- 223702 words of memory out of 5000000
- 11627 multiletter control sequences out of 15000+600000
+ 8732 strings out of 494985
+ 130144 string characters out of 6180355
+ 223789 words of memory out of 5000000
+ 11632 multiletter control sequences out of 15000+600000
  57466 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,8n,41p,1049b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -784,10 +784,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (50 pages, 752677 bytes).
+Output written on thesis.pdf (50 pages, 783176 bytes).
 PDF statistics:
- 799 PDF objects out of 1000 (max. 8388607)
- 703 compressed objects within 8 object streams
- 160 named destinations out of 1000 (max. 500000)
- 535 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 798 PDF objects out of 1000 (max. 8388607)
+ 701 compressed objects within 8 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 540 words of extra memory for PDF output out of 10000 (max. 10000000)
 

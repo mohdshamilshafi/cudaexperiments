@@ -162,11 +162,25 @@ Vertex Colouring is the most basic version of Graph Colouring and other Graph Co
 \begin{verse}
 \textit{\textbf{Vertex Colouring:} Colouring all the vertices of a graph such that adjacent vertices have different colours. That is, there shouldn't be an edge where the incident vertices share the same colour.}
 \end{verse}
-There are other forms of vertex colouring where additional conditions than the one given above need to be considered while colouring. In our work, we are concerned only with the classical form of vertex colouring which hereinafter interchangeably referred to simply as Graph Colouring.
+There are other forms of vertex colouring where additional conditions than the one given above need to be considered while colouring. In our work, we are concerned only with the classical form of vertex colouring which hereinafter interchangeably referred to simply as Graph Colouring. An example of Vertex Colouring is given in Figure \ref{fig:colouring}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{graphcolouring.jpg}
+    \caption{
+        \textit{Vertex Colouring of a given graph using 3 colours}.
+    }
+    \label{fig:colouring}
+\end{figure}
+
 \subsection{Chromatic Number $ \chi(G) $}
 A graph \textit{G} is said to \textit{k-}colourable, if \textit{G} can be coloured using \textit{k} colours. For example, from the \textit{Four Colour Theorem}, we have that all planar graphs are 4-colourable. Also, all bipartite graphs are 2-colourable.
  
-The \textit{Chromatic Number} of a graph G, denoted by $ \chi(G) $, is the minimum number of colours required to colour a graph. That is, $ \chi(G) $, is the minimum value of all \textit{k} for which the graph \textit{G} is \textit{k-}colourable. Therefore, if a graph is \textit{k-}colourable, we have:
+\begin{verse}
+The \textit{Chromatic Number} of a graph G, denoted by $ \chi(G) $, is the minimum number of colours required to colour a graph. That is, $ \chi(G) $, is the minimum value of all \textit{k} for which the graph \textit{G} is \textit{k-}colourable. 
+\end{verse}
+
+For example, $\chi(G)$ of the graph given in Figure \ref{fig:colouring} is 3. Also, it follows that if a graph is \textit{k-}colourable, we have:
 \begin{center}
 $ \chi(G) \leq k $
 \end{center}
@@ -899,6 +913,8 @@ As discussed in the last chapter, almost all practical graphs keep on changing. 
 With decremental graph colouring, we are removing vertices and edges. Without any loss of functionality, we can choose not to remove vertices. Only edges are deleted. Removing a vertex (with some edges incident on it) is equivalent to removing all the edges incident on that vertex. 
 
 So, through the deletions of edges, the \verb+offsetArray[]+ of UCSR doesn't change in size as we don't really remove vertices. But the size of \verb+edgesArray[]+ can change. As we want the size of \verb+edgesArray[]+ to not change, when an edge is deleted, the new edge's information can be removed from the \verb+edgesArray[]+ by setting those elements to zero.
+
+Pessimistic, Semi-optimistic, Optimistic
 \section{The Two Thread Decremental Model}
 
 \section{The Many Thread Decremental Model}
@@ -913,11 +929,7 @@ So, through the deletions of edges, the \verb+offsetArray[]+ of UCSR doesn't cha
 \section{Incremental Parallel Graph Colouring on GPU}
 \section{Decremental Parallel Graph Colouring on GPU}
 \chapter{CONCLUSION AND FUTURE WORK}
-\cite{6828158}
 
-\citep{6828158}
-
-\citet{6828158}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices.
 
