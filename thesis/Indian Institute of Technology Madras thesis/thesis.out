@@ -15,10 +15,10 @@
 \BOOKMARK [1][-]{section.2.3}{Parallelization}{chapter.2}% 15
 \BOOKMARK [2][-]{subsection.2.3.1}{Frequency Scaling}{section.2.3}% 16
 \BOOKMARK [2][-]{subsection.2.3.2}{Why Parallelization?}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.3}{Parallezation of Graph Colouring}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.3}{Parallelization of Graph Colouring}{section.2.3}% 18
 \BOOKMARK [1][-]{section.2.4}{GPGPU}{chapter.2}% 19
 \BOOKMARK [2][-]{subsection.2.4.1}{Why GPUs?}{section.2.4}% 20
-\BOOKMARK [2][-]{subsection.2.4.2}{nVidia CUDA}{section.2.4}% 21
+\BOOKMARK [2][-]{subsection.2.4.2}{NVIDIA CUDA}{section.2.4}% 21
 \BOOKMARK [2][-]{subsection.2.4.3}{Challenges}{section.2.4}% 22
 \BOOKMARK [1][-]{section.2.5}{Incremental/Decremental}{chapter.2}% 23
 \BOOKMARK [0][-]{chapter.3}{PARALLEL GRAPH COLOURING}{}% 24
