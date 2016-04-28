@@ -22,45 +22,45 @@
 \contentsline {subsubsection}{Architecture}{10}{section*.10}
 \contentsline {subsection}{\numberline {2.4.3}Challenges}{11}{subsection.2.4.3}
 \contentsline {section}{\numberline {2.5}Incremental/Decremental}{11}{section.2.5}
-\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING}{12}{chapter.3}
-\contentsline {section}{\numberline {3.1}Graph Colouring Problem}{12}{section.3.1}
-\contentsline {section}{\numberline {3.2}Related Work}{12}{section.3.2}
-\contentsline {section}{\numberline {3.3}Broad Classification of Parallel Graph Colouring Algorithms}{13}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Vertex Independent Sets and Colouring}{13}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Speculation and Conflict Resolution}{14}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Algorithms}{15}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Sequential Greedy Graph Colouring}{15}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Parallel VIS Based Colouring}{16}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Parallel Conflict Resolution Based Colouring}{18}{subsection.3.4.3}
-\contentsline {subsubsection}{3.4.3.1 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Sequential}{18}{section*.12}
-\contentsline {subsubsection}{3.4.3.2 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{19}{section*.13}
-\contentsline {section}{\numberline {3.5}Our Approach}{19}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}CSR: Compressed Sparse Row Representation}{21}{subsection.3.5.1}
-\contentsline {subsubsection}{Offsets Array}{21}{section*.14}
-\contentsline {subsubsection}{Edges Array}{22}{section*.15}
-\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{22}{section*.16}
-\contentsline {subsubsection}{Example}{22}{section*.17}
-\contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{23}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{25}{subsection.3.5.3}
-\contentsline {subsubsection}{Improvements}{25}{section*.23}
-\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{28}{chapter.4}
-\contentsline {section}{\numberline {4.1}Why Incremental?}{28}{section.4.1}
-\contentsline {section}{\numberline {4.2}Handling a Growing Graph}{28}{section.4.2}
-\contentsline {section}{\numberline {4.3}The Two Thread Incremental Model}{29}{section.4.3}
-\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{31}{section.4.4}
-\contentsline {section}{\numberline {4.5}Propagation}{33}{section.4.5}
-\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{36}{chapter.5}
-\contentsline {section}{\numberline {5.1}Why Decremental?}{36}{section.5.1}
-\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{36}{section.5.2}
-\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{37}{section.5.3}
-\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{37}{section.5.4}
-\contentsline {section}{\numberline {5.5}Propagation}{37}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}One Time Propagation}{37}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Wave Propagation}{37}{subsection.5.5.2}
-\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{38}{chapter.6}
-\contentsline {section}{\numberline {6.1}Experimental Setup}{38}{section.6.1}
-\contentsline {section}{\numberline {6.2}Test Data}{38}{section.6.2}
-\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{38}{section.6.3}
-\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{38}{section.6.4}
-\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{38}{section.6.5}
-\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{39}{chapter.7}
+\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Graph Colouring Problem}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Related Work}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}Broad Classification of Parallel Graph Colouring Algorithms}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Vertex Independent Sets and Colouring}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Speculation and Conflict Resolution}{15}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Algorithms}{16}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Sequential Greedy Graph Colouring}{17}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Parallel VIS Based Colouring}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Parallel Conflict Resolution Based Colouring}{20}{subsection.3.4.3}
+\contentsline {subsubsection}{3.4.3.1 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Sequential}{20}{section*.12}
+\contentsline {subsubsection}{3.4.3.2 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{21}{section*.13}
+\contentsline {section}{\numberline {3.5}Our Approach}{22}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}CSR: Compressed Sparse Row Representation}{23}{subsection.3.5.1}
+\contentsline {subsubsection}{Offsets Array}{23}{section*.14}
+\contentsline {subsubsection}{Edges Array}{24}{section*.15}
+\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{24}{section*.16}
+\contentsline {subsubsection}{Example}{24}{section*.17}
+\contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{25}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{27}{subsection.3.5.3}
+\contentsline {subsubsection}{Improvements}{27}{section*.23}
+\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{30}{chapter.4}
+\contentsline {section}{\numberline {4.1}Why Incremental?}{30}{section.4.1}
+\contentsline {section}{\numberline {4.2}Handling a Growing Graph}{30}{section.4.2}
+\contentsline {section}{\numberline {4.3}The Two Thread Incremental Model}{31}{section.4.3}
+\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{33}{section.4.4}
+\contentsline {section}{\numberline {4.5}Propagation}{35}{section.4.5}
+\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{38}{chapter.5}
+\contentsline {section}{\numberline {5.1}Why Decremental?}{38}{section.5.1}
+\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{38}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{39}{section.5.3}
+\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{39}{section.5.4}
+\contentsline {section}{\numberline {5.5}Propagation}{39}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}One Time Propagation}{39}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Wave Propagation}{39}{subsection.5.5.2}
+\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{40}{chapter.6}
+\contentsline {section}{\numberline {6.1}Experimental Setup}{40}{section.6.1}
+\contentsline {section}{\numberline {6.2}Test Data}{40}{section.6.2}
+\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{40}{section.6.3}
+\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{40}{section.6.4}
+\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{40}{section.6.5}
+\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{41}{chapter.7}

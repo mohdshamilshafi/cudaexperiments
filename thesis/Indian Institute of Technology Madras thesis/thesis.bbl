@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{27}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -89,6 +89,11 @@
 \newblock Sudoku squares and chromatic polynomials.
 \newblock {\em Notices of the AMS\/}, {\bf 54}(6), 708--717.
 
+\bibitem[{Jensen and Toft(2011)}]{jensen2011graph}
+{\bf Jensen, T.~R.} and {\bf B.~Toft}, {\em Graph coloring problems\/},
+  volume~39.
+\newblock John Wiley \& Sons, 2011.
+
 \bibitem[{Jones and Plassmann(1993)}]{Jones:1993:PGC:153109.153119}
 {\bf Jones, M.~T.} and {\bf P.~E. Plassmann} (1993).
 \newblock A parallel graph coloring heuristic.
@@ -108,6 +113,19 @@
   photonic implementation.
 \newblock {\em Communications, IEEE Transactions on\/}, {\bf 42}(234),
   2062--2070.
+
+\bibitem[{Lee {\em et~al.\/}(2010)Lee, Kim, Chhugani, Deisher, Kim, Nguyen,
+  Satish, Smelyanskiy, Chennupaty, Hammarlund, Singhal, and
+  Dubey}]{Lee:2010:DGV:1816038.1816021}
+{\bf Lee, V.~W.}, {\bf C.~Kim}, {\bf J.~Chhugani}, {\bf M.~Deisher}, {\bf
+  D.~Kim}, {\bf A.~D. Nguyen}, {\bf N.~Satish}, {\bf M.~Smelyanskiy}, {\bf
+  S.~Chennupaty}, {\bf P.~Hammarlund}, {\bf R.~Singhal}, and {\bf P.~Dubey}
+  (2010).
+\newblock Debunking the 100x gpu vs. cpu myth: An evaluation of throughput
+  computing on cpu and gpu.
+\newblock {\em SIGARCH Comput. Archit. News\/}, {\bf 38}(3), 451--460.
+\newblock ISSN 0163-5964.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/1816038.1816021}.
 
 \bibitem[{Leighton(1979)}]{leighton1979graph}
 {\bf Leighton, F.~T.} (1979).
@@ -132,11 +150,17 @@
 \newblock
   \urlprefix\url{https://research.nvidia.com/publication/parallel-graph-coloring-applications-incomplete-lu-factorization-gpu}.
 
-\bibitem[{{NVIDIA Corporation}(2016)}]{nVidia:Hardware}
-{\bf {NVIDIA Corporation}} (2016).
+\bibitem[{{NVIDIA Corporation}(2016{\natexlab{{\em a\/}}})}]{nVidia:Hardware}
+{\bf {NVIDIA Corporation}} (2016{\natexlab{{\em a\/}}}).
 \newblock Cuda toolkit documentation.
 \newblock
   \urlprefix\url{http://docs.nvidia.com/cuda/parallel-thread-execution/#ptx-machine-model}.
+\newblock [Online; accessed on 22 April, 2016].
+
+\bibitem[{{NVIDIA Corporation}(2016{\natexlab{{\em b\/}}})}]{nVidia:cuRAND}
+{\bf {NVIDIA Corporation}} (2016{\natexlab{{\em b\/}}}).
+\newblock curand: Cuda toolkit documentation.
+\newblock \urlprefix\url{http://docs.nvidia.com/cuda/curand/#axzz475iTZCEH}.
 \newblock [Online; accessed on 22 April, 2016].
 
 \bibitem[{Sengupta(2014)}]{6828158}

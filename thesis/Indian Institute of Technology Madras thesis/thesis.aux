@@ -29,6 +29,7 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chap:intro}{{1}{1}{INTRODUCTION}{chapter.1}{}}
+\citation{jensen2011graph}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -72,6 +73,7 @@
 \@writefile{toc}{\contentsline {subsubsection}{Architecture}{10}{section*.10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces  NVIDIA GPU hardware model, from \cite  {nVidia:Hardware}. \relax }}{10}{figure.caption.11}}
 \newlabel{fig:nvidia}{{2.4}{10}{NVIDIA GPU hardware model, from \cite {nVidia:Hardware}. \relax }{figure.caption.11}{}}
+\citation{Lee:2010:DGV:1816038.1816021}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Challenges}{11}{subsection.2.4.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Incremental/Decremental}{11}{section.2.5}}
 \citation{journals/jpdc/BozdagGMBC08,DBLP:conf/hpcc/BozdagCGMBO05}
@@ -79,117 +81,180 @@
 \citation{Grosset:2011:EGC:2038037.1941597}
 \citation{nvidia:naumov}
 \citation{6828158}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING}{12}{chapter.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING}{13}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Graph Colouring Problem}{12}{section.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Related Work}{12}{section.3.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Broad Classification of Parallel Graph Colouring Algorithms}{13}{section.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Vertex Independent Sets and Colouring}{13}{subsection.3.3.1}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Vertex Independent Sets and Colouring\relax }}{14}{algorithm.1}}
-\newlabel{VISColouring}{{1}{14}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Speculation and Conflict Resolution}{14}{subsection.3.3.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Graph Colouring Problem}{13}{section.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Related Work}{13}{section.3.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Broad Classification of Parallel Graph Colouring Algorithms}{14}{section.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Vertex Independent Sets and Colouring}{14}{subsection.3.3.1}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Vertex Independent Sets and Colouring\relax }}{15}{algorithm.1}}
+\newlabel{VISColouring}{{1}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.4}{{4}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.1}{{5}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.6}{{6}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.7}{{7}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.8}{{8}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\newlabel{1.9}{{9}{15}{Vertex Independent Sets and Colouring\relax }{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Speculation and Conflict Resolution}{15}{subsection.3.3.2}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Speculation and Conflict Resolution\relax }}{16}{algorithm.2}}
+\newlabel{SpecColouring}{{2}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\newlabel{2.4}{{4}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\newlabel{2.5}{{5}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\newlabel{2.7}{{7}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\newlabel{2.8}{{8}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\newlabel{2.9}{{9}{16}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Algorithms}{16}{section.3.4}}
 \citation{Welsh01011967}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Speculation and Conflict Resolution\relax }}{15}{algorithm.2}}
-\newlabel{SpecColouring}{{2}{15}{Speculation and Conflict Resolution\relax }{algorithm.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Algorithms}{15}{section.3.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Sequential Greedy Graph Colouring}{15}{subsection.3.4.1}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Sequential Greedy Graph Colouring\relax }}{16}{algorithm.3}}
-\newlabel{GreedyColouring}{{3}{16}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Parallel VIS Based Colouring}{16}{subsection.3.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Sequential Greedy Graph Colouring}{17}{subsection.3.4.1}}
 \citation{Luby:1985:SPA:22145.22146}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Sequential Greedy Graph Colouring\relax }}{18}{algorithm.3}}
+\newlabel{GreedyColouring}{{3}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.3}{{3}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.4}{{4}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.5}{{5}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.6}{{6}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.7}{{7}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.8}{{8}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.9}{{9}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\newlabel{3.11}{{11}{18}{Sequential Greedy Graph Colouring\relax }{algorithm.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Parallel VIS Based Colouring}{18}{subsection.3.4.2}}
 \citation{Jones:1993:PGC:153109.153119}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Maximal Vertex Independent Set\relax }}{17}{algorithm.4}}
-\newlabel{Luby}{{4}{17}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Maximal Vertex Independent Set\relax }}{19}{algorithm.4}}
+\newlabel{Luby}{{4}{19}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
+\newlabel{4.2}{{2}{19}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
+\newlabel{4.4}{{4}{19}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
+\newlabel{4.6}{{6}{19}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
+\newlabel{4.9}{{9}{19}{Maximal Vertex Independent Set\relax }{algorithm.4}{}}
 \citation{CPE:CPE528}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }}{20}{algorithm.5}}
+\newlabel{Jones}{{5}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.6}{{6}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.7}{{7}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.8}{{8}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.9}{{9}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.10}{{10}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\newlabel{5.11}{{12}{20}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Parallel Conflict Resolution Based Colouring}{20}{subsection.3.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{3.4.3.1 \tmspace  +\medmuskip {.2222em} \tmspace  +\medmuskip {.2222em} Conflict Resolution: Sequential}{20}{section*.12}}
 \citation{Grosset:2011:EGC:2038037.1941597}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }}{18}{algorithm.5}}
-\newlabel{Jones}{{5}{18}{Jones-Plassmann-Luby Parallel Colouring Heuristic\relax }{algorithm.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Parallel Conflict Resolution Based Colouring}{18}{subsection.3.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{3.4.3.1 \tmspace  +\medmuskip {.2222em} \tmspace  +\medmuskip {.2222em} Conflict Resolution: Sequential}{18}{section*.12}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Partitioning, Speculation and Conflict Resolution\relax }}{21}{algorithm.6}}
+\newlabel{spec1}{{6}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.3}{{3}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.5}{{5}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.6}{{6}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.8}{{8}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.12}{{12}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.14}{{14}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\newlabel{6.15}{{15}{21}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{3.4.3.2 \tmspace  +\medmuskip {.2222em} \tmspace  +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{21}{section*.13}}
 \citation{cohenefficient}
 \citation{Jones:1993:PGC:153109.153119}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Partitioning, Speculation and Conflict Resolution\relax }}{19}{algorithm.6}}
-\newlabel{spec1}{{6}{19}{Partitioning, Speculation and Conflict Resolution\relax }{algorithm.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{3.4.3.2 \tmspace  +\medmuskip {.2222em} \tmspace  +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{19}{section*.13}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Our Approach}{19}{section.3.5}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces GPU: Partitioning, Speculation and Conflict Resolution\relax }}{20}{algorithm.7}}
-\newlabel{spec2}{{7}{20}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}CSR: Compressed Sparse Row Representation}{21}{subsection.3.5.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Offsets Array}{21}{section*.14}}
-\@writefile{toc}{\contentsline {subsubsection}{Edges Array}{22}{section*.15}}
-\@writefile{toc}{\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{22}{section*.16}}
-\@writefile{toc}{\contentsline {subsubsection}{Example}{22}{section*.17}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces A Directed Graph with $n=4$ and $m=4$\relax }}{22}{table.caption.18}}
-\newlabel{table:1}{{3.1}{22}{A Directed Graph with $n=4$ and $m=4$\relax }{table.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces  The Directed Graph from \ref  {table:1} and its CSR \relax }}{23}{figure.caption.19}}
-\newlabel{fig:csrd}{{3.1}{23}{The Directed Graph from \ref {table:1} and its CSR \relax }{figure.caption.19}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces An Undirected Graph with $n=4$ and $m=3$\relax }}{23}{table.caption.20}}
-\newlabel{table:2}{{3.2}{23}{An Undirected Graph with $n=4$ and $m=3$\relax }{table.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{23}{subsection.3.5.2}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces GPU: Partitioning, Speculation and Conflict Resolution\relax }}{22}{algorithm.7}}
+\newlabel{spec2}{{7}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.4}{{4}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.6}{{6}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.7}{{7}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.8}{{8}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.9}{{9}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.13}{{13}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.14}{{14}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.17}{{17}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.18}{{18}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.21}{{21}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\newlabel{7.22}{{22}{22}{GPU: Partitioning, Speculation and Conflict Resolution\relax }{algorithm.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Our Approach}{22}{section.3.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}CSR: Compressed Sparse Row Representation}{23}{subsection.3.5.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Offsets Array}{23}{section*.14}}
+\@writefile{toc}{\contentsline {subsubsection}{Edges Array}{24}{section*.15}}
+\@writefile{toc}{\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{24}{section*.16}}
+\@writefile{toc}{\contentsline {subsubsection}{Example}{24}{section*.17}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces A Directed Graph with $n=4$ and $m=4$\relax }}{25}{table.caption.18}}
+\newlabel{table:1}{{3.1}{25}{A Directed Graph with $n=4$ and $m=4$\relax }{table.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces  The Directed Graph from \ref  {table:1} and its CSR \relax }}{25}{figure.caption.19}}
+\newlabel{fig:csrd}{{3.1}{25}{The Directed Graph from \ref {table:1} and its CSR \relax }{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces An Undirected Graph with $n=4$ and $m=3$\relax }}{25}{table.caption.20}}
+\newlabel{table:2}{{3.2}{25}{An Undirected Graph with $n=4$ and $m=3$\relax }{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{25}{subsection.3.5.2}}
+\citation{nVidia:cuRAND}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces  The Undirected Graph from \ref  {table:2} and its CSR \relax }}{26}{figure.caption.21}}
+\newlabel{fig:csru}{{3.2}{26}{The Undirected Graph from \ref {table:2} and its CSR \relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces  The Undirected Graph from \ref  {table:2} and its UCSR \relax }}{26}{figure.caption.22}}
+\newlabel{fig:csrun}{{3.3}{26}{The Undirected Graph from \ref {table:2} and its UCSR \relax }{figure.caption.22}{}}
 \citation{Jones:1993:PGC:153109.153119}
 \citation{cohenefficient}
 \citation{Jones:1993:PGC:153109.153119}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces  The Undirected Graph from \ref  {table:2} and its CSR \relax }}{24}{figure.caption.21}}
-\newlabel{fig:csru}{{3.2}{24}{The Undirected Graph from \ref {table:2} and its CSR \relax }{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces  The Undirected Graph from \ref  {table:2} and its UCSR \relax }}{24}{figure.caption.22}}
-\newlabel{fig:csrun}{{3.3}{24}{The Undirected Graph from \ref {table:2} and its UCSR \relax }{figure.caption.22}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces RANDCOLOUR\relax }}{25}{algorithm.8}}
-\newlabel{randcolour}{{8}{25}{RANDCOLOUR\relax }{algorithm.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{25}{subsection.3.5.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Improvements}{25}{section*.23}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces RANDCOLOUR\relax }}{27}{algorithm.8}}
+\newlabel{randcolour}{{8}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.4}{{4}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.5}{{5}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.6}{{6}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.8}{{8}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.12}{{12}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.14}{{14}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\newlabel{8.15}{{15}{27}{RANDCOLOUR\relax }{algorithm.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{27}{subsection.3.5.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Improvements}{27}{section*.23}}
 \citation{Luby:1985:SPA:22145.22146}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces Min-Max Maximal Vertex Independent Sets\relax }}{27}{algorithm.9}}
-\newlabel{MinMaxSet}{{9}{27}{Min-Max Maximal Vertex Independent Sets\relax }{algorithm.9}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {10}{\ignorespaces MINMAXCOLOUR\relax }}{27}{algorithm.10}}
-\newlabel{MinMaxAlgo}{{10}{27}{MINMAXCOLOUR\relax }{algorithm.10}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{28}{chapter.4}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces Min-Max Maximal Vertex Independent Sets\relax }}{29}{algorithm.9}}
+\newlabel{MinMaxSet}{{9}{29}{Min-Max Maximal Vertex Independent Sets\relax }{algorithm.9}{}}
+\newlabel{9.7}{{7}{29}{Min-Max Maximal Vertex Independent Sets\relax }{algorithm.9}{}}
+\newlabel{9.17}{{17}{29}{Min-Max Maximal Vertex Independent Sets\relax }{algorithm.9}{}}
+\newlabel{9.26}{{26}{29}{Min-Max Maximal Vertex Independent Sets\relax }{algorithm.9}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {10}{\ignorespaces MINMAXCOLOUR\relax }}{29}{algorithm.10}}
+\newlabel{MinMaxAlgo}{{10}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\newlabel{10.6}{{6}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\newlabel{10.8}{{8}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\newlabel{10.9}{{9}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\newlabel{10.10}{{10}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\newlabel{10.11}{{11}{29}{MINMAXCOLOUR\relax }{algorithm.10}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{30}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Why Incremental?}{28}{section.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Handling a Growing Graph}{28}{section.4.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}The Two Thread Incremental Model}{29}{section.4.3}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {11}{\ignorespaces The Two Thread Incremental Model\relax }}{30}{algorithm.11}}
-\newlabel{twoThreadIncremental}{{11}{30}{The Two Thread Incremental Model\relax }{algorithm.11}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces The Two Threads Model: Different Cases\relax }}{31}{table.caption.24}}
-\newlabel{table:3}{{4.1}{31}{The Two Threads Model: Different Cases\relax }{table.caption.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces  \textbf  {Case 1:} $x=y < p; \tmspace  +\medmuskip {.2222em} z<p$ \relax }}{31}{figure.caption.25}}
-\newlabel{fig:case1}{{4.1}{31}{\textbf {Case 1:} $x=y < p; \: z<p$ \relax }{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{31}{section.4.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces  \textbf  {Case 2:} $x=y < p; \tmspace  +\medmuskip {.2222em} p<z$ \relax }}{32}{figure.caption.26}}
-\newlabel{fig:case2}{{4.2}{32}{\textbf {Case 2:} $x=y < p; \: p<z$ \relax }{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces  \textbf  {Case 3:} $p < x=y$ \relax }}{32}{figure.caption.27}}
-\newlabel{fig:case3}{{4.3}{32}{\textbf {Case 3:} $p < x=y$ \relax }{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  \textbf  {Case 4:} $x \not =y; \tmspace  +\medmuskip {.2222em} x < y < p$ \relax }}{33}{figure.caption.28}}
-\newlabel{fig:case4}{{4.4}{33}{\textbf {Case 4:} $x \neq y; \: x < y < p$ \relax }{figure.caption.28}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  \textbf  {Case 5:} $x \not =y; \tmspace  +\medmuskip {.2222em} x < p < y$ \relax }}{33}{figure.caption.29}}
-\newlabel{fig:case5}{{4.5}{33}{\textbf {Case 5:} $x \neq y; \: x < p < y$ \relax }{figure.caption.29}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Propagation}{33}{section.4.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  \textbf  {Case 6:} $x \not =y; \tmspace  +\medmuskip {.2222em} p < x < y$ \relax }}{34}{figure.caption.30}}
-\newlabel{fig:case6}{{4.6}{34}{\textbf {Case 6:} $x \neq y; \: p < x < y$ \relax }{figure.caption.30}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {12}{\ignorespaces The Many Thread Incremental Model\relax }}{34}{algorithm.12}}
-\newlabel{manythread}{{12}{34}{The Many Thread Incremental Model\relax }{algorithm.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  1-step propagation after adding a new edge and processing it. \relax }}{35}{figure.caption.31}}
-\newlabel{fig:propagation}{{4.7}{35}{1-step propagation after adding a new edge and processing it. \relax }{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{36}{chapter.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Why Incremental?}{30}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Handling a Growing Graph}{30}{section.4.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}The Two Thread Incremental Model}{31}{section.4.3}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {11}{\ignorespaces The Two Thread Incremental Model\relax }}{32}{algorithm.11}}
+\newlabel{twoThreadIncremental}{{11}{32}{The Two Thread Incremental Model\relax }{algorithm.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces The Two Threads Model: Different Cases\relax }}{33}{table.caption.24}}
+\newlabel{table:3}{{4.1}{33}{The Two Threads Model: Different Cases\relax }{table.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces  \textbf  {Case 1:} $x=y < p; \tmspace  +\medmuskip {.2222em} z<p$ \relax }}{33}{figure.caption.25}}
+\newlabel{fig:case1}{{4.1}{33}{\textbf {Case 1:} $x=y < p; \: z<p$ \relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{33}{section.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces  \textbf  {Case 2:} $x=y < p; \tmspace  +\medmuskip {.2222em} p<z$ \relax }}{34}{figure.caption.26}}
+\newlabel{fig:case2}{{4.2}{34}{\textbf {Case 2:} $x=y < p; \: p<z$ \relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces  \textbf  {Case 3:} $p < x=y$ \relax }}{34}{figure.caption.27}}
+\newlabel{fig:case3}{{4.3}{34}{\textbf {Case 3:} $p < x=y$ \relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  \textbf  {Case 4:} $x \not =y; \tmspace  +\medmuskip {.2222em} x < y < p$ \relax }}{35}{figure.caption.28}}
+\newlabel{fig:case4}{{4.4}{35}{\textbf {Case 4:} $x \neq y; \: x < y < p$ \relax }{figure.caption.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  \textbf  {Case 5:} $x \not =y; \tmspace  +\medmuskip {.2222em} x < p < y$ \relax }}{35}{figure.caption.29}}
+\newlabel{fig:case5}{{4.5}{35}{\textbf {Case 5:} $x \neq y; \: x < p < y$ \relax }{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Propagation}{35}{section.4.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  \textbf  {Case 6:} $x \not =y; \tmspace  +\medmuskip {.2222em} p < x < y$ \relax }}{36}{figure.caption.30}}
+\newlabel{fig:case6}{{4.6}{36}{\textbf {Case 6:} $x \neq y; \: p < x < y$ \relax }{figure.caption.30}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {12}{\ignorespaces The Many Thread Incremental Model\relax }}{36}{algorithm.12}}
+\newlabel{manythread}{{12}{36}{The Many Thread Incremental Model\relax }{algorithm.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  1-step propagation after adding a new edge and processing it. \relax }}{37}{figure.caption.31}}
+\newlabel{fig:propagation}{{4.7}{37}{1-step propagation after adding a new edge and processing it. \relax }{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{38}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Why Decremental?}{36}{section.5.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{36}{section.5.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{37}{section.5.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{37}{section.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Propagation}{37}{section.5.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}One Time Propagation}{37}{subsection.5.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Wave Propagation}{37}{subsection.5.5.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{38}{chapter.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Why Decremental?}{38}{section.5.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{38}{section.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{39}{section.5.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{39}{section.5.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Propagation}{39}{section.5.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}One Time Propagation}{39}{subsection.5.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Wave Propagation}{39}{subsection.5.5.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{40}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Experimental Setup}{38}{section.6.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Test Data}{38}{section.6.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{38}{section.6.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{38}{section.6.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{38}{section.6.5}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{39}{chapter.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Experimental Setup}{40}{section.6.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Test Data}{40}{section.6.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{40}{section.6.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{40}{section.6.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{40}{section.6.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{41}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibdata{refs}
@@ -203,17 +268,20 @@
 \bibcite{CPE:CPE528}{{8}{2000}{{Gebremedhin and Manne}}{{}}}
 \bibcite{Grosset:2011:EGC:2038037.1941597}{{9}{2011}{{Grosset {\em  et~al.\/}}}{{Grosset, Zhu, Liu, Venkatasubramanian, and Hall}}}
 \bibcite{herzberg2007sudoku}{{10}{2007}{{Herzberg and Murty}}{{}}}
-\bibcite{Jones:1993:PGC:153109.153119}{{11}{1993}{{Jones and Plassmann}}{{}}}
-\bibcite{khor2009application}{{12}{2009}{{Khor}}{{}}}
-\bibcite{lakshman1994graph}{{13}{1994}{{Lakshman {\em  et~al.\/}}}{{Lakshman, Bagchi, and Rastani}}}
-\bibcite{leighton1979graph}{{14}{1979}{{Leighton}}{{}}}
-\bibcite{Luby:1985:SPA:22145.22146}{{15}{1985}{{Luby}}{{}}}
-\bibcite{nvidia:naumov}{{16}{2015}{{Naumov {\em  et~al.\/}}}{{Naumov, Castonguay, and Cohen}}}
-\bibcite{nVidia:Hardware}{{17}{2016}{{NVIDIA Corporation}}{{}}}
-\bibcite{6828158}{{18}{2014}{{Sengupta}}{{}}}
-\bibcite{Herb:Intel}{{19}{2005}{{Sutter}}{{}}}
-\bibcite{thomas98}{{20}{1998}{{Thomas}}{{}}}
-\bibcite{Welsh01011967}{{21}{1967}{{Welsh and Powell}}{{}}}
-\bibcite{WikipediaEN:ML}{{22}{2016}{{Wikipedia, the free encyclopedia}}{{}}}
-\bibcite{wilson14}{{23}{2014}{{Wilson}}{{}}}
-\bibcite{Zuckerman:2006:LDE:1132516.1132612}{{24}{2006}{{Zuckerman}}{{}}}
+\bibcite{jensen2011graph}{{11}{2011}{{Jensen and Toft}}{{}}}
+\bibcite{Jones:1993:PGC:153109.153119}{{12}{1993}{{Jones and Plassmann}}{{}}}
+\bibcite{khor2009application}{{13}{2009}{{Khor}}{{}}}
+\bibcite{lakshman1994graph}{{14}{1994}{{Lakshman {\em  et~al.\/}}}{{Lakshman, Bagchi, and Rastani}}}
+\bibcite{Lee:2010:DGV:1816038.1816021}{{15}{2010}{{Lee {\em  et~al.\/}}}{{Lee, Kim, Chhugani, Deisher, Kim, Nguyen, Satish, Smelyanskiy, Chennupaty, Hammarlund, Singhal, and Dubey}}}
+\bibcite{leighton1979graph}{{16}{1979}{{Leighton}}{{}}}
+\bibcite{Luby:1985:SPA:22145.22146}{{17}{1985}{{Luby}}{{}}}
+\bibcite{nvidia:naumov}{{18}{2015}{{Naumov {\em  et~al.\/}}}{{Naumov, Castonguay, and Cohen}}}
+\bibcite{nVidia:Hardware}{{19}{2016{{\em  a\/}}}{{NVIDIA Corporation}}{{}}}
+\bibcite{nVidia:cuRAND}{{20}{2016{{\em  b\/}}}{{NVIDIA Corporation}}{{}}}
+\bibcite{6828158}{{21}{2014}{{Sengupta}}{{}}}
+\bibcite{Herb:Intel}{{22}{2005}{{Sutter}}{{}}}
+\bibcite{thomas98}{{23}{1998}{{Thomas}}{{}}}
+\bibcite{Welsh01011967}{{24}{1967}{{Welsh and Powell}}{{}}}
+\bibcite{WikipediaEN:ML}{{25}{2016}{{Wikipedia, the free encyclopedia}}{{}}}
+\bibcite{wilson14}{{26}{2014}{{Wilson}}{{}}}
+\bibcite{Zuckerman:2006:LDE:1132516.1132612}{{27}{2006}{{Zuckerman}}{{}}}

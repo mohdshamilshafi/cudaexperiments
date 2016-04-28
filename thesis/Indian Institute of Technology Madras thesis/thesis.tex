@@ -156,7 +156,7 @@ Graphs are really important mathematical concepts and in the area of computing, 
 
 Many problems in the area of Computer Science, Biology etc. are solved with the help of algorithms which are based on graphs. Shortest path problem, Travelling Salesman Problem (TSP), network flow problems, vertex cover problem, graph colouring etc. are important graph-based problems with many practical applications in the real world. Our work is on Graph Colouring which is one of the most famous and well studied graph problems.
 \section{Vertex Colouring}
-Graph Colouring problem entails \textit{colouring/labeling} of the vertices/edges of a graph based on some set of conditions which are to be satisfied. In other words, it's a problem in which you allocate a colour/number to every vertex/edge of a graph such that a set of constraints are satisfied. There are different versions of Graph Colouring and the one which is of interest to us is that of Vertex Colouring.
+Graph Colouring problem entails \textit{colouring/labeling} of the vertices/edges of a graph based on some set of conditions which are to be satisfied \citep{jensen2011graph}. In other words, it's a problem in which you allocate a colour/number to every vertex/edge of a graph such that a set of constraints are satisfied. There are different versions of Graph Colouring and the one which is of interest to us is that of Vertex Colouring.
 \subsection{Classical Vertex Colouring Problem}
 Vertex Colouring is the most basic version of Graph Colouring and other Graph Colouring problems can be presented as a Vertex Colouring problem. In its classical form, Vertex Colouring is:
 \begin{verse}
@@ -249,7 +249,7 @@ NVIDIA, one of the biggest players in the GPUs market, introduced its famous par
 \end{figure}
 In an NVIDIA GPU, as shown in the figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
 \subsection{Challenges}
-Though, GPUs let us access thousands of threads easily, it comes with a cost. In discrete GPUs like the NVIDIA GPUs used in our work, GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
+Though, GPUs let us access thousands of threads easily, it comes with a cost \citep{Lee:2010:DGV:1816038.1816021}. In discrete GPUs like the NVIDIA GPUs used in our work, GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast at \verb+5 Gbits/sec+, and the fact that while transferring data, we force the CPU to wait for the GPU, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
 \section{Incremental/Decremental}
 As we discussed already, Graph Colouring is a very important problem on graphs. We have so many practical applications for the same. But most of the practical graphs are dynamic in nature. Vertices and edges are added and deleted often. But the number of these changes is very small compared to the size of the full graph. So, it follows that it is not wise to rerun the graph colouring algorithm on the entire graph every time some vertices/edges are added or deleted. Our work on Incremental/Decremental graph colouring tries to take care of precisely the same.
 
@@ -292,19 +292,21 @@ $\forall \: v_{i}, v_{j}\in\gamma$, $e\in E$, if $v_{i}$ is incident on $e$, the
 
 The idea is pretty straightforward. These are iterative algorithms where, in each iteration, you find a Vertex Independent Set of the given graph and colour all of the vertices in that VIS with a single colour. The process is continued with different colours until there are no more vertices to be coloured. Both the steps, finding VIS and colouring the vertices in that VIS, can be done in parallel. This category of algorithms roughly works as explained in Algorithm \ref{VISColouring}.
 
+Phase 1 of the Algorithm \ref{VISColouring} is done in Line \ref{1.1} where we find a VIS of the graph. This step can be parallelized as discussed later in Algorithm \ref{Luby} and Algorithm \ref{MinMaxSet}. Phase 2 of the algorithm, colouring the newly found VIS of the graph, is done in Lines \ref{1.6} and \ref{1.7}. In Line \ref{1.8}, we remove the vertices which were coloured in the current iteration from the graph. We then choose a new colour for the next iteration as in Line \ref{1.9} and return to Line \ref{1.4}. The algorithm iterates until there are no more vertices to be processed.
+
 \begin{algorithm}
 \caption{Vertex Independent Sets and Colouring}\label{VISColouring}
 \begin{algorithmic}[1]
 \Procedure{VISParallelGraphColouring(G(V,E))}{}
 \State $\textit{Initialization}$\Comment{Initialize all the variables and other data structures}
 \State $\textit{currentColour} \gets 1$
-\While{$V\not=\phi$} \Comment{Run until all the vertices are coloured}
-\State $\gamma \gets \textit{a VIS of G(V,E)}$ \Comment{VIS can be found in parallel}
-\For{$each \: v \in \gamma$} \Comment{This loop can be run in parallel}
-\State $\textit{colour[v]} \gets currentColour$
+\While{$V\not=\phi$} \Comment{Run until all the vertices are coloured} \label{1.4}
+\State $\gamma \gets \textit{a VIS of G(V,E)}$ \Comment{VIS can be found in parallel} \label{1.1}
+\For{$each \: v \in \gamma$} \Comment{This loop can be run in parallel} \label{1.6}
+\State $\textit{colour[v]} \gets currentColour$ \label{1.7}
 \EndFor
-\State $V \gets V-\gamma$
-\State $\textit{currentColour} \gets \textit{currentColour}+1$
+\State $V \gets V \: \textbackslash \: \gamma$ \label{1.8}
+\State $\textit{currentColour} \gets \textit{currentColour}+1$ \label{1.9}
 \EndWhile
 \EndProcedure
 \end{algorithmic}
@@ -320,19 +322,21 @@ The first category of algorithms relied upon finding Vertex Independent Sets ite
 
 So, in the first phase, instead of finding a VIS and colouring just the vertices in that VIS without any conflict in an iteration, we speculate the colours of the entire graph with some pre-existing knowledge and possibly commit conflicts. The possible conflicts inflicted in this first phase are rectified in the second phase in which we find the conflicts and resolve them. For practical reasons, the first phase is done in parallel and the second phase is done sequentially or partially in parallel. This category of algorithms roughly works as explained in Algorithm \ref{SpecColouring}.
 
+Phase 1 of the Algorithm \ref{SpecColouring}, \textit{speculation}, is done in Lines \ref{2.4} and \ref{2.5}. We are not explicitly mentioning how this speculation is done as there are many possible ways to speculate the colours. Some of the ways to speculate colours are discussed in Algorithms \ref{spec1}, \ref{spec2} and \ref{randcolour}. Conflicts are then resolved, mostly using some form of Greedy Colouring, in the phase 2 of the algorithm as in Lines \ref{2.7}, \ref{2.8} and \ref{2.9}. Line \ref{2.8} assumes conflicts are already detected. This \textit{Conflicts Detection} part can be parallelized.
+
 \begin{algorithm}
 \caption{Speculation and Conflict Resolution}\label{SpecColouring}
 \begin{algorithmic}[1]
 \Procedure{SpecCRParallelGraphColouring(G(V,E))}{}
 \State $\textit{Initialization}$
 \BState \emph{speculation}:
-\For{$each \: v \in V$}\Comment{Can be done in parallel}
-\State $\textit{colour[v]} \gets speculatedColour$ 
+\For{$each \: v \in V$}\Comment{Can be done in parallel} \label{2.4}
+\State $\textit{colour[v]} \gets speculatedColour$ \label{2.5}
 \EndFor
 \BState \emph{conflict resolution}:\Comment{Done serially or partially in parallel}
-\For{$each \: v \in V$}
-\If{$\textit{colour[v]}$ has a conflict}\Comment{Conflicts can be found in parallel}
-\State $\textit{colour[v]} \gets$ a new colour which resolves the conflict \Comment{Greedy?}
+\For{$each \: v \in V$} \label{2.7}
+\If{$\textit{colour[v]}$ has a conflict}\Comment{Conflicts can be found in parallel} \label{2.8}
+\State $\textit{colour[v]} \gets$ a new colour which resolves the conflict \Comment{Greedy} \label{2.9}
 \EndIf 
 \EndFor
 \EndProcedure
@@ -345,25 +349,27 @@ We start with discussing a sequential graph colouring algorithm, one of the easi
 
 In Greedy Colouring, you choose each vertex of the graph and assign it the smallest colour number available which is not currently in use by one of its adjacent vertices. This is described in Algorithm \ref{GreedyColouring}. As is evident, the colour quality produced by Greedy Colouring can be arbitrary. In other words, the colour quality produced will depend on the order in which vertices are processed by the algorithm.
 
+Algorithm \ref{GreedyColouring} proceeds by choosing each vertex in some order, Line \ref{3.3}, and colouring them in a greedy fashion. The order in which the vertices are chosen is very important in deciding the colour quality. There are many ways to decide the order in which the vertices are processed and we assume one of the ways is chosen. We then check the vertex's neighbourhood, Line \ref{3.4}, and if a neighbour is already coloured, Line \ref{3.5}, we mark its colour as unavailable as in Line \ref{3.6}. Now, for the vertex, we check which is the smallest colour less than or equal to $\Delta+1$ (Greedy Colouring uses at most $\Delta+1$ colours, where $\Delta$ is the maximum degree among all the vertices of the graph) that is available. This is done in Lines \ref{3.7} and \ref{3.8}. Then finally we colour the vertex with this new colour as in Line \ref{3.9}. The \verb+availableColours[]+ array is reinitialized to all \textit{TRUE} values in Line \ref{3.11} before the algorithm goes back to Line \ref{3.3}.  
+
 Greedy Colouring can produce a colour quality of $\chi(G)$ for atleast one ordering of the vertices. But, on an average, this heuristic performs far from optimal. But the greedy colouring algorithm gives us an upper bound on the number of colours that it uses. The colouring produced uses at most $\Delta+1$ colours, where $\Delta$ is the maximum degree among all the vertices of the graph. As the order in which the vertices are processed is very important, there have been many approaches suggested over the years which on an average produce a better colour quality. One of them is the so called Welsh-Powell Algorithm \citep{Welsh01011967}, in which we process the vertices in the order of their degrees.
 \begin{algorithm}
 \caption{Sequential Greedy Graph Colouring}\label{GreedyColouring}
 \begin{algorithmic}[1]
 \Procedure{GreedyColouring(G(V,E))}{}
 \State $\textit{Initialization}$
-\For{$each \: v \in V$}
-\For{$each \: u \in V$ adjacent to $v$}
-\If{$\textit{colour[u]} \neq 0$}
-\State $\textit{availableColours[colour[u]]} \gets FALSE$
+\For{$each \: v \in V$} \label{3.3}
+\For{$each \: u \in V$ adjacent to $v$} \label{3.4}
+\If{$\textit{colour[u]} \neq 0$} \label{3.5}
+\State $\textit{availableColours[colour[u]]} \gets FALSE$ \label{3.6}
 \EndIf 
 \EndFor
-\For{$i$ from $1$ to $\Delta+1$}
-\If{$\textit{availableColours[i] is TRUE}$}
-\State $\textit{colour[v]} \gets i$
+\For{$i$ from $1$ to $\Delta+1$} \label{3.7}
+\If{$\textit{availableColours[i] is TRUE}$} \label{3.8}
+\State $\textit{colour[v]} \gets i$ \label{3.9}
 \State $\textit{break}$
 \EndIf 
 \EndFor
-\State $\textit{Re-initialize availableColours[] array to TRUE}$
+\State $\textit{Re-initialize availableColours[] array to TRUE}$ \label{3.11}
 \EndFor
 \EndProcedure
 \end{algorithmic}
@@ -388,28 +394,32 @@ Ideally, we want to find a Maximum Vertex Independent Set of the graph in each i
 
 In Luby's algorithm, every node is first assigned with some random number. Now, in each iteration, the random number assigned to each node is compared to its neighbours, done in parallel, to see if it is the local maximum, in which case, that node is added to a set \textit{S}. At the end of each iteration, \textit{S}, is a Maximal Vertex Independent Set of the graph \textit{G(V,E)} and the vertices in \textit{S} are removed from \textit{V}. The set is \textit{S} is emptied before a new iteration. This is a very simple algorithm to generate Maximal Vertex Independent Sets of a graph as depicted in Algorithm \ref{Luby}.
 
+We assume random numbers are generated and stored in \verb+randomNumber[]+ as in Line \ref{4.2}. We consider all the vertices of the graph in parallel as in Line \ref{4.4}. In Lines \ref{4.6} to \ref{4.9}, we check if the current vertex is indeed a local maxima and if so, it is added to the Maximal Set \textit{S} which is then returned after all threads are synchronized.  
+
 \begin{algorithm}
 \caption{Maximal Vertex Independent Set}\label{Luby}
 \begin{algorithmic}[1]
 \Procedure{MaximalSet(G(V,E))}{}
-\State $\textit{Initialization}$\Comment{randomNumber[] is initialized only once}
+\State $\textit{Initialization}$\Comment{randomNumber[] is initialized only once} \label{4.2}
 \State $S \gets \phi$
-\For {$each \: v \in V$}\Comment{Done in parallel}
+\For {$each \: v \in V$}\Comment{Done in parallel} \label{4.4}
 \State $S \gets S \cup \{v\}$
-\For {$each \: u \in V$ such that $u$ is adjacent to $v$}
+\For {$each \: u \in V$ such that $u$ is adjacent to $v$} \label{4.6}
 \If{$\textit{randomNumber}[u] \geq \textit{randomNumber}[v]$}
 \State $S \gets S \: \textbackslash \: v$
-\State $\textit{break}$
+\State $\textit{break}$ \label{4.9}
 \EndIf
 \EndFor
 \EndFor
-\State $V \gets V \: \textbackslash \: S$
+\State \textit{Synchronize}
 \State $\textit{return} \: S$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-\citet{Jones:1993:PGC:153109.153119} introduced a parallel graph colouring algorithm based on Luby's Maximal Vertex Independent Set algorithm. By their algorithm, in each iteration, we find a Maximal Vertex Independent Set of the graph using Luby's algorithm and then colour all the vertices in the set found, in parallel, using a single colour. Each iteration uses a different colour. We do this iteratively until all the vertices of the graph are coloured. This is explained in Algorithm \ref{Jones}
+\citet{Jones:1993:PGC:153109.153119} introduced a parallel graph colouring algorithm based on Luby's Maximal Vertex Independent Set algorithm. By their algorithm, in each iteration, we find a Maximal Vertex Independent Set of the graph using Luby's algorithm and then colour all the vertices in the set found, in parallel, using a single colour. Each iteration uses a different colour. We do this iteratively until all the vertices of the graph are coloured. This is explained in Algorithm \ref{Jones}.
+
+In each iteration until all the vertices are processed (Line \ref{5.6}), we find a Maximal VIS in Line \ref{5.7} and colour them as in Lines \ref{5.8} and \ref{5.9}. We then choose a new colour for the next iteration as in Line \ref{5.10}, remove the vertices that were coloured in the current iteration as in Line \ref{5.11} and return to Line \ref{5.6}. The algorithm iterates until there are no more vertices to be processed.
 
 \begin{algorithm}
 \caption{Jones-Plassmann-Luby Parallel Colouring Heuristic}\label{Jones}
@@ -419,13 +429,14 @@ In Luby's algorithm, every node is first assigned with some random number. Now, 
 \State $n \gets 0$
 \State $currentColour \gets 1$
 \State $graphSize \gets |V|$
-\While{$n \neq graphSize$}
-\State $S \gets $\verb+MaximalSet(V,E)+
-\For {$each \: v \in S$}\Comment{Done in parallel}
-\State $colour[v] \gets currentColour$
+\While{$n \neq graphSize$} \Comment{Or $V \neq \phi$} \label{5.6}
+\State $S \gets $\verb+MaximalSet(V,E)+ \label{5.7}
+\For {$each \: v \in S$}\Comment{Done in parallel} \label{5.8}
+\State $colour[v] \gets currentColour$ \label{5.9}
 \EndFor
-\State $currentColour \gets currentColour+1$
+\State $currentColour \gets currentColour+1$ \label{5.10}
 \State $n \gets n+|S|$
+\State $V \gets V \: \textbackslash \: S$ \label{5.11}
 \EndWhile
 \EndProcedure
 \end{algorithmic}
@@ -438,28 +449,30 @@ Here, we discuss an algorithm presented by \citet{CPE:CPE528} which instead of f
 
 This involves an initial graph partitioning phase, during which we partition the graph into \textit{n} parts, where \textit{n} is the number of processors/cores we have. Each processor/core takes up each partition and then colours them using some sequential colouring method. At the end of this phase 1, we thus have a colouring with possible conflicts at the partition boundaries. In phase 2, we identify these conflicts in parallel. In phase 3, we re-colour these vertices with conflicts sequentially. The scheme is presented in Algorithm \ref{spec1}.
 
+In Line \ref{6.3}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} \: to \: V_{n}$. In Lines \ref{6.5} and \ref{6.6}, each thread colours its partition using some sequential colouring algorithm. In Lines \ref{6.8} to \ref{6.12}, the set of vertices with colouring conflicts, \verb+conflictSet+, is found. In Lines \ref{6.14} and \ref{6.15}, the conflicts are resolved by recolouring the vertices in \verb+conflictSet+ using some sequential colouring algorithm.
+
 \begin{algorithm}
 \caption{Partitioning, Speculation and Conflict Resolution}\label{spec1}
 \begin{algorithmic}[1]
 \Procedure{PartitionColouring(G(V,E))}{}
 \State $\textit{Initialization}$
-\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one 
+\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one \label{6.3}
 \BState \emph{Phase 1 (Partition Colouring)}:
-\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads} \label{6.5}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{6.6}
 \EndFor
 \BState \emph{Phase 2 (Conflict Detection)}:
-\State $\textit{conflictSet} \gets \phi$
-\For{$each \: v \in V$} \Comment{Done in parallel}
+\State $\textit{conflictSet} \gets \phi$ \label{6.8}
+\For{$each \: v \in V$} \Comment{Done in parallel} 
 \For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
 \If{$colour[v] = colour[u]$}
-\State $\textit{conflictSet} \gets \textit{conflictSet} \cup min(v,u)$
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup \{min(v,u)\}$ \label{6.12}
 \EndIf
 \EndFor
 \EndFor 
 \BState \emph{Phase 3 (Conflict Resolution)}:
-\For {$each \: v \in \textit{conflictSet}$}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\For {$each \: v \in \textit{conflictSet}$} \label{6.14}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{6.15}
 \EndFor
 \EndProcedure
 \end{algorithmic}
@@ -468,37 +481,39 @@ This involves an initial graph partitioning phase, during which we partition the
 \subsubsection{3.4.3.2 \: \: Conflict Resolution: Partially in Parallel}
 We also have a GPU based graph partitioning, speculation and conflict resolution algorithm by \citet{Grosset:2011:EGC:2038037.1941597}. The graph is first partitioned in the CPU. The partitions are then coloured using some sequential colouring heuristics on the GPU. At the end of this phase, the potential conflicts are found in parallel at the boundary vertices. In the next iteration, these conflicts are recoloured in parallel possibly generating other conflicts. This process is continued until the total number of conflicts is below some threshold. Then the rest of the conflicts are resolved sequentially. This is depicted in Algorithm \ref{spec2}.
 
+In Line \ref{7.4}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} \: to \: V_{n}$ in the CPU. In Lines \ref{7.6} and \ref{7.7}, each thread colours its partition using some sequential colouring algorithm in the GPU. In Lines \ref{7.9} to \ref{7.13}, the set of vertices with colouring conflicts, \verb+conflictSet+, is found in the GPU. We then check if the number of conflicts is below some threshold in Line \ref{7.14} in which case we proceed straight to the \textit{Conflict Resolution} phase which happens in the CPU. If the number of conflicts is not below the threshold, we try to do a parallel conflict resolution in the GPU as in Lines \ref{7.17} and \ref{7.18} and then go back to the GPU \textit{Conflict Detection} phase at Line \ref{7.8}. In Lines \ref{7.21} and \ref{7.22}, the conflicts are resolved by recolouring the vertices in \verb+conflictSet+ using some sequential colouring algorithm in the CPU.
+
 \begin{algorithm}
 \caption{GPU: Partitioning, Speculation and Conflict Resolution}\label{spec2}
 \begin{algorithmic}[1]
 \Procedure{PartitionColouring(G(V,E))}{}
 \State $\textit{Initialization}$
 \BState \emph{CPU}:
-\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one
+\State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one \label{7.4}
 \BState \emph{GPU (Partition Colouring)}:
-\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads} \label{7.6}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.7}
 \EndFor
-\BState \emph{GPU (Conflict Detection)}:
-\State $\textit{conflictSet} \gets \phi$
+\BState \emph{GPU (Conflict Detection)}:\label{7.8}
+\State $\textit{conflictSet} \gets \phi$ \label{7.9}
 \For{$each \: v \in V$} \Comment{Done in parallel}
 \For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
 \If{$colour[v] = colour[u]$}
-\State $\textit{conflictSet} \gets \textit{conflictSet} \cup min(v,u)$
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup \{min(v,u)\}$ \label{7.13}
 \EndIf
 \EndFor
 \EndFor
-\If{$|conflictSet| < threshold$}
+\If{$|conflictSet| < threshold$} \label{7.14}
 \State $\textit{goto} \: \textit{CPU (Conflict Resolution)}$
 \EndIf 
 \BState \emph{GPU (Conflict Resolution)}:
-\For {$each \: v \in \textit{conflictSet}$} \Comment Done in parallel
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\For {$each \: v \in \textit{conflictSet}$} \Comment Done in parallel \label{7.17}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.18}
 \EndFor
 \State $\textit{goto} \: \textit{GPU (Conflict Detection)}$
 \BState \emph{CPU (Conflict Resolution)}:
-\For {$each \: v \in \textit{conflictSet}$}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$
+\For {$each \: v \in \textit{conflictSet}$} \label{7.21}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.22}
 \EndFor
 \EndProcedure
 \end{algorithmic}
@@ -589,35 +604,36 @@ Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{ta
     \label{fig:csrun}
 \end{figure}
 \subsection{RANDCOLOUR: Random Colouring And Conflict Resolution}
-We started with a random colouring and conflict resolution based algorithm which we call \verb+RANDCOLOUR+. This is an algorithm pertaining to the category covered by Algorithm \ref{SpecColouring}. We first speculate the colours randomly and then find the conflicts on the GPU, both of which are done in parallel. Then we resolve the conflicts sequentially on the CPU. As we know a graph $G(V,E)$ with maximum degree $\Delta$ can be coloured with atmost $\Delta+1$ colours, RANDCOLOUR is an attempt at a fast $\Delta+1$ colouring using GPU. \verb+RANDCOLOUR+ algorithm almost always produces a colour quality of $\Delta+1$ and was aimed at a fast colouring compromising colour quality in the process.
+We started with a random colouring and conflict resolution based algorithm which we call \verb+RANDCOLOUR+. This is an algorithm pertaining to the category covered by Algorithm \ref{SpecColouring}. We first speculate the colours randomly and then find the conflicts on the GPU, both of which are done in parallel. Then we resolve the conflicts sequentially on the CPU. As we know, a graph $G(V,E)$ with maximum degree $\Delta$ can be coloured with atmost $\Delta+1$ colours, RANDCOLOUR is an attempt at a fast $\Delta+1$ colouring using GPU. \verb+RANDCOLOUR+ algorithm produces a worst colour quality of $\Delta+1$ and was aimed at a fast colouring compromising colour quality in the process.
 
 \begin{algorithm}
 \caption{RANDCOLOUR}\label{randcolour}
 \begin{algorithmic}[1]
 \Procedure{RandomColouring(G(V,E))}{}
 \State $\textit{Initialization}$
-\BState \emph{GPU}:
-\State $\textit{Initialize MaxDegree}$ \Comment{Found in parallel on GPU}
-\For {$each \: v \in V$}\Comment{Done in parallel by |V| threads}
-\State $colour[v] \gets CURAND(MaxDegree+1)+1$\Comment{RAND on GPU}
+\BState \emph{GPU (Speculation)}:
+\State $\textit{Initialize MaxDegree}$ \Comment{Found in parallel on GPU} \label{8.4}
+\For {$each \: v \in V$}\Comment{Done in parallel by |V| threads} \label{8.5}
+\State $colour[v] \gets CURAND(MaxDegree+1)+1$\Comment{RAND on GPU} \label{8.6}
 \EndFor
-\State $\textit{conflictSet} \gets \phi$
+\BState \emph{GPU (Conflict Detection)}:
+\State $\textit{conflictSet} \gets \phi$ \label{8.8}
 \For{$each \: v \in V$} \Comment{Done in parallel}
 \For{$each \: u \in V$ such that $u$ and $v$ are adjacent}
 \If{$colour[v] = colour[u]$}
-\State $\textit{conflictSet} \gets \textit{conflictSet} \cup \{min(v,u)\}$
+\State $\textit{conflictSet} \gets \textit{conflictSet} \cup \{min(v,u)\}$ \label{8.12}
 \EndIf
 \EndFor
 \EndFor
-\BState \emph{CPU}:
-\For {$each \: v \in \textit{conflictSet}$}
-\State $colour[v] \gets \textit{A colour by some greedy colouring algorithm}$
+\BState \emph{CPU (Conflict Resolution)}:
+\For {$each \: v \in \textit{conflictSet}$} \label{8.14}
+\State $colour[v] \gets \textit{A colour by some greedy colouring algorithm}$ \label{8.15}
 \EndFor
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
-The scheme is given in Algorithm \ref{randcolour}. First we find $\Delta$, the maximum degree of the graph. This task can be done in parallel on the GPU. With UCSR of the graph, the degree of a vertex $i+1$ is given by \verb|offsetArray[i+1]|$-$\verb+offsetArray[i]+ ($ m - $ \verb+offsetArray[i]+ if $i=n-1$). Once we have $\Delta$, we use \verb+CURAND+ library, which generates random numbers really fast using CUDA capable GPU, to colour the graph with random integers ranging from 1 to $\Delta+1$. Once this colouring is over, we try to find out the conflicts that were inflicted. This can be done in parallel on the GPU too. We mark all the conflicts and then resolve them on the CPU using a greedy approach.
+The scheme is given in Algorithm \ref{randcolour}. First we find $\Delta$, the maximum degree of the graph (Line \ref{8.4}). This task can be done in parallel on the GPU. With UCSR of the graph, the degree of a vertex $i+1$ is given by \verb|offsetArray[i+1]|$-$\verb+offsetArray[i]+. Once we have $\Delta$, we use \verb+cuRAND+ library \citep{nVidia:cuRAND}, which generates random numbers really fast using CUDA capable GPUs, to colour the graph with random integers ranging from 1 to $\Delta+1$ (Lines \ref{8.5} and \ref{8.6}). Once this colouring is over, we try to find out the conflicts that were inflicted. This can be done in parallel on the GPU too (Lines \ref{8.8} to \ref{8.12}). We mark all the conflicts and then resolve them on the CPU using a greedy approach (Lines \ref{8.14} and \ref{8.15}).
 
 \subsection{MINMAXCOLOUR: Maximal VIS And Colouring}
 We then tried a version of the algorithm put forward by \citet{Jones:1993:PGC:153109.153119} which uses some of the suggestions by \citet{cohenefficient}. As discussed earlier, the algorithm by \citet{Jones:1993:PGC:153109.153119} is based on the category covered by Algorithm \ref{VISColouring}. So, here, we try to find Maximal Vertex Independent Sets and then colour them in parallel. 
@@ -633,7 +649,7 @@ We then tried a version of the algorithm put forward by \citet{Jones:1993:PGC:15
 \end{itemize}
 \end{itemize}
 
-The scheme for this is given in Algorithms \ref{MinMaxSet} and \ref{MinMaxAlgo}. In Algorithm \ref{MinMaxSet}, we have the Min-Max Maximal Independent Set algorithm which is an improved version of \citet{Luby:1985:SPA:22145.22146}. The two inner for loops in the algorithm at line 7 and line 17 can be merged together using some conditionals. We find two maximal sets in each iteration. In the colouring part, in each iteration, we colour the Max set with a colour $c$ and the Min set with $c+1$. The algorithm is iterated until there are no vertices left to colour. The maximal sets are found in parallel and they can be coloured in the same kernel call.  
+The scheme for this is given in Algorithms \ref{MinMaxSet} and \ref{MinMaxAlgo}. In Algorithm \ref{MinMaxSet}, we have the Min-Max Maximal Independent Set algorithm which is an improved version of \citet{Luby:1985:SPA:22145.22146}. The two inner for loops in the algorithm at Line \ref{9.7} and Line \ref{9.17} can be merged together using some conditionals. We find two maximal sets in each iteration. If a vertex doesn't have any neighbours, it will be a part of both the \verb+Min+ set and the \verb+Max+ set. In Line \ref{9.26}, we make sure such vertices go to only the Max set. In the colouring part, in each iteration, we colour the Max set with a colour $c$ (Lines \ref{10.8} and \ref{10.9}) and the Min set with $c+1$ (Lines \ref{10.10} and \ref{10.11}). The algorithm is iterated until there are no vertices left to colour (Line \ref{10.6}). The maximal sets are found in parallel and they can be coloured in the same kernel call.  
 
 \begin{algorithm}
 \caption{Min-Max Maximal Vertex Independent Sets}\label{MinMaxSet}
@@ -643,37 +659,35 @@ The scheme for this is given in Algorithms \ref{MinMaxSet} and \ref{MinMaxAlgo}.
 \State $MinS \gets \phi$
 \State $MaxS \gets \phi$
 \For {$each \: v \in V$}\Comment{Done in parallel}
-\State $MaxS \gets MaxS \cup v$
-\For {$each \: u \in V$ such that $u$ is adjacent to $v$}
+\State $MaxS \gets MaxS \cup \{v\}$
+\For {$each \: u \in V$ such that $u$ is adjacent to $v$}\label{9.7}
 \If{$\textit{randomNumber}[u] > \textit{randomNumber}[v]$}
-\State $S \gets S - v$
+\State $S \gets S \: \textbackslash \: v$
 \State $\textit{break}$
 \Else \If{$\textit{randomNumber}[u] = \textit{randomNumber}[v]$} 
 \If{$u>v$} 
-\State $S \gets S - v$
+\State $S \gets S \: \textbackslash \: v$
 \State $\textit{break}$
 \EndIf
 \EndIf
 \EndIf
 \EndFor
-\State $MinS \gets MinS \cup v$
-\For {$each \: u \in V$ such that $u$ is adjacent to $v$}
+\State $MinS \gets MinS \cup \{v\}$
+\For {$each \: u \in V$ such that $u$ is adjacent to $v$}\label{9.17}
 \If{$\textit{randomNumber}[u] < \textit{randomNumber}[v]$}
-\State $S \gets S - v$
+\State $S \gets S \: \textbackslash \: v$
 \State $\textit{break}$
 \Else \If{$\textit{randomNumber}[u] = \textit{randomNumber}[v]$} 
 \If{$u<v$} 
-\State $S \gets S - v$
+\State $S \gets S \: \textbackslash \: v$
 \State $\textit{break}$
 \EndIf
 \EndIf
 \EndIf
 \EndFor
 \EndFor
-\State $MinS \gets MinS - MaxS$
-\State $V \gets V - MaxS$
-\State $V \gets V - MinS$
-\State $\textit{return} \: MaxS, MinS$
+\State $MinS \gets MinS \: \textbackslash \: MaxS$ \label{9.26}
+\State $\textit{return} \: MaxS, MinS$ 
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -686,16 +700,18 @@ The scheme for this is given in Algorithms \ref{MinMaxSet} and \ref{MinMaxAlgo}.
 \State $n \gets 0$
 \State $currentColour \gets 1$
 \State $graphSize \gets |V|$
-\While{$n \neq graphSize$}
+\While{$n \neq graphSize$} \Comment{Or $V \neq \phi$} \label{10.6}
 \State $MaxS, MinS \gets $\verb+MinMaxMaximalSet(V,E)+
-\For {$each \: v \in MaxS$}\Comment{Done in parallel}
-\State $colour[v] \gets currentColour$
+\For {$each \: v \in MaxS$}\Comment{Done in parallel} \label{10.8}
+\State $colour[v] \gets currentColour$ \label{10.9}
 \EndFor
-\For {$each \: v \in MinS$}\Comment{Done in parallel}
-\State $colour[v] \gets currentColour+1$
+\For {$each \: v \in MinS$}\Comment{Done in parallel} \label{10.10}
+\State $colour[v] \gets currentColour+1$ \label{10.11}
 \EndFor
 \State $currentColour \gets currentColour+2$
 \State $n \gets n+|MaxS|+|MinS|$
+\State $V \gets V \: \textbackslash \: MaxS$
+\State $V \gets V \: \textbackslash \: MinS$
 \EndWhile
 \EndProcedure
 \end{algorithmic}
