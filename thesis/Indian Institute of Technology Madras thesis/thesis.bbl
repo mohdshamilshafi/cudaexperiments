@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{24}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -16,6 +16,40 @@
 \newblock Every planar map is four colorable. part i: Discharging.
 \newblock {\em Illinois J. Math.\/}, {\bf 21}(3), 429--490.
 \newblock \urlprefix\url{http://projecteuclid.org/euclid.ijm/1256049011}.
+
+\bibitem[{Bozdag {\em et~al.\/}(2005)Bozdag, {\c{C}}ataly{\"{u}}rek,
+  Gebremedhin, Manne, Boman, and
+  {\"{O}}zg{\"{u}}ner}]{DBLP:conf/hpcc/BozdagCGMBO05}
+{\bf Bozdag, D.}, {\bf {\"{U}}.~V. {\c{C}}ataly{\"{u}}rek}, {\bf A.~H.
+  Gebremedhin}, {\bf F.~Manne}, {\bf E.~G. Boman}, and {\bf
+  F.~{\"{O}}zg{\"{u}}ner}, A parallel distance-2 graph coloring algorithm for
+  distributed memory computers.
+\newblock {\em In\/} {\bf L.~T. Yang}, {\bf O.~F. Rana}, {\bf B.~D. Martino},
+  and {\bf J.~Dongarra} (eds.), {\em High Performance Computing and
+  Communications, First International Conference, {HPCC} 2005, Sorrento, Italy,
+  September 21-23, 2005, Proceedings\/}, volume 3726 of {\em Lecture Notes in
+  Computer Science\/}. Springer, 2005.
+\newblock ISBN 3-540-29031-1.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/11557654_90}.
+
+\bibitem[{Bozdag {\em et~al.\/}(2008)Bozdag, Gebremedhin, Manne, Boman, and
+  Çatalyürek}]{journals/jpdc/BozdagGMBC08}
+{\bf Bozdag, D.}, {\bf A.~H. Gebremedhin}, {\bf F.~Manne}, {\bf E.~G. Boman},
+  and {\bf �.~V. Çatalyürek} (2008).
+\newblock A framework for scalable greedy coloring on distributed-memory
+  parallel computers.
+\newblock {\em J. Parallel Distrib. Comput.\/}, {\bf 68}(4), 515--535.
+\newblock
+  \urlprefix\url{http://dblp.uni-trier.de/db/journals/jpdc/jpdc68.html#BozdagGMBC08}.
+
+\bibitem[{Briggs {\em et~al.\/}(2004)Briggs, Cooper, Kennedy, and
+  Torczon}]{Briggs:2004:CHR:989393.989424}
+{\bf Briggs, P.}, {\bf K.~D. Cooper}, {\bf K.~Kennedy}, and {\bf L.~Torczon}
+  (2004).
+\newblock Coloring heuristics for register allocation.
+\newblock {\em SIGPLAN Not.\/}, {\bf 39}(4), 283--294.
+\newblock ISSN 0362-1340.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/989393.989424}.
 
 \bibitem[{\c{C}Ataly\"{u}Rek {\em et~al.\/}(2012)\c{C}Ataly\"{u}Rek, Feo,
   Gebremedhin, Halappanavar, and Pothen}]{CAtalyuRek:2012:GCA:2396901.2397093}
@@ -50,12 +84,36 @@
 \newblock ISSN 0362-1340.
 \newblock \urlprefix\url{http://doi.acm.org/10.1145/2038037.1941597}.
 
+\bibitem[{Herzberg and Murty(2007)}]{herzberg2007sudoku}
+{\bf Herzberg, A.~M.} and {\bf M.~R. Murty} (2007).
+\newblock Sudoku squares and chromatic polynomials.
+\newblock {\em Notices of the AMS\/}, {\bf 54}(6), 708--717.
+
 \bibitem[{Jones and Plassmann(1993)}]{Jones:1993:PGC:153109.153119}
 {\bf Jones, M.~T.} and {\bf P.~E. Plassmann} (1993).
 \newblock A parallel graph coloring heuristic.
 \newblock {\em SIAM J. Sci. Comput.\/}, {\bf 14}(3), 654--669.
 \newblock ISSN 1064-8275.
 \newblock \urlprefix\url{http://dx.doi.org/10.1137/0914041}.
+
+\bibitem[{Khor(2009)}]{khor2009application}
+{\bf Khor, S.} (2009).
+\newblock Application of graph coloring to biological networks.
+\newblock {\em arXiv preprint arXiv:0912.3461\/}.
+
+\bibitem[{Lakshman {\em et~al.\/}(1994)Lakshman, Bagchi, and
+  Rastani}]{lakshman1994graph}
+{\bf Lakshman, T.}, {\bf A.~Bagchi}, and {\bf K.~Rastani} (1994).
+\newblock A graph-coloring scheme for scheduling cell transmissions and its
+  photonic implementation.
+\newblock {\em Communications, IEEE Transactions on\/}, {\bf 42}(234),
+  2062--2070.
+
+\bibitem[{Leighton(1979)}]{leighton1979graph}
+{\bf Leighton, F.~T.} (1979).
+\newblock A graph coloring algorithm for large scheduling problems.
+\newblock {\em Journal of research of the national bureau of standards\/}, {\bf
+  84}(6), 489--506.
 
 \bibitem[{Luby(1985)}]{Luby:1985:SPA:22145.22146}
 {\bf Luby, M.}, A simple parallel algorithm for the maximal independent set
@@ -119,5 +177,13 @@
   Solved\/}.
 \newblock 2014.
 \newblock ISBN 9780691158228 0691158223.
+
+\bibitem[{Zuckerman(2006)}]{Zuckerman:2006:LDE:1132516.1132612}
+{\bf Zuckerman, D.}, Linear degree extractors and the inapproximability of max
+  clique and chromatic number.
+\newblock {\em In\/} {\em Proceedings of the Thirty-eighth Annual ACM Symposium
+  on Theory of Computing\/}, STOC '06. ACM, New York, NY, USA, 2006.
+\newblock ISBN 1-59593-134-1.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/1132516.1132612}.
 
 \end{thebibliography}

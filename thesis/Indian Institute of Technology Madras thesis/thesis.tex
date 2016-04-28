@@ -174,7 +174,7 @@ There are other forms of vertex colouring where additional conditions than the o
 \end{figure}
 
 \subsection{Chromatic Number $ \chi(G) $}
-A graph \textit{G} is said to \textit{k-}colourable, if \textit{G} can be coloured using \textit{k} colours. For example, from the \textit{Four Colour Theorem} (\citet{appel1977}; \citet{thomas98};\citet{wilson14}), we have that all planar graphs are 4-colourable. Also, all bipartite graphs are 2-colourable.
+A graph \textit{G} is said to \textit{k-}colourable, if \textit{G} can be coloured using \textit{k} colours. For example, from the \textit{Four Colour Theorem} \citep{appel1977, thomas98, wilson14}, we have that all planar graphs are 4-colourable. Also, all bipartite graphs are 2-colourable.
  
 \begin{verse}
 The \textit{Chromatic Number} of a graph G, denoted by $ \chi(G) $, is the minimum number of colours required to colour a graph. That is, $ \chi(G) $, is the minimum value of all \textit{k} for which the graph \textit{G} is \textit{k-}colourable. 
@@ -199,10 +199,11 @@ There exist many algorithms like Greedy Colouring, approximation algorithms and 
 \subsection{Applications}
 Graph Colouring problem, which started as a map colouring problem (four colour theorem), finds many important real applications including but not limited to:
 \begin{itemize}
-\item Scheduling problems like job scheduling across multiple nodes in a distributed computing environment
-\item Register allocation problem during compilation
-\item Solving Sudoku
-\item Pattern matching applications
+\item Scheduling problems like job scheduling across multiple nodes in a distributed computing environment \citep{leighton1979graph}
+\item Register allocation problem during compilation \citep{Briggs:2004:CHR:989393.989424}
+\item Solving Sudoku \citep{herzberg2007sudoku}
+\item Applications on biological networks like Protein-Protein Interaction (PPI) Networks \citep{khor2009application}
+\item Scheduling cell-transmissions in an ATM switch \citep{lakshman1994graph}
 \end{itemize}
 \section{Parallelization}
 \subsection{Frequency Scaling}
@@ -226,11 +227,11 @@ Moore's law, which observes that the number of transistors present in an integra
 \end{figure}
 Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical any more. The increase in frequency meant an increase in power consumption which in turn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the figure \ref{fig:intel}.
 
-Parallelization enables us to run programs faster by splitting the work across different cores of a processor which are ideally run in parallel. In an ideal setup, with \textit{n} cores, we should see a speed up of \textit{n}, which means the running time will become $1/n^{th}$ compared to the running time when run on a single core processor. Though we rarely really reach this ideal speedup, as stated by Amdahl's law (\citet{Amdahl:1967:VSP:1465482.1465560}) etc., we still achieve significant speed ups.
+Parallelization enables us to run programs faster by splitting the work across different cores of a processor which are ideally run in parallel. In an ideal setup, with \textit{n} cores, we should see a speed up of \textit{n}, which means the running time will become $1/n^{th}$ compared to the running time when run on a single core processor. Though we rarely really reach this ideal speedup, as stated by Amdahl's law \citep{Amdahl:1967:VSP:1465482.1465560} etc., we still achieve significant speed ups.
 \subsection{Parallelization of Graph Colouring}
 Since the computer architecture industry made a shift to the multi-core paradigm, there had to be a shift in programming paradigm to support the newly available parallelism. Almost all the algorithms, programs etc. were designed and developed to run sequentially on a single core processor. Things have changed recently as more and more algorithms and programs are redesigned and redeveloped to make use of the newly available parallel hardware.
 
-As discussed earlier, Graph Colouring is a computationally complex problem. It is NP-hard to solve. Also, the approximation algorithms for colouring a graph with $n$ vertices are also NP-hard within $n^{1-\epsilon}$ for all $\epsilon > 0$. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well-celebrated graph problem though most of them were meant specifically for distributed computing setups and supercomputers. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
+As discussed earlier, Graph Colouring is a computationally complex problem. It is NP-hard to solve. Also, the approximation algorithms for colouring a graph with $n$ vertices are also NP-hard within $n^{1-\epsilon}$ for all $\epsilon > 0$ \citep{Zuckerman:2006:LDE:1132516.1132612}. The existing solutions are either slow or are fast but produce bad colour quality. Also, practical graphs these days are very large with billions of vertices and edges. So, since the advent of parallel programming paradigms, there have been efforts to parallelize this well-celebrated graph problem though most of them were meant specifically for distributed computing setups \citep{journals/jpdc/BozdagGMBC08, DBLP:conf/hpcc/BozdagCGMBO05} and supercomputers \citep{CAtalyuRek:2012:GCA:2396901.2397093}. In our work, we focus on parallel graph colouring which can be run on parallel hardware available locally. Especially with the advent of GPGPUs, cheap massive parallelism is at a hand's reach.
 \section{GPGPU}
 In the domain of parallel programs and applications, one big deterrent was that the number of processor cores available for parallelism was small. Most of the multi-core processors have 32 cores at the maximum. Only supercomputers had a very high number of cores and they came at a price. 
 \subsection{Why GPUs?}
@@ -264,7 +265,7 @@ The problem we are concerned with is that of \textit{1-distance Vertex Colouring
 \section{Related Work}
 Graph Colouring is a well studied problem and there have been so many works on the same over years. But most of them were regarding sequentially solving the problem using various paradigms, like that of semi-definite programming, integer programming etc.
 
-Recently there have been some parallel approaches to the same, but most of them like the works by \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on supercomputers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
+Recently there have been some parallel approaches to the same, but most of them like the works by \citet{journals/jpdc/BozdagGMBC08, DBLP:conf/hpcc/BozdagCGMBO05} and \citet{CAtalyuRek:2012:GCA:2396901.2397093} are based on distributed computing setups, supercomputers or other expensive hardware. There have been only a few work done regarding parallel graph colouring on GPUs like \citet{Grosset:2011:EGC:2038037.1941597}, \citet{nvidia:naumov} and \citet{6828158} and none regarding Incremental/Decremental versions as far as the author understands.
 \section{Broad Classification of Parallel Graph Colouring Algorithms}
 As we are dealing with NVIDIA GPUs, we are concerning ourselves with algorithms pertaining to shared memory architectures only. Most of the parallel colouring algorithms based on shared memory architecture can be broadly classified into two of the following categories:
 \subsection{Vertex Independent Sets and Colouring}
@@ -344,7 +345,7 @@ We start with discussing a sequential graph colouring algorithm, one of the easi
 
 In Greedy Colouring, you choose each vertex of the graph and assign it the smallest colour number available which is not currently in use by one of its adjacent vertices. This is described in Algorithm \ref{GreedyColouring}. As is evident, the colour quality produced by Greedy Colouring can be arbitrary. In other words, the colour quality produced will depend on the order in which vertices are processed by the algorithm.
 
-Greedy Colouring can produce a colour quality of $\chi(G)$ for atleast one ordering of the vertices. But, on an average, this heuristic performs far from optimal. But the greedy colouring algorithm gives us an upper bound on the number of colours that it uses. The colouring produced uses at most $\Delta+1$ colours, where $\Delta$ is the maximum degree among all the vertices of the graph. As the order in which the vertices are processed is very important, there have been many approaches suggested over the years which on an average produce a better colour quality. One of them is the so called Welsh-Powell Algorithm (\citet{Welsh01011967}), in which we process the vertices in the order of their degrees.
+Greedy Colouring can produce a colour quality of $\chi(G)$ for atleast one ordering of the vertices. But, on an average, this heuristic performs far from optimal. But the greedy colouring algorithm gives us an upper bound on the number of colours that it uses. The colouring produced uses at most $\Delta+1$ colours, where $\Delta$ is the maximum degree among all the vertices of the graph. As the order in which the vertices are processed is very important, there have been many approaches suggested over the years which on an average produce a better colour quality. One of them is the so called Welsh-Powell Algorithm \citep{Welsh01011967}, in which we process the vertices in the order of their degrees.
 \begin{algorithm}
 \caption{Sequential Greedy Graph Colouring}\label{GreedyColouring}
 \begin{algorithmic}[1]
@@ -506,7 +507,7 @@ We also have a GPU based graph partitioning, speculation and conflict resolution
 \section{Our Approach}
 In our work, we try a number of options like \verb+RANDCOLOURING+ and \verb+MINMAXCOLOURING+ which uses some of the suggestions by \citet{cohenefficient} on top of the algorithm put forward by \citet{Jones:1993:PGC:153109.153119}. Like every other implementation, the data structures used are really important. Especially in our case, as we are using a GPU, the structure and size of data copied to and stored on the GPU are very important. From here on, $n$ represents the number of vertices and $m$ represents the number of edges in the graph.
 \subsection{CSR: Compressed Sparse Row Representation}
-Graphs are usually stored in an adjacent matrix representation or an adjacency list representation. Both have their own pros and cons. Graphs in practical applications are usually huge. In our case, as we have to copy the entire graph to the GPU, we can't have the luxury of adjacent matrix representation as it requires $O(n^{2})$ storage space. As we are dealing with GPUs, which don't really provide enough support for using connected lists, adjacency list representation ($O(m+n)$) in its classical form is also not practical. So, we use an array based adjacency list representation called Compressed Sparse Row Representation.
+Graphs are usually stored in an adjacent matrix representation or an adjacency list representation. Both have their own pros and cons. Graphs in practical applications are usually huge. In our case, as we have to copy the entire graph to the GPU, we can't have the luxury of adjacent matrix representation as it requires $O(n^{2})$ storage space. Also, we deal with a lot of sparse graphs and for sparse graphs, adjacent matrix representation is very wasteful in terms of space. For sparse graphs, adjacency list based representations are better. As we are dealing with GPUs, which don't really provide enough support for using connected lists, adjacency list representation ($O(m+n)$) in its classical form is also not practical. So, we use an array based adjacency list representation called Compressed Sparse Row Representation.
 \begin{verse}
 Compressed Sparse Raw Representation of a graph involves the use of just three arrays (two in case the edges are of unit weight). The first array, called the Offset Array, has a size of $n+1$, where $n$ is the number of vertices. The second array, called the Edges Array, and the third array, called the Weights Array, have the size of the number of edges each.
 \end{verse}

@@ -6,45 +6,45 @@ Database file #1: refs.bib
 Warning--string name "march" is undefined
 --line 55 of file refs.bib
 Warning--missing publisher in wilson14
-You've used 16 entries,
+You've used 24 entries,
             2930 wiz_defined-function locations,
-            732 strings with 8400 characters,
-and the built_in function-call counts, 9164 in all, are:
-= -- 719
-> -- 327
-< -- 13
-+ -- 119
-- -- 93
-* -- 695
-:= -- 1362
-add.period$ -- 65
-call.type$ -- 16
-change.case$ -- 118
-chr.to.int$ -- 16
-cite$ -- 17
-duplicate$ -- 780
-empty$ -- 749
-format.name$ -- 135
-if$ -- 1804
+            802 strings with 10566 characters,
+and the built_in function-call counts, 14647 in all, are:
+= -- 1114
+> -- 574
+< -- 18
++ -- 208
+- -- 166
+* -- 1168
+:= -- 2142
+add.period$ -- 96
+call.type$ -- 24
+change.case$ -- 185
+chr.to.int$ -- 24
+cite$ -- 25
+duplicate$ -- 1247
+empty$ -- 1187
+format.name$ -- 229
+if$ -- 2876
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 148
-newline$ -- 101
-num.names$ -- 64
-pop$ -- 301
+missing$ -- 240
+newline$ -- 146
+num.names$ -- 98
+pop$ -- 483
 preamble$ -- 1
-purify$ -- 95
+purify$ -- 150
 quote$ -- 0
-skip$ -- 231
+skip$ -- 345
 stack$ -- 0
-substring$ -- 361
-swap$ -- 389
-text.length$ -- 0
+substring$ -- 584
+swap$ -- 650
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 141
+type$ -- 213
 warning$ -- 1
-while$ -- 61
+while$ -- 95
 width$ -- 0
-write$ -- 240
+write$ -- 355
 (There were 2 warnings)

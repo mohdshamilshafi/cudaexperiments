@@ -14,3 +14,5 @@ Add Sequential Colouring Greedy algo table
 
 Brooks theorem Delta instead of Delta + 1.
 
+
+

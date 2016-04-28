@@ -14,11 +14,11 @@
 \contentsline {subsection}{\numberline {2.2.5}Applications}{6}{subsection.2.2.5}
 \contentsline {section}{\numberline {2.3}Parallelization}{6}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Frequency Scaling}{6}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Why Parallelization?}{6}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Why Parallelization?}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Parallelization of Graph Colouring}{8}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}GPGPU}{9}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Why GPUs?}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}NVIDIA CUDA}{9}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.2}NVIDIA CUDA}{10}{subsection.2.4.2}
 \contentsline {subsubsection}{Architecture}{10}{section*.10}
 \contentsline {subsection}{\numberline {2.4.3}Challenges}{11}{subsection.2.4.3}
 \contentsline {section}{\numberline {2.5}Incremental/Decremental}{11}{section.2.5}
@@ -41,7 +41,7 @@
 \contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{22}{section*.16}
 \contentsline {subsubsection}{Example}{22}{section*.17}
 \contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{23}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{24}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{25}{subsection.3.5.3}
 \contentsline {subsubsection}{Improvements}{25}{section*.23}
 \contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{28}{chapter.4}
 \contentsline {section}{\numberline {4.1}Why Incremental?}{28}{section.4.1}

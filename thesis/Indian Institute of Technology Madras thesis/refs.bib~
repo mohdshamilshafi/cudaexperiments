@@ -267,7 +267,80 @@ eprint = {http://comjnl.oxfordjournals.org/content/10/1/85.full.pdf+html},
 journal = {The Computer Journal} 
 }
 
+@inproceedings{Zuckerman:2006:LDE:1132516.1132612,
+ author = {Zuckerman, David},
+ title = {Linear Degree Extractors and the Inapproximability of Max Clique and Chromatic Number},
+ booktitle = {Proceedings of the Thirty-eighth Annual ACM Symposium on Theory of Computing},
+ series = {STOC '06},
+ year = {2006},
+ isbn = {1-59593-134-1},
+ location = {Seattle, WA, USA},
+ pages = {681--690},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1132516.1132612},
+ doi = {10.1145/1132516.1132612},
+ acmid = {1132612},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {NP-hard, approximation, chromatic number, clique, disperser, explicit construction, extractor, pseudorandom},
+} 
 
+@article{journals/jpdc/BozdagGMBC08,
+  added-at = {2009-01-13T00:00:00.000+0100},
+  author = {Bozdag, Doruk and Gebremedhin, Assefaw Hadish and Manne, Fredrik and Boman, Erik G. and Çatalyürek, Ümit V.},
+  biburl = {http://www.bibsonomy.org/bibtex/2cf4f5667734bbf8b68a4634f28848b75/dblp},
+  date = {2009-01-13},
+  description = {dblp},
+  ee = {http://dx.doi.org/10.1016/j.jpdc.2007.08.002},
+  interhash = {5770db3506095b58d38d1a345f12c738},
+  intrahash = {cf4f5667734bbf8b68a4634f28848b75},
+  journal = {J. Parallel Distrib. Comput.},
+  keywords = {dblp},
+  number = 4,
+  pages = {515-535},
+  timestamp = {2009-01-15T11:33:55.000+0100},
+  title = {A framework for scalable greedy coloring on distributed-memory parallel computers.},
+  url = {http://dblp.uni-trier.de/db/journals/jpdc/jpdc68.html#BozdagGMBC08},
+  volume = 68,
+  year = 2008
+}
 
+@inproceedings{DBLP:conf/hpcc/BozdagCGMBO05,
+  author    = {Doruk Bozdag and
+               {\"{U}}mit V. {\c{C}}ataly{\"{u}}rek and
+               Assefaw Hadish Gebremedhin and
+               Fredrik Manne and
+               Erik G. Boman and
+               F{\"{u}}sun {\"{O}}zg{\"{u}}ner},
+  title     = {A Parallel Distance-2 Graph Coloring Algorithm for Distributed Memory
+               Computers},
+  booktitle = {High Performance Computing and Communications, First International
+               Conference, {HPCC} 2005, Sorrento, Italy, September 21-23, 2005, Proceedings},
+  pages     = {796--806},
+  year      = {2005},
+  crossref  = {DBLP:conf/hpcc/2005},
+  url       = {http://dx.doi.org/10.1007/11557654_90},
+  doi       = {10.1007/11557654_90},
+  timestamp = {Wed, 16 Nov 2005 00:00:00 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/hpcc/BozdagCGMBO05},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+
+@proceedings{DBLP:conf/hpcc/2005,
+  editor    = {Laurence Tianruo Yang and
+               Omer F. Rana and
+               Beniamino Di Martino and
+               Jack Dongarra},
+  title     = {High Performance Computing and Communications, First International
+               Conference, {HPCC} 2005, Sorrento, Italy, September 21-23, 2005, Proceedings},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {3726},
+  publisher = {Springer},
+  year      = {2005},
+  isbn      = {3-540-29031-1},
+  timestamp = {Thu, 27 Oct 2005 13:39:21 +0200},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/hpcc/2005},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}	
 
 
