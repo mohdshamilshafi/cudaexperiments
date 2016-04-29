@@ -47,12 +47,13 @@
 \BOOKMARK [1][-]{section.5.3}{The Two Thread Decremental Model}{chapter.5}% 47
 \BOOKMARK [1][-]{section.5.4}{The Many Thread Decremental Model}{chapter.5}% 48
 \BOOKMARK [1][-]{section.5.5}{Propagation}{chapter.5}% 49
-\BOOKMARK [2][-]{subsection.5.5.1}{One Time Propagation}{section.5.5}% 50
-\BOOKMARK [2][-]{subsection.5.5.2}{Wave Propagation}{section.5.5}% 51
-\BOOKMARK [0][-]{chapter.6}{EXPERIMENTAL EVALUATION}{}% 52
-\BOOKMARK [1][-]{section.6.1}{Experimental Setup}{chapter.6}% 53
-\BOOKMARK [1][-]{section.6.2}{Test Data}{chapter.6}% 54
-\BOOKMARK [1][-]{section.6.3}{Parallel Graph Colouring on GPU}{chapter.6}% 55
-\BOOKMARK [1][-]{section.6.4}{Incremental Parallel Graph Colouring on GPU}{chapter.6}% 56
-\BOOKMARK [1][-]{section.6.5}{Decremental Parallel Graph Colouring on GPU}{chapter.6}% 57
-\BOOKMARK [0][-]{chapter.7}{CONCLUSION AND FUTURE WORK}{}% 58
+\BOOKMARK [2][-]{subsection.5.5.1}{Pessimistic: No Propagation}{section.5.5}% 50
+\BOOKMARK [2][-]{subsection.5.5.2}{Semi-Optimistic: One Time Propagation}{section.5.5}% 51
+\BOOKMARK [2][-]{subsection.5.5.3}{Optimistic: Wave Propagation}{section.5.5}% 52
+\BOOKMARK [0][-]{chapter.6}{EXPERIMENTAL EVALUATION}{}% 53
+\BOOKMARK [1][-]{section.6.1}{Experimental Setup}{chapter.6}% 54
+\BOOKMARK [1][-]{section.6.2}{Test Data}{chapter.6}% 55
+\BOOKMARK [1][-]{section.6.3}{Parallel Graph Colouring on GPU}{chapter.6}% 56
+\BOOKMARK [1][-]{section.6.4}{Incremental Parallel Graph Colouring on GPU}{chapter.6}% 57
+\BOOKMARK [1][-]{section.6.5}{Decremental Parallel Graph Colouring on GPU}{chapter.6}% 58
+\BOOKMARK [0][-]{chapter.7}{CONCLUSION AND FUTURE WORK}{}% 59

@@ -74,6 +74,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces  NVIDIA GPU hardware model, from \cite  {nVidia:Hardware}. \relax }}{10}{figure.caption.11}}
 \newlabel{fig:nvidia}{{2.4}{10}{NVIDIA GPU hardware model, from \cite {nVidia:Hardware}. \relax }{figure.caption.11}{}}
 \citation{Lee:2010:DGV:1816038.1816021}
+\citation{hovland2008latency}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Challenges}{11}{subsection.2.4.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Incremental/Decremental}{11}{section.2.5}}
 \citation{journals/jpdc/BozdagGMBC08,DBLP:conf/hpcc/BozdagCGMBO05}
@@ -241,20 +242,35 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Why Decremental?}{38}{section.5.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{38}{section.5.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{39}{section.5.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{38}{section.5.3}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {13}{\ignorespaces The Two Thread Decremental Model\relax }}{39}{algorithm.13}}
+\newlabel{twoThreadDecremental}{{13}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.4}{{4}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.5}{{5}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.6}{{6}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.7}{{7}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.8}{{8}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.9}{{9}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.10}{{10}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
+\newlabel{13.11}{{11}{39}{The Two Thread Decremental Model\relax }{algorithm.13}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{39}{section.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Propagation}{39}{section.5.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}One Time Propagation}{39}{subsection.5.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Wave Propagation}{39}{subsection.5.5.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{40}{chapter.6}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {14}{\ignorespaces The Many Thread Incremental Model\relax }}{40}{algorithm.14}}
+\newlabel{manythreadDecremental}{{14}{40}{The Many Thread Incremental Model\relax }{algorithm.14}{}}
+\newlabel{14.10}{{10}{40}{The Many Thread Incremental Model\relax }{algorithm.14}{}}
+\newlabel{14.11}{{11}{40}{The Many Thread Incremental Model\relax }{algorithm.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Propagation}{41}{section.5.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Pessimistic: No Propagation}{41}{subsection.5.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Semi-Optimistic: One Time Propagation}{41}{subsection.5.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Optimistic: Wave Propagation}{42}{subsection.5.5.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{43}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Experimental Setup}{40}{section.6.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Test Data}{40}{section.6.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{40}{section.6.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{40}{section.6.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{40}{section.6.5}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{41}{chapter.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Experimental Setup}{43}{section.6.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Test Data}{43}{section.6.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{43}{section.6.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{43}{section.6.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{43}{section.6.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{44}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibdata{refs}
@@ -268,20 +284,21 @@
 \bibcite{CPE:CPE528}{{8}{2000}{{Gebremedhin and Manne}}{{}}}
 \bibcite{Grosset:2011:EGC:2038037.1941597}{{9}{2011}{{Grosset {\em  et~al.\/}}}{{Grosset, Zhu, Liu, Venkatasubramanian, and Hall}}}
 \bibcite{herzberg2007sudoku}{{10}{2007}{{Herzberg and Murty}}{{}}}
-\bibcite{jensen2011graph}{{11}{2011}{{Jensen and Toft}}{{}}}
-\bibcite{Jones:1993:PGC:153109.153119}{{12}{1993}{{Jones and Plassmann}}{{}}}
-\bibcite{khor2009application}{{13}{2009}{{Khor}}{{}}}
-\bibcite{lakshman1994graph}{{14}{1994}{{Lakshman {\em  et~al.\/}}}{{Lakshman, Bagchi, and Rastani}}}
-\bibcite{Lee:2010:DGV:1816038.1816021}{{15}{2010}{{Lee {\em  et~al.\/}}}{{Lee, Kim, Chhugani, Deisher, Kim, Nguyen, Satish, Smelyanskiy, Chennupaty, Hammarlund, Singhal, and Dubey}}}
-\bibcite{leighton1979graph}{{16}{1979}{{Leighton}}{{}}}
-\bibcite{Luby:1985:SPA:22145.22146}{{17}{1985}{{Luby}}{{}}}
-\bibcite{nvidia:naumov}{{18}{2015}{{Naumov {\em  et~al.\/}}}{{Naumov, Castonguay, and Cohen}}}
-\bibcite{nVidia:Hardware}{{19}{2016{{\em  a\/}}}{{NVIDIA Corporation}}{{}}}
-\bibcite{nVidia:cuRAND}{{20}{2016{{\em  b\/}}}{{NVIDIA Corporation}}{{}}}
-\bibcite{6828158}{{21}{2014}{{Sengupta}}{{}}}
-\bibcite{Herb:Intel}{{22}{2005}{{Sutter}}{{}}}
-\bibcite{thomas98}{{23}{1998}{{Thomas}}{{}}}
-\bibcite{Welsh01011967}{{24}{1967}{{Welsh and Powell}}{{}}}
-\bibcite{WikipediaEN:ML}{{25}{2016}{{Wikipedia, the free encyclopedia}}{{}}}
-\bibcite{wilson14}{{26}{2014}{{Wilson}}{{}}}
-\bibcite{Zuckerman:2006:LDE:1132516.1132612}{{27}{2006}{{Zuckerman}}{{}}}
+\bibcite{hovland2008latency}{{11}{2008}{{Hovland}}{{}}}
+\bibcite{jensen2011graph}{{12}{2011}{{Jensen and Toft}}{{}}}
+\bibcite{Jones:1993:PGC:153109.153119}{{13}{1993}{{Jones and Plassmann}}{{}}}
+\bibcite{khor2009application}{{14}{2009}{{Khor}}{{}}}
+\bibcite{lakshman1994graph}{{15}{1994}{{Lakshman {\em  et~al.\/}}}{{Lakshman, Bagchi, and Rastani}}}
+\bibcite{Lee:2010:DGV:1816038.1816021}{{16}{2010}{{Lee {\em  et~al.\/}}}{{Lee, Kim, Chhugani, Deisher, Kim, Nguyen, Satish, Smelyanskiy, Chennupaty, Hammarlund, Singhal, and Dubey}}}
+\bibcite{leighton1979graph}{{17}{1979}{{Leighton}}{{}}}
+\bibcite{Luby:1985:SPA:22145.22146}{{18}{1985}{{Luby}}{{}}}
+\bibcite{nvidia:naumov}{{19}{2015}{{Naumov {\em  et~al.\/}}}{{Naumov, Castonguay, and Cohen}}}
+\bibcite{nVidia:Hardware}{{20}{2016{{\em  a\/}}}{{NVIDIA Corporation}}{{}}}
+\bibcite{nVidia:cuRAND}{{21}{2016{{\em  b\/}}}{{NVIDIA Corporation}}{{}}}
+\bibcite{6828158}{{22}{2014}{{Sengupta}}{{}}}
+\bibcite{Herb:Intel}{{23}{2005}{{Sutter}}{{}}}
+\bibcite{thomas98}{{24}{1998}{{Thomas}}{{}}}
+\bibcite{Welsh01011967}{{25}{1967}{{Welsh and Powell}}{{}}}
+\bibcite{WikipediaEN:ML}{{26}{2016}{{Wikipedia, the free encyclopedia}}{{}}}
+\bibcite{wilson14}{{27}{2014}{{Wilson}}{{}}}
+\bibcite{Zuckerman:2006:LDE:1132516.1132612}{{28}{2006}{{Zuckerman}}{{}}}

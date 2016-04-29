@@ -249,7 +249,7 @@ NVIDIA, one of the biggest players in the GPUs market, introduced its famous par
 \end{figure}
 In an NVIDIA GPU, as shown in the figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
 \subsection{Challenges}
-Though, GPUs let us access thousands of threads easily, it comes with a cost \citep{Lee:2010:DGV:1816038.1816021}. In discrete GPUs like the NVIDIA GPUs used in our work, GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express port, which is not super fast at \verb+5 Gbits/sec+, and the fact that while transferring data, we force the CPU to wait for the GPU, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU.  
+Though, GPUs let us access thousands of threads easily, it comes with a cost \citep{Lee:2010:DGV:1816038.1816021}. In discrete GPUs like the NVIDIA GPUs used in our work, GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express Bus, which is not super fast with bit rates at around \verb+5 Gbits/sec+, and the fact that while transferring data, we force the CPU to wait for the GPU, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing \citep{hovland2008latency}. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU. Also, GPUs are not yet ready to do everything that a normal CPU does.  
 \section{Incremental/Decremental}
 As we discussed already, Graph Colouring is a very important problem on graphs. We have so many practical applications for the same. But most of the practical graphs are dynamic in nature. Vertices and edges are added and deleted often. But the number of these changes is very small compared to the size of the full graph. So, it follows that it is not wise to rerun the graph colouring algorithm on the entire graph every time some vertices/edges are added or deleted. Our work on Incremental/Decremental graph colouring tries to take care of precisely the same.
 
@@ -740,7 +740,7 @@ We introduce an algorithm called The Two Thread Incremental Model to deal with r
 \Procedure{TwoThreadIncrementalColouring(G(V,E), edge)}{}
 \State $\textit{Initialization}$
 \State \textit{Let uv be the newly added edge}
-\State \textit{Thread 0 represents u and thread 1 represent v}
+\State \textit{Thread 0 represents u and thread 1 represents v}
 \State $\textit{Add the new edge information to the UCSR}$\Comment{Each thread add its neighbour}
 \State \textit{synchronize}
 \If{$colour[u] \neq colour[v]$}
@@ -786,7 +786,7 @@ We introduce an algorithm called The Two Thread Incremental Model to deal with r
 
 Our Two Thread Incremental Model is explained in Algorithm \ref{twoThreadIncremental}. From the structure of the problem and our algorithm, it is clear that we actually need only two threads to deal with locally maximizing the colour quality at the region of edge addition. As we have the graph already on the GPU memory, we don't have an issue with memory latency, the biggest hurdle with GPGPU.
 
-This algorithm is meant for addition of a single edge. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the new edge is incident. In our algorithm, we assume \textit{uv} is the added edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 2} in charge of \textit{v}. Initially, each thread modifies their portions of the UCSR to accommodate the newly added edge. Then they check if the current colouring of \textit{u} and \textit{v} are the same. If not, we are through.
+This algorithm is meant for addition of a single edge. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the new edge is incident. In our algorithm, we assume \textit{uv} is the added edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 1} in charge of \textit{v}. Initially, each thread modifies its portion of the UCSR to accommodate the newly added edge. Then they check if the current colouring of \textit{u} and \textit{v} are the same. If not, we are through.
 
 If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found lease possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. In the case of $x=y$, $z$ be the least colour greater than $y$ that \textit{v} can take in a greedy fashion. We have many cases that can arise in most of which $x$ and $y$ are interchangeable with no side effects. These cases and the actions required are tabulated in Table \ref{table:3}. 
 
@@ -885,19 +885,19 @@ New added edges can create conflicts. These conflicts will be resolved only afte
 \State $\textit{Initialization}$
 \State $\textit{edgeSet} \gets \phi$
 \BState \emph{NewEdge}:
-\State \textit{Take the new edge to added, $\bar{e}$, as the input}
+\State \textit{Take the new edge to be added, $\bar{e}$, as the input}
 \State $\bar{u}, \bar{v} \gets \textit{endpoints of }\bar{e}$
-\For {$each e \in edgeSet$}
+\For {$each \: e \in edgeSet$}
 \State $\textit{u, v} \gets \textit{endpoints of e}$
 
-\State $setU \gets V-adj(u)$\Comment adj(k) gives adjacent vertices of k
-\State $setV \gets V-adj(v)$
+\State $setU \gets V \: \textbackslash \: adj(u)$\Comment adj(k) gives adjacent vertices of k
+\State $setV \gets V \: \textbackslash \: adj(v)$
 \State $setPermissible \gets setU \cap setV$
 
 \If {$\bar{u} \not\in setPermissible \: OR \: \bar{v} \not\in setPermissible$}
 \State // Done in parallel for all edges in the edgeSet
 \State \verb+TwoThreadIncrementalColouring(G(V,E), edgeSet)+
-\State $\textit{edgeSet} \gets \phi \cup \bar{e}$
+\State $\textit{edgeSet} \gets \{\bar{e}\}$
 \State \textit{goto NewEdge}
 \EndIf
 \EndFor
@@ -932,14 +932,98 @@ With decremental graph colouring, we are removing vertices and edges. Without an
 
 So, through the deletions of edges, the \verb+offsetArray[]+ of UCSR doesn't change in size as we don't really remove vertices. But the size of \verb+edgesArray[]+ can change. As we want the size of \verb+edgesArray[]+ to not change, when an edge is deleted, the new edge's information can be removed from the \verb+edgesArray[]+ by setting those elements to zero.
 
-Pessimistic, Semi-optimistic, Optimistic
 \section{The Two Thread Decremental Model}
+We assume that we have the already coloured graph residing in the GPU memory. Now, we decrement an edge, that is, we remove an edge. When an edge is removed, there is no necessity to change the colouring as it can't inflict any conflict. So, if an edge is removed, we can leave the colouring as it is. But when an edge is removed, there is a possibility that we can improve the existing colouring. And to deal with the same, we introduce our model which we call \textit{The Two Thread Decremental Model}.
+
+In \textit{The Two Thread Decremental Model}, we try to optimize the existing colouring in a localized fashion. As in the case of Incremental colouring discussed in the last chapter, we need only two threads to achieve the same. The scheme for \textit{The Two Thread Decremental Model} is given in Algorithm \ref{twoThreadDecremental}.
+
+\begin{algorithm}
+\caption{The Two Thread Decremental Model}\label{twoThreadDecremental}
+\begin{algorithmic}[1]
+\Procedure{TwoThreadDecrementalColouring(G(V,E), edge)}{}
+\State $\textit{Initialization}$
+\State \textit{Let uv be the newly deleted edge}
+\State \textit{Thread 0 represents u and thread 1 represents v} \label{13.4}
+\State $\textit{Remove the deleted edge from the UCSR}$\Comment{Each thread deletes its neighbour} \label{13.5}
+\State \textit{synchronize}\label{13.6}
+\For {$i \in \{u, v\}$} \Comment{In parallel by two threads} \label{13.7}
+\State $oldColour \gets colour[i]$ \label{13.8}
+\State $possibleColour \gets \textit{Smallest possible colour for i}$ \label{13.9}
+\If {$possibleColour<oldColour$}\label{13.10}
+\State $colour[i] \gets possibleColour$\label{13.11}
+\EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The model is pretty simple. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the deleted edge was incident. We assume \textit{uv} is the newly deleted edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 1} in charge of \textit{v} (Line \ref{13.4}). Initially, each thread modifies its portion of the UCSR to reflect the deletion of edge \textit{uv} (Line \ref{13.5}). Once the UCSR is updated and synchronized (Line \ref{13.6}), each thread tries to find the smallest colour its vertex can assume in the changed neighbourhood, \verb+possibleColour+ (Line \ref{13.7} to \ref{13.9}). If this smallest colour the vertex can assume, \verb+possibleColour+, is smaller than its current colour, its colour is updated to \verb+possibleColour+ (Line \ref{13.10} to \ref{13.11}). 
 
 \section{The Many Thread Decremental Model}
+In the previous section we discussed our \textit{Two Thread Decremental Model}. As was discussed, we need only two threads to handle a deleted edge. The issue here is that, for every edge deleted, we need to spawn a CUDA kernel with just two threads. There are two issues with this. The first issue is that we are not enough use of the massive parallelism that GPUs offer. The second issue is that each kernel call comes with some overhead. There is some cost involved while CPU invokes the GPU for computation. So, it is in our best interest to increase the number of threads used per kernel call and to reduce the number of times kernels are invoked. We present our model we call \textit{The Many Thread Decremental Model} to handle the same.
+
+\begin{algorithm}
+\caption{The Many Thread Incremental Model}\label{manythreadDecremental}
+\begin{algorithmic}[1]
+\Procedure{ManyThreadDecrementalColouring(G(V,E), edge)}{}
+\State $\textit{Initialization}$
+\State $\textit{edgeSet} \gets \phi$
+\BState \emph{Edges To Be Deleted}:
+\State \textit{Take the newly deleted edge, $\bar{e}$, as the input}
+\State $\textit{edgeSet} \gets \textit{edgeSet} \cup \bar{e}$
+\If {\textit{more edges to be deleted}}
+\State \textit{goto Edges To Be Deleted}
+\EndIf
+\State \textit{// Two threads per edge are spawned}
+\For {$each \: e \in edgeSet$} \Comment Done in parallel \label{14.10}
+\State \textit{Each thread modifies UCSR to remove its corresponding neighbour}\label{14.11}
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+The scheme for \textit{The Many Thread Decremental Model} is given in Algorithm \ref{manythreadDecremental}. As deletions of edges don't inflict in colouring conflicts, we can actually choose not to recolour the graph on edge deletions. But the edge deletions should be reflected in the UCSR of the graph residing on the GPU. This we can do in parallel for all the deleted edges together. We can't really locally recolour the vertices on which the deleted edges were incident in parallel, like in Algorithm \ref{twoThreadDecremental}, as this might lead to data races. The edges considered in parallel might not be independent of each other. So, our model chooses not to recolour the graph, atleast not right away, and just deletes the edges from the UCSR of the graph residing on the GPU in parallel (Lines \ref{14.10} and \ref{14.11}).
+
+But it is clear that all these edge deletion could lead to better colouring of the graph. And to accommodate the same, we introduce propagation to propagate the changed structure of the graph through the graph. 
 
 \section{Propagation}
-\subsection{One Time Propagation}
-\subsection{Wave Propagation}
+The need for propagation should already be clear from last chapter as well as last section. In Figure \ref{fig:propagation}, we showed how propagation could help improve the colouring after addition of edges. If we use Algorithm \ref{twoThreadDecremental} for edge deletions, then we already should have locally improved colouring. In that case, we can use propagation to possibly improve colour quality. If we use Algorithm \ref{manythreadDecremental}, we leave the colours as it is. We don't change them. In that case, propagation very likely will improve the colour quality.
+
+In terms of likelihood for improvement in colour quality, we have three approaches to propagation namely the pessimistic approach, the semi-optimistic approach and the optimistic approach.
+
+\subsection{Pessimistic: No Propagation}
+In the pessimistic approach, or what we call No Propagation, we leave the colours untouched. That is, we don't do any propagation. After Algorithms \ref{twoThreadIncremental}, \ref{manythread} and \ref{twoThreadDecremental}, which changes the colouring locally, if we feel that there is meagre chance for the colour quality to improve or if we feel the cost-benefit in terms of time/computation involved \textit{vs} colour quality improved, we can choose not to do propagation in order to save on computation and time.
+
+\subsection{Semi-Optimistic: One Time Propagation}
+In the semi-optimistic approach, or what we call One Time Propagation, we propagate the information through the graph in one go. That is, the information is transferred only by one level. The possible ripple effect of propagation is downplayed in this approach. After Algorithms \ref{twoThreadIncremental}, \ref{manythread} and \ref{twoThreadDecremental}, the immediate neighbours of the locally improved vertices could possibly get better colours. After Algorithm \ref{manythreadDecremental}, the affected vertices themselves and their immediate neighbours could possibly get better colours.
+
+\begin{algorithm}
+\caption{One Time Propagation}\label{manythreadDecremental}
+\begin{algorithmic}[1]
+\Procedure{ManyThreadDecrementalColouring(G(V,E), edge)}{}
+\State $\textit{Initialization}$
+\State $\textit{edgeSet} \gets \phi$
+\BState \emph{Edges To Be Deleted}:
+\State \textit{Take the newly deleted edge, $\bar{e}$, as the input}
+\State $\textit{edgeSet} \gets \textit{edgeSet} \cup \bar{e}$
+\If {\textit{more edges to be deleted}}
+\State \textit{goto Edges To Be Deleted}
+\EndIf
+\State \textit{// Two threads per edge are spawned}
+\For {$each \: e \in edgeSet$} \Comment Done in parallel \label{14.10}
+\State \textit{Each thread modifies UCSR to remove its corresponding neighbour}\label{14.11}
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+This approach is a trade off between improvement in colour quality \textit{vs} computation/time. We try to improve the colour quality by doing less computation and hence supposedly saving on time. We use Algorithm \ref{Luby} to find Maximal VIS iteratively to propagate the information. The scheme is given in Algorithm \ref{OneTime}.
+
+\subsection{Optimistic: Wave Propagation}
+In the optimistic approach, or what we call Wave Propagation, we consider the possible ripple effect of propagation. That is, if a vertex changes its colour, it colour affect the colouring of all its neighbours. So, we process all its neighbours for possible colouring improvements. In case any of such neighbours improves its colouring, then its neighbours could also possibly improve their colouring. This then ripples through the graph until there are no more vertices with possible colouring improvements. This propagation happens in waves of possible colouring improvements and hence we call it Wave Propagation.
+
+This approach might be a little time consuming as we have to keep on adding and removing vertices to and from the process queue. But this approach is highly likely to improve colour quality as it propagates the latest information through the graph. The biggest challenges here are the number of iterations, \textit{waves}, before the algorithm terminates and the maintenance of a concurrent process queue.
+
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
 \section{Test Data}
