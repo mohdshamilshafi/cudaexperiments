@@ -47,21 +47,22 @@
 \contentsline {section}{\numberline {4.1}Why Incremental?}{30}{section.4.1}
 \contentsline {section}{\numberline {4.2}Handling a Growing Graph}{30}{section.4.2}
 \contentsline {section}{\numberline {4.3}The Two Thread Incremental Model}{31}{section.4.3}
-\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{33}{section.4.4}
-\contentsline {section}{\numberline {4.5}Propagation}{35}{section.4.5}
-\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{38}{chapter.5}
-\contentsline {section}{\numberline {5.1}Why Decremental?}{38}{section.5.1}
-\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{38}{section.5.2}
-\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{38}{section.5.3}
-\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{39}{section.5.4}
-\contentsline {section}{\numberline {5.5}Propagation}{41}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Pessimistic: No Propagation}{41}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Semi-Optimistic: One Time Propagation}{41}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Optimistic: Wave Propagation}{42}{subsection.5.5.3}
-\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{43}{chapter.6}
-\contentsline {section}{\numberline {6.1}Experimental Setup}{43}{section.6.1}
-\contentsline {section}{\numberline {6.2}Test Data}{43}{section.6.2}
-\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{43}{section.6.3}
-\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{43}{section.6.4}
-\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{43}{section.6.5}
-\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{44}{chapter.7}
+\contentsline {section}{\numberline {4.4}The Many Thread Incremental Model}{34}{section.4.4}
+\contentsline {section}{\numberline {4.5}Propagation}{36}{section.4.5}
+\contentsline {chapter}{\numberline {5}PARALLEL GRAPH COLOURING: DECREMENTAL}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Why Decremental?}{39}{section.5.1}
+\contentsline {section}{\numberline {5.2}Handling a Shrinking Graph}{39}{section.5.2}
+\contentsline {section}{\numberline {5.3}The Two Thread Decremental Model}{39}{section.5.3}
+\contentsline {section}{\numberline {5.4}The Many Thread Decremental Model}{40}{section.5.4}
+\contentsline {section}{\numberline {5.5}Propagation}{42}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Pessimistic: No Propagation}{42}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Semi-Optimistic: One Time Propagation}{42}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Optimistic: Wave Propagation}{43}{subsection.5.5.3}
+\contentsline {subsubsection}{Termination}{44}{section*.34}
+\contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Experimental Setup}{45}{section.6.1}
+\contentsline {section}{\numberline {6.2}Test Data}{45}{section.6.2}
+\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{45}{section.6.3}
+\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{45}{section.6.4}
+\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{45}{section.6.5}
+\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{46}{chapter.7}

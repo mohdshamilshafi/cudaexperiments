@@ -9,13 +9,15 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces The Undirected Graph from \ref {table:2} and its CSR \relax }}{26}{figure.caption.21}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces The Undirected Graph from \ref {table:2} and its UCSR \relax }}{26}{figure.caption.22}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \textbf {Case 1:} $x=y < p; \tmspace +\medmuskip {.2222em} z<p$ \relax }}{33}{figure.caption.25}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces \textbf {Case 2:} $x=y < p; \tmspace +\medmuskip {.2222em} p<z$ \relax }}{34}{figure.caption.26}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \textbf {Case 3:} $p < x=y$ \relax }}{34}{figure.caption.27}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces \textbf {Case 4:} $x \not =y; \tmspace +\medmuskip {.2222em} x < y < p$ \relax }}{35}{figure.caption.28}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \textbf {Case 5:} $x \not =y; \tmspace +\medmuskip {.2222em} x < p < y$ \relax }}{35}{figure.caption.29}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces \textbf {Case 6:} $x \not =y; \tmspace +\medmuskip {.2222em} p < x < y$ \relax }}{36}{figure.caption.30}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces 1-step propagation after adding a new edge and processing it. \relax }}{37}{figure.caption.31}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \textbf {Case 1:} $x=y < p; \tmspace +\medmuskip {.2222em} a=b<p$ \relax }}{33}{figure.caption.25}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \textbf {Case 2:} $x=y < p; \tmspace +\medmuskip {.2222em} p<a=b$ \relax }}{34}{figure.caption.26}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \textbf {Case 3:} $x=y < p; \tmspace +\medmuskip {.2222em} a<b; \tmspace +\medmuskip {.2222em} a<p$ \relax }}{34}{figure.caption.27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \textbf {Case 4:} $x=y < p; \tmspace +\medmuskip {.2222em} a<b; \tmspace +\medmuskip {.2222em} p<a$ \relax }}{35}{figure.caption.28}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \textbf {Case 5:} $p < x=y$ \relax }}{35}{figure.caption.29}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \textbf {Case 6:} $x \not =y; \tmspace +\medmuskip {.2222em} x < y < p$ \relax }}{36}{figure.caption.30}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \textbf {Case 7:} $x \not =y; \tmspace +\medmuskip {.2222em} x < p < y$ \relax }}{36}{figure.caption.31}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \textbf {Case 8:} $x \not =y; \tmspace +\medmuskip {.2222em} p < x < y$ \relax }}{37}{figure.caption.32}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces 1-step propagation after adding a new edge and processing it. \relax }}{38}{figure.caption.33}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

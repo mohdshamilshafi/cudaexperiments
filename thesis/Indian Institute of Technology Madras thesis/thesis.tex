@@ -749,31 +749,50 @@ We introduce an algorithm called The Two Thread Incremental Model to deal with r
 \For {$i \in \{u, v\}$} \Comment{In parallel by two threads}
 \State $oldColour \gets colour[i]$
 \State $possibleColour[threadId] \gets \textit{Smallest possible colour for i}$
+\State $possibleColour2[threadId] \gets \textit{Second smallest possible colour for i}$
 \State \textit{synchronize}
+
 \If {$possibleColour[threadId]=possibleColour[1-threadId]$}
-\If {$possibleColour[threadId]<oldColour$}
+
+	\If {$possibleColour[threadId]<oldColour$}
+
+		\If {$possibleColour2[threadId]<possibleColour2[1-threadId]$}
 \BState \emph{Label 1}:
-\If {\textit{threadId}$=0$}
-\State $colour[i] \gets possibleColour[threadId]$
-\Else
-\State $\textit{newColour} \gets \textit{Smallest possible colour > possibleColour[threadId] for i}$
+			\If {$possibleColour2[threadId]<oldColour$}
+				\State $colour[i] \gets possibleColour2[threadId]$
+			\EndIf
+
+		\Else
+			\If {$possibleColour2[threadId] = possibleColour2[1-threadId]$}
 \BState \emph{Label 2}:
-\If {$ newColour < oldColour $}
-\State $colour[i] \gets newColour$
-\EndIf
-\EndIf
-\Else
+				\If {\textit{threadId}$=0$}
+					\State $colour[i] \gets possibleColour[threadId]$
+				\Else
 \BState \emph{Label 3}:
+					\If {$possibleColour2[threadId]<colour[i]$}
+						\State $colour[i] \gets possibleColour2[threadId]$
+					\EndIf
+				\EndIf
+
+			\Else
+\BState \emph{Label 4}:	
+				\State $colour[i] \gets possibleColour[threadId]$
+			\EndIf
+
+		\EndIf
+
+\Else
+\BState \emph{Label 5}:
 \If {\textit{threadId}$=1$}
 \State $colour[i] \gets possibleColour[threadId]$
 \EndIf
 \EndIf
 \Else
-\BState \emph{Label 4}:
+\BState \emph{Label 6}:
 \If {$possibleColour[threadId]<oldColour$}
 \State $colour[i] \gets possibleColour[threadId]$
 \Else
-\BState \emph{Label 5}:
+\BState \emph{Label 7}:
 \If {$possibleColour[threadId]<possibleColour[1-threadId]$}
 \State $colour[i] \gets possibleColour[threadId]$
 \EndIf
@@ -788,7 +807,7 @@ Our Two Thread Incremental Model is explained in Algorithm \ref{twoThreadIncreme
 
 This algorithm is meant for addition of a single edge. Two threads are spawned to run the algorithm. Each thread takes charge of one of the vertices on which the new edge is incident. In our algorithm, we assume \textit{uv} is the added edge and \textit{Thread 0} is in charge of \textit{u} and \textit{Thread 1} in charge of \textit{v}. Initially, each thread modifies its portion of the UCSR to accommodate the newly added edge. Then they check if the current colouring of \textit{u} and \textit{v} are the same. If not, we are through.
 
-If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found lease possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. In the case of $x=y$, $z$ be the least colour greater than $y$ that \textit{v} can take in a greedy fashion. We have many cases that can arise in most of which $x$ and $y$ are interchangeable with no side effects. These cases and the actions required are tabulated in Table \ref{table:3}. 
+If the current colouring of \textit{u} and \textit{v} are the same, we first try to find out the least colour they can assume considering their neighbourhood in a greedy fashion. This new colouring cannot be their existing colour, as both of them have each other as a neighbour now. Let the current colouring be called \textit{p}. Let the newly found least possible colour for each of them be \textit{x} and \textit{y}. Now, we have $x \neq p$ and $y \neq p$. In the case of $x=y$, let $a$ and $b$  be the least colour greater than $x$ and $y$ respectively that \textit{u} and \textit{v} can take respectively in a greedy fashion. We have many cases that can arise in most of which $u, x, a$ and $v, y, b$ are interchangeable with no side effects. These cases and the actions required are tabulated in Table \ref{table:3}. 
 
 \begin{table}[h]
 \centering
@@ -796,30 +815,34 @@ If the current colouring of \textit{u} and \textit{v} are the same, we first try
  \hline
  No & Case & Action & Label No. in Algorithm \\ [0.5ex] 
  \hline\hline
-1 & $x=y < p; \: z<p$ & $colour[u]=x; \: colour[v]=z$ & 1, 2 \\
+1 & $x=y < p; \: a=b<p$ & $colour[u]=x; \: colour[v]=b$ & 2, 3 \\
 \hline
-2 & $x=y < p; \: p<z$ & $colour[u]=x$ & 1\\
+2 & $x=y < p; \: p<a=b$ & $colour[u]=x$ & 2 \\
 \hline
-3 & $p < x=y$ & $colour[v]=y$ & 3\\
+3 & $x=y < p; \: a<b; \: a<p$ & $colour[u]=a; \: colour[v]=y$ & 1, 4 \\
 \hline
-4 & $x \neq y; \: x < y < p$ & $colour[u]=x; \: colour[v]=y$ & 4\\
+4 & $x=y < p; \: a<b; \: p<a$ & $colour[v]=y$ & 4 \\
 \hline
-5 & $x \neq y; \: x < p < y$ & $colour[u]=x$ & 4\\
+5 & $p < x=y$ & $colour[v]=y$ & 5\\
 \hline
-6 & $x \neq y; \: p < x < y$ & $colour[u]=x$& 5\\
+6 & $x \neq y; \: x < y < p$ & $colour[u]=x; \: colour[v]=y$ & 6\\
+\hline
+7 & $x \neq y; \: x < p < y$ & $colour[u]=x$ & 6\\
+\hline
+8 & $x \neq y; \: p < x < y$ & $colour[u]=x$& 7\\
 \hline
 \end{tabular}
-\caption{The Two Threads Model: Different Cases}
+\caption{Two Threads Model: Different Cases}
 \label{table:3}
 \end{table}
 
-Each of the cases given in the table \ref{table:3} are explained using examples in the figures \ref{fig:case1}, \ref{fig:case2}, \ref{fig:case3}, \ref{fig:case4}, \ref{fig:case5} and \ref{fig:case6}.
+Each of the cases given in the table \ref{table:3} are explained using examples in the figures \ref{fig:case1}, \ref{fig:case2}, \ref{fig:case3}, \ref{fig:case4}, \ref{fig:case5}, \ref{fig:case6}, \ref{fig:case7} and \ref{fig:case8}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case1.jpg}
     \caption{
-        \textbf{Case 1:} $x=y < p; \: z<p$
+        \textbf{Case 1:} $x=y < p; \: a=b<p$
     }
     \label{fig:case1}
 \end{figure}
@@ -828,7 +851,7 @@ Each of the cases given in the table \ref{table:3} are explained using examples 
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case2.jpg}
     \caption{
-        \textbf{Case 2:} $x=y < p; \: p<z$
+        \textbf{Case 2:} $x=y < p; \: p<a=b$
     }
     \label{fig:case2}
 \end{figure}
@@ -837,7 +860,7 @@ Each of the cases given in the table \ref{table:3} are explained using examples 
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case3.jpg}
     \caption{
-        \textbf{Case 3:} $p < x=y$
+        \textbf{Case 3:} $x=y < p; \: a<b; \: a<p$
     }
     \label{fig:case3}
 \end{figure}
@@ -846,7 +869,7 @@ Each of the cases given in the table \ref{table:3} are explained using examples 
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case4.jpg}
     \caption{
-        \textbf{Case 4:} $x \neq y; \: x < y < p$
+        \textbf{Case 4:} $x=y < p; \: a<b; \: p<a$
     }
     \label{fig:case4}
 \end{figure}
@@ -855,7 +878,7 @@ Each of the cases given in the table \ref{table:3} are explained using examples 
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case5.jpg}
     \caption{
-        \textbf{Case 5:} $x \neq y; \: x < p < y$
+        \textbf{Case 5:} $p < x=y$
     }
     \label{fig:case5}
 \end{figure}
@@ -864,9 +887,27 @@ Each of the cases given in the table \ref{table:3} are explained using examples 
     \centering
     \includegraphics[width=\textwidth,keepaspectratio=true]{case6.jpg}
     \caption{
-        \textbf{Case 6:} $x \neq y; \: p < x < y$ 
+        \textbf{Case 6:} $x \neq y; \: x < y < p$
     }
     \label{fig:case6}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case7.jpg}
+    \caption{
+        \textbf{Case 7:} $x \neq y; \: x < p < y$
+    }
+    \label{fig:case7}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{case8.jpg}
+    \caption{
+        \textbf{Case 8:} $x \neq y; \: p < x < y$ 
+    }
+    \label{fig:case8}
 \end{figure}
 
 \section{The Many Thread Incremental Model}
@@ -963,7 +1004,7 @@ The model is pretty simple. Two threads are spawned to run the algorithm. Each t
 In the previous section we discussed our \textit{Two Thread Decremental Model}. As was discussed, we need only two threads to handle a deleted edge. The issue here is that, for every edge deleted, we need to spawn a CUDA kernel with just two threads. There are two issues with this. The first issue is that we are not enough use of the massive parallelism that GPUs offer. The second issue is that each kernel call comes with some overhead. There is some cost involved while CPU invokes the GPU for computation. So, it is in our best interest to increase the number of threads used per kernel call and to reduce the number of times kernels are invoked. We present our model we call \textit{The Many Thread Decremental Model} to handle the same.
 
 \begin{algorithm}
-\caption{The Many Thread Incremental Model}\label{manythreadDecremental}
+\caption{The Many Thread Decremental Model}\label{manythreadDecremental}
 \begin{algorithmic}[1]
 \Procedure{ManyThreadDecrementalColouring(G(V,E), edge)}{}
 \State $\textit{Initialization}$
@@ -998,7 +1039,7 @@ In the pessimistic approach, or what we call No Propagation, we leave the colour
 In the semi-optimistic approach, or what we call One Time Propagation, we propagate the information through the graph in one go. That is, the information is transferred only by one level. The possible ripple effect of propagation is downplayed in this approach. After Algorithms \ref{twoThreadIncremental}, \ref{manythread} and \ref{twoThreadDecremental}, the immediate neighbours of the locally improved vertices could possibly get better colours. After Algorithm \ref{manythreadDecremental}, the affected vertices themselves and their immediate neighbours could possibly get better colours.
 
 \begin{algorithm}
-\caption{One Time Propagation}\label{manythreadDecremental}
+\caption{One Time Propagation}\label{OneTime}
 \begin{algorithmic}[1]
 \Procedure{ManyThreadDecrementalColouring(G(V,E), edge)}{}
 \State $\textit{Initialization}$
@@ -1017,12 +1058,15 @@ In the semi-optimistic approach, or what we call One Time Propagation, we propag
 \end{algorithmic}
 \end{algorithm}
 
-This approach is a trade off between improvement in colour quality \textit{vs} computation/time. We try to improve the colour quality by doing less computation and hence supposedly saving on time. We use Algorithm \ref{Luby} to find Maximal VIS iteratively to propagate the information. The scheme is given in Algorithm \ref{OneTime}.
+This approach is a trade off between improvement in colour quality \textit{vs} computation/time. We try to improve the colour quality by doing less computation and hence supposedly saving on time. We use Algorithm \ref{Luby} to find Maximal VIS iteratively to propagate the information. Every node will see the colouring information and the graph structure up until the propagation step. That is, the colouring changes made during the propagation step don't percolate/ripple through the graph. The scheme is given in Algorithm \ref{OneTime}.
 
 \subsection{Optimistic: Wave Propagation}
-In the optimistic approach, or what we call Wave Propagation, we consider the possible ripple effect of propagation. That is, if a vertex changes its colour, it colour affect the colouring of all its neighbours. So, we process all its neighbours for possible colouring improvements. In case any of such neighbours improves its colouring, then its neighbours could also possibly improve their colouring. This then ripples through the graph until there are no more vertices with possible colouring improvements. This propagation happens in waves of possible colouring improvements and hence we call it Wave Propagation.
+In the optimistic approach, or what we call Wave Propagation, we consider the possible ripple effect of propagation. That is, if a vertex changes its colour, its new colouring could affect the colouring of all its neighbours. So, we process all its neighbours for possible colouring improvements. In case any of such neighbours improves its colouring, then its neighbours could also possibly improve their colouring. So, we add its neighbours too to our process queue. This then ripples through the graph until there are no more vertices with possible colouring improvements. This propagation happens in waves of possible colouring improvements and hence we call it Wave Propagation. In each wave, the algorithm adds the neighbours of those vertices who had a colouring improvement in the current wave to the process queue. The algorithm is terminated when there are no more vertices to be processed in the process queue.
 
-This approach might be a little time consuming as we have to keep on adding and removing vertices to and from the process queue. But this approach is highly likely to improve colour quality as it propagates the latest information through the graph. The biggest challenges here are the number of iterations, \textit{waves}, before the algorithm terminates and the maintenance of a concurrent process queue.
+This approach might be a little time consuming as we have to keep on adding and removing vertices to and from the process queue. But this approach is highly likely to improve colour quality as it propagates the latest information through the graph. All the colouring changes made during propagation ripple/percolate through the entire graph.  The biggest challenges here are the number of iterations, \textit{waves}, before the algorithm terminates and the maintenance of a concurrent process queue. As we have to add all neighbours of each vertex who has had a colouring improvement, we could be looking at a fast growing process queue as large graphs possibly contain vertices with very high degrees. The scheme is given in Algorithm \ref{wavePropagation}. 
+
+\subsubsection{Termination}
+This algorithm is guaranteed to terminate. In each wave, the processed vertices get removed from the process queue. Neighbours of vertices are added to the process queue only if they improve their own colouring. Colour can take only a minimum value of 1. So, a vertex can only improve its own colouring up until value 1. And if it doesn't improve its colouring in a wave, its neighbours are not added to the process queue. So, the process queue is guaranteed to get emptied after several waves of additions and deletions of vertices. But this wave propagation algorithm could be too slow for large graphs with vertices of very high degrees. In each wave, for every bunch of independent vertices who are processed, if some of them improves their colouring, then we will be adding all their neighbours to the process queue. This number of vertices added can easily be higher than the number of vertices processed. So, the process queue will become bigger and bigger until it reaches a point when most of the vertices in the list are already at their best colouring. And from that point, the process queue shrinks until becoming empty, at which point the algorithm terminates. 
 
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
