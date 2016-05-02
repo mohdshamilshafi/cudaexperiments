@@ -7,6 +7,8 @@
 
 #include <curand_kernel.h>
 
+#include <fstream>
+
 #include <thrust/reduce.h>
 #include <thrust/functional.h>
 #include <thrust/execution_policy.h>
@@ -20,6 +22,16 @@ using namespace std;
 
 __device__ int d_count = 0;
 __device__ int d_countNew = 0;
+
+__global__ void colourCountFunc (int *colouring, int n, int *propagationArray){
+	int i= blockDim.x * blockIdx.x + threadIdx.x;
+	
+	if (i>=n){
+		return;
+	}
+	
+	propagationArray[colouring[i]-1]=1;
+}
 
 __global__ void propagationColouringNewest (int *vertexArray, int *neighbourArray, int *numbers, int n, int m, int *colouring, int *propagationArray){
 
@@ -1130,6 +1142,9 @@ int main(int argc, char const *argv[])
 	
 	cin>>n>>m;
 	
+	ofstream fout;
+	fout.open("output4.txt",ios::app);
+	
 	double rLimit = 1-(30000.0/m);
 	
 	if (m < 900000){
@@ -1161,8 +1176,8 @@ int main(int argc, char const *argv[])
     	
     	
     int *d_propagationArray1 = NULL;
-    cudaMalloc((void **)&d_propagationArray1, (n)*sizeof(int));
-    cudaMemset((void *)d_propagationArray1, 0, (n)*sizeof(int));
+    cudaMalloc((void **)&d_propagationArray1, (1400)*sizeof(int));
+    cudaMemset((void *)d_propagationArray1, 0, (1400)*sizeof(int));
     	
     int *d_propagationArray2 = NULL;
     cudaMalloc((void **)&d_propagationArray2, (n)*sizeof(int));
@@ -1207,7 +1222,7 @@ int main(int argc, char const *argv[])
 
 		double r = ((double) rand() / (RAND_MAX));
 		
-		if (r<=rLimit){
+		
 			int startStart, startStop, stopStart, stopStop;
 			
 			startStart = h_vertexArray[start-1];
@@ -1232,9 +1247,9 @@ int main(int argc, char const *argv[])
 					break;
 				}
 			}
-		}
 		
-		else{
+		
+		if (r>rLimit){
 			startArray.push_back(start);
 			stopArray.push_back(end);
 		}
@@ -1252,18 +1267,40 @@ int main(int argc, char const *argv[])
 //	}
 //	
 //	cout<<endl;
+
+	cudaEvent_t start, stop;
+	float timeNew;
+	cudaEventCreate(&start);
+	cudaEventCreate(&stop);
+	
+	cudaEventRecord(start, 0);
 	
 	cudaMemcpy(d_vertexArray, h_vertexArray, (n+1)*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(d_neighbourArray, h_neighbourArray, 2*m*sizeof(int), cudaMemcpyHostToDevice);
 	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
+	
+	fout<<timeNew<<"\t";
+	
 	int threadsPerBlock = 512;
 	int blocksPerGrid = (n + threadsPerBlock -1)/threadsPerBlock;
+	
+	cudaEventRecord(start, 0);
 
 	setup_kernel <<<blocksPerGrid, threadsPerBlock>>> ( devStates, time(NULL) );
 	
 	randomNumbering<<<blocksPerGrid, threadsPerBlock>>>(devStates, d_degreeCount, n, n);
+	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
 
-	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
+	fout<<timeNew<<"\t";
+//	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
 //	cout<<"Random numbers: "<<endl;
 //	
@@ -1273,25 +1310,21 @@ int main(int argc, char const *argv[])
 
 	int colourCount = 1;
 	
-	cudaEvent_t start, stop;
-	float time;
-	cudaEventCreate(&start);
-	cudaEventCreate(&stop);
 	
-	cudaEventRecord(start, 0);
 	
 //	cout<<"Worklist: "<<endl;
 //	
 //	for	(int i=0; i<startArray.size(); i++){
 //		cout<<startArray[i]<<" "<<stopArray[i]<<endl;
 //	}
+	cudaEventRecord(start, 0);
 	
 	while (1){
 		colourMinMax<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, colourCount);
 	
 		cudaMemcpyFromSymbol(h_count, d_count, sizeof(int), 0, cudaMemcpyDeviceToHost);
 		
-		cout<<"H Count = "<<*h_count<<"at colour: "<<colourCount<<endl;
+//		cout<<"H Count = "<<*h_count<<"at colour: "<<colourCount<<endl;
 		
 		if (*h_count == n){
 			break;
@@ -1300,7 +1333,35 @@ int main(int argc, char const *argv[])
 		colourCount+=2;
 	}
 	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
+	
+	fout<<timeNew<<"\t";	
 	colourCount++;
+	
+	thrust::device_ptr<int> c_ptr = thrust::device_pointer_cast(d_colour);
+  	int maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
+
+	cout<<"Max Colour = "<<maxColour<<endl;
+	
+	fout<<maxColour<<"\t";
+	
+	
+	int maxColourNew;
+	thrust::device_ptr<int> d_propagationArray_ptr = thrust::device_pointer_cast(d_propagationArray1);
+	
+	
+	maxColourNew = 0;
+	
+	colourCountFunc<<< blocksPerGrid, threadsPerBlock >>>(d_colour, n, d_propagationArray1);
+	
+	maxColourNew = thrust::reduce(d_propagationArray_ptr, d_propagationArray_ptr + 1400);
+	
+	cudaMemset((void *)d_propagationArray1, 0, (1400)*sizeof(int));
+	
+	fout<<maxColourNew<<"\t";
 	
 //	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
@@ -1314,108 +1375,123 @@ int main(int argc, char const *argv[])
 	
 	cout<<"Size: "<<startArray.size()<<endl;
 	
+	fout<<startArray.size()<<"\t";	
+	
 	int *d_incrementalArray = NULL;
 	cudaMalloc((void **)&d_incrementalArray, 2*startArray.size()*sizeof(int));
 	
-	int *d_colours = NULL;
-	cudaMalloc((void **)&d_colours, 1024*sizeof(int));
-	
-	int *d_coloursSecond = NULL;
-	cudaMalloc((void **)&d_coloursSecond, 1024*sizeof(int));
-	
+//	int *d_colours = NULL;
+//	cudaMalloc((void **)&d_colours, 1024*sizeof(int));
+//	
+//	int *d_coloursSecond = NULL;
+//	cudaMalloc((void **)&d_coloursSecond, 1024*sizeof(int));
+//	
 	int *h_incrementalArray = new int [2*startArray.size()];
-	
-	vector<bool> marked (startArray.size(), false);
-	
-	int incrementalCount = 0;
-	
-//	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-//  	
-//  	
-//  	cout<<"Colour numbers: "<<endl;
 //	
+//	vector<bool> marked (startArray.size(), false);
 //	
+//	int incrementalCount = 0;
 //	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
+////	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+////  	
+////  	
+////  	cout<<"Colour numbers: "<<endl;
+////	
+////	
+////	
+////	for (int i=0; i<n; i++){
+////		cout<<h_colour[i]<<endl;
+////	}
 
-	int printCount = 0;
-	
-	for (int i=0; i<startArray.size(); i++){
-		if (marked[i]){
-			continue;
-		}
-		
-		int lastStart, lastStop;
-		
-		incrementalCount = 0;
-		
-		addEdge(h_vertexArray, h_neighbourArray, n, m, startArray[i], stopArray[i], lastStart, lastStop);
-		
-		marked[i]=true;
-		
-		h_incrementalArray[incrementalCount] = startArray[i];
-		h_incrementalArray[incrementalCount+1] = stopArray[i];
-		
-		incrementalCount+=2;
-		
-		for (int j = i+1; j<startArray.size(); j++){
-			if (marked[j]){
-				continue;
-			}	
-			
-			if (isPermissible (h_incrementalArray, incrementalCount, h_vertexArray, h_neighbourArray, n, m, startArray[j], stopArray[j])){
-				marked[j]=true;
-				h_incrementalArray[incrementalCount] = startArray[j];
-				h_incrementalArray[incrementalCount+1] = stopArray[j];
-		
-				incrementalCount+=2;
-				
-				if (incrementalCount == 1024){
-					break;
-				}
-			}
-		}
-		
-//		for (int j=0; j<incrementalCount; j++){
-//			cout<<h_incrementalArray[j]<<" ";
+//	int printCount = 0;
+//	
+//	cudaEventRecord(start, 0);
+//	
+//	
+//	for (int i=0; i<startArray.size(); i++){
+//		if (marked[i]){
+//			continue;
 //		}
-//		cout<<endl;
-		int threadsPerBlockIncremental=1024;
-		int blocksPerGridIncremental = (incrementalCount + threadsPerBlockIncremental -1)/threadsPerBlockIncremental;
-		
-		if (blocksPerGridIncremental!=1){
-			cout<<"DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER"<<endl;	
-		}
-		
-		cudaMemcpy(d_incrementalArray, h_incrementalArray, incrementalCount*sizeof(int), cudaMemcpyHostToDevice);
-		
-//		cout<<incrementalCount<<endl;
-		incrementalColouringNew<<<blocksPerGridIncremental, threadsPerBlockIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, 1400, d_colours, d_coloursSecond);
-		printCount++;
-//		incrementalColouringNewP1<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
-//		incrementalColouringNewP2<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
-//		incrementalColouringNewP3<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
-		
-		
-		cudaDeviceSynchronize();
-		
-//		cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-//  	
-//  	
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
 //		
-		
-		
-	}
-	
+//		int lastStart, lastStop;
+//		
+//		incrementalCount = 0;
+//		
+//		addEdge(h_vertexArray, h_neighbourArray, n, m, startArray[i], stopArray[i], lastStart, lastStop);
+//		
+//		marked[i]=true;
+//		
+//		h_incrementalArray[incrementalCount] = startArray[i];
+//		h_incrementalArray[incrementalCount+1] = stopArray[i];
+//		
+//		incrementalCount+=2;
+//		
+//		for (int j = i+1; j<startArray.size(); j++){
+//			if (marked[j]){
+//				continue;
+//			}	
+//			
+//			if (isPermissible (h_incrementalArray, incrementalCount, h_vertexArray, h_neighbourArray, n, m, startArray[j], stopArray[j])){
+//				marked[j]=true;
+//				h_incrementalArray[incrementalCount] = startArray[j];
+//				h_incrementalArray[incrementalCount+1] = stopArray[j];
+//		
+//				incrementalCount+=2;
+//				
+//				if (incrementalCount == 1024){
+//					break;
+//				}
+//			}
+//		}
+//		
+////		for (int j=0; j<incrementalCount; j++){
+////			cout<<h_incrementalArray[j]<<" ";
+////		}
+////		cout<<endl;
+//		int threadsPerBlockIncremental=1024;
+//		int blocksPerGridIncremental = (incrementalCount + threadsPerBlockIncremental -1)/threadsPerBlockIncremental;
+//		
+//		if (blocksPerGridIncremental!=1){
+//			cout<<"DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER"<<endl;	
+//		}
+//		
+//		cudaMemcpy(d_incrementalArray, h_incrementalArray, incrementalCount*sizeof(int), cudaMemcpyHostToDevice);
+//		
+////		cout<<incrementalCount<<endl;
+//		incrementalColouringNew<<<blocksPerGridIncremental, threadsPerBlockIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, 1400, d_colours, d_coloursSecond);
+//		printCount++;
+////		incrementalColouringNewP1<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
+////		incrementalColouringNewP2<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
+////		incrementalColouringNewP3<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
+//		
+//		
+////		cudaDeviceSynchronize();
+//		
+////		cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+////  	
+////  	
+////  	cout<<"Colour numbers: "<<endl;
+////	
+////	
+////	
+////	for (int i=0; i<n; i++){
+////		cout<<h_colour[i]<<endl;
+////	}
+////		
+//		
+//		
+//	}
+//	
+//	
+//	cudaEventRecord(stop, 0);
+//	cudaEventSynchronize(stop);
+//	
+//	cudaEventElapsedTime(&timeNew, start, stop);
+//	
+//	fout<<timeNew<<"\t";
+//	
+//	fout<<printCount<<"\t";
+//	
 	
 //	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
@@ -1497,19 +1573,19 @@ int main(int argc, char const *argv[])
 //	}
 //	
 
-	set<int> tempSet;
-	set<int>::iterator it;
+//	set<int> tempSet;
+//	set<int>::iterator it;
 
 	for (int i=0; i<startArray.size(); i++){
 	
 		h_incrementalArray[2*i]=startArray[i];
 		h_incrementalArray[2*i+1]=stopArray[i];
 		
-		h_propagationArray1[startArray[i]-1]=1;
-		h_propagationArray1[stopArray[i]-1]=1;
-		
-		tempSet.insert(startArray[i]);
-		tempSet.insert(stopArray[i]);
+//		h_propagationArray1[startArray[i]-1]=1;
+//		h_propagationArray1[stopArray[i]-1]=1;
+//		
+//		tempSet.insert(startArray[i]);
+//		tempSet.insert(stopArray[i]);
 	}
 	
 //	for (int i=0; i<tempSet.size(); i++){
@@ -1525,9 +1601,9 @@ int main(int argc, char const *argv[])
 //		
 //	}
 	
-	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
-	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
-	
+//	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
+//	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
+//	
 //	for (int i=0; i<(n+1); i++){
 //		cout<<h_vertexArray[i]<<" ";
 //	}
@@ -1540,13 +1616,22 @@ int main(int argc, char const *argv[])
 //	
 //	cout<<endl;
 	
+	cudaEventRecord(start, 0);
+	
 	cudaMemcpy(d_incrementalArray, h_incrementalArray, 2*startArray.size()*sizeof(int), cudaMemcpyHostToDevice);
 	
 	int blocksPerGridDecremental = (2*startArray.size() + threadsPerBlock -1)/threadsPerBlock;
 	
 	decrementalColouringNew<<<blocksPerGridDecremental, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, n, m, d_incrementalArray, 2*startArray.size());
+	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
+	
+	fout<<timeNew<<"\t";
 		
-	cudaDeviceSynchronize();
+//	cudaDeviceSynchronize();
 	
 	
 //	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
@@ -1559,7 +1644,7 @@ int main(int argc, char const *argv[])
 //		cout<<h_colour[i]<<endl;
 //	}
 //	
-	cudaMemcpy(d_propagationArray1, h_propagationArray1, n*sizeof(int), cudaMemcpyHostToDevice);
+//	cudaMemcpy(d_propagationArray1, h_propagationArray1, n*sizeof(int), cudaMemcpyHostToDevice);
 
 //	cudaMemcpy(d_propagationArray1, h_propagationArray, tempSet.size()*sizeof(int), cudaMemcpyHostToDevice);
 
@@ -1608,17 +1693,30 @@ int main(int argc, char const *argv[])
 //	
 //	cout<<"}"<<endl;
 
-	thrust::device_ptr<int> c_ptr = thrust::device_pointer_cast(d_colour);
-  	int maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
+	maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
 
 	cout<<"Max Colour = "<<maxColour<<endl;
+	
+	fout<<maxColour<<"\t";
+	
+	maxColourNew = 0;
+	
+	colourCountFunc<<< blocksPerGrid, threadsPerBlock >>>(d_colour, n, d_propagationArray1);
+	
+	maxColourNew = thrust::reduce(d_propagationArray_ptr, d_propagationArray_ptr + 1400);
+	
+	cudaMemset((void *)d_propagationArray1, 0, (1400)*sizeof(int));
+	
+	fout<<maxColourNew<<"\t";
+	
+	cudaEventRecord(start, 0);
 	
 	while (1){
 		propagationColouringNewest<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, d_propagationArray2);
 	
 		cudaMemcpyFromSymbol(h_count, d_countNew, sizeof(int), 0, cudaMemcpyDeviceToHost);
 		
-		cout<<"H Count = "<<*h_count<<endl;
+//		cout<<"H Count = "<<*h_count<<endl;
 		
 		if (*h_count == n){
 			break;
@@ -1626,8 +1724,33 @@ int main(int argc, char const *argv[])
 		
 	}
 	
-	int countPropagation = 0;
-	thrust::device_ptr<int> d_propagationArray_ptr = thrust::device_pointer_cast(d_propagationArray1);
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
+	
+	
+	
+	fout<<timeNew<<"\t";
+	
+	maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
+
+	cout<<"Max Colour = "<<maxColour<<endl;
+	
+	fout<<maxColour<<"\t";
+	
+	maxColourNew = 0;
+	
+	colourCountFunc<<< blocksPerGrid, threadsPerBlock >>>(d_colour, n, d_propagationArray1);
+	
+	maxColourNew = thrust::reduce(d_propagationArray_ptr, d_propagationArray_ptr + 1400);
+	
+	cudaMemset((void *)d_propagationArray1, 0, (1400)*sizeof(int));
+	
+	fout<<maxColourNew<<"\t";
+	
+//	int countPropagation = 0;
+//	thrust::device_ptr<int> d_propagationArray_ptr = thrust::device_pointer_cast(d_propagationArray1);
 	
 //	do{
 //		
@@ -1662,13 +1785,22 @@ int main(int argc, char const *argv[])
 //	
 //	}while (countPropagation);
 //	
-	cout<<"Shamil "<<printCount<<endl;
+//	cout<<"Shamil "<<printCount<<endl;
+	
+	cudaEventRecord(start, 0);
+	
 	
 	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+	
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	
+	cudaEventElapsedTime(&timeNew, start, stop);
   	
-  	maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
-
-	cout<<"Max Colour = "<<maxColour<<endl;
+  	
+  	fout<<timeNew<<"\n";
+  	
+  	
 	
   	
 //  	cout<<"Colour numbers: "<<endl;
@@ -1679,14 +1811,11 @@ int main(int argc, char const *argv[])
 //		cout<<h_colour[i]<<endl;
 //	}
 	
-	cudaEventRecord(stop, 0);
-	cudaEventSynchronize(stop);
 	
-	cudaEventElapsedTime(&time, start, stop);
-	cout<<"Time for the kernel: "<<time<<" ms"<<endl;
+//	cout<<"Time for the kernel: "<<time<<" ms"<<endl;
 	
-	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
-	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
+//	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
+//	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
 	
 //	for (int i=0; i<n+1; i++){
 //		cout<<h_vertexArray[i]<<" ";

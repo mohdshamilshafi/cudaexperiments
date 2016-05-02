@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <set>
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -15,171 +14,12 @@
 
 using namespace std;
 
-#define bucketLimitDecr 600
-#define bucketLimitIncr 1400
+#define bucketLimitDecr 200
+#define bucketLimitIncr 7000
+#define incrementalColourCount 30000
 
 __device__ int d_count = 0;
-__device__ int d_countNew = 0;
 
-__global__ void propagationColouringNewest (int *vertexArray, int *neighbourArray, int *numbers, int n, int m, int *colouring, int *propagationArray){
-
-	int i= blockDim.x * blockIdx.x + threadIdx.x;
-	
-	if (i>=n){
-		return;
-	}
-	
-	if (propagationArray[i]!=0){
-		return;
-	}
-	
-	int myMax = numbers[i];
-
-//	printf("I am node %d with value %d\n", i+1, myMax);
-	
-	int start = -1, stop = -1;
-	
-	start = vertexArray[i];
-	
-	
-	stop = vertexArray[i+1];
-	
-	for (int j=start; j<stop; j++){
-		
-//		printf("My neighbour %d with value %d from %d \n", neighbourArray[j], numbers[neighbourArray[j]-1], i+1);
-	
-		int neighbour = neighbourArray[j]-1;
-		
-		if (propagationArray[neighbour]==0 && numbers[neighbour] >= myMax){
-			if (numbers[neighbour] == myMax){
-				if (i < neighbour){
-					continue;
-				}
-			}
-			
-			return;
-		}
-	}
-	
-	propagationArray[i]=1;
-	atomicAdd(&d_countNew, 1);
-	
-	int colours=0;
-	
-	bool bucket[bucketLimitDecr];
-	
-	int colouringLimit = colouring[i];
-	
-	for (int j=0; j<colouringLimit-1; j++){
-		bucket[j]=true;
-	}	
-	
-	for (int j=start; j<stop; j++){
-		if (neighbourArray[j]==0){
-			continue;
-		}
-		
-		int bucketIndex = colouring[neighbourArray[j]-1]; 
-		
-		if (bucketIndex < colouringLimit){
-			bucket[bucketIndex-1] = false;
-		}
-		
-	}
-	
-	for (int j=0; j<colouringLimit-1; j++){
-		if(bucket[j]){
-			colours=j+1;
-			break;
-		}
-	}
-	
-	
-	if (colours >= colouringLimit){
-		printf("R DANGER DANGER DANGER DANGER DANGER DANGER DANGER\n");
-	}
-	
-	
-	if (!colours){
-		return;
-	}
-	
-	colouring[i]=colours;
-
-}
-
-__global__ void propagationColouringNew (int *vertexArray, int *neighbourArray, int n, int m, int *numbers, int *colouring, int *propagationArray1, int *propagationArray2, int size){
-	int i = blockIdx.x + blockDim.x + threadIdx.x;
-	
-	if (i>size){
-		return;
-	}
-	
-	int me = propagationArray1[i];
-	int myMax = numbers[me-1];
-	
-	int start = -1;
-	int stop = -1;
-	
-	start = vertexArray[me-1];
-	stop = vertexArray[me];
-	
-	int max = true;
-	
-	for (int j=start; j<stop; j++){
-		
-//		printf("My neighbour %d with value %d from %d \n", neighbourArray[j], numbers[neighbourArray[j]-1], i+1);
-		if (neighbourArray[j]==0){
-			continue;
-		}
-		
-		int neighbour = neighbourArray[j]-1;
-		
-		if (numbers[neighbour] >= myMax){
-			if (numbers[neighbour] == myMax){
-				if ((me-1) < neighbour){
-					continue;
-				}
-			}
-			
-			max = false;
-			break;
-		}
-	}
-	
-	if (!max){
-		propagationArray2[atomicAdd(&d_count, 1)]=me;
-		return;
-	}
-	
-	bool bucket[bucketLimitDecr];
-	
-	int colouringLimit = colouring[me-1];
-	
-	for (int j=0; j<colouringLimit-1; j++){
-		bucket[j]=true;
-	}	
-	
-	for (int j=start; j<start; j++){
-		if (neighbourArray[j]==0){
-			continue;
-		}
-		
-		int bucketIndex = colouring[neighbourArray[j]-1]; 
-		
-		if (bucketIndex < colouringLimit){
-			bucket[bucketIndex-1] = false;
-		}
-		
-	}
-	
-	for (int j=0; j<colouringLimit; j++){
-		if(bucket[j]){
-			colouring[me-1]=j+1;
-			return;
-		}
-	}
-}
 
 __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int n, int m, int *numbers, int *colouring, int *propagationArray){
 	int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -194,14 +34,19 @@ __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int
 	
 	int myValue = numbers[i];
 
-//	printf("I am node %d with value %d and colouring %d\n", i+1, myValue, colouring[i]);
+//	printf("I am node %d with value %d\n", i+1, myMax);
 	
 	int start = -1, stop = -1;
 	
 	start = vertexArray[i];
 	
+	if (i==n-1){	
+		stop = 2*m;
+	}
 	
-	stop = vertexArray[i+1];
+	else{
+		stop = vertexArray[i+1];
+	}
 	
 	for (int j=start; j<stop; j++){
 		
@@ -228,10 +73,6 @@ __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int
 	
 	propagationArray[i]=0;
 	
-	printf("", propagationArray[i]);
-	
-	
-//	printf("\n%d\n", i+1);
 	
 	int colours=0;
 	
@@ -256,18 +97,12 @@ __global__ void propagationColouring (int *vertexArray, int *neighbourArray, int
 		
 	}
 	
-	for (int j=0; j<colouringLimit-1; j++){
+	for (int j=0; j<colouringLimit; j++){
 		if(bucket[j]){
 			colours=j+1;
 			break;
 		}
 	}
-	
-	
-	if (colours >= colouringLimit){
-		printf("R DANGER DANGER DANGER DANGER DANGER DANGER DANGER\n");
-	}
-	
 	
 	if (!colours){
 		return;
@@ -313,11 +148,17 @@ __global__ void decrementalColouringNew (int *vertexArray, int *neighbourArray, 
 //		otheri = i-1;
 	}
 	
-	//printf("I am %d and I am deleting %d - %d\n", i, me, you);
+	printf("I am %d and I am deleting %d - %d\n", i, me, you);
 	
 	startStart = vertexArray[me-1];
 	
-	startStop = vertexArray[me];
+	if (me==n){	
+		startStop = 2*m;
+	}
+	
+	else{
+		startStop = vertexArray[me];
+	}
 		
 	for (int j=startStart; j<startStop; j++){
 		if (neighbourArray[j]==you){
@@ -408,7 +249,7 @@ __global__ void decrementalColouring (int *vertexArray, int *neighbourArray, int
 	colouring[me-1]=colours;
 }
 
-__global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int *incrementalArray, int incrementalCount, int maxColour, int *colours, int *coloursSecond){
+__global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, int n, int m, int *colouring, int *incrementalArray, int incrementalCount, int maxColour, int *colours){
 	
 	int i = blockDim.x * blockIdx.x + threadIdx.x;
 	
@@ -435,8 +276,13 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 	
 	startStart = vertexArray[me-1];
 	
-	startStop = vertexArray[me];
+	if (me==n){	
+		startStop = 2*m;
+	}
 	
+	else{
+		startStop = vertexArray[me];
+	}
 		
 	for (int j=startStart; j<startStop; j++){
 		if (neighbourArray[j]==0){
@@ -455,7 +301,6 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 //	printf("%d and %d Conflict\n", start, end);
 	
 	colours[i]=0;
-	coloursSecond[i]=0;
 	
 //	if (i==0)
 //	printf("I am %d and %d and %d\n", i, colours[i], colours[1-i]);
@@ -490,30 +335,14 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 //		printf("buvket clo %d and %d and %d\n", neighbourArray[j]-1, colouring[neighbourArray[j]-1], bucket[colouring[neighbourArray[j]-1]-1]);
 	}
 	
-//	for (int j=0; j<maxColour; j++){
-//		if(bucket[j]){
-//			colours[i]=j+1;
-////			printf("%d ashhas \t", j+1);	
-//			break;
-//		}
-//	}
-//	
-	bool first = true;
-	
 	for (int j=0; j<maxColour; j++){
 		if(bucket[j]){
-			if (first){
-				colours[i]=j+1;
-				first = false;
-			}
-				
+			colours[i]=j+1;
 //			printf("%d ashhas \t", j+1);	
-			else{
-				coloursSecond[i]=j+1;
-				break;
-			}
+			break;
 		}
 	}
+	
 //	if (i==0)
 //	for (int j=0; j<maxColour; j++){
 //		printf("%d \t",bucket[j]);
@@ -529,30 +358,16 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 //	printf("%d and %d Conflict  new colour min %d \n", start, end, colours[i]);
 	
 	// Possible issue: There could be a number inbetween the smallest equal guess and the current colour.	
-	//printf("", colours[otheri]); ?????????????
+	printf("", colours[otheri]);
 //	printf("colours[%d] = %d\n", i, colours[i]);
 //	printf("coloursOthers[%d] = %d\n", otheri, colours[otheri]);
 	
 	//colours[otheri]+=0;
 	
 	if (colours[i]==colours[otheri]){
+//		printf("if\n");
 		if (colours[i]<colouring[me-1]){
-			if (coloursSecond[i] < coloursSecond[otheri]){
-				if (coloursSecond[i] < colouring[me-1]){
-					colouring[me-1]=coloursSecond[i];
-				}
-			}
-			else if (coloursSecond[i] == coloursSecond[otheri]) {
-				if (ipercent2){
-					colouring[me-1]=colours[i];
-				}
-				else{
-					if (coloursSecond[i] < colouring[me-1]){
-						colouring[me-1]=coloursSecond[i];
-					}
-				}
-			}
-			else{
+			if(ipercent2){
 				colouring[me-1]=colours[i];
 			}
 		}
@@ -563,21 +378,6 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 			}
 		}
 	}
-	
-//	if (colours[i]==colours[otheri]){
-////		printf("if\n");
-//		if (colours[i]<colouring[me-1]){
-//			if(ipercent2){
-//				colouring[me-1]=colours[i];
-//			}
-//		}
-//	
-//		else{
-//			if (!ipercent2){
-//				colouring[me-1]=colours[i];
-//			}
-//		}
-//	}
 	
 	else{
 //		printf("else\n");
@@ -591,8 +391,6 @@ __global__ void incrementalColouringNew (int *vertexArray, int *neighbourArray, 
 			}
 		}
 	}
-	
-	
 	
 //	__syncthreads();
 //	
@@ -936,9 +734,13 @@ __global__ void colourMinMax (int *vertexArray, int *neighbourArray, int *number
 	
 	start = vertexArray[i];
 	
+	if (i==n-1){	
+		stop = 2*m;
+	}
 	
-	stop = vertexArray[i+1];
-	
+	else{
+		stop = vertexArray[i+1];
+	}
 	
 	bool max = true, min = true;
 	
@@ -1029,9 +831,13 @@ __global__ void degreeCalc (int *vertexArray, int *neighbourArray, int *degreeCo
 	
 	start = vertexArray[i];
 	
+	if (i==n-1){	
+		stop = 2*m;
+	}
 	
-	stop = vertexArray[i+1];
-	
+	else{
+		stop = vertexArray[i+1];
+	}
 
 	diff = stop-start;
 		
@@ -1063,10 +869,21 @@ void addEdge (int *vertexArray, int *neighbourArray, int n, int m, int start, in
 	startStart = vertexArray[start-1];
 	stopStart = vertexArray[stop-1];
 	
+	if (start==n){	
+		startStop = 2*m;
+	}
 	
-	startStop = vertexArray[start];
+	else{
+		startStop = vertexArray[start];
+	}
 	
-	stopStop = vertexArray[stop];
+	if (stop==n){	
+		stopStop = 2*m;
+	}
+	
+	else{
+		stopStop = vertexArray[stop];
+	}
 		
 	for (int j=startStart; j<startStop; j++){
 		if (neighbourArray[j]==0){
@@ -1105,9 +922,13 @@ bool isPermissible (int *incrementalArray, int incrementalCount, int *vertexArra
 	
 		startStart = vertexArray[incrementalArray[i]-1];
 		
-		
-		startStop = vertexArray[incrementalArray[i]];
-		
+		if (incrementalArray[i]==n){	
+			startStop = 2*m;
+		}
+	
+		else{
+			startStop = vertexArray[incrementalArray[i]];
+		}
 		
 		for (int j=startStart; j<startStop; j++){
 			if (neighbourArray[j]==0){
@@ -1130,27 +951,32 @@ int main(int argc, char const *argv[])
 	
 	cin>>n>>m;
 	
-	double rLimit = 1-(30000.0/m);
+	float rLimit;
 	
-	if (m < 900000){
-		rLimit = 0.5;
+	if (m>=500000){
+		rLimit = 0.99;
 	}
 	
+	else {
+		rLimit = 0.9;
+	}
+	
+	if (n<100){
+		rLimit = 0.5;
+	}
 	
 	int h_maxColour;
 	
 	int *h_count = new int;
 
-	int *h_vertexArray = new int [n+1];
+	int *h_vertexArray = new int [n];
 	int *h_neighbourArray = new int [2*m];
 	int *h_degreeCount = new int [n];
 	int *h_colour = new int [n];
-	
-	int *h_propagationArray1 = new int [n];
-	int *h_propagationArray2 = new int [n];
+	int *h_propagationArray = new int [n];
 	
 	int *d_vertexArray = NULL;
-    cudaMalloc((void **)&d_vertexArray, (n+1)*sizeof(int));
+    cudaMalloc((void **)&d_vertexArray, n*sizeof(int));
     	
     int *d_neighbourArray = NULL;
     cudaMalloc((void **)&d_neighbourArray, 2*m*sizeof(int));
@@ -1160,13 +986,10 @@ int main(int argc, char const *argv[])
     cudaMemset((void *)d_colour, 0, (n)*sizeof(int));
     	
     	
-    int *d_propagationArray1 = NULL;
-    cudaMalloc((void **)&d_propagationArray1, (n)*sizeof(int));
-    cudaMemset((void *)d_propagationArray1, 0, (n)*sizeof(int));
+    int *d_propagationArray = NULL;
+    cudaMalloc((void **)&d_propagationArray, (n)*sizeof(int));
+    cudaMemset((void *)d_propagationArray, 0, (n)*sizeof(int));
     	
-    int *d_propagationArray2 = NULL;
-    cudaMalloc((void **)&d_propagationArray2, (n)*sizeof(int));
-    cudaMemset((void *)d_propagationArray2, 0, (n)*sizeof(int));
     	
     int *d_degreeCount = NULL;
     cudaMalloc((void **)&d_degreeCount, (n)*sizeof(int));
@@ -1188,10 +1011,8 @@ int main(int argc, char const *argv[])
 		cin>>degree;
 		offset+=degree;
 		
-		h_propagationArray1[i]=0;
+		h_propagationArray[i]=0;
 	}
-	
-	h_vertexArray[n]=2*m;
 
 	for (int i = 0; i < 2*m; ++i)
 	{
@@ -1212,12 +1033,24 @@ int main(int argc, char const *argv[])
 			
 			startStart = h_vertexArray[start-1];
 	
-			startStop = h_vertexArray[start];
-		
+			if (start==n){	
+				startStop = 2*m;
+			}
+	
+			else{
+				startStop = h_vertexArray[start];
+			}
+			
+			
 			stopStart = h_vertexArray[end-1];
 	
-			stopStop = h_vertexArray[end];
-			
+			if (end==n){	
+				stopStop = 2*m;
+			}
+	
+			else{
+				stopStop = h_vertexArray[end];
+			}
 			
 			for (int j=startStart; j<startStop; j++){
 				if (h_neighbourArray[j]==0){
@@ -1241,7 +1074,7 @@ int main(int argc, char const *argv[])
 
 	}
 	
-//	for (int i=0; i<n+1; i++){
+//	for (int i=0; i<n; i++){
 //		cout<<h_vertexArray[i]<<" ";
 //	}
 //	
@@ -1253,7 +1086,7 @@ int main(int argc, char const *argv[])
 //	
 //	cout<<endl;
 	
-	cudaMemcpy(d_vertexArray, h_vertexArray, (n+1)*sizeof(int), cudaMemcpyHostToDevice);
+	cudaMemcpy(d_vertexArray, h_vertexArray, n*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(d_neighbourArray, h_neighbourArray, 2*m*sizeof(int), cudaMemcpyHostToDevice);
 	
 	int threadsPerBlock = 512;
@@ -1265,11 +1098,11 @@ int main(int argc, char const *argv[])
 
 	cudaMemcpy(h_degreeCount, d_degreeCount, n*sizeof(int), cudaMemcpyDeviceToHost);
 
-//	cout<<"Random numbers: "<<endl;
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_degreeCount[i]<<endl;
-//	}
+	cout<<"Random numbers: "<<endl;
+	
+	for (int i=0; i<n; i++){
+		cout<<h_degreeCount[i]<<endl;
+	}
 
 	int colourCount = 1;
 	
@@ -1285,7 +1118,7 @@ int main(int argc, char const *argv[])
 //	for	(int i=0; i<startArray.size(); i++){
 //		cout<<startArray[i]<<" "<<stopArray[i]<<endl;
 //	}
-	
+//	
 	while (1){
 		colourMinMax<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, colourCount);
 	
@@ -1302,15 +1135,15 @@ int main(int argc, char const *argv[])
 	
 	colourCount++;
 	
-//	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
+  	cout<<"Colour numbers: "<<endl;
+	
+	
+	
+	for (int i=0; i<n; i++){
+		cout<<h_colour[i]<<endl;
+	}
 	
 	cout<<"Size: "<<startArray.size()<<endl;
 	
@@ -1318,10 +1151,7 @@ int main(int argc, char const *argv[])
 	cudaMalloc((void **)&d_incrementalArray, 2*startArray.size()*sizeof(int));
 	
 	int *d_colours = NULL;
-	cudaMalloc((void **)&d_colours, 1024*sizeof(int));
-	
-	int *d_coloursSecond = NULL;
-	cudaMalloc((void **)&d_coloursSecond, 1024*sizeof(int));
+	cudaMalloc((void **)&d_colours, 2*startArray.size()*sizeof(int));
 	
 	int *h_incrementalArray = new int [2*startArray.size()];
 	
@@ -1391,8 +1221,8 @@ int main(int argc, char const *argv[])
 		
 		cudaMemcpy(d_incrementalArray, h_incrementalArray, incrementalCount*sizeof(int), cudaMemcpyHostToDevice);
 		
-//		cout<<incrementalCount<<endl;
-		incrementalColouringNew<<<blocksPerGridIncremental, threadsPerBlockIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, 1400, d_colours, d_coloursSecond);
+		cout<<incrementalCount<<endl;
+		incrementalColouringNew<<<blocksPerGridIncremental, threadsPerBlockIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
 		printCount++;
 //		incrementalColouringNewP1<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
 //		incrementalColouringNewP2<<<threadsPerBlock, blocksPerGridIncremental>>>(d_vertexArray, d_neighbourArray, n, m, d_colour, d_incrementalArray, incrementalCount, h_maxColour, d_colours);
@@ -1417,15 +1247,15 @@ int main(int argc, char const *argv[])
 	}
 	
 	
-//	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
+  	cout<<"Colour numbers: "<<endl;
+	
+	
+	
+	for (int i=0; i<n; i++){
+		cout<<h_colour[i]<<endl;
+	}
 	
 //	for (int i=0; i<startArray.size(); i++){
 //	
@@ -1496,188 +1326,89 @@ int main(int argc, char const *argv[])
 //		
 //	}
 //	
-
-	set<int> tempSet;
-	set<int>::iterator it;
-
 	for (int i=0; i<startArray.size(); i++){
 	
 		h_incrementalArray[2*i]=startArray[i];
 		h_incrementalArray[2*i+1]=stopArray[i];
 		
-		h_propagationArray1[startArray[i]-1]=1;
-		h_propagationArray1[stopArray[i]-1]=1;
-		
-		tempSet.insert(startArray[i]);
-		tempSet.insert(stopArray[i]);
+		h_propagationArray[startArray[i]-1]=1;
+		h_propagationArray[stopArray[i]-1]=1;
 	}
 	
-//	for (int i=0; i<tempSet.size(); i++){
-//		h_propagationArray[i] = tempSet[i];
-//	}
+	cout<<"Decremental Array:"<<endl;
 	
-//	cout<<"Decremental Array:"<<endl;
-//	
-//	
-//	for (int i=0; i<startArray.size(); i++){
-//	
-//		cout<<h_incrementalArray[2*i]<<" "<<h_incrementalArray[2*i+1]<<endl;
-//		
-//	}
 	
-	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
+	for (int i=0; i<startArray.size(); i++){
+	
+		cout<<h_incrementalArray[2*i]<<" "<<h_incrementalArray[2*i+1]<<endl;
+		
+	}
+	
+	cudaMemcpy(h_vertexArray, d_vertexArray, n*sizeof(int), cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
 	
-//	for (int i=0; i<(n+1); i++){
-//		cout<<h_vertexArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
-//	
-//	for (int i=0; i<2*m; i++){
-//		cout<<h_neighbourArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
+	for (int i=0; i<n; i++){
+		cout<<h_vertexArray[i]<<" ";
+	}
+	
+	cout<<endl;
+	
+	for (int i=0; i<2*m; i++){
+		cout<<h_neighbourArray[i]<<" ";
+	}
+	
+	cout<<endl;
 	
 	cudaMemcpy(d_incrementalArray, h_incrementalArray, 2*startArray.size()*sizeof(int), cudaMemcpyHostToDevice);
 	
-	int blocksPerGridDecremental = (2*startArray.size() + threadsPerBlock -1)/threadsPerBlock;
+	int blocksPerGridDecremental = (startArray.size() + threadsPerBlock -1)/threadsPerBlock;
 	
 	decrementalColouringNew<<<blocksPerGridDecremental, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, n, m, d_incrementalArray, 2*startArray.size());
 		
 	cudaDeviceSynchronize();
 	
 	
-//	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
-//	
-	cudaMemcpy(d_propagationArray1, h_propagationArray1, n*sizeof(int), cudaMemcpyHostToDevice);
-
-//	cudaMemcpy(d_propagationArray1, h_propagationArray, tempSet.size()*sizeof(int), cudaMemcpyHostToDevice);
-
-//	bool flip = true;
-//	
-//	int blocksPerGridPropagation = (n + threadsPerBlock -1)/threadsPerBlock;
-//	
-//	while (1){
-//		cudaMemcpyFromSymbol(h_count, d_count, sizeof(int), 0, cudaMemcpyDeviceToHost);
-//		
-//		if (*h_count == 0){
-//			break;
-//		}
-//		
-//		blocksPerGridPropagation = (*h_count + threadsPerBlock -1)/threadsPerBlock;
-//		
-//		if (flip){
-//			flip = false;
-//		}
-//		
-//		else{
-//			flip = true;
-//		}
-//		
-//		
-//	}
-//	
-
-//cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
-
-//	cout<<"{ ";
-//	
-//	for (int i=0; i<n; i++){
-//		if (h_propagationArray1[i]!=0){
-//			cout<<i+1<<" ";
-//		}
-//	}
-//	
-//	cout<<"}"<<endl;
-
-	thrust::device_ptr<int> c_ptr = thrust::device_pointer_cast(d_colour);
-  	int maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
-
-	cout<<"Max Colour = "<<maxColour<<endl;
+  	cout<<"Colour numbers: "<<endl;
 	
-	while (1){
-		propagationColouringNewest<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, d_degreeCount, n, m, d_colour, d_propagationArray2);
 	
-		cudaMemcpyFromSymbol(h_count, d_countNew, sizeof(int), 0, cudaMemcpyDeviceToHost);
-		
-		cout<<"H Count = "<<*h_count<<endl;
-		
-		if (*h_count == n){
-			break;
-		}
-		
+	
+	for (int i=0; i<n; i++){
+		cout<<h_colour[i]<<endl;
 	}
+//	
+	cudaMemcpy(d_propagationArray, h_propagationArray, n*sizeof(int), cudaMemcpyHostToDevice);
 	
 	int countPropagation = 0;
-	thrust::device_ptr<int> d_propagationArray_ptr = thrust::device_pointer_cast(d_propagationArray1);
+	thrust::device_ptr<int> d_propagationArray_ptr = thrust::device_pointer_cast(d_propagationArray);
 	
-//	do{
-//		
-//		propagationColouring<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, n, m, d_degreeCount, d_colour, d_propagationArray1);
-//		
-//		cudaDeviceSynchronize();
-//		
-//  		countPropagation = thrust::reduce(d_propagationArray_ptr, d_propagationArray_ptr + n);
-//  		
-//  		cout<<countPropagation<<endl;
-//  		cudaMemcpy(h_propagationArray1, d_propagationArray1, n*sizeof(int), cudaMemcpyDeviceToHost);
-//  		
-////  		cout<<"{ ";
-////	
-////	for (int i=0; i<n; i++){
-////		if (h_propagationArray1[i]!=0){
-////			cout<<i+1<<" ";
-////		}
-////	}
-////	
-////	cout<<"}"<<endl;
-//	
-////	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
-
-////  	cout<<"Colour numbers: "<<endl;
-////	
-////	
-////	
-////	for (int i=0; i<n; i++){
-////		cout<<h_colour[i]<<endl;
-////	}
-//	
-//	}while (countPropagation);
-//	
+	do{
+		
+		propagationColouring<<<blocksPerGrid, threadsPerBlock>>>(d_vertexArray, d_neighbourArray, n, m, d_degreeCount, d_colour, d_propagationArray);
+		
+		cudaDeviceSynchronize();
+		
+  		countPropagation = thrust::reduce(d_propagationArray_ptr, d_propagationArray_ptr + n);
+	
+	}while (countPropagation);
+	
 	cout<<"Shamil "<<printCount<<endl;
 	
 	cudaMemcpy(h_colour, d_colour, n*sizeof(int), cudaMemcpyDeviceToHost);
   	
-  	maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
+  	thrust::device_ptr<int> c_ptr = thrust::device_pointer_cast(d_colour);
+  	int maxColour = *(thrust::max_element(c_ptr, c_ptr + n));
 
 	cout<<"Max Colour = "<<maxColour<<endl;
-	
   	
-//  	cout<<"Colour numbers: "<<endl;
-//	
-//	
-//	
-//	for (int i=0; i<n; i++){
-//		cout<<h_colour[i]<<endl;
-//	}
+  	cout<<"Colour numbers: "<<endl;
+	
+	
+	
+	for (int i=0; i<n; i++){
+		cout<<h_colour[i]<<endl;
+	}
 	
 	cudaEventRecord(stop, 0);
 	cudaEventSynchronize(stop);
@@ -1685,20 +1416,20 @@ int main(int argc, char const *argv[])
 	cudaEventElapsedTime(&time, start, stop);
 	cout<<"Time for the kernel: "<<time<<" ms"<<endl;
 	
-	cudaMemcpy(h_vertexArray, d_vertexArray, (n+1)*sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_vertexArray, d_vertexArray, n*sizeof(int), cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_neighbourArray, d_neighbourArray, 2*m*sizeof(int), cudaMemcpyDeviceToHost);
 	
-//	for (int i=0; i<n+1; i++){
-//		cout<<h_vertexArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
-//	
-//	for (int i=0; i<2*m; i++){
-//		cout<<h_neighbourArray[i]<<" ";
-//	}
-//	
-//	cout<<endl;
+	for (int i=0; i<n; i++){
+		cout<<h_vertexArray[i]<<" ";
+	}
+	
+	cout<<endl;
+	
+	for (int i=0; i<2*m; i++){
+		cout<<h_neighbourArray[i]<<" ";
+	}
+	
+	cout<<endl;
 
 	delete h_count;		
 	delete[] h_vertexArray;

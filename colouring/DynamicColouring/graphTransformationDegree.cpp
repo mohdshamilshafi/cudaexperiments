@@ -23,15 +23,15 @@ void edgesPrint (int vertexArray[], int neighbourArray[], int n, int m){
 int main(int argc, char const *argv[])
 {
 	/* code */
-	string a, b;
+//	string a, b;
 	int n, m;
 	
-	cin>>a>>b>>n>>m;
-	
+//	cin>>a>>b>>n>>m;
+	cin>>n>>m;
 	cout<<n<<" "<<m<<endl;
 
-	int vertexArray[n];
-	int neighbourArray[m];
+	int *vertexArray = new int [n];
+	int *neighbourArray = new int [m];
 
 	for (int i = 0; i < n; ++i)
 	{
@@ -46,11 +46,15 @@ int main(int argc, char const *argv[])
 	
 	for (int i=0; i<m; i++){
 		int start, end;
+		
 //		char c;
 		
 		cin>>start>>end;
 //		start++;
 //		end++;
+//		cout<<start<<" "<<end<<endl;
+		
+//		cout<<NSlast<<" "<<NSprev<<endl;
 		
 		for (int j=NSlast+1; j<start; j++){
 			vertexArray[j-1]=NSoffset;
@@ -59,15 +63,20 @@ int main(int argc, char const *argv[])
 		
 		if (NSprev!=start){
 			NSlast=start;
+//			cout<<"Start-1 "<<NSlast<<endl;
 			vertexArray[start-1]=NSoffset;
 			NSprev=start;
 		}
 		
+//		cout<<"Offset "<<NSoffset<<endl;
 		neighbourArray[NSoffset]=end;
 		NSoffset++;
 		
+//		cout<<i+1<<endl;
 		
 	}
+	
+//	cout<<"2";
 
 //	int offset = 0;
 
@@ -123,7 +132,7 @@ int main(int argc, char const *argv[])
 	//edgesPrint(vertexArray, neighbourArray, n, m);
 
 	
-	int graphDegree[n+1];
+	int *graphDegree = new int [n+1];
 	
 	for (unsigned int i = 0; i < n+1; i += 1)
 	{
