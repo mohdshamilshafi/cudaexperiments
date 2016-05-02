@@ -1097,7 +1097,121 @@ Our experiments were run on a computing setup based on a $Intel(R) \: Xeon(R) \:
 
 All our experiments were run using NVIDIA CUDA runtime version 6.5. The version of GCC used was 4.4.7. 
 \section{Test Data}
-We obtained most of our test datasets from Stanford Network Analysis Project (SNAP) \citep{snapnets}. We also use the 30 graph colouring datasets from \citet{Beasley1990} which are very small graphs and also appear in Table 6 of the paper \citetitle{ref1}. 
+We obtained most of our test datasets from Stanford Network Analysis Project (SNAP) \citep{snapnets}. We also use the 30 graph colouring datasets from \citet{Beasley1990} which are very small graphs and also appear in Table 6 of the paper \cite{ref1}.
+
+\subsubsection{Pre-processing}
+Not all the graphs we chose are undirected graphs. So, we pre-processed the graphs thus rendering the directed graphs undirected. Also, we remove all self-loops in all the graphs as Vertex Colouring problem is based on undirected graphs with no self-loops. 
+
+\subsubsection{Datasets}
+Details of our test datasets are tabulated in Table \ref{table:4}. $n$ represents the number of vertices in the graph and $m$ represents the number of edges in the graph. $\Delta$ represents the maximum degree of all the vertices of the graph. Source column cites the source from which that particular graph was obtained.
+
+In most of our experiments, we consider only 14 large graphs with $m > 900000$.
+\begin{table}[h]
+\centering
+\begin{tabular}{||c|c|c|c|c|c||} 
+ \hline
+ No & Name & n & m & $\Delta$ & Source \\ [0.5ex] 
+ \hline\hline
+1  & amazon                  & 600000  & 925872   & 549    & \cite{snapnets}    \\
+\hline
+2  & as-skitter\_m            & 1696415 & 11095298 & 35455  & \cite{snapnets}    \\
+\hline
+3  & com-dblp.ungraph\_m      & 425957  & 1049866  & 343    & \cite{snapnets}    \\
+\hline
+4  & com-lj.ungraph\_m        & 4036538 & 34681189 & 14815  & \cite{snapnets}    \\
+\hline
+5  & com-youtube.ungraph     & 1157827 & 2987624  & 28754  & \cite{snapnets}    \\
+\hline
+6  & facebook                & 4039    & 88234    & 1045   & \cite{snapnets}    \\
+\hline
+7  & gcol1                   & 100     & 2487     & 61     & \cite{Beasley1990} \\
+\hline
+8  & gcol2                   & 100     & 2487     & 70     & \cite{Beasley1990} \\
+\hline
+9  & gcol3                   & 100     & 2482     & 62     & \cite{Beasley1990} \\
+\hline
+10 & gcol4                   & 100     & 2503     & 62     & \cite{Beasley1990} \\
+\hline
+11 & gcol5                   & 100     & 2450     & 63     & \cite{Beasley1990} \\
+\hline
+12 & gcol6                   & 100     & 2537     & 67     & \cite{Beasley1990} \\
+\hline
+13 & gcol7                   & 100     & 2505     & 61     & \cite{Beasley1990} \\
+\hline
+14 & gcol8                   & 100     & 2479     & 63     & \cite{Beasley1990} \\
+\hline
+15 & gcol9                   & 100     & 2486     & 62     & \cite{Beasley1990} \\
+\hline
+16 & gcol10                  & 100     & 2506     & 68     & \cite{Beasley1990} \\
+\hline
+17 & gcol11                  & 100     & 2467     & 60     & \cite{Beasley1990} \\
+\hline
+18 & gcol12                  & 100     & 2531     & 60     & \cite{Beasley1990} \\
+\hline
+19 & gcol13                  & 100     & 2467     & 61     & \cite{Beasley1990} \\
+\hline
+20 & gcol14                  & 100     & 2524     & 65     & \cite{Beasley1990} \\
+\hline
+21 & gcol15                  & 100     & 2528     & 62     & \cite{Beasley1990} \\
+\hline
+22 & gcol16                  & 100     & 2493     & 64     & \cite{Beasley1990} \\
+\hline
+23 & gcol17                  & 100     & 2503     & 63     & \cite{Beasley1990} \\
+\hline
+24 & gcol18                  & 100     & 2472     & 61     & \cite{Beasley1990} \\
+\hline
+25 & gcol19                  & 100     & 2527     & 62     & \cite{Beasley1990} \\
+\hline
+26 & gcol20                  & 100     & 2420     & 59     & \cite{Beasley1990} \\
+\hline
+27 & gcol21                  & 300     & 22482    & 173    & \cite{Beasley1990} \\
+\hline
+28 & gcol22                  & 300     & 22569    & 177    & \cite{Beasley1990} \\
+\hline
+29 & gcol23                  & 300     & 22393    & 175    & \cite{Beasley1990} \\
+\hline
+30 & gcol24                  & 300     & 22446    & 172    & \cite{Beasley1990} \\
+\hline
+31 & gcol25                  & 300     & 22360    & 177    & \cite{Beasley1990} \\
+\hline
+32 & gcol26                  & 300     & 22601    & 179    & \cite{Beasley1990} \\
+\hline
+33 & gcol27                  & 300     & 22327    & 183    & \cite{Beasley1990} \\
+\hline
+34 & gcol28                  & 300     & 22472    & 176    & \cite{Beasley1990} \\
+\hline
+35 & gcol29                  & 300     & 22520    & 176    & \cite{Beasley1990} \\
+\hline
+36 & gcol30                  & 300     & 22543    & 176    & \cite{Beasley1990} \\
+\hline
+37 & googleGraph             & 916428  & 4322051  & 6332   & \cite{snapnets}    \\
+\hline
+38 & higgs-social\_network    & 456626  & 12508413 & 51386  & \cite{snapnets}    \\
+\hline
+39 & roadNet-CA\_m            & 1971281 & 2766607  & 12     & \cite{snapnets}    \\
+\hline
+40 & roadNet-PA\_m            & 1090920 & 1541898  & 9      & \cite{snapnets}    \\
+\hline
+41 & roadNet-TX\_m            & 1393383 & 1921660  & 12     & \cite{snapnets}    \\
+\hline
+42 & soc-pokec-relationships & 1632803 & 22301964 & 14854  & \cite{snapnets}    \\
+\hline
+43 & soc-Slashdot0811\_m      & 77360   & 469180   & 2539   & \cite{snapnets}    \\
+\hline
+44 & soc-Slashdot0902\_m      & 82168   & 504230   & 2552   & \cite{snapnets}    \\
+\hline
+45 & twitter\_combined\_m2     & 81306   & 1342296  & 3383   & \cite{snapnets}    \\
+\hline
+46 & web-BerkStan            & 685230  & 6649470  & 84230  & \cite{snapnets}    \\
+\hline
+47 & wiki-Talk\_m             & 2394385 & 4659565  & 100029 & \cite{snapnets}   
+\\
+\hline
+\end{tabular}
+\caption{Test Graph Datasets}
+\label{table:4}
+\end{table}
+
 \section{Parallel Graph Colouring on GPU}
 \section{Incremental Parallel Graph Colouring on GPU}
 \section{Decremental Parallel Graph Colouring on GPU}

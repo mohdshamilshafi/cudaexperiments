@@ -62,7 +62,9 @@
 \contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{45}{chapter.6}
 \contentsline {section}{\numberline {6.1}Experimental Setup}{45}{section.6.1}
 \contentsline {section}{\numberline {6.2}Test Data}{45}{section.6.2}
-\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{45}{section.6.3}
-\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{45}{section.6.4}
-\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{45}{section.6.5}
-\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{46}{chapter.7}
+\contentsline {subsubsection}{Pre-processing}{45}{section*.35}
+\contentsline {subsubsection}{Datasets}{46}{section*.36}
+\contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{46}{section.6.3}
+\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{46}{section.6.4}
+\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{46}{section.6.5}
+\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{48}{chapter.7}
