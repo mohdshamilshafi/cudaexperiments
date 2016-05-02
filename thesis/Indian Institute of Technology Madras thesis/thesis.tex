@@ -1093,7 +1093,11 @@ This algorithm is guaranteed to terminate. In each wave, the processed vertices 
 
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
+Our experiments were run on a computing setup based on a $Intel(R) \: Xeon(R) \: CPU \: $ \verb+E5-2650 v2+ processor with \verb+32 cores+ at a clock speed of \verb+2.60 Ghz+. The setup was equipped with 8 $NVIDIA \: TESLA \: K40c$ graphics cards each with \verb+12 GB+ of $GDDR5$ memory. Each of these $K40c$ graphics cards has 15 SMs (Streaming Multiprocessors) with each SM having 192 $CUDA$ cores taking the total count of $CUDA$ cores to 2880. Each of these $K40c$ devices has a peak single precision computing capacity of 4.29 Tflops.
+
+All our experiments were run using NVIDIA CUDA runtime version 6.5. The version of GCC used was 4.4.7. 
 \section{Test Data}
+We obtained most of our test datasets from Stanford Network Analysis Project (SNAP) \citep{snapnets}. We also use the 30 graph colouring datasets from \citet{Beasley1990} which are very small graphs and also appear in Table 6 of the paper \citetitle{ref1}. 
 \section{Parallel Graph Colouring on GPU}
 \section{Incremental Parallel Graph Colouring on GPU}
 \section{Decremental Parallel Graph Colouring on GPU}

@@ -428,4 +428,43 @@ journal = {The Computer Journal}
   publisher={John Wiley \& Sons}
 }
 
+@Misc{nVidia:cuRAND,
+    author = {{NVIDIA Corporation}},
+    title = {cuRAND: CUDA Toolkit Documentation},
+    year = {2016},
+    note = {[Online; accessed on 22 April, 2016]},
+    url = {http://docs.nvidia.com/cuda/curand/#axzz475iTZCEH}
+}
+
+@article{hovland2008latency,
+  title={Latency and Bandwidth Impact on GPU-systems},
+  author={Hovland, Rune Johan},
+  journal={Norwegian University of Science and Technology},
+  year={2008}
+}
+
+@misc{snapnets,
+  author       = {Jure Leskovec and Andrej Krevl},
+  title        = {{SNAP Datasets}: {Stanford} Large Network Dataset Collection},
+  howpublished = {\url{http://snap.stanford.edu/data}},
+  month        = jun,
+  year         = 2014
+}
+
+@Article{Beasley1990,
+author={Beasley, J. E.},
+title={OR-Library: Distributing Test Problems by Electronic Mail},
+journal={J Oper Res Soc},
+year={1990},
+month={Nov},
+publisher={Operational Research Society},
+volume={41},
+number={11},
+pages={1069-1072},
+issn={0160-5682},
+url={http://dx.doi.org/10.1057/jors.1990.166}
+}
+
+
+
 

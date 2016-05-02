@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{31}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -16,6 +16,13 @@
 \newblock Every planar map is four colorable. part i: Discharging.
 \newblock {\em Illinois J. Math.\/}, {\bf 21}(3), 429--490.
 \newblock \urlprefix\url{http://projecteuclid.org/euclid.ijm/1256049011}.
+
+\bibitem[{Beasley(1990)}]{Beasley1990}
+{\bf Beasley, J.~E.} (1990).
+\newblock Or-library: Distributing test problems by electronic mail.
+\newblock {\em J Oper Res Soc\/}, {\bf 41}(11), 1069--1072.
+\newblock ISSN 0160-5682.
+\newblock \urlprefix\url{http://dx.doi.org/10.1057/jors.1990.166}.
 
 \bibitem[{Bozdag {\em et~al.\/}(2005)Bozdag, {\c{C}}ataly{\"{u}}rek,
   Gebremedhin, Manne, Boman, and
@@ -65,6 +72,13 @@
 {\bf Cohen, J.} and {\bf P.~Castonguay} (2012).
 \newblock Efficient graph matching and coloring on the gpu.
 \newblock {\em GTC on-demand S0332\/}.
+
+\bibitem[{Fleurent and Ferland()}]{ref1}
+{\bf Fleurent, C.} and {\bf J.~A. Ferland} ().
+\newblock Genetic and hybrid algorithms for graph coloring.
+\newblock {\em Annals of Operations Research\/}, {\bf 63}(3), 437--461.
+\newblock ISSN 1572-9338.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/BF02125407}.
 
 \bibitem[{Gebremedhin and Manne(2000)}]{CPE:CPE528}
 {\bf Gebremedhin, A.~H.} and {\bf F.~Manne} (2000).
@@ -137,6 +151,11 @@
 \newblock A graph coloring algorithm for large scheduling problems.
 \newblock {\em Journal of research of the national bureau of standards\/}, {\bf
   84}(6), 489--506.
+
+\bibitem[{Leskovec and Krevl(2014)}]{snapnets}
+{\bf Leskovec, J.} and {\bf A.~Krevl} (2014).
+\newblock {SNAP Datasets}: {Stanford} large network dataset collection.
+\newblock \url{http://snap.stanford.edu/data}.
 
 \bibitem[{Luby(1985)}]{Luby:1985:SPA:22145.22146}
 {\bf Luby, M.}, A simple parallel algorithm for the maximal independent set
