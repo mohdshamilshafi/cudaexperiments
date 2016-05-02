@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  1 MAY 2016 04:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  2 MAY 2016 00:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -354,14 +354,7 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip51
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (./thesis.aux
-
-LaTeX Warning: Label `14.10' multiply defined.
-
-
-LaTeX Warning: Label `14.11' multiply defined.
-
-)
+) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -770,12 +763,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 CHAPTER 5.
 [39
 
-] [40] [41] [42]
+] [40] [41]
 
-LaTeX Warning: Reference `wavePropagation' on page 43 undefined on input line 1
-066.
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 1049.
 
-[43] [44]
+[42] [43]
+
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 1076.
+
+[44]
 CHAPTER 6.
 [45
 
@@ -841,29 +837,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--203
  []
 
 [48])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1111.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1134.
  [49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1111.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1134.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1111.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1111.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1134.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1134.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 549B27F8E731F2986844696607F881F6;4205.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1111.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1134.
  ) 
 Here is how much of TeX's memory you used:
- 8912 strings out of 494985
- 132865 string characters out of 6180355
- 231539 words of memory out of 5000000
- 11776 multiletter control sequences out of 15000+600000
+ 8914 strings out of 494985
+ 132890 string characters out of 6180355
+ 231571 words of memory out of 5000000
+ 11777 multiletter control sequences out of 15000+600000
  57466 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  43i,8n,41p,1187b,547s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -878,10 +867,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (59 pages, 4410488 bytes).
+Output written on thesis.pdf (59 pages, 4412066 bytes).
 PDF statistics:
- 1030 PDF objects out of 1200 (max. 8388607)
- 920 compressed objects within 10 object streams
- 195 named destinations out of 1000 (max. 500000)
+ 1032 PDF objects out of 1200 (max. 8388607)
+ 922 compressed objects within 10 object streams
+ 196 named destinations out of 1000 (max. 500000)
  558 words of extra memory for PDF output out of 10000 (max. 10000000)
 

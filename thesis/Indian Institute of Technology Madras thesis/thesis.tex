@@ -1041,19 +1041,19 @@ In the semi-optimistic approach, or what we call One Time Propagation, we propag
 \begin{algorithm}
 \caption{One Time Propagation}\label{OneTime}
 \begin{algorithmic}[1]
-\Procedure{ManyThreadDecrementalColouring(G(V,E), edge)}{}
+\Procedure{OneTimePropagation(G(V,E))}{}
 \State $\textit{Initialization}$
-\State $\textit{edgeSet} \gets \phi$
-\BState \emph{Edges To Be Deleted}:
-\State \textit{Take the newly deleted edge, $\bar{e}$, as the input}
-\State $\textit{edgeSet} \gets \textit{edgeSet} \cup \bar{e}$
-\If {\textit{more edges to be deleted}}
-\State \textit{goto Edges To Be Deleted}
+\State $\textit{processQueue} \gets V$
+\While {$processQueue \neq \phi$}
+\State $\textit{maxSet} \gets $\verb+MaximalSet(processQueue)+
+\State $processQueue \gets processQueue \: \textbackslash \: maxSet$
+\For {$each \: v \in maxSet$}
+\State $possibleColour \gets \textit{Smallest possible colour for v}$
+\If {$colour[v] > possibleColour$}
+\State $colour[v] \gets possibleColour$
 \EndIf
-\State \textit{// Two threads per edge are spawned}
-\For {$each \: e \in edgeSet$} \Comment Done in parallel \label{14.10}
-\State \textit{Each thread modifies UCSR to remove its corresponding neighbour}\label{14.11}
 \EndFor
+\EndWhile
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -1064,6 +1064,29 @@ This approach is a trade off between improvement in colour quality \textit{vs} c
 In the optimistic approach, or what we call Wave Propagation, we consider the possible ripple effect of propagation. That is, if a vertex changes its colour, its new colouring could affect the colouring of all its neighbours. So, we process all its neighbours for possible colouring improvements. In case any of such neighbours improves its colouring, then its neighbours could also possibly improve their colouring. So, we add its neighbours too to our process queue. This then ripples through the graph until there are no more vertices with possible colouring improvements. This propagation happens in waves of possible colouring improvements and hence we call it Wave Propagation. In each wave, the algorithm adds the neighbours of those vertices who had a colouring improvement in the current wave to the process queue. The algorithm is terminated when there are no more vertices to be processed in the process queue.
 
 This approach might be a little time consuming as we have to keep on adding and removing vertices to and from the process queue. But this approach is highly likely to improve colour quality as it propagates the latest information through the graph. All the colouring changes made during propagation ripple/percolate through the entire graph.  The biggest challenges here are the number of iterations, \textit{waves}, before the algorithm terminates and the maintenance of a concurrent process queue. As we have to add all neighbours of each vertex who has had a colouring improvement, we could be looking at a fast growing process queue as large graphs possibly contain vertices with very high degrees. The scheme is given in Algorithm \ref{wavePropagation}. 
+
+\begin{algorithm}
+\caption{Wave Propagation}\label{wavePropagation}
+\begin{algorithmic}[1]
+\Procedure{WavePropagation(G(V,E), propagationSet)}{}
+\State $\textit{Initialization}$
+\State $\textit{processQueue} \gets propagationSet$
+\While {$processQueue \neq \phi$}
+\State $\textit{maxSet} \gets $\verb+MaximalSet(processQueue)+
+\State $processQueue \gets processQueue \: \textbackslash \: maxSet$
+\For {$each \: v \in maxSet$}
+\State $possibleColour \gets \textit{Smallest possible colour for v}$
+\If {$colour[v] > possibleColour$}
+\State $colour[v] \gets possibleColour$
+\For{$each \: u \in V$ such that $u$ is adjacent to $v$}
+\State $processQueue \gets processQueue \cup \{u\}$
+\EndFor
+\EndIf
+\EndFor
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \subsubsection{Termination}
 This algorithm is guaranteed to terminate. In each wave, the processed vertices get removed from the process queue. Neighbours of vertices are added to the process queue only if they improve their own colouring. Colour can take only a minimum value of 1. So, a vertex can only improve its own colouring up until value 1. And if it doesn't improve its colouring in a wave, its neighbours are not added to the process queue. So, the process queue is guaranteed to get emptied after several waves of additions and deletions of vertices. But this wave propagation algorithm could be too slow for large graphs with vertices of very high degrees. In each wave, for every bunch of independent vertices who are processed, if some of them improves their colouring, then we will be adding all their neighbours to the process queue. This number of vertices added can easily be higher than the number of vertices processed. So, the process queue will become bigger and bigger until it reaches a point when most of the vertices in the list are already at their best colouring. And from that point, the process queue shrinks until becoming empty, at which point the algorithm terminates. 
