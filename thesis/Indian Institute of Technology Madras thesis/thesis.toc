@@ -3,6 +3,7 @@
 \contentsline {chapter}{LIST OF TABLES}{vi}{chapter*.4}
 \contentsline {chapter}{LIST OF FIGURES}{vii}{chapter*.5}
 \contentsline {chapter}{ABBREVIATIONS}{viii}{chapter*.6}
+\contentsline {chapter}{NOTATION}{ix}{chapter*.7}
 \contentsline {chapter}{\numberline {1}INTRODUCTION}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Graphs and Graph Algorithms}{3}{section.2.1}
@@ -19,7 +20,7 @@
 \contentsline {section}{\numberline {2.4}GPGPU}{9}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Why GPUs?}{9}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}NVIDIA CUDA}{10}{subsection.2.4.2}
-\contentsline {subsubsection}{Architecture}{10}{section*.10}
+\contentsline {subsubsection}{Architecture}{10}{section*.11}
 \contentsline {subsection}{\numberline {2.4.3}Challenges}{11}{subsection.2.4.3}
 \contentsline {section}{\numberline {2.5}Incremental/Decremental}{11}{section.2.5}
 \contentsline {chapter}{\numberline {3}PARALLEL GRAPH COLOURING}{13}{chapter.3}
@@ -32,17 +33,17 @@
 \contentsline {subsection}{\numberline {3.4.1}Sequential Greedy Graph Colouring}{17}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Parallel VIS Based Colouring}{18}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Parallel Conflict Resolution Based Colouring}{20}{subsection.3.4.3}
-\contentsline {subsubsection}{3.4.3.1 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Sequential}{20}{section*.12}
-\contentsline {subsubsection}{3.4.3.2 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{21}{section*.13}
+\contentsline {subsubsection}{3.4.3.1 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Sequential}{20}{section*.13}
+\contentsline {subsubsection}{3.4.3.2 \tmspace +\medmuskip {.2222em} \tmspace +\medmuskip {.2222em} Conflict Resolution: Partially in Parallel}{21}{section*.14}
 \contentsline {section}{\numberline {3.5}Our Approach}{22}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}CSR: Compressed Sparse Row Representation}{23}{subsection.3.5.1}
-\contentsline {subsubsection}{Offsets Array}{23}{section*.14}
-\contentsline {subsubsection}{Edges Array}{24}{section*.15}
-\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{24}{section*.16}
-\contentsline {subsubsection}{Example}{24}{section*.17}
+\contentsline {subsubsection}{Offsets Array}{23}{section*.15}
+\contentsline {subsubsection}{Edges Array}{24}{section*.16}
+\contentsline {subsubsection}{Undirected Graphs in CSR: UCSR}{24}{section*.17}
+\contentsline {subsubsection}{Example}{24}{section*.18}
 \contentsline {subsection}{\numberline {3.5.2}RANDCOLOUR: Random Colouring And Conflict Resolution}{25}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}MINMAXCOLOUR: Maximal VIS And Colouring}{27}{subsection.3.5.3}
-\contentsline {subsubsection}{Improvements}{27}{section*.23}
+\contentsline {subsubsection}{Improvements}{27}{section*.24}
 \contentsline {chapter}{\numberline {4}PARALLEL GRAPH COLOURING: INCREMENTAL}{30}{chapter.4}
 \contentsline {section}{\numberline {4.1}Why Incremental?}{30}{section.4.1}
 \contentsline {section}{\numberline {4.2}Handling a Growing Graph}{30}{section.4.2}
@@ -58,12 +59,12 @@
 \contentsline {subsection}{\numberline {5.5.1}Pessimistic: No Propagation}{42}{subsection.5.5.1}
 \contentsline {subsection}{\numberline {5.5.2}Semi-Optimistic: One Time Propagation}{42}{subsection.5.5.2}
 \contentsline {subsection}{\numberline {5.5.3}Optimistic: Wave Propagation}{43}{subsection.5.5.3}
-\contentsline {subsubsection}{Termination}{44}{section*.34}
+\contentsline {subsubsection}{Termination}{44}{section*.35}
 \contentsline {chapter}{\numberline {6}EXPERIMENTAL EVALUATION}{45}{chapter.6}
 \contentsline {section}{\numberline {6.1}Experimental Setup}{45}{section.6.1}
 \contentsline {section}{\numberline {6.2}Test Data}{45}{section.6.2}
-\contentsline {subsubsection}{Pre-processing}{45}{section*.35}
-\contentsline {subsubsection}{Datasets}{46}{section*.36}
+\contentsline {subsubsection}{Pre-processing}{45}{section*.36}
+\contentsline {subsubsection}{Datasets}{46}{section*.37}
 \contentsline {section}{\numberline {6.3}Parallel Graph Colouring on GPU}{46}{section.6.3}
 \contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{46}{section.6.4}
 \contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{46}{section.6.5}
