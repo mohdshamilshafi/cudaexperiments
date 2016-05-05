@@ -1263,11 +1263,105 @@ We now compare the three implementations discussed. The runtime comparison in pl
     }
     \label{fig:chart4}
 \end{figure}
+
+We now compare the colour quality produced by the three implementations. This comparison is plotted in Figure \ref{fig:chart5}. We can see that RANDCOLOUR is completely at a disadvantage here. It uses almost $\Delta+1$ colours in all the cases whereas MAXCOLOUR and MINMAXCOLOURS use very few colours. This is again in lines with our approach to the problem. RANDCOLOUR was designed to compromise colour quality for faster runtime. Where as MAXCOLOUR and MINMAXCOLOUR were designed to compromise runtime for better colour quality. We observe exactly the same from our experiments.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest5.pdf}
+    \caption{
+        RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR: No. of Colours Used
+    }
+    \label{fig:chart5}
+\end{figure}
+
 \subsection{MAXCOLOUR vs MINMAXCOLOUR}
+As we are ready to compromise runtime for big improvements in colour quality, we prefer MAXCOLOUR and MINMAXCOLOUR over RANDCOLOUR. As we have seen in Figure \ref{fig:chart4}, MINMAXCOLOUR outperforms MAXCOLOURS in terms of runtime. Now, we try to see a possible reason for the same.
+
+Both MAXCOLOUR and MINMAXCOLOUR are iterative algorithms which iterates until the whole graph is coloured. MAXCOLOUR finds one Maximal VIS in one iteration and MINMAXCOLOUR finds two Maximal VIS in one iteration. Hence, MINMAXCOLOUR can possibly finish colouring the entire graph in lesser number of iterations. Lesser number of iterations imply lesser number of kernel calls. Invoking a CUDA Kernel takes some time and hence lesser number of kernel calls can mean lesser runtime for the implementation.
+
+We try to plot the number of iterations endured by both the algorithms. This is given in Figure \ref{fig:chart1}. We can clearly see that MINMAXCOLOUR runs for far less iterations compared to MAXCOLOUR. That improves the runtime of MINMAXCOLOUR over MAXCOLOUR as we have seen in Figure \ref{fig:chart4}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest1.pdf}
+    \caption{
+        MAXCOLOUR vs MINMAXCOLOUR: No. of Iterations
+    }
+    \label{fig:chart1}
+\end{figure}
+
+So, we have seen that MINMAXCOLOUR has a better runtime compared to MAXCOLOUR possibly owing to the lesser number of iterations it runs for. But this doesn't necessarily mean MINMAXCOLOUR produces a better colouring compared to MAXCOLOUR. As we have seen in Figure \ref{fig:chart5}, MINMAXCOLOUR and MAXCOLOUR produces very good colour quality compared to RANDCOLOUR. Now, we try to find out how their colouring compares to each other. We plot this in 
+Figure \ref{fig:chart6}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest6.pdf}
+    \caption{
+        MAXCOLOUR vs MINMAXCOLOUR: No. of Colours Used
+    }
+    \label{fig:chart6}
+\end{figure}
+
+As we can clearly see in Figure \ref{fig:chart6}, MAXCOLOUR and MINMAXCOLOUR produces almost same colour quality. Still, we prefer MINMAXCOLOUR over MAXCOLOUR as it has a lesser runtime even though both of them produces similar colour quality.
+
 \subsection{One Time Propagation}
+When we tried to implement One Time Propagation for our incremental and decremental implementations as in Algorithm \ref{OneTime}, we realized that it can possibly improve the colour quality of MAXCOLOUR and MINMAXCOLOUR too. This is because MAXCOLOUR and MINMAXCOLOUR use different colours in each iteration irrespective of whether the vertices coloured in an iteration could use a colour already used. That approach helps MAXCOLOUR and MINMAXCOLOUR in possibly saving on runtime as less computations are involved. One Time Propagation brings in more computations for possible better colour quality.
+
+We try to plot the change in colour quality of MAXCOLOUR and MINMAXCOLOUR on following themselves with a One Time Propagation. This is given in Figures \ref{fig:chart7} and \ref{fig:chart8}. As we can clearly see, One Time Propagation definitely helps in improving the colour quality of both algorithms by a long way. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest7.pdf}
+    \caption{
+        MAXCOLOUR: Effect of One Time Propagation on No. of Colours Used
+    }
+    \label{fig:chart7}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest8.pdf}
+    \caption{
+        MINMAXCOLOUR: Effect of One Time Propagation on No. of Colours Used
+    }
+    \label{fig:chart8}
+\end{figure}
+
+This improvement in colour quality using One Time Propagation comes with its own cost. As discussed earlier, One Time Propagation involves a decent amount of computation. Hence, it could affect the runtime of the algorithms drastically. So, we try to plot the impact of One Time Propagation on the runtime of MAXCOLOUR and MINMAXCOLOUR in Figures \ref{fig:chart9} and \ref{fig:chart10}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest9.pdf}
+    \caption{
+        MAXCOLOUR: Effect of One Time Propagation on Runtime
+    }
+    \label{fig:chart9}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest10.pdf}
+    \caption{
+        MINMAXCOLOUR: Effect of One Time Propagation on Runtime
+    }
+    \label{fig:chart10}
+\end{figure}
+
+As we can clearly see, One Time Propagation almost doubles the runtime of MAXCOLOUR and MINMAXCOLOUR. So, it depends on our application to decide if we should do a One Time Propagation, thus bettering colour quality and compromising the runtime, or not.
 
 \section{Incremental Parallel Graph Colouring on GPU}
+\subsection{2-Thread Incremental Colouring}
+\subsection{Many Thread Incremental Colouring}
+\subsection{One Time Propagation}
+\subsection{One Time Propagation vs Wave Propagation}
+
 \section{Decremental Parallel Graph Colouring on GPU}
+\subsection{2-Thread Decremental Colouring}
+\subsection{Many Thread Decremental Colouring}
+\subsection{One Time Propagation}
+\subsection{One Time Propagation vs Wave Propagation}
+
 \chapter{CONCLUSION AND FUTURE WORK}
 
 

@@ -23,4 +23,11 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces RANDCOLOUR: Max Degree vs No. of Conflicts \relax }}{47}{figure.caption.39}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces RANDCOLOUR: Parallel and Sequential Components of Runtime \relax }}{48}{figure.caption.40}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR: Runtime \relax }}{48}{figure.caption.41}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR: No. of Colours Used \relax }}{49}{figure.caption.42}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces MAXCOLOUR vs MINMAXCOLOUR: No. of Iterations \relax }}{50}{figure.caption.43}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces MAXCOLOUR vs MINMAXCOLOUR: No. of Colours Used \relax }}{51}{figure.caption.44}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces MAXCOLOUR: Effect of One Time Propagation on No. of Colours Used \relax }}{52}{figure.caption.45}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces MINMAXCOLOUR: Effect of One Time Propagation on No. of Colours Used \relax }}{53}{figure.caption.46}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces MAXCOLOUR: Effect of One Time Propagation on Runtime \relax }}{54}{figure.caption.47}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces MINMAXCOLOUR: Effect of One Time Propagation on Runtime \relax }}{55}{figure.caption.48}
 \addvspace {10\p@ }

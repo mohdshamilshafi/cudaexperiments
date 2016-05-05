@@ -1,9 +1,9 @@
 \contentsline {chapter}{ACKNOWLEDGEMENTS}{i}{chapter*.1}
 \contentsline {chapter}{ABSTRACT}{ii}{chapter*.2}
 \contentsline {chapter}{LIST OF TABLES}{vi}{chapter*.4}
-\contentsline {chapter}{LIST OF FIGURES}{vii}{chapter*.5}
-\contentsline {chapter}{ABBREVIATIONS}{viii}{chapter*.6}
-\contentsline {chapter}{NOTATION}{ix}{chapter*.7}
+\contentsline {chapter}{LIST OF FIGURES}{viii}{chapter*.5}
+\contentsline {chapter}{ABBREVIATIONS}{ix}{chapter*.6}
+\contentsline {chapter}{NOTATION}{x}{chapter*.7}
 \contentsline {chapter}{\numberline {1}INTRODUCTION}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Graphs and Graph Algorithms}{3}{section.2.1}
@@ -71,7 +71,15 @@
 \contentsline {subsection}{\numberline {6.3.3}MINMAXCOLOUR}{47}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR}{48}{subsection.6.3.4}
 \contentsline {subsection}{\numberline {6.3.5}MAXCOLOUR vs MINMAXCOLOUR}{49}{subsection.6.3.5}
-\contentsline {subsection}{\numberline {6.3.6}One Time Propagation}{49}{subsection.6.3.6}
-\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{49}{section.6.4}
-\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{49}{section.6.5}
-\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{51}{chapter.7}
+\contentsline {subsection}{\numberline {6.3.6}One Time Propagation}{51}{subsection.6.3.6}
+\contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{54}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}2-Thread Incremental Colouring}{54}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Many Thread Incremental Colouring}{54}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}One Time Propagation}{54}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}One Time Propagation vs Wave Propagation}{54}{subsection.6.4.4}
+\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{54}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}2-Thread Decremental Colouring}{54}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Many Thread Decremental Colouring}{54}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}One Time Propagation}{54}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.4}One Time Propagation vs Wave Propagation}{54}{subsection.6.5.4}
+\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{57}{chapter.7}
