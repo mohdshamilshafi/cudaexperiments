@@ -76,11 +76,11 @@ Thank God.
 
 \abstract
 
-\noindent KEYWORDS: \hspace*{0.5em} \parbox[t]{4.4in}{Colour Quality; Compressed Sparse Row Representation; Decremental Graph Colouring; GPGPU; Graph Colouring; Incremental Graph Colouring; NP-hard; NVIDIA CUDA; Parallel Computing; Parallel Graph Algorithms; Vertex Colouring.}
+\noindent KEYWORDS: \hspace*{0.5em} \parbox[t]{4.4in}{Colour Quality; Compressed Sparse Row Representation; Decremental Graph Colouring; GPGPU; Graph Colouring; Incremental Graph Colouring; NP-hard; NVIDIA CUDA; One Time Propagation; Parallel Computing; Parallel Graph Algorithms; Vertex Colouring; Wave Propagation.}
 
 \vspace*{24pt}
 
-\noindent To be filled. 
+\noindent This work revolves around parallel graph colouring. We try to run parallel colouring algorithms on GPUs. Our work explores different parallel graph colouring algorithms. We implement some of these algorithms on NVIDIA CUDA platform to work with NVIDIA GPUs. We offer two GPU based approaches for parallel incremental graph colouring, namely, 2-Thread Incremental Colouring and Many Thread Incremental Colouring. We also suggest two approaches for parallel decremental graph colouring, namely, 2-Thread Decremental Colouring and Many Thread Decremental Colouring. We then try to improve the colour quality using two types of propagation techniques, One Time Propagation and Wave Propagation. Some of our approaches work really well in terms of both runtime and colour quality produced/maintained. 
 
 \pagebreak
 
@@ -106,11 +106,10 @@ Thank God.
 \begin{tabbing}
 xxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
 \textbf{IITM}   \> Indian Institute of Technology, Madras \\
-\textbf{RTFM} \> Read the Fine Manual \\
 \textbf{GPU} \> Graphics Processing Unit \\
 \textbf{GPGPU} \> General-Purpose computing on Graphics Processing Units  \\
 \textbf{CSR} \> Compressed Sparse Row \\
-
+\textbf{VIS} \> Vertex Independent Set \\
 \end{tabbing}
 
 \pagebreak
@@ -127,8 +126,6 @@ xxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
 \textbf{$E$}  \> Set of edges \\
 \textbf{$n$}   \> No. of vertices \\
 \textbf{$m$}  \> No. of edges \\
-\textbf{$\alpha$}  \> Angle of thesis in degrees \\
-\textbf{$\beta$}   \> Flight path in degrees \\
 \end{tabbing}
 \end{singlespace}
 
@@ -152,6 +149,13 @@ Graph colouring is a very important and yet very challenging graph problem with 
 Though the problem is seemingly simple, it is computationally hard. The graph colouring problem we are exploring in this work, that of vertex colouring, is an NP-hard problem. The sequential approaches like greedy colouring are simply not fast enough whereas advanced approximate/randomized solutions either produce colourings of bad colour quality or aren't fast enough. Thus came the parallel approaches to Graph Colouring. Most of the parallel versions of Graph Colouring algorithms were designed with either multi-core CPUs or heavy duty supercomputers in mind. With the advent of General-Purpose computing on GPUs (GPGPU), we have access to cheap heavy multi-threaded parallel computing power. Our work is based on parallel computing on NVIDIA GPUs using CUDA programming language.
 
 We explore different parallel graph colouring algorithms on NVIDIA GPUs in this work and try to adapt them to support addition of edges, called incremental graph colouring, and deletion of edges, called decremental graph colouring. In the first section, we explore different parallel graph algorithms and adapt a couple of them, one based on \textit{speculation} and \textit{conflict resolution} and the other on \textit{Vertex Independent Sets}, to work on NVIDIA GPUs. In the following sections, we adapt the GPU parallel colouring algorithm to support additions and deletions of edges. In the incremental part, we explore different methods to maximize parallelization while colouring newly added edges and use propagation to improve overall colour quality. In the decremental part, we explore different options to either process the vertices, on which the deleted edges were incident, on the go or to process them together and use propagation to propagate the information across the graph improving the colour quality. 
+
+\section{Outline and Contributions}
+A background of the problem in hand, graph colouring, is discussed in Chapter 2. It also discusses the need for parallelization, incremental and decremental approach and why we want to parallelize the solution for GPUs. In Chapter 3, we discuss work already done related to parallel graph colouring on multi-core CPUs as well as GPUs. We classify the algorithms broadly into two categories and discuss many algorithms. We also present our approach for parallel graph colouring. In Chapter 4, we discuss the need for incremental graph colouring and how we deal with a growing graph. We then present two algorithms to deal with incremental graph colouring. We also introduce the idea of propagation in this chapter. In Chapter 5, we discuss the need for decremental graph colouring and how we deal with a shrinking graph. We then present two algorithms to deal with decremental graph colouring. We present two approaches for propagation of colouring information across the graph. In Chapter 6, we evaluate our implementations using a set of test graphs. In Chapter 7, we conclude and give pointers for future work in the area.
+
+This work's biggest contribution is in introducing parallel incremental and decremental graph colouring. There are no other works done regarding the same as far the author understands even on multi-core CPUs, let alone on GPUs. Some of our approaches for parallel incremental and decremental colouring works well in terms of runtime and colour quality.
+
+
 \chapter{Background}
 \section{Graphs and Graph Algorithms}
 Graphs are really important mathematical concepts and in the area of computing, their various forms are widely used as data structures to aid various algorithms. Graphs are commonly used to denote relations between different entities and hence is a very important and integral part of many algorithms. On a practical level, we deal with graphs in the order of billions of nodes and edges on a daily basis. Especially with the advent of social networks and big data, a lot of active research is ongoing in the analysis and understanding of large graphs.
@@ -1352,15 +1356,275 @@ As we can clearly see, One Time Propagation almost doubles the runtime of MAXCOL
 
 \section{Incremental Parallel Graph Colouring on GPU}
 \subsection{2-Thread Incremental Colouring}
+We implemented Algorithm \ref{twoThreadIncremental}, which, as we discussed earlier, uses two threads to handle a newly added edge. Number of edges incremented and the respective runtime by 2-Thread Incremental Colouring for our test graphs are tabulated in table.
+
 \subsection{Many Thread Incremental Colouring}
+We implemented Algorithm \ref{manythread}, which, as we discussed earlier, tries to parallelize the 2-Thread Incremental Colouring. Number of edges incremented and the respective runtime by Many Thread Incremental Colouring for our test graphs are tabulated in table.
+
+\subsection{2-Thread Incremental vs Many Thread Incremental}
+The 2-Thread model (Algorithm \ref{twoThreadIncremental}) uses only two threads per addition of a new edge. Whereas, the Many Thread model (Algorithm \ref{manythread}) tries to maximize the number of threads used by clubbing upto 1024 newly added edges together for processing. So, the Many Thread Model tries to decrease the number of kernel calls, increase the number of threads spawned and increase parallelism. But this comes at a cost. The process by which Many Thread model clubs different edges together for parallel processing is computation intensive.
+
+We try to plot the number of kernel calls by both implementations for our test graphs. This is given in Figure \ref{fig:chart11}. As we can clearly see, Many Threads model calls the kernel much fewer times compared to the 2-Threads model. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest24.pdf}
+    \caption{
+        2-Thread Incremental vs Many Thread Incremental: No. of Kernel Calls
+    }
+    \label{fig:chart11}
+\end{figure}
+
+Many Thread model calling the kernel much fewer times needn't necessarily point to a smaller runtime as the process employed by the Many Thread model to achieve the same is computation intensive. So, we plot the runtime of 2-Thread model and Many Thread model for our test graphs. This is given in Figure \ref{fig:chart12}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest15.pdf}
+    \caption{
+        2-Thread Incremental vs Many Thread Incremental: Runtime
+    }
+    \label{fig:chart12}
+\end{figure}
+
+We can see that the Many Thread model is computationally very intensive and the runtime is very high compared the 2-Thread model. As the Many Thread model is technically just a parallelized version of the already parallel 2-Thread model, both algorithms should produce similar colour quality. We try to verify this by plotting the colour quality produced by both approaches. This is given in Figure \ref{fig:chart13}. We can see that both the models produce similar colour quality.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest21.pdf}
+    \caption{
+        2-Thread Incremental vs Many Thread Incremental: No. of Colours Used
+    }
+    \label{fig:chart13}
+\end{figure}
+
 \subsection{One Time Propagation}
+Now that we have identified that the 2-Thread Model is better than the Many Thread Model, we try to improve the colouring produced by the 2-Thread Model by employing One Time Propagation as in Algorithm \ref{OneTime}.
+
+Incremental colouring assumes that the initial graph is already coloured. After the addition of edges, the colour quality can possibly get worse. We try to plot the difference in colour quality brought upon by the 2-Thread Model on our test graphs and the impact One Time Propagation has on bettering the colour quality. This is given in Figure \ref{fig:chart14}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest11.pdf}
+    \caption{
+        2-Thread Incremental Model and One Time Propagation: No. of Colours Used
+    }
+    \label{fig:chart14}
+\end{figure}
+
+Though we have established Many Thread Incremental Colouring is a computationally bad model, we try to plot the impact of One Time Propagation on the colour quality in its case also. It's given in Figure \ref{fig:chart15}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest13.pdf}
+    \caption{
+        Many Thread Incremental Model and One Time Propagation: No. of Colours Used
+    }
+    \label{fig:chart15}
+\end{figure}
+
+From Figure \ref{fig:chart14}, we can see that the locally optimizing technique of the 2-Thread Model does well enough to maintain the colour quality of the graph on addition of new edges. We also see that One Time Propagation doesn't really have much of an impact on the colour quality. In most cases, it betters the colour quality by a very small extent. On an average, it improves the colouring produced by the 2-Thread Incremental model by 2 colours.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest23.pdf}
+    \caption{
+        2-Thread Incremental Model and One time Propagation: Runtime
+    }
+    \label{fig:chart16}
+\end{figure}
+
+We now try to evaluate the impact of One Time Propagation on the runtime of 2-Thread Incremental Model. We plot the runtime with the One Time Propagation component separated in Figure \ref{fig:chart16}. As we can see, One Time Propagation doesn't have much of an overhead on the runtime of 2-Thread Incremental Model. But whatever extra runtime it brings in might not always justify the 2 colours it saves on average. So, again, it is application dependent as to if we should use One Time Propagation or not.
+
 \subsection{One Time Propagation vs Wave Propagation}
+We have already theoretically established that Wave Propagation can be computationally heavy because of the way it handles the ripple effect. Here, we try to see if Wave Propagation actually does better than One Time Propagation or not and how really heavy it is on computation.
+
+First of all, we compare the percentage increase in colour quality that both propagation technique brings in. That is, we try to see the percentage decrease in the total number of colours used. We plot it for both our 2-Thread Incremental Model and the Many Thread Incremental Model in Figures \ref{fig:chart17} and \ref{fig:chart18}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest32.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: 2-Thread Model, Colour Quality
+    }
+    \label{fig:chart17}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest34.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: Many Thread Model, Colour Quality
+    }
+    \label{fig:chart18}
+\end{figure}
+ 
+We can't really compare them as such as experiments, which has some randomness involved, were run separately for One Time Propagation and Wave Propagation. Even though we took the average of 10 trials, it's not still an objective comparison. But what we can establish here from our experiments is that, on an average, Wave Propagation is only as effective as One Time Propagation if not negligently better. The roadNet graphs use only very few colours and small improvement in colouring is translated to big percentage gains.
+
+As discussed earlier, Wave Propagation comes with its own overhead on runtime. We plot the same for both our 2-Thread Incremental Model and the Many Thread Incremental Model in Figures \ref{fig:chart19} and \ref{fig:chart20}. We can see that Wave Propagation is very expensive in terms of runtime.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest33.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: 2-Thread Model, Runtime
+    }
+    \label{fig:chart19}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest35.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: Many Thread Model, Runtime
+    }
+    \label{fig:chart20}
+\end{figure}
 
 \section{Decremental Parallel Graph Colouring on GPU}
 \subsection{2-Thread Decremental Colouring}
+We implemented Algorithm \ref{twoThreadDecremental}, which, as we discussed earlier, uses two threads to handle a newly deleted edge. Number of edges decremented and the respective runtime by 2-Thread Decremental Colouring for our test graphs are tabulated in table.
+
 \subsection{Many Thread Decremental Colouring}
+We implemented Algorithm \ref{manythreadDecremental}, which, as we discussed earlier, tries to remove a set of edges in parallel. Number of edges decremented and the respective runtime by Many Thread Decremental Colouring for our test graphs are tabulated in table.
+
+\subsection{2-Thread Decremental vs Many Thread Decremental}
+The 2-Thread model (Algorithm \ref{twoThreadDecremental}) uses only two threads per deletion of a new edge. Whereas, the Many Thread model (Algorithm \ref{manythreadDecremental}) clubs many edges and deletes them together. The Many Thread Model maximises parallelism and calls the kernel only once. But it does no effort to improve the colouring unlike the 2-Thread Decremental model which tries to locally optimize colouring.
+
+The Many Thread Decremental model must run really fast as it decrements all the edges together in one parallel process and does no computation to improve colouring. The 2-Thread Decremental Model must definitely be slower as it calls the kernel for each edge deletion and also tries to locally optimize colouring in each kernel call. We plot the runtime of both the algorithms for our test graphs. This is given in Figure \ref{fig:chart21}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest16.pdf}
+    \caption{
+        2-Thread Decremental vs Many Thread Decremental: Runtime
+    }
+    \label{fig:chart21}
+\end{figure}
+
+We can clearly see that Many Thread Decremental Colouring outperforms the 2-Thread Decremental Model by a big margin in terms of runtime. The Many Thread model takes very less time, as expected, as it is fully parallelized and involves very less computation. But it's not really fair to compare the both as the 2-Thread model spends time in trying to improve the colouring. The Many Thread model has to depend on propagation to improve the colouring. So, we plot the colour quality produced by the two models without propagation. This is given in Figure \ref{fig:chart22}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest26.pdf}
+    \caption{
+        2-Thread Decremental vs Many Thread Decremental: No. of Colours Used
+    }
+    \label{fig:chart22}
+\end{figure}
+
+The Many Thread Model ofcourse just keeps the existing colouring whereas the 2-Thread model tries to locally improve it. This can be observed from the plot. 
+
 \subsection{One Time Propagation}
+So, we have established that the Many Thread model is really fast compared to the 2-Thread model. But then, the Many Thread model doesn't improve the existing colouring which might be possible as edges are deleted. Chances of improvement in colouring is definitely higher during deletion of edges compared to addition of edges.
+
+In the case of the 2-Thread model, after the deletion of edges, the colour quality can possibly improve. We try to plot the difference in colour quality brought upon by the 2-Thread Model on our test graphs and the impact One Time Propagation has on bettering the colour quality. This is given in Figure \ref{fig:chart23}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest12.pdf}
+    \caption{
+        2-Thread Decremental and One Time Propagation: No. of Colours Used
+    }
+    \label{fig:chart23}
+\end{figure}
+
+We can clearly see the local optimization of colouring by the 2-Thread model. It improves the colouring after the deletion of edges. One Time Propagation helps in improving the colour quality further. In most cases, the improvement in colouring done by the 2-Thread model itself is significant.
+
+In the case of the Many Thread model, after the deletion of edges, the colouring is not changed. We try to plot the maintenance of initial colouring by the Many Thread Model on our test graphs and the impact One Time Propagation has on bettering the colour quality. This is given in Figure \ref{fig:chart24}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest14.pdf}
+    \caption{
+        Many Thread Decremental and One Time Propagation: No. of Colours Used
+    }
+    \label{fig:chart24}
+\end{figure}
+
+We can see that the Many Thread model merely keeps the initial colouring untouched and that the One Time Propagation improves the colour quality significantly.
+
+We now compare the colour quality produced by both the models after One Time Propagation. This is given in \ref{fig:chart25}. We can see that both the models perform nearly similarly.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest25.pdf}
+    \caption{
+        2-Thread Decremental vs Many Thread Decremental: No. of Colours Used After One Time Propagation
+    }
+    \label{fig:chart25}
+\end{figure}
+
+As we have already established, the Many Thread model outperforms the 2-Thread model with a big margin in terms of runtime. One Time Propagation itself contributes to the runtime. As we have established that the 2-Thread model itself can improve the colouring significantly without the help of One Time Propagation and that its runtime is already much higher than that of the Many Thread model, from here on, we will consider the 2-Thread model without One Time Propagation and the Many Thread model with One Time Propagation.
+
+We first compare the runtime of the 2-Thread model without One Time Propagation and the Many Thread model with One Time Propagation. This is given in Figure \ref{fig:chart26}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest17.pdf}
+    \caption{
+        2-Thread Decremental vs Many Thread Decremental + OTP: Runtime
+    }
+    \label{fig:chart26}
+\end{figure}
+
+From the figure, we can see that Many Thread model with One Time Propagation outperforms 2-Thread model without One Time Propagation by a big margin in terms of runtime. We will now try to compare their colour quality. This is given in Figure \ref{fig:chart27}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest27.pdf}
+    \caption{
+        2-Thread Decremental vs Many Thread Decremental + OTP: No. of Colours Used
+    }
+    \label{fig:chart27}
+\end{figure}
+
+We can see that the number of colours used by both the approaches are very similar. The Many Thread model has a slightly better colouring, thanks to the One Time Propagation. Also, as we have that it performs much better than the 2-Thread model in terms of runtime, Many Thread Decremental Colouring followed by One Time Propagation seems to be the best option for decremental colouring.
+
+
 \subsection{One Time Propagation vs Wave Propagation}
+We already know how computationally heavy Wave Propagation is. We try to see if it can bring in a significant improvement in colouring so as to justify the cost involved in terms of runtime.
+
+First of all, we compare the percentage increase in colour quality that both propagation technique brings in. That is, we try to see the percentage decrease in the total number of colours used. We plot it for both our 2-Thread Decremental Model and the Many Thread Decremental Model in Figures \ref{fig:chart28} and \ref{fig:chart29}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest30.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: 2-Thread Model, Colour Quality
+    }
+    \label{fig:chart28}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest36.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: Many Thread Model, Colour Quality
+    }
+    \label{fig:chart29}
+\end{figure}
+ 
+As discussed in the incremental colouring section, we can establish from our experiments that, on an average, Wave Propagation is only as effective as One Time Propagation if not slightly better. 
+
+As discussed earlier, Wave Propagation comes with its own overhead on runtime. We plot the same for both our 2-Thread Decremental Model and the Many Thread Decremental Model in Figures \ref{fig:chart30} and \ref{fig:chart31}. We can see that Wave Propagation is very expensive in terms of runtime.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest31.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: 2-Thread Model, Runtime
+    }
+    \label{fig:chart30}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest37.pdf}
+    \caption{
+        One time Propagation vs Wave Propagation: Many Thread Model, Runtime
+    }
+    \label{fig:chart31}
+\end{figure}
 
 \chapter{CONCLUSION AND FUTURE WORK}
 
