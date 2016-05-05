@@ -7,5 +7,11 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces Two Threads Model: Different Cases\relax }}{33}{table.caption.25}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Test Graph Datasets\relax }}{65}{table.caption.38}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Test Graph Datasets\relax }}{54}{table.caption.38}
+\contentsline {table}{\numberline {6.2}{\ignorespaces MAXCOLOUR\relax }}{55}{table.caption.41}
+\contentsline {table}{\numberline {6.3}{\ignorespaces MINMAXCOLOUR\relax }}{55}{table.caption.42}
+\contentsline {table}{\numberline {6.4}{\ignorespaces 2-Thread Incremental Colouring\relax }}{57}{table.caption.51}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Many Thread Incremental Colouring\relax }}{57}{table.caption.52}
+\contentsline {table}{\numberline {6.6}{\ignorespaces 2-Thread Decremental Colouring\relax }}{64}{table.caption.63}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Many Thread Decremental Colouring\relax }}{64}{table.caption.64}
 \addvspace {10\p@ }

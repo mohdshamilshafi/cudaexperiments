@@ -614,7 +614,7 @@ Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{ta
     \label{fig:csrun}
 \end{figure}
 \subsection{RANDCOLOUR: Random Colouring And Conflict Resolution}
-We started with a random colouring and conflict resolution based algorithm which we call \verb+RANDCOLOUR+. This is an algorithm pertaining to the category covered by Algorithm \ref{SpecColouring}. We first speculate the colours randomly and then find the conflicts on the GPU, both of which are done in parallel. Then we resolve the conflicts sequentially on the CPU. As we know, a graph $G(V,E)$ with maximum degree $\Delta$ can be coloured with atmost $\Delta+1$ colours, RANDCOLOUR is an attempt at a fast $\Delta+1$ colouring using GPU. \verb+RANDCOLOUR+ algorithm produces a worst colour quality of $\Delta+1$ and was aimed at a fast colouring compromising colour quality in the process.
+We started with a random colouring and conflict resolution based algorithm which we call \verb+RANDCOLOUR+. This is an algorithm pertaining to the category covered by Algorithm \ref{SpecColouring}. We first speculate the colours randomly and then find the conflicts on the GPU, both of which are done in parallel. Then we resolve the conflicts sequentially on the CPU. As we know, a graph $G(V,E)$ with maximum degree $\Delta$ can be coloured with atmost $\Delta+1$ colours, RANDCOLOUR is an attempt at a fast $\Delta+1$ colouring using GPU. \verb+RANDCOLOUR+ algorithm produces a worst colour quality of $\Delta+1$ and was aimed at a fast colouring compromising colour quality in the process. 
 
 \begin{algorithm}
 \caption{RANDCOLOUR}\label{randcolour}
@@ -644,6 +644,9 @@ We started with a random colouring and conflict resolution based algorithm which
 \end{algorithm}
 
 The scheme is given in Algorithm \ref{randcolour}. First we find $\Delta$, the maximum degree of the graph (Line \ref{8.4}). This task can be done in parallel on the GPU. With UCSR of the graph, the degree of a vertex $i+1$ is given by \verb|offsetArray[i+1]|$-$\verb+offsetArray[i]+. Once we have $\Delta$, we use \verb+cuRAND+ library \citep{nVidia:cuRAND}, which generates random numbers really fast using CUDA capable GPUs, to colour the graph with random integers ranging from 1 to $\Delta+1$ (Lines \ref{8.5} and \ref{8.6}). Once this colouring is over, we try to find out the conflicts that were inflicted. This can be done in parallel on the GPU too (Lines \ref{8.8} to \ref{8.12}). We mark all the conflicts and then resolve them on the CPU using a greedy approach (Lines \ref{8.14} and \ref{8.15}).
+
+In RANDCOLOUR, we try to colour a graph with $\Delta + 1$ colours. Brook's theorem \citep{Brooks1987} tells us that except for odd cycles, $\Delta$ colours suffice. So, we can possibly save on a colour that way by just using 
+$\Delta$ colours during the initial speculation phase.
 
 \subsection{MINMAXCOLOUR: Maximal VIS And Colouring}
 We then tried a version of the algorithm put forward by \citet{Jones:1993:PGC:153109.153119} which uses some of the suggestions by \citet{cohenefficient}. As discussed earlier, the algorithm by \citet{Jones:1993:PGC:153109.153119} is based on the category covered by Algorithm \ref{VISColouring}. So, here, we try to find Maximal Vertex Independent Sets and then colour them in parallel. 
@@ -1251,10 +1254,59 @@ We then tried to evaluate the parallel and sequential components of the runtime.
 \end{figure}
 
 \subsection{MAXCOLOUR}
-We tried to implement Algorithm \ref{Jones}, which, as we discussed earlier, finds a Maximal VIS (Algorithm \ref{Luby}) and colours that set in each iteration. We call this implementation MAXCOLOUR. The runtime and the number of colours used by MAXCOLOUR for our test graphs are tabulated in table.
+We tried to implement Algorithm \ref{Jones}, which, as we discussed earlier, finds a Maximal VIS (Algorithm \ref{Luby}) and colours that set in each iteration. We call this implementation MAXCOLOUR. The runtime and the number of colours used by MAXCOLOUR for our test graphs are tabulated in Table \ref{maxTable}.
+
+\begin{table}[]
+\centering
+
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & Runtime (ms) & No. of Colours Used \\ \hline
+amazon                  & 8.47027      & 20                  \\ \hline
+as-skitter\_m           & 2131.9       & 313                 \\ \hline
+com-dblp.ungraph\_m     & 28.1163      & 112                 \\ \hline
+com-lj.ungraph\_m       & 1691.93      & 449                 \\ \hline
+com-youtube.ungraph     & 461.461      & 203                 \\ \hline
+googleGraph             & 188.109      & 49                  \\ \hline
+higgs-social\_network   & 3682.62      & 530                 \\ \hline
+roadNet-CA\_m           & 5.62559      & 13                  \\ \hline
+roadNet-PA\_m           & 3.29859      & 13                  \\ \hline
+roadNet-TX\_m           & 4.07131      & 13                  \\ \hline
+soc-pokec-relationships & 543.96       & 194                 \\ \hline
+twitter\_combined\_m2   & 168.604      & 214                 \\ \hline
+web-BerkStan            & 3038.64      & 234                 \\ \hline
+wiki-Talk\_m            & 1943.2       & 430                 \\ \hline
+\end{tabular}
+\caption{MAXCOLOUR}
+\label{maxTable}
+\end{table}
 
 \subsection{MINMAXCOLOUR}
-We then implemented Algorithm \ref{MinMaxAlgo}, which, as we discussed earlier, finds two Maximal VIS (Algorithm \ref{MinMaxSet}) and colours those sets with different colours in each iteration. The runtime and the number of colours used by MINMAXCOLOUR for our test graphs are tabulated in table.
+We then implemented Algorithm \ref{MinMaxAlgo}, which, as we discussed earlier, finds two Maximal VIS (Algorithm \ref{MinMaxSet}) and colours those sets with different colours in each iteration. The runtime and the number of colours used by MINMAXCOLOUR for our test graphs are tabulated in Table \ref{minTable}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & Runtime (ms) & No. of Colours Used \\ \hline
+amazon                  & 6.12398      & 19                  \\ \hline
+as-skitter\_m           & 1662.08      & 314                 \\ \hline
+com-dblp.ungraph\_m     & 16.3007      & 104                 \\ \hline
+com-lj.ungraph\_m       & 1171.55      & 450                 \\ \hline
+com-youtube.ungraph     & 337.952      & 202                 \\ \hline
+googleGraph             & 116.477      & 53                  \\ \hline
+higgs-social\_network   & 3000.45      & 542                 \\ \hline
+roadNet-CA\_m           & 5.0902       & 13                  \\ \hline
+roadNet-PA\_m           & 2.92264      & 12                  \\ \hline
+roadNet-TX\_m           & 3.65121      & 12                  \\ \hline
+soc-pokec-relationships & 404.37       & 178                 \\ \hline
+twitter\_combined\_m2   & 121.206      & 212                 \\ \hline
+web-BerkStan            & 2067.15      & 239                 \\ \hline
+wiki-Talk\_m            & 1313.37      & 417                 \\ \hline
+\end{tabular}
+\caption{MINMAXCOLOUR}
+\label{minTable}
+\end{table}
 
 \subsection{RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR}
 We now compare the three implementations discussed. The runtime comparison in plotted in Figure \ref{fig:chart4}. RANDCOLOUR clearly outperforms the other two in terms of runtime. This is in lines with our idea for RANDCOLOUR- a quick algorithm for $\Delta+1$ colouring. We can also see that MINMAXCOLOUR outperforms MAXCOLOUR in all cases. 
@@ -1356,10 +1408,60 @@ As we can clearly see, One Time Propagation almost doubles the runtime of MAXCOL
 
 \section{Incremental Parallel Graph Colouring on GPU}
 \subsection{2-Thread Incremental Colouring}
-We implemented Algorithm \ref{twoThreadIncremental}, which, as we discussed earlier, uses two threads to handle a newly added edge. Number of edges incremented and the respective runtime by 2-Thread Incremental Colouring for our test graphs are tabulated in table.
+We implemented Algorithm \ref{twoThreadIncremental}, which, as we discussed earlier, uses two threads to handle a newly added edge. Number of edges incremented and the respective runtime by 2-Thread Incremental Colouring for our test graphs are tabulated in Table \ref{twoInc}.
+
+\clearpage
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & No. of Edge Additions & Incremental Runtime (ms) \\ \hline
+amazon                  & 30018                 & 808.10                   \\ \hline
+as-skitter\_m           & 29724                 & 34399.40                 \\ \hline
+com-dblp.ungraph\_m     & 30122                 & 1057.09                  \\ \hline
+com-lj.ungraph\_m       & 30032                 & 2919.95                  \\ \hline
+com-youtube.ungraph     & 29802                 & 12169.20                 \\ \hline
+googleGraph             & 29877                 & 4739.38                  \\ \hline
+higgs-social\_network   & 29752                 & 55435.40                 \\ \hline
+roadNet-CA\_m           & 29819                 & 772.53                   \\ \hline
+roadNet-PA\_m           & 30111                 & 785.72                   \\ \hline
+roadNet-TX\_m           & 30013                 & 782.08                   \\ \hline
+soc-pokec-relationships & 29963                 & 2226.85                  \\ \hline
+twitter\_combined\_m2   & 30164                 & 3926.37                  \\ \hline
+wiki-Talk\_m            & 29806                 & 61138.70                 \\ \hline
+\end{tabular}
+\caption{2-Thread Incremental Colouring}
+\label{twoInc}
+\end{table}
 
 \subsection{Many Thread Incremental Colouring}
-We implemented Algorithm \ref{manythread}, which, as we discussed earlier, tries to parallelize the 2-Thread Incremental Colouring. Number of edges incremented and the respective runtime by Many Thread Incremental Colouring for our test graphs are tabulated in table.
+We implemented Algorithm \ref{manythread}, which, as we discussed earlier, tries to parallelize the 2-Thread Incremental Colouring. Number of edges incremented and the respective runtime by Many Thread Incremental Colouring for our test graphs are tabulated in Table \ref{manyInc}.
+
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & No. of Edge Additions & Incremental Runtime (ms) \\ \hline
+amazon                  & 30018                 & 1030.13                  \\ \hline
+as-skitter\_m           & 29724                 & 387355.00                \\ \hline
+com-dblp.ungraph\_m     & 30122                 & 2688.64                  \\ \hline
+com-lj.ungraph\_m       & 30032                 & 16552.40                 \\ \hline
+com-youtube.ungraph     & 29802                 & 72534.60                 \\ \hline
+googleGraph             & 29877                 & 15921.50                 \\ \hline
+higgs-social\_network   & 29752                 & 392153.00                \\ \hline
+roadNet-CA\_m           & 29819                 & 386.82                   \\ \hline
+roadNet-PA\_m           & 30111                 & 399.70                   \\ \hline
+roadNet-TX\_m           & 30013                 & 388.68                   \\ \hline
+soc-pokec-relationships & 29963                 & 8345.85                  \\ \hline
+twitter\_combined\_m2   & 30164                 & 59531.60                 \\ \hline
+wiki-Talk\_m            & 29806                 & 508009.00                \\ \hline
+\end{tabular}
+\caption{Many Thread Incremental Colouring}
+\label{manyInc}
+\end{table}
 
 \subsection{2-Thread Incremental vs Many Thread Incremental}
 The 2-Thread model (Algorithm \ref{twoThreadIncremental}) uses only two threads per addition of a new edge. Whereas, the Many Thread model (Algorithm \ref{manythread}) tries to maximize the number of threads used by clubbing upto 1024 newly added edges together for processing. So, the Many Thread Model tries to decrease the number of kernel calls, increase the number of threads spawned and increase parallelism. But this comes at a cost. The process by which Many Thread model clubs different edges together for parallel processing is computation intensive.
@@ -1482,10 +1584,58 @@ As discussed earlier, Wave Propagation comes with its own overhead on runtime. W
 
 \section{Decremental Parallel Graph Colouring on GPU}
 \subsection{2-Thread Decremental Colouring}
-We implemented Algorithm \ref{twoThreadDecremental}, which, as we discussed earlier, uses two threads to handle a newly deleted edge. Number of edges decremented and the respective runtime by 2-Thread Decremental Colouring for our test graphs are tabulated in table.
+We implemented Algorithm \ref{twoThreadDecremental}, which, as we discussed earlier, uses two threads to handle a newly deleted edge. Number of edges decremented and the respective runtime by 2-Thread Decremental Colouring for our test graphs are tabulated in Table \ref{twoDec}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & No. of Edge Deletions & Decremental Runtime (ms) \\ \hline
+amazon                  & 30018                 & 771.47                   \\ \hline
+as-skitter\_m           & 29724                 & 82801.70                 \\ \hline
+com-dblp.ungraph\_m     & 30122                 & 1215.35                  \\ \hline
+com-lj.ungraph\_m       & 30032                 & 6378.97                  \\ \hline
+com-youtube.ungraph     & 29802                 & 28674.60                 \\ \hline
+googleGraph             & 29877                 & 10598.10                 \\ \hline
+higgs-social\_network   & 29752                 & 139029.00                \\ \hline
+roadNet-CA\_m           & 29819                 & 303.67                   \\ \hline
+roadNet-PA\_m           & 30111                 & 306.49                   \\ \hline
+roadNet-TX\_m           & 30013                 & 304.56                   \\ \hline
+soc-pokec-relationships & 29963                 & 5117.94                  \\ \hline
+twitter\_combined\_m2   & 30164                 & 8654.66                  \\ \hline
+web-BerkStan            & 29922                 & 233072.00                \\ \hline
+wiki-Talk\_m            & 29806                 & 157034.00                \\ \hline
+\end{tabular}
+\caption{2-Thread Decremental Colouring}
+\label{twoDec}
+\end{table}
 
 \subsection{Many Thread Decremental Colouring}
-We implemented Algorithm \ref{manythreadDecremental}, which, as we discussed earlier, tries to remove a set of edges in parallel. Number of edges decremented and the respective runtime by Many Thread Decremental Colouring for our test graphs are tabulated in table.
+We implemented Algorithm \ref{manythreadDecremental}, which, as we discussed earlier, tries to remove a set of edges in parallel. Number of edges decremented and the respective runtime by Many Thread Decremental Colouring for our test graphs are tabulated in Table \ref{manyDec}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Graph                   & No. of Edge Deletions & Decremental Runtime (ms) \\ \hline
+amazon                  & 30018                 & 0.45                     \\ \hline
+as-skitter\_m           & 29724                 & 14.32                    \\ \hline
+com-dblp.ungraph\_m     & 30122                 & 0.37                     \\ \hline
+com-lj.ungraph\_m       & 30032                 & 5.87                     \\ \hline
+com-youtube.ungraph     & 29802                 & 11.79                    \\ \hline
+googleGraph             & 29877                 & 3.68                     \\ \hline
+higgs-social\_network   & 29752                 & 34.57                    \\ \hline
+roadNet-CA\_m           & 29819                 & 0.24                     \\ \hline
+roadNet-PA\_m           & 30111                 & 0.22                     \\ \hline
+roadNet-TX\_m           & 30013                 & 0.23                     \\ \hline
+soc-pokec-relationships & 29963                 & 6.35                     \\ \hline
+twitter\_combined\_m2   & 30164                 & 2.44                     \\ \hline
+web-BerkStan            & 29922                 & 46.35                    \\ \hline
+wiki-Talk\_m            & 29806                 & 40.47                    \\ \hline
+\end{tabular}
+\caption{Many Thread Decremental Colouring}
+\label{manyDec}
+\end{table}
 
 \subsection{2-Thread Decremental vs Many Thread Decremental}
 The 2-Thread model (Algorithm \ref{twoThreadDecremental}) uses only two threads per deletion of a new edge. Whereas, the Many Thread model (Algorithm \ref{manythreadDecremental}) clubs many edges and deletes them together. The Many Thread Model maximises parallelism and calls the kernel only once. But it does no effort to improve the colouring unlike the 2-Thread Decremental model which tries to locally optimize colouring.
@@ -1627,8 +1777,24 @@ As discussed earlier, Wave Propagation comes with its own overhead on runtime. W
 \end{figure}
 
 \chapter{CONCLUSION AND FUTURE WORK}
+Our three approaches to parallel graph colouring on GPUs delivered expected results with RANDCOLOUR producing a very fast $\Delta+1$ colouring, as intended, and MAXCOLOUR and MINMAXCOLOUR producing much better colour quality at a compromised runtime. RANDCOLOUR performed at an average runtime of 52 ms with an average graph having 1.3 million vertices and 7.8 million edges. We have seen that lower Max Degree generally leads to higher number of conflicts in graphs of comparable dimensions and a higher number of conflicts imply a larger sequential component of runtime, which in general, is larger than the parallel component of runtime. MINMAXCOLOUR beats MAXCOLOUR in terms of runtime in all our experiments possibly owing to lesser number of iterations the algorithm endures. MAXCOLOUR performed at an average runtime of 992 ms and MINMAXCOLOUR at 730 ms. So, even though MINMAXCOLOUR and MAXCOLOUR produces similar colour quality, we prefer MINMAXCOLOUR owing to its reduced runtime. Both MAXCOLOUR and MINMAXCOLOUR used 198 colours on average compared to 24296 colours by RANDCOLOUR. We have also seen how One Time Propagation can significantly improve the colouring produced by MINMAXCOLOUR, which in order to save on computation brings in 2 new colours in every iteration. One Time Propagation comes at a cost in terms of runtime and it depends upon our application for the algorithm to decide if we should go for a better colour quality with One Time Propagation, thus compromising on runtime, or not. One Time Propagation improves the colouring produced by MINMAXCOLOUR by 60\% on an average.
 
+For incremental colouring, we tried two approaches namely the 2-Thread Incremental Model and the Many Thread Incremental Model. As expected, the Many Thread Incremental Model involves much lesser kernel calls compared to the 2-Thread Incremental Model. But whatever this saves on runtime is negligible compared to the runtime cost finding independent edges to be processed in parallel inflicts. The Many Thread Incremental Model in its current form is impractically slow compared to the 2-Thread Model even though both algorithms produce similar colour quality. We also saw that One Time Propagation doesn't have much effect on the colour quality produced by 2-Thread Incremental Colouring as the 2-Thread algorithm itself tries to locally optimize the colouring every time and edge is added. In our experiments, One Time Propagation on an average bettered the colouring produced by 2 colours at an average run time cost of 727 ms. The payout doesn't seem to justify its cost. So, for incremental colouring, the 2-Thread Incremental Model without One Time Propagation performed the best in our experiments with an average runtime of 196 ms per 1000 edge insertions.
 
+For decremental colouring, we tried two approaches namely the 2-Thread Decremental Model and the Many Thread Decremental Model. In terms of run time the Many Thread Decremental Model outperformed the 2-Thread Decremental Model by a huge margin, as expected, as it involved very less computation and massive parallelism. But the Many Thread Decremental Model doesn't improve existing colouring unlike the local optimization of colouring carried out by the 2-Thread Decremental Model. So, the Many Thread Decremental Model is dependent on some form of propagation to possibly improve the colouring as edges get deleted. We saw that the Many Thread Decremental Colouring is extremely fast with an average runtime of 0.4 ms per 1000 deletions of edges. Compared to this the 2-Thread Decremental Model takes 440 ms per 1000 deletions of edges. But the colouring produced by 2-Thread Decremental Model is superior to that of the Many Thread Model. So, we employ One Time Propagation for the Many Thread Model. We saw that the Many Thread Decremental Colouring followed by One Time Propagation performs equally or slightly better than the 2-Thread Decremental Model in terms of colour quality. Even with the One Time Propagation cost, our Many Thread Decremental Model performs really well with an average runtime of 24 ms per 1000 deletions of edges with an average 12\% improvement in colouring.
+
+We also tried Wave Propagation which we expected to be really computation intensive. From all our experiments with Wave Propagation, we could see that Wave Propagation doesn't significantly improve the colouring compared to One Time Propagation and performs significantly slower compared to One Time Propagation. In the case of Many Thread Decremental Model, in our experiments, Wave Propagation took a whooping 11745 ms to run compared to 197 ms by One Time Propagation. Similar results were achieved with incremental models also. So, in its current state, Wave Propagation is impractical to use.
+
+\section{Future Work}
+Parallel incremental and decremental graph colouring is a not so explored space as far as the author understands. Atleast not in the realm of GPGPUs. So, our work was an attempt at exploring and understanding the problem. Our humble attempt at solving the problem has many shortcomings which can possibly be improved with further research.
+
+Our CUDA implementations are not thoroughly optimized. Optimizing our CUDA programs might help us to make the maximum use underlying NVIDIA GPUs. Also, our implementations might involve warp divergences. We can possibly improve the performance by employing a warp-centric approach to our problem as proposed by \citet{Hong:2011:ACG:2038037.1941590}.
+
+Our incremental approach uses only two threads at a time. It could be better if we can exploit the massive parallelism offered by the GPUs by spawning more threads. Our attempt at this, the Many Threads model, is impractically slow. We can possibly optimize it by parallelizing the phase where we find non-conflicting edges which is currently the bottleneck. More research needs to be done in order to increase the parallelism involved in incremental colouring.
+
+Our approach to Wave Propagation is extremely slow and it seems to perform only marginally better than One Time Propagation. Probably there could be other approaches faster than One Time Propagation to propagate colouring information across the graph.
+
+ 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

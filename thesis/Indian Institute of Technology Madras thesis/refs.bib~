@@ -465,6 +465,40 @@ issn={0160-5682},
 url={http://dx.doi.org/10.1057/jors.1990.166}
 }
 
+﻿@Article{ref1,
+author="Fleurent, Charles
+and Ferland, Jacques A.",
+title="Genetic and hybrid algorithms for graph coloring",
+journal="Annals of Operations Research",
+volume="63",
+number="3",
+pages="437--461",
+abstract="Some genetic algorithms are considered for the graph coloring problem. As is the case for other combinatorial optimization problems, pure genetic algorithms are outperformed by neighborhood search heuristic procedures such as tabu search. Nevertheless, we examine the performance of several hybrid schemes that can obtain solutions of excellent quality. For some graphs, we illustrate that genetic operators can fulfill long-term strategic functions for a tabu search implementation that is chiefly founded on short-term memory strategies.",
+issn="1572-9338",
+doi="10.1007/BF02125407",
+url="http://dx.doi.org/10.1007/BF02125407"
+}
+
+@article{Hong:2011:ACG:2038037.1941590,
+ author = {Hong, Sungpack and Kim, Sang Kyun and Oguntebi, Tayo and Olukotun, Kunle},
+ title = {Accelerating CUDA Graph Algorithms at Maximum Warp},
+ journal = {SIGPLAN Not.},
+ issue_date = {August 2011},
+ volume = {46},
+ number = {8},
+ month = feb,
+ year = {2011},
+ issn = {0362-1340},
+ pages = {267--276},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/2038037.1941590},
+ doi = {10.1145/2038037.1941590},
+ acmid = {1941590},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {cuda, gpgpu, parallel graph algorithms},
+} 
+
 
 
 

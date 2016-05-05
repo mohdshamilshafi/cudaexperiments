@@ -75,14 +75,15 @@
 \contentsline {subsection}{\numberline {6.3.6}One Time Propagation}{51}{subsection.6.3.6}
 \contentsline {section}{\numberline {6.4}Incremental Parallel Graph Colouring on GPU}{52}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}2-Thread Incremental Colouring}{52}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Many Thread Incremental Colouring}{52}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}2-Thread Incremental vs Many Thread Incremental}{53}{subsection.6.4.3}
-\contentsline {subsection}{\numberline {6.4.4}One Time Propagation}{54}{subsection.6.4.4}
-\contentsline {subsection}{\numberline {6.4.5}One Time Propagation vs Wave Propagation}{56}{subsection.6.4.5}
-\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{57}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}2-Thread Decremental Colouring}{57}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Many Thread Decremental Colouring}{57}{subsection.6.5.2}
-\contentsline {subsection}{\numberline {6.5.3}2-Thread Decremental vs Many Thread Decremental}{58}{subsection.6.5.3}
-\contentsline {subsection}{\numberline {6.5.4}One Time Propagation}{59}{subsection.6.5.4}
-\contentsline {subsection}{\numberline {6.5.5}One Time Propagation vs Wave Propagation}{62}{subsection.6.5.5}
-\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{72}{chapter.7}
+\contentsline {subsection}{\numberline {6.4.2}Many Thread Incremental Colouring}{57}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}2-Thread Incremental vs Many Thread Incremental}{58}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}One Time Propagation}{59}{subsection.6.4.4}
+\contentsline {subsection}{\numberline {6.4.5}One Time Propagation vs Wave Propagation}{61}{subsection.6.4.5}
+\contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{62}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}2-Thread Decremental Colouring}{62}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Many Thread Decremental Colouring}{63}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}2-Thread Decremental vs Many Thread Decremental}{63}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.4}One Time Propagation}{65}{subsection.6.5.4}
+\contentsline {subsection}{\numberline {6.5.5}One Time Propagation vs Wave Propagation}{68}{subsection.6.5.5}
+\contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{75}{chapter.7}
+\contentsline {section}{\numberline {7.1}Future Work}{77}{section.7.1}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -58,6 +58,13 @@
 \newblock ISSN 0362-1340.
 \newblock \urlprefix\url{http://doi.acm.org/10.1145/989393.989424}.
 
+\bibitem[{Brooks(1987)}]{Brooks1987}
+{\bf Brooks, R.~L.}, {\em Classic Papers in Combinatorics\/}, chapter On
+  Colouring the Nodes of a Network.
+\newblock Birkh{\"a}user Boston, Boston, MA, 1987.
+\newblock ISBN 978-0-8176-4842-8, 118--121.
+\newblock \urlprefix\url{http://dx.doi.org/10.1007/978-0-8176-4842-8_7}.
+
 \bibitem[{\c{C}Ataly\"{u}Rek {\em et~al.\/}(2012)\c{C}Ataly\"{u}Rek, Feo,
   Gebremedhin, Halappanavar, and Pothen}]{CAtalyuRek:2012:GCA:2396901.2397093}
 {\bf \c{C}Ataly\"{u}Rek, {\i}.~V.}, {\bf J.~Feo}, {\bf A.~H. Gebremedhin}, {\bf
@@ -102,6 +109,15 @@
 {\bf Herzberg, A.~M.} and {\bf M.~R. Murty} (2007).
 \newblock Sudoku squares and chromatic polynomials.
 \newblock {\em Notices of the AMS\/}, {\bf 54}(6), 708--717.
+
+\bibitem[{Hong {\em et~al.\/}(2011)Hong, Kim, Oguntebi, and
+  Olukotun}]{Hong:2011:ACG:2038037.1941590}
+{\bf Hong, S.}, {\bf S.~K. Kim}, {\bf T.~Oguntebi}, and {\bf K.~Olukotun}
+  (2011).
+\newblock Accelerating cuda graph algorithms at maximum warp.
+\newblock {\em SIGPLAN Not.\/}, {\bf 46}(8), 267--276.
+\newblock ISSN 0362-1340.
+\newblock \urlprefix\url{http://doi.acm.org/10.1145/2038037.1941590}.
 
 \bibitem[{Hovland(2008)}]{hovland2008latency}
 {\bf Hovland, R.~J.} (2008).
