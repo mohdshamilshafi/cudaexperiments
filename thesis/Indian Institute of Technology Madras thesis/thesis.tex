@@ -175,6 +175,8 @@ There are other forms of vertex colouring where additional conditions than the o
     \label{fig:colouring}
 \end{figure}
 
+
+
 \subsection{Chromatic Number $ \chi(G) $}
 A graph \textit{G} is said to \textit{k-}colourable, if \textit{G} can be coloured using \textit{k} colours. For example, from the \textit{Four Colour Theorem} \citep{appel1977, thomas98, wilson14}, we have that all planar graphs are 4-colourable. Also, all bipartite graphs are 2-colourable.
  
@@ -452,6 +454,8 @@ Here, we discuss an algorithm presented by \citet{CPE:CPE528} which instead of f
 This involves an initial graph partitioning phase, during which we partition the graph into \textit{n} parts, where \textit{n} is the number of processors/cores we have. Each processor/core takes up each partition and then colours them using some sequential colouring method. At the end of this phase 1, we thus have a colouring with possible conflicts at the partition boundaries. In phase 2, we identify these conflicts in parallel. In phase 3, we re-colour these vertices with conflicts sequentially. The scheme is presented in Algorithm \ref{spec1}.
 
 In Line \ref{6.3}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} \: to \: V_{n}$. In Lines \ref{6.5} and \ref{6.6}, each thread colours its partition using some sequential colouring algorithm. In Lines \ref{6.8} to \ref{6.12}, the set of vertices with colouring conflicts, \verb+conflictSet+, is found. In Lines \ref{6.14} and \ref{6.15}, the conflicts are resolved by recolouring the vertices in \verb+conflictSet+ using some sequential colouring algorithm.
+
+
 
 \begin{algorithm}
 \caption{Partitioning, Speculation and Conflict Resolution}\label{spec1}
@@ -1093,6 +1097,8 @@ This approach might be a little time consuming as we have to keep on adding and 
 \subsubsection{Termination}
 This algorithm is guaranteed to terminate. In each wave, the processed vertices get removed from the process queue. Neighbours of vertices are added to the process queue only if they improve their own colouring. Colour can take only a minimum value of 1. So, a vertex can only improve its own colouring up until value 1. And if it doesn't improve its colouring in a wave, its neighbours are not added to the process queue. So, the process queue is guaranteed to get emptied after several waves of additions and deletions of vertices. But this wave propagation algorithm could be too slow for large graphs with vertices of very high degrees. In each wave, for every bunch of independent vertices who are processed, if some of them improves their colouring, then we will be adding all their neighbours to the process queue. This number of vertices added can easily be higher than the number of vertices processed. So, the process queue will become bigger and bigger until it reaches a point when most of the vertices in the list are already at their best colouring. And from that point, the process queue shrinks until becoming empty, at which point the algorithm terminates. 
 
+
+
 \chapter{EXPERIMENTAL EVALUATION}
 \section{Experimental Setup}
 Our experiments were run on a computing setup based on a $Intel(R) \: Xeon(R) \: CPU \: $ \verb+E5-2650 v2+ processor with \verb+32 cores+ at a clock speed of \verb+2.60 Ghz+. The setup was equipped with 8 $NVIDIA \: TESLA \: K40c$ graphics cards each with \verb+12 GB+ of $GDDR5$ memory. Each of these $K40c$ graphics cards has 15 SMs (Streaming Multiprocessors) with each SM having 192 $CUDA$ cores taking the total count of $CUDA$ cores to 2880. Each of these $K40c$ devices has a peak single precision computing capacity of 4.29 Tflops.
@@ -1215,33 +1221,58 @@ In most of our experiments, we consider only 14 large graphs with $m > 900000$.
 \end{table}
 
 \section{Parallel Graph Colouring on GPU}
+\subsection{RANDCOLOUR}
+We first evaluated the performance of our RANDCOLOUR approach as described in Algorithm \ref{randcolour}. As discussed earlier, RANDCOLOUR involves a parallel phase where it randomly colours the graph and finds all the conflicts and a sequential phase where it resolves all the conflicts.
+
+First of all, we found some correlation between the Max Degree of a graph and the number of conflicts that RANDCOLOUR endures while colouring. This is plotted in Figure \ref{fig:chart3}. The two trend graphs, which are based on linear regression of the given data, show that, in general, graphs with higher Max Degrees endure a lesser number of conflicts. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest3.pdf}
+    \caption{
+        RANDCOLOUR: Max Degree vs No. of Conflicts
+    }
+    \label{fig:chart3}
+\end{figure}
+
+We then tried to evaluate the parallel and sequential components of the runtime. This is plotted in Figure \ref{fig:chart2}. Here we notice that, in general, the sequential component of runtime is larger than the parallel component. This trend is reversed for the graphs with high Max Degrees. From Figure \ref{fig:chart3}, we have that the number of conflicts endured by such graphs with very high Max Degrees is very small. So, the sequential component of RANDCOLOUR's runtime becomes smaller as the number of conflicts decrease, that is, as the Max Degree of the graph increases. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest2.pdf}
+    \caption{
+        RANDCOLOUR: Parallel and Sequential Components of Runtime
+    }
+    \label{fig:chart2}
+\end{figure}
+
+\subsection{MAXCOLOUR}
+We tried to implement Algorithm \ref{Jones}, which, as we discussed earlier, finds a Maximal VIS (Algorithm \ref{Luby}) and colours that set in each iteration. We call this implementation MAXCOLOUR. The runtime and the number of colours used by MAXCOLOUR for our test graphs are tabulated in table.
+
+\subsection{MINMAXCOLOUR}
+We then implemented Algorithm \ref{MinMaxAlgo}, which, as we discussed earlier, finds two Maximal VIS (Algorithm \ref{MinMaxSet}) and colours those sets with different colours in each iteration. The runtime and the number of colours used by MINMAXCOLOUR for our test graphs are tabulated in table.
+
+\subsection{RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR}
+We now compare the three implementations discussed. The runtime comparison in plotted in Figure \ref{fig:chart4}. RANDCOLOUR clearly outperforms the other two in terms of runtime. This is in lines with our idea for RANDCOLOUR- a quick algorithm for $\Delta+1$ colouring. We can also see that MINMAXCOLOUR outperforms MAXCOLOUR in all cases. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio=true]{chartNewest4.pdf}
+    \caption{
+        RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR: Runtime
+    }
+    \label{fig:chart4}
+\end{figure}
+\subsection{MAXCOLOUR vs MINMAXCOLOUR}
+\subsection{One Time Propagation}
+
 \section{Incremental Parallel Graph Colouring on GPU}
 \section{Decremental Parallel Graph Colouring on GPU}
 \chapter{CONCLUSION AND FUTURE WORK}
-\begin{figure}[h]
-    \centering
-    \includegraphics[angle=90,origin=c,width=\textwidth, keepaspectratio=true]{chart1New.pdf}
-    \caption{
-        \textbf{Case 5:} $p < x=y$
-    }
-    \label{fig:case5}
-\end{figure}
-\begin{figure}[h]
-    \centering
-    \includegraphics[angle=90,origin=c,width=\textwidth, keepaspectratio=true]{chart1New.pdf}
-    \caption{
-        \textbf{Case 5:} $p < x=y$
-    }
-    \label{fig:case5}
-\end{figure}
-\begin{figure}[h]
-    \centering
-    \includegraphics[angle=90,origin=c,width=\textwidth, keepaspectratio=true]{chart1New.pdf}
-    \caption{
-        \textbf{Case 5:} $p < x=y$
-    }
-    \label{fig:case5}
-\end{figure}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices.
 

@@ -55,6 +55,12 @@
 \BOOKMARK [1][-]{section.6.1}{Experimental Setup}{chapter.6}% 55
 \BOOKMARK [1][-]{section.6.2}{Test Data}{chapter.6}% 56
 \BOOKMARK [1][-]{section.6.3}{Parallel Graph Colouring on GPU}{chapter.6}% 57
-\BOOKMARK [1][-]{section.6.4}{Incremental Parallel Graph Colouring on GPU}{chapter.6}% 58
-\BOOKMARK [1][-]{section.6.5}{Decremental Parallel Graph Colouring on GPU}{chapter.6}% 59
-\BOOKMARK [0][-]{chapter.7}{CONCLUSION AND FUTURE WORK}{}% 60
+\BOOKMARK [2][-]{subsection.6.3.1}{RANDCOLOUR}{section.6.3}% 58
+\BOOKMARK [2][-]{subsection.6.3.2}{MAXCOLOUR}{section.6.3}% 59
+\BOOKMARK [2][-]{subsection.6.3.3}{MINMAXCOLOUR}{section.6.3}% 60
+\BOOKMARK [2][-]{subsection.6.3.4}{RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR}{section.6.3}% 61
+\BOOKMARK [2][-]{subsection.6.3.5}{MAXCOLOUR vs MINMAXCOLOUR}{section.6.3}% 62
+\BOOKMARK [2][-]{subsection.6.3.6}{One Time Propagation}{section.6.3}% 63
+\BOOKMARK [1][-]{section.6.4}{Incremental Parallel Graph Colouring on GPU}{chapter.6}% 64
+\BOOKMARK [1][-]{section.6.5}{Decremental Parallel Graph Colouring on GPU}{chapter.6}% 65
+\BOOKMARK [0][-]{chapter.7}{CONCLUSION AND FUTURE WORK}{}% 66

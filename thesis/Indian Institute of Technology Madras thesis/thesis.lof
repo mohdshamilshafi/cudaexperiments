@@ -20,7 +20,7 @@
 \contentsline {figure}{\numberline {4.9}{\ignorespaces 1-step propagation after adding a new edge and processing it. \relax }}{38}{figure.caption.34}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces RANDCOLOUR: Max Degree vs No. of Conflicts \relax }}{47}{figure.caption.39}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces RANDCOLOUR: Parallel and Sequential Components of Runtime \relax }}{48}{figure.caption.40}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces RANDCOLOUR vs MAXCOLOUR vs MINMAXCOLOUR: Runtime \relax }}{48}{figure.caption.41}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces \textbf {Case 5:} $p < x=y$ \relax }}{48}{figure.caption.39}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces \textbf {Case 5:} $p < x=y$ \relax }}{49}{figure.caption.40}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \textbf {Case 5:} $p < x=y$ \relax }}{49}{figure.caption.41}
