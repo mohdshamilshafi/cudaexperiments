@@ -68,9 +68,7 @@ Date: 11 May, 2016
 % Acknowledgements
 \acknowledgements
 
-Thanks to all those who made \verb+Shamil+ what he is today.
-\\
-Thank God.
+Thanks to Dr. Rupesh Nasre for guiding me through this work, for encouraging me throughout and for enlightening me through difficult times. Thanks to my faculty advisor, Dr. V. Kamakoti for his guidance. Thanks to P.G. Senapathy Center for Computing Resource, IIT Madras and Dr. Rupesh Nasre, again, for providing me access to the GPU server. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstract
 
@@ -351,7 +349,7 @@ Phase 1 of the Algorithm \ref{SpecColouring}, \textit{speculation}, is done in L
 \end{algorithmic}
 \end{algorithm}
 \section{Algorithms}
-In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section. We also concern ourselves with only those parallel algorithms which are scalable. Hence algorithms like Parallel First Fit graph colouring, the parallel version of the First Fit colouring heuristic, are not considered. 
+In this section, we will discuss some of the existing graph colouring algorithms belonging to both categories, Vertex Independent Set and Colouring and Speculation and Conflict Resolution, as discussed in the previous section. We also concern ourselves with only those parallel algorithms which are scalable. Hence algorithms like Parallel First Fit graph colouring \citep{zamanparallel}, the parallel version of the First Fit colouring heuristic \citep{JGT:JGT3190120212}, are not considered. 
 \subsection{Sequential Greedy Graph Colouring}
 We start with discussing a sequential graph colouring algorithm, one of the easiest, the Greedy Colouring algorithm. Many other algorithms, including many parallel graph colouring algorithms, are based on greedy colouring.
 

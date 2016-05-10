@@ -7,45 +7,46 @@ Warning--string name "march" is undefined
 --line 55 of file refs.bib
 Warning--can't use both author and editor fields in Brooks1987
 Warning--missing publisher in wilson14
-You've used 33 entries,
+Warning--empty journal in zamanparallel
+You've used 35 entries,
             2930 wiz_defined-function locations,
-            866 strings with 12346 characters,
-and the built_in function-call counts, 20415 in all, are:
-= -- 1556
-> -- 836
-< -- 27
-+ -- 296
-- -- 244
-* -- 1642
-:= -- 2993
-add.period$ -- 132
-call.type$ -- 33
-change.case$ -- 255
-chr.to.int$ -- 32
-cite$ -- 35
-duplicate$ -- 1712
-empty$ -- 1626
-format.name$ -- 332
-if$ -- 4016
+            879 strings with 12651 characters,
+and the built_in function-call counts, 21489 in all, are:
+= -- 1644
+> -- 869
+< -- 29
++ -- 307
+- -- 253
+* -- 1719
+:= -- 3155
+add.period$ -- 139
+call.type$ -- 35
+change.case$ -- 268
+chr.to.int$ -- 34
+cite$ -- 38
+duplicate$ -- 1804
+empty$ -- 1714
+format.name$ -- 347
+if$ -- 4227
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 329
-newline$ -- 200
-num.names$ -- 134
-pop$ -- 660
+missing$ -- 346
+newline$ -- 211
+num.names$ -- 142
+pop$ -- 702
 preamble$ -- 1
-purify$ -- 212
+purify$ -- 223
 quote$ -- 0
-skip$ -- 474
+skip$ -- 501
 stack$ -- 0
-substring$ -- 819
-swap$ -- 903
+substring$ -- 866
+swap$ -- 945
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 288
-warning$ -- 2
-while$ -- 132
+type$ -- 306
+warning$ -- 3
+while$ -- 140
 width$ -- 0
-write$ -- 488
-(There were 3 warnings)
+write$ -- 515
+(There were 4 warnings)

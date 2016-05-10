@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{35}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -104,6 +104,13 @@
 \newblock {\em SIGPLAN Not.\/}, {\bf 46}(8), 297--298.
 \newblock ISSN 0362-1340.
 \newblock \urlprefix\url{http://doi.acm.org/10.1145/2038037.1941597}.
+
+\bibitem[{Gyárfás and Lehel(1988)}]{JGT:JGT3190120212}
+{\bf Gyárfás, A.} and {\bf J.~Lehel} (1988).
+\newblock On-line and first fit colorings of graphs.
+\newblock {\em Journal of Graph Theory\/}, {\bf 12}(2), 217--227.
+\newblock ISSN 1097-0118.
+\newblock \urlprefix\url{http://dx.doi.org/10.1002/jgt.3190120212}.
 
 \bibitem[{Herzberg and Murty(2007)}]{herzberg2007sudoku}
 {\bf Herzberg, A.~M.} and {\bf M.~R. Murty} (2007).
@@ -241,6 +248,10 @@
   Solved\/}.
 \newblock 2014.
 \newblock ISBN 9780691158228 0691158223.
+
+\bibitem[{Zaman()}]{zamanparallel}
+{\bf Zaman, L.} ().
+\newblock Parallel first-fit graph coloring in java.
 
 \bibitem[{Zuckerman(2006)}]{Zuckerman:2006:LDE:1132516.1132612}
 {\bf Zuckerman, D.}, Linear degree extractors and the inapproximability of max
