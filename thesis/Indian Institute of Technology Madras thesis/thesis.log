@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  10 MAY 2016 22:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  11 MAY 2016 04:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,20 +1010,21 @@ Package pdftex.def Info: chartNewest34.pdf used on input line 1550.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [61 <./chartNewest11.pdf, page is rotated 270 degrees>]
-<chartNewest33.pdf, id=1497, 800.9925pt x 553.06625pt>
+<chartNewest33.pdf, id=1497, 771.88374pt x 474.77374pt>
 File: chartNewest33.pdf Graphic file (type pdf)
- <use chartNewest33.pdf>
+
+<use chartNewest33.pdf>
 Package pdftex.def Info: chartNewest33.pdf used on input line 1563.
-(pdftex.def)             Requested size: 416.83289pt x 287.81552pt.
+(pdftex.def)             Requested size: 416.83289pt x 256.38849pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest35.pdf, id=1498, 796.9775pt x 539.01375pt>
+<chartNewest35.pdf, id=1498, 790.955pt x 518.93875pt>
 File: chartNewest35.pdf Graphic file (type pdf)
  <use chartNewest35.pdf>
 Package pdftex.def Info: chartNewest35.pdf used on input line 1572.
-(pdftex.def)             Requested size: 416.83289pt x 281.90901pt.
+(pdftex.def)             Requested size: 416.83289pt x 273.48422pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1123,20 +1124,20 @@ Package pdftex.def Info: chartNewest36.pdf used on input line 1744.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [68 <./chartNewest35.pdf, page is rotated 270 degrees>]
-<chartNewest31.pdf, id=1621, 806.01125pt x 505.89pt>
+<chartNewest31.pdf, id=1621, 779.91376pt x 503.8825pt>
 File: chartNewest31.pdf Graphic file (type pdf)
  <use chartNewest31.pdf>
 Package pdftex.def Info: chartNewest31.pdf used on input line 1757.
-(pdftex.def)             Requested size: 416.83289pt x 261.6208pt.
+(pdftex.def)             Requested size: 416.83289pt x 269.30153pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest37.pdf, id=1622, 795.97375pt x 525.965pt>
+<chartNewest37.pdf, id=1622, 776.9025pt x 501.875pt>
 File: chartNewest37.pdf Graphic file (type pdf)
  <use chartNewest37.pdf>
 Package pdftex.def Info: chartNewest37.pdf used on input line 1766.
-(pdftex.def)             Requested size: 416.83289pt x 275.4295pt.
+(pdftex.def)             Requested size: 416.83289pt x 269.27776pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1259,7 +1260,7 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (93 pages, 6450245 bytes).
+Output written on thesis.pdf (93 pages, 6421596 bytes).
 PDF statistics:
  1945 PDF objects out of 2073 (max. 8388607)
  1639 compressed objects within 17 object streams
