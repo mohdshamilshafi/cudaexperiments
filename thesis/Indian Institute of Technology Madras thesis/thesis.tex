@@ -487,9 +487,9 @@ In Line \ref{6.3}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} 
 \end{algorithm}
 
 \subsubsection{3.4.3.2 \: \: Conflict Resolution: Partially in Parallel}
-We also have a GPU based graph partitioning, speculation and conflict resolution algorithm by \citet{Grosset:2011:EGC:2038037.1941597}. The graph is first partitioned in the CPU. The partitions are then coloured using some sequential colouring heuristics on the GPU. At the end of this phase, the potential conflicts are found in parallel at the boundary vertices. In the next iteration, these conflicts are recoloured in parallel possibly generating other conflicts. This process is continued until the total number of conflicts is below some threshold. Then the rest of the conflicts are resolved sequentially. This is depicted in Algorithm \ref{spec2}.
+We also have a GPU based graph partitioning, speculation and conflict resolution algorithm by \citet{Grosset:2011:EGC:2038037.1941597}. The graph is first partitioned in the CPU. The partitions are then coloured using some sequential colouring heuristics on the GPU. At the end of this phase, the potential conflicts are found in parallel at the boundary vertices. If the number of conflicts detected is above some threshold, in the next iteration, the graph partitions are recoloured in parallel and newly generated conflicts are detected. This process is continued until the total number of conflicts is below some threshold. Then the conflicts are resolved sequentially. This is depicted in Algorithm \ref{spec2}.
 
-In Line \ref{7.4}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} \: to \: V_{n}$ in the CPU. In Lines \ref{7.6} and \ref{7.7}, each thread colours its partition using some sequential colouring algorithm in the GPU. In Lines \ref{7.9} to \ref{7.13}, the set of vertices with colouring conflicts, \verb+conflictSet+, is found in the GPU. We then check if the number of conflicts is below some threshold in Line \ref{7.14} in which case we proceed straight to the \textit{Conflict Resolution} phase which happens in the CPU. If the number of conflicts is not below the threshold, we try to do a parallel conflict resolution in the GPU as in Lines \ref{7.17} and \ref{7.18} and then go back to the GPU \textit{Conflict Detection} phase at Line \ref{7.8}. In Lines \ref{7.21} and \ref{7.22}, the conflicts are resolved by recolouring the vertices in \verb+conflictSet+ using some sequential colouring algorithm in the CPU.
+In Line \ref{7.4}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} \: to \: V_{n}$ in the CPU. In Lines \ref{7.6} and \ref{7.7}, each thread colours its partition using some sequential colouring algorithm in the GPU. In Lines \ref{7.9} to \ref{7.13}, the set of vertices with colouring conflicts, \verb+conflictSet+, is found in the GPU. We then check if the number of conflicts is below some threshold in Line \ref{7.14} in which case we proceed straight to the \textit{Conflict Resolution} phase which happens in the CPU. If the number of conflicts is not below the threshold, we try to repeat the parallel colouring of the partitions and subsequent conflict resolution process on the GPU as in Line \ref{7.16} by going back to the GPU \textit{Partition Colouring} phase at Line \ref{7.5}. In Lines \ref{7.18} and \ref{7.19}, the conflicts are resolved by recolouring the vertices in \verb+conflictSet+ using some sequential colouring algorithm in the CPU.
 
 \begin{algorithm}
 \caption{GPU: Partitioning, Speculation and Conflict Resolution}\label{spec2}
@@ -498,7 +498,7 @@ In Line \ref{7.4}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} 
 \State $\textit{Initialization}$
 \BState \emph{CPU}:
 \State $\textit{G(V,E) is partitioned into n partitions} \: V_{1} \: to \: V_{n}$\Comment Each of n threads gets one \label{7.4}
-\BState \emph{GPU (Partition Colouring)}:
+\BState \emph{GPU (Partition Colouring)}: \label{7.5}
 \For {$each \: v \in V_{i}$}\Comment{Done in parallel by n threads} \label{7.6}
 \State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.7}
 \EndFor
@@ -514,14 +514,10 @@ In Line \ref{7.4}, the graph $G(V,E)$ is partitioned into $n$ partitions $V_{1} 
 \If{$|conflictSet| < threshold$} \label{7.14}
 \State $\textit{goto} \: \textit{CPU (Conflict Resolution)}$
 \EndIf 
-\BState \emph{GPU (Conflict Resolution)}:
-\For {$each \: v \in \textit{conflictSet}$} \Comment Done in parallel \label{7.17}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.18}
-\EndFor
-\State $\textit{goto} \: \textit{GPU (Conflict Detection)}$
+\State $\textit{goto} \: \textit{GPU (Partition Colouring)}$ \label{7.16}
 \BState \emph{CPU (Conflict Resolution)}:
-\For {$each \: v \in \textit{conflictSet}$} \label{7.21}
-\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.22}
+\For {$each \: v \in \textit{conflictSet}$} \label{7.18}
+\State $colour[v] \gets \textit{A colour by some sequential colouring algorithm}$ \label{7.19}
 \EndFor
 \EndProcedure
 \end{algorithmic}
