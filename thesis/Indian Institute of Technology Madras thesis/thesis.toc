@@ -81,8 +81,8 @@
 \contentsline {subsection}{\numberline {6.4.5}One Time Propagation vs Wave Propagation}{61}{subsection.6.4.5}
 \contentsline {section}{\numberline {6.5}Decremental Parallel Graph Colouring on GPU}{62}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}2-Thread Decremental Colouring}{62}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Many Thread Decremental Colouring}{63}{subsection.6.5.2}
-\contentsline {subsection}{\numberline {6.5.3}2-Thread Decremental vs Many Thread Decremental}{63}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.2}Many Thread Decremental Colouring}{62}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}2-Thread Decremental vs Many Thread Decremental}{64}{subsection.6.5.3}
 \contentsline {subsection}{\numberline {6.5.4}One Time Propagation}{65}{subsection.6.5.4}
 \contentsline {subsection}{\numberline {6.5.5}One Time Propagation vs Wave Propagation}{68}{subsection.6.5.5}
 \contentsline {chapter}{\numberline {7}CONCLUSION AND FUTURE WORK}{75}{chapter.7}

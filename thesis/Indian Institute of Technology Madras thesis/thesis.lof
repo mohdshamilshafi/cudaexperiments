@@ -35,20 +35,20 @@
 \contentsline {figure}{\numberline {6.13}{\ignorespaces 2-Thread Incremental vs Many Thread Incremental: No. of Colours Used \relax }}{60}{figure.caption.55}
 \contentsline {figure}{\numberline {6.14}{\ignorespaces 2-Thread Incremental Model and One Time Propagation: No. of Colours Used \relax }}{61}{figure.caption.56}
 \contentsline {figure}{\numberline {6.15}{\ignorespaces Many Thread Incremental Model and One Time Propagation: No. of Colours Used \relax }}{62}{figure.caption.57}
-\contentsline {figure}{\numberline {6.16}{\ignorespaces 2-Thread Incremental Model and One time Propagation: Runtime \relax }}{63}{figure.caption.58}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces 2-Thread Incremental Model and One time Propagation: Runtime \relax }}{64}{figure.caption.58}
 \contentsline {figure}{\numberline {6.17}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Colour Quality \relax }}{65}{figure.caption.59}
 \contentsline {figure}{\numberline {6.18}{\ignorespaces One time Propagation vs Wave Propagation: Many Thread Model, Colour Quality \relax }}{66}{figure.caption.60}
 \contentsline {figure}{\numberline {6.19}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Runtime \relax }}{67}{figure.caption.61}
 \contentsline {figure}{\numberline {6.20}{\ignorespaces One time Propagation vs Wave Propagation: Many Thread Model, Runtime \relax }}{68}{figure.caption.62}
 \contentsline {figure}{\numberline {6.21}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental: Runtime \relax }}{69}{figure.caption.65}
-\contentsline {figure}{\numberline {6.22}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental: No. of Colours Used \relax }}{70}{figure.caption.66}
+\contentsline {figure}{\numberline {6.22}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental: No. of Colours Used \relax }}{69}{figure.caption.66}
 \contentsline {figure}{\numberline {6.23}{\ignorespaces 2-Thread Decremental and One Time Propagation: No. of Colours Used \relax }}{70}{figure.caption.67}
-\contentsline {figure}{\numberline {6.24}{\ignorespaces Many Thread Decremental and One Time Propagation: No. of Colours Used \relax }}{71}{figure.caption.68}
+\contentsline {figure}{\numberline {6.24}{\ignorespaces Many Thread Decremental and One Time Propagation: No. of Colours Used \relax }}{70}{figure.caption.68}
 \contentsline {figure}{\numberline {6.25}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental: No. of Colours Used After One Time Propagation \relax }}{71}{figure.caption.69}
-\contentsline {figure}{\numberline {6.26}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental + OTP: Runtime \relax }}{72}{figure.caption.70}
+\contentsline {figure}{\numberline {6.26}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental + OTP: Runtime \relax }}{71}{figure.caption.70}
 \contentsline {figure}{\numberline {6.27}{\ignorespaces 2-Thread Decremental vs Many Thread Decremental + OTP: No. of Colours Used \relax }}{72}{figure.caption.71}
-\contentsline {figure}{\numberline {6.28}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Colour Quality \relax }}{73}{figure.caption.72}
+\contentsline {figure}{\numberline {6.28}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Colour Quality \relax }}{72}{figure.caption.72}
 \contentsline {figure}{\numberline {6.29}{\ignorespaces One time Propagation vs Wave Propagation: Many Thread Model, Colour Quality \relax }}{73}{figure.caption.73}
-\contentsline {figure}{\numberline {6.30}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Runtime \relax }}{74}{figure.caption.74}
+\contentsline {figure}{\numberline {6.30}{\ignorespaces One time Propagation vs Wave Propagation: 2-Thread Model, Runtime \relax }}{73}{figure.caption.74}
 \contentsline {figure}{\numberline {6.31}{\ignorespaces One time Propagation vs Wave Propagation: Many Thread Model, Runtime \relax }}{74}{figure.caption.75}
 \addvspace {10\p@ }
