@@ -5,9 +5,9 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces \textit {Intel}'s transition from single core processors to multi-core processors around 2004-2005, from \cite {Herb:Intel}. \relax }}{8}{figure.caption.10}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces NVIDIA GPU hardware model, from \cite {nVidia:Hardware}. \relax }}{10}{figure.caption.12}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The Directed Graph from \ref {table:1} and its CSR \relax }}{25}{figure.caption.20}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The Undirected Graph from \ref {table:2} and its CSR \relax }}{26}{figure.caption.22}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces The Undirected Graph from \ref {table:2} and its UCSR \relax }}{26}{figure.caption.23}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Directed Graph from Table \ref {table:1} and its CSR \relax }}{25}{figure.caption.20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The Undirected Graph from Table \ref {table:2} and its CSR \relax }}{26}{figure.caption.22}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The Undirected Graph from Table \ref {table:2} and its UCSR \relax }}{26}{figure.caption.23}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \textbf {Case 1:} $x=y < p; \tmspace +\medmuskip {.2222em} a=b<p$ \relax }}{33}{figure.caption.26}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces \textbf {Case 2:} $x=y < p; \tmspace +\medmuskip {.2222em} p<a=b$ \relax }}{34}{figure.caption.27}

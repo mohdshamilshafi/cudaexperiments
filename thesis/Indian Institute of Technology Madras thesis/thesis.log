@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  11 MAY 2016 05:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.15)  12 MAY 2016 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,7 +574,7 @@ Package pdftex.def Info: mooreslaw.jpg used on input line 218.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<CPU-Scaling.jpg, id=666, 419.6478pt x 418.2024pt>
+<CPU-Scaling.jpg, id=667, 419.6478pt x 418.2024pt>
 File: CPU-Scaling.jpg Graphic file (type jpg)
  <use CPU-Scaling.jpg>
 Package pdftex.def Info: CPU-Scaling.jpg used on input line 228.
@@ -584,7 +584,7 @@ Package pdftex.def Info: CPU-Scaling.jpg used on input line 228.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6] [7 <./mooreslaw.jpg>] [8 <./CPU-Scaling.jpg>] [9]
-<hardware-model.png, id=710, 429.605pt x 432.817pt>
+<hardware-model.png, id=711, 429.605pt x 432.817pt>
 File: hardware-model.png Graphic file (type png)
  <use hardware-model.png>
 Package pdftex.def Info: hardware-model.png used on input line 250.
@@ -624,7 +624,7 @@ RANDCOLOURING \T1/ptm/m/n/12 and []\T1/pcr/m/n/12 MINMAXCOLOURING
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<csrdirected.jpg, id=909, 667.7748pt x 291.2481pt>
+<csrdirected.jpg, id=911, 667.7748pt x 291.2481pt>
 File: csrdirected.jpg Graphic file (type jpg)
  <use csrdirected.jpg>
 Package pdftex.def Info: csrdirected.jpg used on input line 568.
@@ -636,7 +636,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<csrundirected.jpg, id=915, 682.9515pt x 311.4837pt>
+<csrundirected.jpg, id=917, 682.9515pt x 311.4837pt>
 File: csrundirected.jpg Graphic file (type jpg)
  <use csrundirected.jpg>
 Package pdftex.def Info: csrundirected.jpg used on input line 596.
@@ -645,7 +645,7 @@ Package pdftex.def Info: csrundirected.jpg used on input line 596.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<csrundirectednew.jpg, id=918, 675.0018pt x 286.9119pt>
+<csrundirectednew.jpg, id=920, 675.0018pt x 286.9119pt>
 File: csrundirectednew.jpg Graphic file (type jpg)
 
 <use csrundirectednew.jpg>
@@ -697,13 +697,13 @@ Overfull \hbox (28.00822pt too wide) in paragraph at lines 821--842
  [][] 
  []
 
-<case1.jpg, id=1013, 2269.278pt x 881.694pt>
+<case1.jpg, id=1015, 2269.278pt x 881.694pt>
 File: case1.jpg Graphic file (type jpg)
  <use case1.jpg>
 Package pdftex.def Info: case1.jpg used on input line 850.
 (pdftex.def)             Requested size: 416.83289pt x 161.95383pt.
 
-<case2.jpg, id=1014, 2177.736pt x 874.467pt>
+<case2.jpg, id=1016, 2177.736pt x 874.467pt>
 File: case2.jpg Graphic file (type jpg)
  <use case2.jpg>
 Package pdftex.def Info: case2.jpg used on input line 859.
@@ -712,7 +712,7 @@ Package pdftex.def Info: case2.jpg used on input line 859.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case3.jpg, id=1015, 2184.963pt x 1072.005pt>
+<case3.jpg, id=1017, 2184.963pt x 1072.005pt>
 File: case3.jpg Graphic file (type jpg)
  <use case3.jpg>
 Package pdftex.def Info: case3.jpg used on input line 868.
@@ -721,7 +721,7 @@ Package pdftex.def Info: case3.jpg used on input line 868.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case4.jpg, id=1016, 2211.462pt x 1055.142pt>
+<case4.jpg, id=1018, 2211.462pt x 1055.142pt>
 File: case4.jpg Graphic file (type jpg)
  <use case4.jpg>
 Package pdftex.def Info: case4.jpg used on input line 877.
@@ -730,7 +730,7 @@ Package pdftex.def Info: case4.jpg used on input line 877.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case5.jpg, id=1017, 672.8337pt x 203.8014pt>
+<case5.jpg, id=1019, 672.8337pt x 203.8014pt>
 File: case5.jpg Graphic file (type jpg)
  <use case5.jpg>
 Package pdftex.def Info: case5.jpg used on input line 886.
@@ -739,7 +739,7 @@ Package pdftex.def Info: case5.jpg used on input line 886.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case6.jpg, id=1018, 686.565pt x 244.9953pt>
+<case6.jpg, id=1020, 686.565pt x 244.9953pt>
 File: case6.jpg Graphic file (type jpg)
  <use case6.jpg>
 Package pdftex.def Info: case6.jpg used on input line 895.
@@ -748,7 +748,7 @@ Package pdftex.def Info: case6.jpg used on input line 895.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case7.jpg, id=1019, 681.5061pt x 241.3818pt>
+<case7.jpg, id=1021, 681.5061pt x 241.3818pt>
 File: case7.jpg Graphic file (type jpg)
  <use case7.jpg>
 Package pdftex.def Info: case7.jpg used on input line 904.
@@ -757,7 +757,7 @@ Package pdftex.def Info: case7.jpg used on input line 904.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<case8.jpg, id=1020, 680.7834pt x 247.1634pt>
+<case8.jpg, id=1022, 680.7834pt x 247.1634pt>
 File: case8.jpg Graphic file (type jpg)
  <use case8.jpg>
 Package pdftex.def Info: case8.jpg used on input line 913.
@@ -779,7 +779,7 @@ LaTeX Warning: Command \textbackslash invalid in math mode on input line 941.
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 942.
 
 [35 <./case4.jpg> <./case5.jpg>]
-<propagation.jpg, id=1036, 2278.914pt x 1623.666pt>
+<propagation.jpg, id=1038, 2278.914pt x 1623.666pt>
 File: propagation.jpg Graphic file (type jpg)
  <use propagation.jpg>
 Package pdftex.def Info: propagation.jpg used on input line 963.
@@ -815,7 +815,7 @@ LaTeX Warning: Float too large for page by 44.29208pt on input line 1222.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest3.pdf, id=1217, 632.3625pt x 541.02126pt>
+<chartNewest3.pdf, id=1219, 632.3625pt x 541.02126pt>
 File: chartNewest3.pdf Graphic file (type pdf)
  <use chartNewest3.pdf>
 Package pdftex.def Info: chartNewest3.pdf used on input line 1232.
@@ -824,7 +824,7 @@ Package pdftex.def Info: chartNewest3.pdf used on input line 1232.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest2.pdf, id=1220, 804.00375pt x 446.66875pt>
+<chartNewest2.pdf, id=1222, 804.00375pt x 446.66875pt>
 File: chartNewest2.pdf Graphic file (type pdf)
  <use chartNewest2.pdf>
 Package pdftex.def Info: chartNewest2.pdf used on input line 1243.
@@ -843,7 +843,7 @@ LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1281.
 
 [47 <./chartNewest3.pdf, page is rotated 270 degrees>]
-<chartNewest4.pdf, id=1248, 791.95876pt x 447.6725pt>
+<chartNewest4.pdf, id=1250, 791.95876pt x 447.6725pt>
 File: chartNewest4.pdf Graphic file (type pdf)
  <use chartNewest4.pdf>
 Package pdftex.def Info: chartNewest4.pdf used on input line 1310.
@@ -854,20 +854,20 @@ Package pdftex.def Info: chartNewest4.pdf used on input line 1310.
 
 pdfTeX warning: pdflatex (file ./chartNewest4.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] <chartNewest5.pdf, id=1276, 797.98125pt x 489.83pt>
+>] <chartNewest5.pdf, id=1278, 797.98125pt x 489.83pt>
 File: chartNewest5.pdf Graphic file (type pdf)
  <use chartNewest5.pdf>
 Package pdftex.def Info: chartNewest5.pdf used on input line 1321.
 (pdftex.def)             Requested size: 416.83289pt x 255.86409pt.
 
 [49 <./chartNewest5.pdf, page is rotated 270 degrees>]
-<chartNewest1.pdf, id=1295, 780.9175pt x 420.57124pt>
+<chartNewest1.pdf, id=1297, 780.9175pt x 420.57124pt>
 File: chartNewest1.pdf Graphic file (type pdf)
  <use chartNewest1.pdf>
 Package pdftex.def Info: chartNewest1.pdf used on input line 1337.
 (pdftex.def)             Requested size: 416.83289pt x 224.48679pt.
 
-<chartNewest6.pdf, id=1298, 795.97375pt x 434.62375pt>
+<chartNewest6.pdf, id=1300, 795.97375pt x 434.62375pt>
 File: chartNewest6.pdf Graphic file (type pdf)
  <use chartNewest6.pdf>
 Package pdftex.def Info: chartNewest6.pdf used on input line 1349.
@@ -877,7 +877,7 @@ Package pdftex.def Info: chartNewest6.pdf used on input line 1349.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [50 <./chartNewest1.pdf, page is rotated 270 degrees>]
-<chartNewest7.pdf, id=1319, 770.88pt x 494.84875pt>
+<chartNewest7.pdf, id=1321, 770.88pt x 494.84875pt>
 File: chartNewest7.pdf Graphic file (type pdf)
  <use chartNewest7.pdf>
 Package pdftex.def Info: chartNewest7.pdf used on input line 1365.
@@ -886,7 +886,7 @@ Package pdftex.def Info: chartNewest7.pdf used on input line 1365.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest8.pdf, id=1320, 779.91376pt x 518.93875pt>
+<chartNewest8.pdf, id=1322, 779.91376pt x 518.93875pt>
 File: chartNewest8.pdf Graphic file (type pdf)
  <use chartNewest8.pdf>
 Package pdftex.def Info: chartNewest8.pdf used on input line 1374.
@@ -895,7 +895,7 @@ Package pdftex.def Info: chartNewest8.pdf used on input line 1374.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest9.pdf, id=1323, 800.9925pt x 524.96124pt>
+<chartNewest9.pdf, id=1325, 800.9925pt x 524.96124pt>
 File: chartNewest9.pdf Graphic file (type pdf)
  <use chartNewest9.pdf>
 Package pdftex.def Info: chartNewest9.pdf used on input line 1385.
@@ -904,7 +904,7 @@ Package pdftex.def Info: chartNewest9.pdf used on input line 1385.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest10.pdf, id=1324, 787.94376pt x 543.02875pt>
+<chartNewest10.pdf, id=1326, 787.94376pt x 543.02875pt>
 File: chartNewest10.pdf Graphic file (type pdf)
 
 <use chartNewest10.pdf>
@@ -931,13 +931,13 @@ LaTeX Warning: No positions in optional float specifier.
 
 [57
 
-] <chartNewest24.pdf, id=1416, 792.9625pt x 541.02126pt>
+] <chartNewest24.pdf, id=1418, 792.9625pt x 541.02126pt>
 File: chartNewest24.pdf Graphic file (type pdf)
 
 <use chartNewest24.pdf>
 Package pdftex.def Info: chartNewest24.pdf used on input line 1467.
 (pdftex.def)             Requested size: 416.83289pt x 284.40364pt.
- <chartNewest15.pdf, id=1418, 796.9775pt x 533.995pt>
+ <chartNewest15.pdf, id=1420, 796.9775pt x 533.995pt>
 File: chartNewest15.pdf Graphic file (type pdf)
 
 <use chartNewest15.pdf>
@@ -948,7 +948,7 @@ Package pdftex.def Info: chartNewest15.pdf used on input line 1478.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [58 <./chartNewest24.pdf, page is rotated 270 degrees>]
-<chartNewest21.pdf, id=1435, 791.95876pt x 496.85625pt>
+<chartNewest21.pdf, id=1438, 791.95876pt x 496.85625pt>
 File: chartNewest21.pdf Graphic file (type pdf)
 
 <use chartNewest21.pdf>
@@ -958,7 +958,7 @@ Package pdftex.def Info: chartNewest21.pdf used on input line 1489.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest11.pdf, id=1438, 797.98125pt x 554.07pt>
+<chartNewest11.pdf, id=1441, 797.98125pt x 554.07pt>
 File: chartNewest11.pdf Graphic file (type pdf)
  <use chartNewest11.pdf>
 Package pdftex.def Info: chartNewest11.pdf used on input line 1503.
@@ -968,7 +968,7 @@ Package pdftex.def Info: chartNewest11.pdf used on input line 1503.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [59 <./chartNewest15.pdf, page is rotated 270 degrees>]
-<chartNewest13.pdf, id=1456, 806.01125pt x 559.08875pt>
+<chartNewest13.pdf, id=1458, 806.01125pt x 559.08875pt>
 File: chartNewest13.pdf Graphic file (type pdf)
 
 <use chartNewest13.pdf>
@@ -978,7 +978,7 @@ Package pdftex.def Info: chartNewest13.pdf used on input line 1514.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest23.pdf, id=1458, 799.98875pt x 551.05875pt>
+<chartNewest23.pdf, id=1460, 799.98875pt x 551.05875pt>
 File: chartNewest23.pdf Graphic file (type pdf)
 
 <use chartNewest23.pdf>
@@ -989,7 +989,7 @@ Package pdftex.def Info: chartNewest23.pdf used on input line 1525.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [60 <./chartNewest21.pdf, page is rotated 270 degrees>]
-<chartNewest32.pdf, id=1478, 792.9625pt x 504.88625pt>
+<chartNewest32.pdf, id=1480, 792.9625pt x 504.88625pt>
 File: chartNewest32.pdf Graphic file (type pdf)
  <use chartNewest32.pdf>
 Package pdftex.def Info: chartNewest32.pdf used on input line 1541.
@@ -998,7 +998,7 @@ Package pdftex.def Info: chartNewest32.pdf used on input line 1541.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest34.pdf, id=1479, 791.95876pt x 500.87125pt>
+<chartNewest34.pdf, id=1481, 791.95876pt x 500.87125pt>
 File: chartNewest34.pdf Graphic file (type pdf)
 
 <use chartNewest34.pdf>
@@ -1008,7 +1008,7 @@ Package pdftex.def Info: chartNewest34.pdf used on input line 1550.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest33.pdf, id=1482, 800.9925pt x 553.06625pt>
+<chartNewest33.pdf, id=1484, 800.9925pt x 553.06625pt>
 File: chartNewest33.pdf Graphic file (type pdf)
  <use chartNewest33.pdf>
 Package pdftex.def Info: chartNewest33.pdf used on input line 1563.
@@ -1018,7 +1018,7 @@ Package pdftex.def Info: chartNewest33.pdf used on input line 1563.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest35.pdf, id=1498, 796.9775pt x 539.01375pt>
+<chartNewest35.pdf, id=1500, 796.9775pt x 539.01375pt>
 File: chartNewest35.pdf Graphic file (type pdf)
  <use chartNewest35.pdf>
 Package pdftex.def Info: chartNewest35.pdf used on input line 1572.
@@ -1036,7 +1036,7 @@ LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1610.
 
 [62 <./chartNewest13.pdf, page is rotated 270 degrees>] [63]
-<chartNewest16.pdf, id=1525, 794.97pt x 555.07375pt>
+<chartNewest16.pdf, id=1527, 794.97pt x 555.07375pt>
 File: chartNewest16.pdf Graphic file (type pdf)
  <use chartNewest16.pdf>
 Package pdftex.def Info: chartNewest16.pdf used on input line 1641.
@@ -1046,7 +1046,7 @@ Package pdftex.def Info: chartNewest16.pdf used on input line 1641.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [64 <./chartNewest23.pdf, page is rotated 270 degrees>]
-<chartNewest26.pdf, id=1542, 800.9925pt x 513.92pt>
+<chartNewest26.pdf, id=1544, 800.9925pt x 513.92pt>
 File: chartNewest26.pdf Graphic file (type pdf)
  <use chartNewest26.pdf>
 Package pdftex.def Info: chartNewest26.pdf used on input line 1652.
@@ -1055,7 +1055,7 @@ Package pdftex.def Info: chartNewest26.pdf used on input line 1652.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest12.pdf, id=1544, 798.985pt x 560.0925pt>
+<chartNewest12.pdf, id=1546, 798.985pt x 560.0925pt>
 File: chartNewest12.pdf Graphic file (type pdf)
  <use chartNewest12.pdf>
 Package pdftex.def Info: chartNewest12.pdf used on input line 1668.
@@ -1065,7 +1065,7 @@ Package pdftex.def Info: chartNewest12.pdf used on input line 1668.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [65 <./chartNewest32.pdf, page is rotated 270 degrees>]
-<chartNewest14.pdf, id=1561, 796.9775pt x 553.06625pt>
+<chartNewest14.pdf, id=1563, 796.9775pt x 553.06625pt>
 File: chartNewest14.pdf Graphic file (type pdf)
  <use chartNewest14.pdf>
 Package pdftex.def Info: chartNewest14.pdf used on input line 1681.
@@ -1074,7 +1074,7 @@ Package pdftex.def Info: chartNewest14.pdf used on input line 1681.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest25.pdf, id=1563, 800.9925pt x 549.05125pt>
+<chartNewest25.pdf, id=1565, 800.9925pt x 549.05125pt>
 File: chartNewest25.pdf Graphic file (type pdf)
  <use chartNewest25.pdf>
 Package pdftex.def Info: chartNewest25.pdf used on input line 1694.
@@ -1084,7 +1084,7 @@ Package pdftex.def Info: chartNewest25.pdf used on input line 1694.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [66 <./chartNewest34.pdf, page is rotated 270 degrees>]
-<chartNewest17.pdf, id=1582, 799.98875pt x 538.01pt>
+<chartNewest17.pdf, id=1584, 799.98875pt x 538.01pt>
 File: chartNewest17.pdf Graphic file (type pdf)
  <use chartNewest17.pdf>
 Package pdftex.def Info: chartNewest17.pdf used on input line 1707.
@@ -1093,7 +1093,7 @@ Package pdftex.def Info: chartNewest17.pdf used on input line 1707.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest27.pdf, id=1584, 805.0075pt x 518.93875pt>
+<chartNewest27.pdf, id=1586, 805.0075pt x 518.93875pt>
 File: chartNewest27.pdf Graphic file (type pdf)
  <use chartNewest27.pdf>
 Package pdftex.def Info: chartNewest27.pdf used on input line 1718.
@@ -1103,7 +1103,7 @@ Package pdftex.def Info: chartNewest27.pdf used on input line 1718.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [67 <./chartNewest33.pdf, page is rotated 270 degrees>]
-<chartNewest30.pdf, id=1602, 779.91376pt x 503.8825pt>
+<chartNewest30.pdf, id=1604, 779.91376pt x 503.8825pt>
 File: chartNewest30.pdf Graphic file (type pdf)
  <use chartNewest30.pdf>
 Package pdftex.def Info: chartNewest30.pdf used on input line 1735.
@@ -1112,7 +1112,7 @@ Package pdftex.def Info: chartNewest30.pdf used on input line 1735.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest36.pdf, id=1603, 776.9025pt x 501.875pt>
+<chartNewest36.pdf, id=1605, 776.9025pt x 501.875pt>
 File: chartNewest36.pdf Graphic file (type pdf)
  <use chartNewest36.pdf>
 Package pdftex.def Info: chartNewest36.pdf used on input line 1744.
@@ -1121,7 +1121,7 @@ Package pdftex.def Info: chartNewest36.pdf used on input line 1744.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest31.pdf, id=1606, 806.01125pt x 505.89pt>
+<chartNewest31.pdf, id=1608, 806.01125pt x 505.89pt>
 File: chartNewest31.pdf Graphic file (type pdf)
  <use chartNewest31.pdf>
 Package pdftex.def Info: chartNewest31.pdf used on input line 1757.
@@ -1130,7 +1130,7 @@ Package pdftex.def Info: chartNewest31.pdf used on input line 1757.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<chartNewest37.pdf, id=1607, 795.97375pt x 525.965pt>
+<chartNewest37.pdf, id=1609, 795.97375pt x 525.965pt>
 File: chartNewest37.pdf Graphic file (type pdf)
  <use chartNewest37.pdf>
 Package pdftex.def Info: chartNewest37.pdf used on input line 1766.
@@ -1241,7 +1241,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1826.
 Here is how much of TeX's memory you used:
  9247 strings out of 494985
  138609 string characters out of 6180355
- 259352 words of memory out of 5000000
+ 259374 words of memory out of 5000000
  11979 multiletter control sequences out of 15000+600000
  57466 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -1257,10 +1257,10 @@ sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on thesis.pdf (93 pages, 6416707 bytes).
+Output written on thesis.pdf (93 pages, 6417091 bytes).
 PDF statistics:
- 1945 PDF objects out of 2073 (max. 8388607)
- 1639 compressed objects within 17 object streams
+ 1949 PDF objects out of 2073 (max. 8388607)
+ 1643 compressed objects within 17 object streams
  296 named destinations out of 1000 (max. 500000)
  865 words of extra memory for PDF output out of 10000 (max. 10000000)
 

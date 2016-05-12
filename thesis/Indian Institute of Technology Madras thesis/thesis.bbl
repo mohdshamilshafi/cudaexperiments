@@ -78,7 +78,7 @@
 \bibitem[{Cohen and Castonguay(2012)}]{cohenefficient}
 {\bf Cohen, J.} and {\bf P.~Castonguay} (2012).
 \newblock Efficient graph matching and coloring on the gpu.
-\newblock {\em GTC on-demand S0332\/}.
+\newblock {\em GTC on-demand S0332\/}, 1--10.
 
 \bibitem[{Fleurent and Ferland()}]{ref1}
 {\bf Fleurent, C.} and {\bf J.~A. Ferland} ().
@@ -249,9 +249,10 @@
 \newblock 2014.
 \newblock ISBN 9780691158228 0691158223.
 
-\bibitem[{Zaman()}]{zamanparallel}
-{\bf Zaman, L.} ().
+\bibitem[{Zaman(2011)}]{zamanparallel}
+{\bf Zaman, L.} (2011).
 \newblock Parallel first-fit graph coloring in java.
+\newblock \urlprefix\url{http://www.cse.yorku.ca/~zaman/pdfs/6490A.pdf}.
 
 \bibitem[{Zuckerman(2006)}]{Zuckerman:2006:LDE:1132516.1132612}
 {\bf Zuckerman, D.}, Linear degree extractors and the inapproximability of max

@@ -10,43 +10,43 @@ Warning--missing publisher in wilson14
 Warning--empty journal in zamanparallel
 You've used 35 entries,
             2930 wiz_defined-function locations,
-            879 strings with 12651 characters,
-and the built_in function-call counts, 21489 in all, are:
-= -- 1644
+            881 strings with 12727 characters,
+and the built_in function-call counts, 21572 in all, are:
+= -- 1654
 > -- 869
 < -- 29
 + -- 307
 - -- 253
-* -- 1719
-:= -- 3155
-add.period$ -- 139
+* -- 1728
+:= -- 3163
+add.period$ -- 140
 call.type$ -- 35
 change.case$ -- 268
 chr.to.int$ -- 34
 cite$ -- 38
-duplicate$ -- 1804
-empty$ -- 1714
+duplicate$ -- 1808
+empty$ -- 1722
 format.name$ -- 347
-if$ -- 4227
+if$ -- 4244
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 346
-newline$ -- 211
+missing$ -- 347
+newline$ -- 212
 num.names$ -- 142
-pop$ -- 702
+pop$ -- 698
 preamble$ -- 1
 purify$ -- 223
 quote$ -- 0
-skip$ -- 501
+skip$ -- 504
 stack$ -- 0
-substring$ -- 866
-swap$ -- 945
+substring$ -- 882
+swap$ -- 950
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 306
 warning$ -- 3
-while$ -- 140
+while$ -- 142
 width$ -- 0
-write$ -- 515
+write$ -- 517
 (There were 4 warnings)

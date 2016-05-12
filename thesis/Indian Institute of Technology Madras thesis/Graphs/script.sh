@@ -9,6 +9,6 @@ for i in `seq 1 37`;
         do
 #        		pdfcrop chart$i.pdf chartNew$i.pdf
 #				pdftk chartNew$i.pdf cat 1west output chartNewest$i.pdf 
-        		convert -density 150 chartNewest$i.pdf -quality 90 chartNewest$i.jpg
+        		convert -density 300 chartNewest$i.pdf -quality 100 chartNewest$i.jpg
 
         done

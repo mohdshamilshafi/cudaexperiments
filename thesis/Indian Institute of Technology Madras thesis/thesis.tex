@@ -221,7 +221,7 @@ Graph Colouring problem, which started as a map colouring problem (four colour t
     }
     \label{fig:moore's law}
 \end{figure}
-Moore's law, which observes that the number of transistors present in an integrated circuit approximately doubles every two years, still stands valid. Processors, and hence computers, have grown faster and faster over years. More and more transistors meant the processors could run faster, at a faster frequency. Processors with better and better clock speeds were introduced every year since the 1980s until around 2004 when instead of single core processors running at faster clocks or higher clock speeds, multi-core processors started rolling out.
+Moore's law, which observes that the number of transistors present in an integrated circuit approximately doubles every two years, still stands valid. Figure \ref{fig:moore's law} shows Moore's Law in action. Processors, and hence computers, have grown faster and faster over years. More and more transistors meant the processors could run faster, at a faster frequency. Processors with better and better clock speeds were introduced every year since the 1980s until around 2004 when instead of single core processors running at faster clocks or higher clock speeds, multi-core processors started rolling out.
 \subsection{Why Parallelization?}
 \begin{figure}[h]
     \centering
@@ -231,7 +231,7 @@ Moore's law, which observes that the number of transistors present in an integra
     }
     \label{fig:intel}
 \end{figure}
-Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical any more. The increase in frequency meant an increase in power consumption which in turn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the figure \ref{fig:intel}.
+Around 2004, Intel and other processor manufacturing companies came to realize that frequency scaling was not practical any more. The increase in frequency meant an increase in power consumption which in turn meant an increase in heat generation. Thus it was no longer practical to increase the clock speeds of processors. Rather, they started making processors with the same clock speeds, but with multiple cores. Since then the computer architecture industry held fast to the paradigm of multi-core processors. This, in the case of \textit{Intel}, is indicated in the Figure \ref{fig:intel}.
 
 Parallelization enables us to run programs faster by splitting the work across different cores of a processor which are ideally run in parallel. In an ideal setup, with \textit{n} cores, we should see a speed up of \textit{n}, which means the running time will become $1/n^{th}$ compared to the running time when run on a single core processor. Though we rarely really reach this ideal speedup, as stated by Amdahl's law \citep{Amdahl:1967:VSP:1465482.1465560} etc., we still achieve significant speed ups.
 \subsection{Parallelization of Graph Colouring}
@@ -253,7 +253,7 @@ NVIDIA, one of the biggest players in the GPUs market, introduced its famous par
     }
     \label{fig:nvidia}
 \end{figure}
-In an NVIDIA GPU, as shown in the figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
+In an NVIDIA GPU, as shown in the Figure \ref{fig:nvidia}, there are multiple streaming multi-processors, SMs, and each of these multi processors have thousands of cores/processors in it. Functions to be executed on the GPU are called Kernels and Kernels, once invoked, spawn the required number of threads as blocks of threads which are then executed across SMs. All threads in a block have access to the shared memory inside the SM in which that block is executed.
 \subsection{Challenges}
 Though, GPUs let us access thousands of threads easily, it comes with a cost \citep{Lee:2010:DGV:1816038.1816021}. In discrete GPUs like the NVIDIA GPUs used in our work, GPU memory and CPU memory are mutually exclusive. So, we have to first copy all the data which are to be processed by the GPU threads to the GPU before invoking the kernels. As the communication between the CPU and the GPU is enabled through the PCI-Express Bus, which is not super fast with bit rates at around \verb+5 Gbits/sec+, and the fact that while transferring data, we force the CPU to wait for the GPU, there is a cost for transferring data between the CPU and the GPU, the so called \textit{memory latency}. This data transferring cost is one of the biggest overheads in GPU computing \citep{hovland2008latency}. So, as a GPU programmer, one must try to reduce data transfer between the CPU and the GPU. Also, GPUs are not yet ready to do everything that a normal CPU does.  
 \section{Incremental/Decremental}
@@ -543,7 +543,7 @@ It is to be noted that CSR is predominantly used for directed graphs. It can be 
 \subsubsection{Example}
 Here, we take an example to explain how CSR works. We take both a directed graph and an undirected graph to show how we use the CSR.
 
-Consider the directed graph with $n=4$ and $m=4$ as given in the table \ref{table:1}. Its corresponding CSR is given in the figure \ref{fig:csrd}.
+Consider the directed graph with $n=4$ and $m=4$ as given in the Table \ref{table:1}. Its corresponding CSR is given in the Figure \ref{fig:csrd}.
 \begin{table}[h!]
 \centering
 \begin{tabular}{||c|c||} 
@@ -567,12 +567,12 @@ Consider the directed graph with $n=4$ and $m=4$ as given in the table \ref{tabl
     \centering
     \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrdirected.jpg}
     \caption{
-       The Directed Graph from \ref{table:1} and its CSR
+       The Directed Graph from Table \ref{table:1} and its CSR
     }
     \label{fig:csrd}
 \end{figure}
 
-Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{table:2}. Its corresponding CSR is given in the figure \ref{fig:csru} and its UCSR is given in the figure \ref{fig:csrun}. Note that the \verb+edgesArray[]+ has $2m = 6$ elements in the UCSR.
+Consider the undirected graph with $n=4$ and $m=3$ as given in the Table \ref{table:2}. Its corresponding CSR is given in the Figure \ref{fig:csru} and its UCSR is given in the Figure \ref{fig:csrun}. Note that the \verb+edgesArray[]+ has $2m = 6$ elements in the UCSR.
 
 \begin{table}[h!]
 \centering
@@ -595,7 +595,7 @@ Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{ta
     \centering
     \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrundirected.jpg}
     \caption{
-        The Undirected Graph from \ref{table:2} and its CSR
+        The Undirected Graph from Table \ref{table:2} and its CSR
     }
     \label{fig:csru}
 \end{figure}
@@ -603,7 +603,7 @@ Consider the undirected graph with $n=4$ and $m=3$ as given in the table \ref{ta
     \centering
     \includegraphics[width=\textwidth,scale=0.6,keepaspectratio=true]{csrundirectednew.jpg}
     \caption{
-        The Undirected Graph from \ref{table:2} and its UCSR
+        The Undirected Graph from Table \ref{table:2} and its UCSR
     }
     \label{fig:csrun}
 \end{figure}
@@ -843,7 +843,7 @@ If the current colouring of \textit{u} and \textit{v} are the same, we first try
 \label{table:3}
 \end{table}
 
-Each of the cases given in the table \ref{table:3} are explained using examples in the figures \ref{fig:case1}, \ref{fig:case2}, \ref{fig:case3}, \ref{fig:case4}, \ref{fig:case5}, \ref{fig:case6}, \ref{fig:case7} and \ref{fig:case8}.
+Each of the cases given in the Table \ref{table:3} are explained using examples in the figures \ref{fig:case1}, \ref{fig:case2}, \ref{fig:case3}, \ref{fig:case4}, \ref{fig:case5}, \ref{fig:case6}, \ref{fig:case7} and \ref{fig:case8}.
 
 \begin{figure}[h]
     \centering
@@ -956,7 +956,7 @@ New added edges can create conflicts. These conflicts will be resolved only afte
 \end{algorithm}
 
 \section{Propagation}
-As discussed earlier, our algorithm tries improves the colouring locally at the end points of the new edge added. But, we consider only those two vertices. If any of them changes its colouring, it could have an effect on its adjacent vertices who could now probably improve their own colouring as they themselves might not be locally optimized. When they indeed change their colours, there could be scope for improvement in their neighbourhood. So, this has a ripple effect. The need for propagation and propagation itself is portrayed with the help of an example in the figure \ref{fig:propagation}.
+As discussed earlier, our algorithm tries improves the colouring locally at the end points of the new edge added. But, we consider only those two vertices. If any of them changes its colouring, it could have an effect on its adjacent vertices who could now probably improve their own colouring as they themselves might not be locally optimized. When they indeed change their colours, there could be scope for improvement in their neighbourhood. So, this has a ripple effect. The need for propagation and propagation itself is portrayed with the help of an example in the Figure \ref{fig:propagation}.
 
 \begin{figure}[h]
     \centering
